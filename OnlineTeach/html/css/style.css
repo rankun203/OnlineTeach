@@ -1,0 +1,256 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 整合样式 */
+ul, body, h3{
+	margin:0; 
+	padding:0; 	
+}
+ul{
+	list-style:none;
+}
+h3{
+	font-size:18px;
+	font-weight:normal;
+	line-height:27px;
+}
+fieldset{
+	border:0;
+}
+label{
+	display:block;
+	color:#555;
+	margin-bottom:5px;
+}
+a{
+	text-decoration:none;
+	color:#666;
+}
+a:visited{
+	color:#666;
+}
+a:hover{
+	text-decoration:underline;
+	color:#333;
+}
+body{ 
+	color:#333; 
+	background-color:#fafafa; 
+	font-size:13px; 
+	line-height:150%;
+	font-family:"微软雅黑";
+}
+
+.pullleft{float:left;}
+.pullright{float:right;}
+.clearboth{clear:both;}
+
+.btn{
+	font-family:Arial;
+	line-height:18px;
+	font-size:13px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+	display:inline-block;
+	padding:4px 10px;
+	color:#333;
+	background-image:-webkit-linear-gradient(top, #fff, #e6e6e6);
+	background-image:-ms-linear-gradient(top, #fff, #e6e6e6);
+	background-repeat:repeat-x;
+	border:1px solid #ccc;
+	border-radius:4px;
+	box-shadow: inset 0 1px 0px rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn:hover{
+	text-decoration:none;
+	background-color: #e6e6e6;
+	background-position: 0 -15px;
+}
+.btn:active{
+	box-shadow:inset 0px 2px 6px #bbb;
+}
+
+.submitBtn{
+	color:#fff;
+	background-color:#04c;
+	background-image:-webkit-linear-gradient(top, #08c, #04c);
+	background-image:-ms-linear-gradient(top, #08c, #04c);
+	background-repeat:repeat-x;
+	border:1px solid #666;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.submitBtn:hover{
+	background-color: #04c;
+	background-position: 0 -15px;
+}
+.submitBtn:active{
+	transition-duration:0;
+	box-shadow:inset 0px 3px 10px #02f;
+}
+
+.te{
+	transition-duration:.1s;
+	transition-property:all;
+	transition-timing-function:ease-in-out;
+}
+.teslowly{
+	transition-duration:.2s;
+	transition-property:all;
+	transition-timing-function:ease-in;
+}
+.mainbox{
+	border: 1px solid #e1e1e1;
+	border-radius:6px;
+	box-shadow:0 3px 7px #ccc;
+}
+.inputLable{
+	font-size:13px;
+}
+.inputField{
+	width:300px;
+	padding:4px;
+	color:#666;
+	border-radius:3px;
+	border:1px solid #ccc;	
+}
+.inputField:hover{
+	outline:none;
+	border-color:rgba(0,51,255,.5);
+}
+.inputField:focus{
+	outline:none;
+	border-color:rgba(0,51,255,.5);
+	box-shadow:0 0 8px rgba(0,51,255,.5);
+}
+.form-field-group{
+	margin-bottom:10px;
+}
+
+
+
+/* container 样式 */
+.container{ width:940px; margin-left:auto; margin-right:auto;}
+
+/* login 专用样式 */
+.login-mainbox{ 
+	position:absolute; 
+	background-color:#fff;
+	left:50%; 
+	width:340px;
+	top:80px;
+	margin:0 0 0 -170px; 
+}
+.logobox{
+	padding:50px 30px 10px 30px;
+}
+.model-header{
+	border-bottom:1px #ddd solid;
+}
+.logo-a{
+	font-family:"Courier New", Courier,  monospace;
+	font-size:40px;
+	text-shadow:0px 1px 3px #666;
+}
+.logo-a:hover{
+	text-shadow:0px 1px 8px #666;
+}
+#logo-a-add{
+	color:#d00;
+}
+.logo-b{
+	padding-top:10px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	letter-spacing:3px;
+}
+.login-tit{
+	padding:15px;
+}
+
+.model-body{
+	padding:15px;
+}
+.model-footer{
+	height:28px;
+	border-top:1px solid #ddd;
+	-webkit-border-radius:0 0 6px 6px;
+	border-radius:0 0 6px 6px;
+	-webkit-box-shadow:inset 0 1px #FFFFFF;
+	box-shadow:inset 0 1px #FFFFFF;
+	background-color:#f5f5f5;
+	padding:15px;
+}
+
+/* register 专用样式 */
+.register-mainbox{
+	position:absolute;
+	width:900px;
+	top:80px;
+	left:50%;
+	margin:0 0 0 -450px;
+	background-color:#FFF;
+}
+.register-tit{
+	padding:30px;
+}
+.model-body-register-left{
+	width:310px;;
+}
+.model-body-register-right{
+	width:310px;
+}
+#register-model-body{
+	padding-left:80px;
+	padding-right:80px;
+}
+
+/* main样式 */
+.navbox{
+	padding:15px;
+	background-color:#eff;
+	border-radius:4px;
+}
+.navbox-menubox{
+	color:#666;	
+}
+.navbox-menu-tit{
+	cursor:pointer;
+	line-height:30px;
+}
+.navbox-menu-itembox{
+	padding-left:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background-color:#99F;
+	display:none;
+}
+.sslote{
+	transition-duration:3s;
+	transition-property:all;
+	transition-timing-function:ease-in-out;
+}
+.showlately{
+	transition-duration:.1s;
+	transition-property:display;
+	transition-delay:3s;
+	transition-timing-function:ease-in-out;
+	
+}
+.navbox-menu-item{
+	cursor:default;
+	line-height:200%;
+}
+.navbox-menu-item:hover{
+	cursor:default;
+	text-decoration:none;
+}
+
+/* use for flexible nav */
+#itemboxa, #itemboxb, #itemboxc{
+	display:block;
+}
+
+
+
+

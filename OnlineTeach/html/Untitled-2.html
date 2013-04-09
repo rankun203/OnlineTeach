@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+.flexibility{
+	width:400px;
+	height:30px;
+	margin:0 auto;
+	background:#0F0;
+}
+/*.flexibility:hover{
+	width:1000px;
+}*/
+.te{
+	transition-duration:1s;
+	transition-property:all;
+	transition-timing-function:ease-in-out;
+}
+</style>
+<script type="text/javascript">
+function doResize(){
+	document.getElementById("flexibility").style.width="0";
+}
+</script>
+</head>
+
+<body>
+	<div id="flexibility" class="flexibility te" onClick="doResize();"></div>
+</body>
+</html>
