@@ -1,4 +1,7 @@
 *.class
 
+# folder #
+/.settings
+
 # Package Files #
 *.jar
