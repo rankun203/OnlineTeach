@@ -38,6 +38,9 @@ a:hover{
 	color:#4183c4;
 	text-decoration:underline;
 }
+a:active{
+	color:#3065b0;
+}
 body{ 
 	color:#333; 
 	background-color:#fafafa; 
@@ -331,12 +334,51 @@ body{
 }
 
 
-.subMainNav ul li{
+.subMainNav{
+	border-bottom:1px dashed #d5d5d5;
+	height:30px;
+}
+.subMainNavItem ul li{
 	float:left;
 }
+.subMainNavItem{
+	position:absolute;
+	display:none;
+}
+#subNavA{
+	margin-left:352px;
+}
+#subNavB{
+	margin-left:152px;
+}
+#subNavC{
+	margin-left:232px;
+}
+#subNavD{
+	margin-left:402px;
+}
+.subMainNavItem ul li a{
+	display:block;
+	width:90px;
+	height:30px;
+	text-align:center;
+	line-height:30px;
+	color:#666;
+}
+.subMainNavItem ul li a:hover{
+	color:#4183c4;
+}
 
-
-
+/* 次级导航栏样式 */
+.subMainNavItemActive{
+	color:#4183c4;
+}
+.subMainNavItemActive:visited{
+	color:#4183c4;
+}
+.subMainNavItemActive:active{
+	color:#3065b0;
+}
 
 
 
