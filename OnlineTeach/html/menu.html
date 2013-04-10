@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>menu test</title>
+<style type="text/css">
+#menu {
+	margin:50px auto;
+	border:1px solid #000;
+	width:800px;
+	height:25px;
+}
+.large_box {
+	margin-left:10px;
+	//border:1px solid #666;
+	width:100px;
+	height:100%;
+	float:left;
+}
+.btn {
+	height:25px;
+	width:102px;
+	font-weight:bold;
+	font-size:14px;
+	background-image:linear-gradient(top, #ddd, #999);
+	background-image:-ms-linear-gradient(top, #ddd, #999);
+	background-image:-webkit-linear-gradient(top, #999, #444);
+	line-height:24px;
+	text-align:center;
+}
+.small_box {
+	display:none;
+	height:100px;
+	//border:1px solid #F00;
+}
+.small_btn {
+	height:25px;
+	width:100px;
+	background-color:#9C3;
+	border-bottom:1px dashed #999;
+	border-right:1px dashed #999;
+	border-left:1px dashed #999;
+	cursor:pointer;
+	text-align:center;
+	line-height:24px;
+}
+.small_btn_hd {
+	height:25px;
+	width:100px;
+	background-color:#ad4;
+	border-bottom:1px dashed #999;
+	border-right:1px dashed #999;
+	border-left:1px dashed #999;
+	cursor:pointer;
+	text-align:center;
+	line-height:24px;
+}
+.small_btn a {
+	text-decoration:none;
+}
+</style>
+<script type="text/javascript" >
+	function display(v) {
+			document.getElementById(v).style.display="block";
+		}
+	function none(v) {
+			document.getElementById(v).style.display="none";
+		}
+	function highLight(id) {
+			document.getElementById(id).className="small_btn_hd";
+		}
+	function lowLight(id) {
+			document.getElementById(id).className="small_btn";
+		}		
+</script>
+</head>
+<body>
+	<div id="menu">
+    	<div class="large_box" onmouseout="return none(1);"  onmouseover="return display(1);">
+    		<div class="btn">大菜单1</div>
+            <div id="1" class="small_box">
+                <div id="s1" class="small_btn" onmouseover="return highLight('s1');" onmouseout="return lowLight('s1');"><a href="#">小菜单1</a></div>
+                <div id="s2" class="small_btn" onmouseover="return highLight('s2');" onmouseout="return lowLight('s2');"><a href="#">小菜单2</a></div>
+                <div id="s3" class="small_btn" onmouseover="return highLight('s3');" onmouseout="return lowLight('s3');"><a href="#">小菜单3</a></div>
+                <div id="s4" class="small_btn" onmouseover="return highLight('s4');" onmouseout="return lowLight('s4');"><a href="#">小菜单4</a></div>
+            </div>
+        </div>
+    	<div class="large_box" onmouseout="return none(2);"  onmouseover="return display(2);">
+    		<div class="btn">大菜单2</div>
+            <div id="2" class="small_box">
+                <div id="s5" class="small_btn" onmouseover="return highLight('s5');" onmouseout="return lowLight('s5');"><a href="#">小菜单5</a></div>
+                <div id="s6" class="small_btn" onmouseover="return highLight('s6');" onmouseout="return lowLight('s6');"><a href="#">小菜单6</a></div>
+                <div id="s7" class="small_btn" onmouseover="return highLight('s7');" onmouseout="return lowLight('s7');"><a href="#">小菜单7</a></div>
+                <div id="s8" class="small_btn" onmouseover="return highLight('s8');" onmouseout="return lowLight('s8');"><a href="#">小菜单8</a></div>
+            </div>
+        </div>
+    	<div class="large_box" onmouseout="return none(3);"  onmouseover="return display(3);">
+    		<div class="btn">大菜单3</div>
+            <div id="3" class="small_box">
+                <div id="s9" class="small_btn" onmouseover="return highLight('s9');" onmouseout="return lowLight('s9');"><a href="#">小菜单9</a></div>
+                <div id="s10" class="small_btn" onmouseover="return highLight('s10');" onmouseout="return lowLight('s10');"><a href="#">小菜单10</a></div>
+                <div id="s11" class="small_btn" onmouseover="return highLight('s11');" onmouseout="return lowLight('s11');"><a href="#">小菜单11</a></div>
+                <div id="s12" class="small_btn" onmouseover="return highLight('s12');" onmouseout="return lowLight('s12');"><a href="#">小菜单12</a></div>
+            </div>
+        </div>
+    	<div class="large_box" onmouseout="return none(4);"  onmouseover="return display(4);">
+    		<div class="btn">大菜单4</div>
+			<div id="4" class="small_box">
+                <div id="s13" class="small_btn" onmouseover="return highLight('s13');" onmouseout="return lowLight('s13');"><a href="#">小菜单13</a></div>
+                <div id="s14" class="small_btn" onmouseover="return highLight('s14');" onmouseout="return lowLight('s14');"><a href="#">小菜单14</a></div>
+                <div id="s15" class="small_btn" onmouseover="return highLight('s15');" onmouseout="return lowLight('s15');"><a href="#">小菜单15</a></div>
+                <div id="s16" class="small_btn" onmouseover="return highLight('s16');" onmouseout="return lowLight('s16');"><a href="#">小菜单16</a></div>
+            </div>
+        </div>                        
+    </div>
+</body>
+</html>
