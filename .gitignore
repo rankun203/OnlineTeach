@@ -4,7 +4,7 @@
 /.settings
 
 # Spec Files #
-.project
+/.project
 
 # Package Files #
 *.jar
