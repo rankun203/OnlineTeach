@@ -358,9 +358,6 @@ body{
 	line-height:30px;
 	color:#666;
 }
-.subMainNavItem ul li a:hover{
-	color:#4183c4;
-}
 
 /* 次级导航栏样式 */
 .subMainNavItemActive{
@@ -369,7 +366,10 @@ body{
 .subMainNavItemActive:visited{
 	color:#4183c4;
 }
-.subMainNavItemActive:active{
+.subMainNavItem ul li a:hover{
+	color:#4183c4;
+}
+.subMainNavItem ul li a:active{
 	color:#3065b0;
 }
 
