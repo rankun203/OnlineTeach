@@ -338,24 +338,17 @@ body{
 	border-bottom:1px dashed #d5d5d5;
 	height:30px;
 }
+.currentLocation{
+	float:left;
+	line-height:30px;
+}
 .subMainNavItem ul li{
 	float:left;
 }
 .subMainNavItem{
 	position:absolute;
 	display:none;
-}
-#subNavA{
 	margin-left:352px;
-}
-#subNavB{
-	margin-left:152px;
-}
-#subNavC{
-	margin-left:232px;
-}
-#subNavD{
-	margin-left:402px;
 }
 .subMainNavItem ul li a{
 	display:block;

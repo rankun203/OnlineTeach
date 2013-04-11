@@ -15,11 +15,6 @@ function mainNavExchange(mainNav, activePane) {
 }
 
 
-//id get
-function idg(idname) {
-    return document.getElementById(idname);
-}
-
 
 
 
