@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>课表分类查询</title>
+<title>课程综合考核</title>
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="script/js.js"></script>
 </head>
@@ -16,10 +16,10 @@
         <div class="siteTitle pullleft">在线教学</div>
         <div class="mainNav pullleft">
         	<ul>
-        		<li class="pullleft"><a class="aMainNavItem aMainNavItemActive" id="mainNavA" href="#" onClick="return false;" onMouseOver="mainNavExchange('mainNavA', 'subNavA');">教学排课</a></li>
+        		<li class="pullleft"><a class="aMainNavItem" id="mainNavA" href="#" onClick="return false;" onMouseOver="mainNavExchange('mainNavA', 'subNavA');">教学排课</a></li>
         		<li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavB" onClick="return false;" onMouseOver="mainNavExchange('mainNavB', 'subNavB');">课堂练习</a></li>
         		<li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavC" onClick="return false;" onMouseOver="mainNavExchange('mainNavC', 'subNavC');">教学资料</a></li>
-        		<li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavD" onClick="return false;" onMouseOver="mainNavExchange('mainNavD', 'subNavD');">课堂考核</a></li>
+        		<li class="pullleft"><a class="aMainNavItem aMainNavItemActive" href="#" id="mainNavD" onClick="return false;" onMouseOver="mainNavExchange('mainNavD', 'subNavD');">课堂考核</a></li>
         	</ul>
         </div>
         <div class="headerPaneDivide pullleft"></div>
@@ -31,14 +31,14 @@
     <div class="container">
 		<div class="subMainNav">
         	<div class="currentLocation">
-            	<a href="main.html">在线教学</a> >
-                <a href="#">教学排课</a> >
-                <a href="#">课表分类查询</a>
+            	<a href="main.html">在线教学</a>>
+                <a href="#">课堂考核</a>>
+                <a href="#">课程综合考核</a>
             </div>
-             <div class="subMainNavItem" id="subNavA" style="display:block;">
+            <div class="subMainNavItem" id="subNavA">
                 <ul>
-                    <li><a href="#" onClick="return false;">学期课表生成</a></li>
-                    <li><a href="#" onClick="return false;" class="subMainNavItemActive">课表分类查询</a></li>
+                    <li><a href="generateCourseplan.html" onClick="return false;">学期课表生成</a></li>
+                    <li><a href="mail.html" onClick="return false;">课表分类查询</a></li>
                     <li><a href="#" onClick="return false;">课表分类导出</a></li>
                     <li><a href="#" onClick="return false;">课表分类维护</a></li>
                 </ul>
@@ -56,14 +56,14 @@
                     <li><a href="teachplanUphold.html" onClick="return false;">教案制作维护</a></li>
                     <li><a href="coursewareUp_Down.html" onClick="return false;">课件上传下载</a></li>
                     <li><a href="homeWork.html" onClick="return false;">课外作业管理</a></li>
-                    <li><a href="courseplan.html" onClick="return false;">授课计划管理</a></li>
+                    <li><a href="#" onClick="return false;">授课计划管理</a></li>
                 </ul>
             </div>
-            <div class="subMainNavItem" id="subNavD">
+            <div class="subMainNavItem" id="subNavD" style="display:block;">
                 <ul>
                     <li><a href="attendance.html" onClick="return false;">在线考勤管理</a></li>
                     <li><a href="projectReply.html" onClick="return false;">项目答辩考核</a></li>
-                    <li><a href="compositeCheck.html" onClick="return false;">课程综合考核</a></li>
+                    <li><a href="compositeCheck.html" onClick="return false;" class="subMainNavItemActive">课程综合考核</a></li>
                 </ul>
             </div>
 		</div>
