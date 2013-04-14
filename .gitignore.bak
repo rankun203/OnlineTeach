@@ -1,0 +1,11 @@
+*.class
+
+# Folders #
+/.settings
+
+# Spec Files #
+
+
+# Package Files #
+*.jar
+/OnlineTeach
