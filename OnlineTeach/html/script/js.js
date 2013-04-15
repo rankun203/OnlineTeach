@@ -1,5 +1,6 @@
  // JavaScript Document
 function mainNavExchange(mainNav, activePane) {
+	
     var allSubNavItem = document.getElementsByClassName("subMainNavItem");
     for (var i = 0; i < allSubNavItem.length; i++) {
         allSubNavItem.item(i).style.display = "none";
@@ -11,7 +12,13 @@ function mainNavExchange(mainNav, activePane) {
     document.getElementById("mainNavC").className = "aMainNavItem";
     document.getElementById("mainNavD").className = "aMainNavItem";
 
+
+    var allAMainNavItem = document.getElementsByClassName("aMainNavItem");
+    for (var i = 0; i < allAMainNavItem.length; i++) {
+        allAMainNavItem.item(i).className = "aMainNavItem";
+    }
     document.getElementById(mainNav).className = "aMainNavItem aMainNavItemActive";
+
 }
 function setSelectActive(id1, id2, id3, id4) {
 	
