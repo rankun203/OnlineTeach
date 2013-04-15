@@ -373,6 +373,41 @@ body{
 	color:#3065b0;
 }
 
+/*学生在线答题样式*/
+.topicList {
+	margin-top:5px;
+	margin-bottom:5px;
+	//border:1px solid #000;
+	border-right:1px solid #ccc;
+	float:left;
+	width:499px;
+}
+.topicTitle {
+	margin-top:10px;
+	margin-left:10px;
+	width:480px;
+	border:1px solid #000;
+}
+.tTitle {
+	width:380px;
+	float:left;
+	border:1px solid #000;
+}
+.beginAnswer {
+	margin-right:10px;
+}
+.topicNameList {	
+	width:480px;
+	border:1px solid #000;
+}
+.answerNotes {
+	margin-top:5px;
+	margin-bottom:5px;	
+	margin-left:500px;
+	//border:1px solid #000;
+	width:440px;
+}
+
 
 
 
