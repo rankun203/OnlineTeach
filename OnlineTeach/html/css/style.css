@@ -14,6 +14,10 @@ h3{
 	font-weight:normal;
 	line-height:27px;
 }
+h4{
+	margin:0;
+	padding:0;
+}
 fieldset{
 	margin:0;
 	padding:0;
@@ -288,7 +292,7 @@ body{
 	text-shadow:1px 1px 2px #FFF;
 }
 .mainNav{
-	margin-left:50px;
+	margin-left:20px;
 }
 .aMainNavItem{
 	font-family:"宋体";
@@ -373,10 +377,34 @@ body{
 	color:#3065b0;
 }
 
-
-
-
-
+/* courseWork */
+.courseTimeLabel{
+	border-bottom:1px dashed #d5d5d5;
+	height:25px;
+}
+.courseTimeLabelItem{
+	line-height:25px;
+	text-align:center;
+	padding:0 10px;
+}
+.courseTimeLabelItemOne{
+	background-color:#CF9;
+}
+.courseTimeLabelItemTwo{
+	width:390px;
+}
+.courseTimeLabelItemThree{
+	background-color:#CF9;
+}
+.userProfile{
+	width:257px;
+}
+.userProfileLeft, .userProfileRight{
+	height:40px;
+}
+.userProfileRight{
+	margin-right:20px;
+}
 
 
 
