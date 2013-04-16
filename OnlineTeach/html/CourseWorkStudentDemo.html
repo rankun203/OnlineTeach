@@ -11,6 +11,157 @@
 
 <body>
 
+<div id="selectView_coursePlan" class="selectView_coursePlan">
+    <div class="absoluteCoursePlanNav coursePlanNav">
+        <div class="monthView" onclick="alert('此功能尚未开放！');">月视图</div>
+        <div class="coursePlanView" onclick="document.getElementById('coursePlan').style.display='block';" >课程表视图</div>
+        <div class="currentDateTime">
+            <a class="changeWeek preWeek" href="#"><</a>
+            <div class="dateWeek">2012-2013 下期 5/18周</div>
+            <a class="changeWeek nextWeek" href="#">></a>
+        </div>
+    </div>
+    <div id="coursePlan" class="absoluteCoursePlan coursePlan">
+        <table cellspacing="0">
+            <tr class="coursePlanTitle">
+                <td class="coursePlanClose" onclick="document.getElementById('selectView_coursePlan').style.display='none';">X</td>
+                <td>节数</td>
+                <td>星期一</td>
+                <td>星期二</td>
+                <td>星期三</td>
+                <td>星期四</td>
+                <td>星期五</td>
+                <td>星期六</td>
+                <td>星期日</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="coursePlanTitle">上<br />午</td>
+                <td class="coursePlanTitle">第一节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第二节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第三节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第四节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="coursePlanTitle">下<br />午</td>
+                <td class="coursePlanTitle">第五节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第六节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第七节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第八节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="coursePlanTitle">晚<br />上</td>
+                <td class="coursePlanTitle">第九节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第十节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第十一节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="coursePlanTitle">第十二节</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+            </tr>                                                                                                        
+        </table>
+    </div>
+</div>
+
+
 <div class="header">
 	<div class="container">
     	<img src="logo.svg" style="width:125px; height:40px;" class="pullleft" onClick="window.location='http://www.pinkbike.com';" alt="Online Check">
@@ -107,10 +258,11 @@
             </ul>
         </div>
     </div>
+    
     <div class="answerNotes">    	
     	<div class="topicTitle">
         	<div class="tTitle">答题记录
-            	<select class="select_time" onFocus="alert('此功能尚未开放！');">
+            	<select class="select_time" onFocus="return showCoursePlan('selectView_coursePlan');">
                 	<option>选择时间</option>
                 </select>
             </div>
@@ -162,10 +314,10 @@
         </div>
     </div>
     <div class="select_box">
-    	<div class="select_btn selectA" onclick="return setSelectActive('s1', 's2', 's3', 's4');" >A<span id="s1" class="selectActive" /></div>
-        <div class="select_btn selectB" onclick="return setSelectActive('s2', 's1', 's3', 's4');">B<span id="s2" class="selectActive" /></div>
-        <div class="select_btn selectC" onclick="return setSelectActive('s3', 's2', 's1', 's4');">C<span id="s3" class="selectActive" /></div>
-        <div class="select_btn selectD" onclick="return setSelectActive('s4', 's2', 's3', 's1');">D<span id="s4" class="selectActive" /></div>
+    	<div class="select_btn selectA" onClick="return setSelectActive('s1', 's2', 's3', 's4');" >A<span id="s1" class="selectActive" /></div>
+        <div class="select_btn selectB" onClick="return setSelectActive('s2', 's1', 's3', 's4');">B<span id="s2" class="selectActive" /></div>
+        <div class="select_btn selectC" onClick="return setSelectActive('s3', 's2', 's1', 's4');">C<span id="s3" class="selectActive" /></div>
+        <div class="select_btn selectD" onClick="return setSelectActive('s4', 's2', 's3', 's1');">D<span id="s4" class="selectActive" /></div>
     </div>
 </div>
 <div class="container" style="border:1px solid #ccc; margin-top:10px;">

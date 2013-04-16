@@ -44,6 +44,9 @@ function setJudgeActive(id1, id2) {
 	
 	return false;				
 }
+function showCoursePlan(id) {
+	document.getElementById(id).style.display="block";
+}
 
 
 

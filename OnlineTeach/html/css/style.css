@@ -493,6 +493,9 @@ body{
 	width:110px;
 	cursor:pointer;	
 }
+input[type="radio"] {
+	visibility:hidden;
+}
 .selectActive {
 	margin-left:70px;
 	margin-top:-40px;
@@ -590,6 +593,108 @@ body{
 	float:right;
 	height:30px;
 }
+/*课表样式*/
+.selectView_coursePlan {
+	display:none;
+}
+.absoluteCoursePlan {
+	margin-top:170px;
+	margin-left:200px;
+	position:absolute;
+}
+.absoluteCoursePlanNav {
+	margin-top:140px;
+	margin-left:200px;
+	position:absolute;
+}
+
+.coursePlan {
+	width:800px;
+	height:600px;
+	display:block;
+	text-align:center;
+}
+.coursePlan table {
+	border-top:1px solid #000;
+	border-right:1px solid #000;
+	background-color:#FFF;
+	width:800px;
+	height:600px;
+}
+.coursePlan table td {
+	border-bottom:1px solid #000;
+	border-left:1px solid #000;
+	cursor:pointer;
+}
+.coursePlanNav {
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	border-top:1px solid #000;
+	background-color:#FFF;
+	height:30px;
+	width:798px;
+}
+.monthView {
+	height:30px;
+	width:100px;
+	color:#fff;
+	line-height:30px;
+	text-align:center;
+	background-color:#06F;
+	float:left;
+	cursor:pointer;
+}
+.coursePlanView {
+	height:30px;
+	width:100px;
+	cursor:pointer;
+	line-height:30px;
+	color:#fff;
+	text-align:center;
+	background-color:#73E93A;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	float:left;
+}
+.currentDateTime {
+	height:30px;
+	line-height:30px;
+	float:right;
+	margin-right:170px;
+}
+.preWeek {
+	margin-right:10px;
+}
+.changeWeek {
+	color:#600;
+	text-decoration:none;
+	margin-top:2px;
+	//border:1px solid #000;
+	height:25px;
+	width:50px;
+	cursor:pointer;
+	float:left;
+	text-align:center;
+	line-height:25px;	
+}
+.dateWeek {
+	float:left;
+}
+.nextWeek {
+	margin-left:10px;
+}
+.coursePlanTitle {
+	background-color:#eee;
+}
+.coursePlanClose {
+	color:#F00;
+	text-align:center;
+	font-weight:bold;
+	font-family:"微软雅黑";
+	line-height:15px;
+	cursor:pointer;
+}
+
 
 /* courseWork */
 .courseTimeLabel{
