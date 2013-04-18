@@ -694,7 +694,8 @@ input[type="radio"] {
 	line-height:15px;
 	cursor:pointer;
 }
-
+#A {
+}
 
 /* courseWork */
 .courseTimeLabel{

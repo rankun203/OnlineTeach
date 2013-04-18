@@ -299,56 +299,59 @@
 </div>
 
 <a name="question_begin" ></a>
-<div class="container" style="border:1px solid #ccc; margin-top:10px;">
-	<div class="single_question_answer">
-    	<div class="single_question">
-        	1、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+<form method="post">
+    <div class="container" style="border:1px solid #ccc; margin-top:10px;">
+        <div class="single_question_answer">
+            <div class="single_question">
+                1、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+            </div>
+            <div class="singleSelect">
+                <ul style=" list-style:upper-latin;">
+                    <li>在交互命令外壳里显外壳里显外壳里显外壳里显外壳里显示在</li>
+                    <li>在交互命令外壳里外壳里显外壳里显显示在</li>
+                    <li>在交互命令外壳里显外壳里显外壳里显外壳里显外壳里显外壳里显示在</li>
+                    <li>在交互命令外壳里外壳里显外壳里显在</li>
+                </ul>
+            </div>
         </div>
-        <div class="singleSelect">
-        	<ul style=" list-style:upper-latin;">
-            	<li>在交互命令外壳里显外壳里显外壳里显外壳里显外壳里显示在</li>
-                <li>在交互命令外壳里外壳里显外壳里显显示在</li>
-                <li>在交互命令外壳里显外壳里显外壳里显外壳里显外壳里显外壳里显示在</li>
-                <li>在交互命令外壳里外壳里显外壳里显在</li>
-            </ul>
-        </div>
-    </div>
-    <div class="select_box">
-    	<div class="select_btn selectA" onClick="return setSelectActive('s1', 's2', 's3', 's4');" >A<span id="s1" class="selectActive" /></div>
-        <div class="select_btn selectB" onClick="return setSelectActive('s2', 's1', 's3', 's4');">B<span id="s2" class="selectActive" /></div>
-        <div class="select_btn selectC" onClick="return setSelectActive('s3', 's2', 's1', 's4');">C<span id="s3" class="selectActive" /></div>
-        <div class="select_btn selectD" onClick="return setSelectActive('s4', 's2', 's3', 's1');">D<span id="s4" class="selectActive" /></div>
-    </div>
-</div>
-<div class="container" style="border:1px solid #ccc; margin-top:10px;">
-	<div class="answer_question">
-    	<div class="a_question">
-        	2、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
-        </div>
-        <div class="inputArea">
-        	<div class="a_txt">答：</div>
-        	<textarea rows="10" cols="131" class="a_answer" name="answer1"></textarea>
+        
+        <div class="select_box">
+            <div class="select_btn selectA" onClick="return setSelectActive('s1', 's2', 's3', 's4');" >A<span id="s1" class="selectActive" /></div>
+            <div class="select_btn selectB" onClick="return setSelectActive('s2', 's1', 's3', 's4');">B<span id="s2" class="selectActive" /></div>
+            <div class="select_btn selectC" onClick="return setSelectActive('s3', 's2', 's1', 's4');">C<span id="s3" class="selectActive" /></div>
+            <div class="select_btn selectD" onClick="return setSelectActive('s4', 's2', 's3', 's1');">D<span id="s4" class="selectActive" /></div>
         </div>
     </div>
-</div>
-<div class="container" style="border:1px solid #ccc; margin-top:10px;">
-	<div class="judge_question">
-    	<div class="j_question">
-        	3、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+    <div class="container" style="border:1px solid #ccc; margin-top:10px;">
+        <div class="answer_question">
+            <div class="a_question">
+                2、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+            </div>
+            <div class="inputArea">
+                <div class="a_txt">答：</div>
+                <textarea rows="10" cols="131" class="a_answer" name="answer1"></textarea>
+            </div>
         </div>
     </div>
-    <div class="j_answer_box">
-    	<div class="j_true j_answer" onClick="return setJudgeActive('j1', 'j2');">√<span id="j1" class="selectActive" /></div>
-        <div class="j_false j_answer" onClick="return setJudgeActive('j2', 'j1');">x<span id="j2" class="selectActive" /></div>
-    </div>
-</div>
-<div class="container" style="border:1px solid #ccc; margin-top:10px;">
-	<div class="fill_vacant_question">
-    	<div class="fv_question">
-        	4、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在<input type="text" name="fv_answer" class="fv_input" />交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+    <div class="container" style="border:1px solid #ccc; margin-top:10px;">
+        <div class="judge_question">
+            <div class="j_question">
+                3、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+            </div>
+        </div>
+        <div class="j_answer_box">
+            <div class="j_true j_answer" onClick="return setJudgeActive('j1', 'j2');">√<span id="j1" class="selectActive" /></div>
+            <div class="j_false j_answer" onClick="return setJudgeActive('j2', 'j1');">x<span id="j2" class="selectActive" /></div>
         </div>
     </div>
-</div>
+    <div class="container" style="border:1px solid #ccc; margin-top:10px;">
+        <div class="fill_vacant_question">
+            <div class="fv_question">
+                4、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在<input type="text" name="fv_answer" class="fv_input" />交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
+            </div>
+        </div>
+    </div>
+</form>
 <input type="button" value="提交" class="submit_question" />
 </body>
 </html>
