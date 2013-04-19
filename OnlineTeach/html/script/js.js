@@ -7,12 +7,6 @@ function mainNavExchange(mainNav, activePane) {
         allSubNavItem.item(i).style.display = "none";
     }
     document.getElementById(activePane).style.display = "block";
-    
-    document.getElementById("mainNavA").className = "aMainNavItem";
-    document.getElementById("mainNavB").className = "aMainNavItem";
-    document.getElementById("mainNavC").className = "aMainNavItem";
-    document.getElementById("mainNavD").className = "aMainNavItem";
-
 
     var allAMainNavItem = document.getElementsByClassName("aMainNavItem");
     for (var i = 0; i < allAMainNavItem.length; i++) {
