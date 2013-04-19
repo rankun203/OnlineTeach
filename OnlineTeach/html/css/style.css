@@ -94,6 +94,35 @@ body{
 .btn:active{
 	box-shadow:inset 0px 2px 6px #bbb;
 }
+.flatbtn{
+	font-family:Arial;
+	line-height:18px;
+	font-size:13px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:default;
+	display:inline-block;
+	padding:4px 10px;
+	color:#333;
+	background-image:-webkit-linear-gradient(top, #fff, #f5f5f5);
+	background-image:-ms-linear-gradient(top, #fff, #f5f5f5);
+	background-repeat:repeat-x;
+	border:1px solid #ddd;
+	border-radius:2px;
+	box-shadow: inset 0 1px 0px rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+}
+.flatbtn:visited{
+	color:#333;
+}
+.flatbtn:hover{
+	text-decoration:none;
+	color:#222;
+	background-color: #f5f5f5;
+	background-position: 0 -15px;
+}
+.flatbtn:active{
+	box-shadow:inset 0px 2px 2px #f0f0f0;
+}
 
 .submitBtn{
 	color:#fff;
@@ -126,8 +155,9 @@ body{
 }
 .mainbox{
 	border: 1px solid #e1e1e1;
-	border-radius:6px;
+	border-radius:2px;
 	box-shadow:0 3px 7px #ccc;
+	background-color:#FFF;
 }
 .inputLable{
 	font-size:13px;
