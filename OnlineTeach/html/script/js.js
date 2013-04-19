@@ -1,4 +1,5 @@
  // JavaScript Document
+
 function mainNavExchange(mainNav, activePane) {
 	
     var allSubNavItem = document.getElementsByClassName("subMainNavItem");
@@ -47,6 +48,42 @@ function setJudgeActive(id1, id2) {
 function showCoursePlan(id) {
 	document.getElementById(id).style.display="block";
 }
+function pmt(eleId, pmt) {
+	if( document.getElementById("pmt") != null ){
+		return ;
+	}
+	var pmtLabel = document.createElement("div");
+	pmtLabel.id = "pmt";
+	pmtLabel.innerHTML = pmt;
+	
+	document.getElementsByTagName("body").item(0).appendChild(pmtLabel);
+	
+	var element = document.getElementById(eleId);
+	
+	var putWidth = document.getElementById("pmt").offsetWidth;
+	var eleY = element.offsetTop;
+	var eleX = element.offsetLeft;
+	var eleHeight = element.offsetHeight;
+	var eleWidth = element.offsetWidth;
+	var putY = eleY + eleHeight;
+	var putX = eleX + ( eleWidth / 2 ) - (putWidth / 2);
+	document.getElementById("pmt").style.top = putY + "px";
+	document.getElementById("pmt").style.left = putX + "px";
+	setTimeout("if (document.getElementById('pmt') != null) document.getElementById('pmt').style.display = 'block'", 1000);
+	pmtLabel.style.display = "none";
+}
+function erasePmt(){
+	document.getElementsByTagName("body").item(0).removeChild(document.getElementById("pmt"));
+}
+
+
+
+
+
+
+
+
+
 
 
 

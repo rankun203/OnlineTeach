@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!--Scalable Vector Graphic-->
+<svg version="1.1" 
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"     
+     baseProfile="full"
+	 height="40"
+	 width="125">
+	 
+	 <line x1="5" y1="20" x2="60" y2="20" style="stroke:black; stroke-width:1;"/>
+	 <text x="5" y="15" style="fill:#333; font-size:17px; font-family:Gabriola; letter-spacing:3px;">Online</text>
+	 <text x="5" y="32" style="fill:#333; font-size:14px; font-family:Gabriola; letter-spacing:1px;">Teach</text>
+	 <text x="39" y="32" style="fill:#333; font-size:11px; font-family:微软雅黑;">高效</text>
+	 <text x="63" y="32" style="fill:#333; font-size:29px; font-family:微软雅黑;">智能</text>
+	 <rect x="79" y="10" width="11" height="12" style="fill:#f6f6f6;" />
+	 <circle cx="85" cy="15" r="6" style="fill:#4183c4;" />
+</svg>

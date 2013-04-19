@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>课堂练习创建</title>
@@ -10,7 +10,7 @@
 
 <div class="header">
 	<div class="container">
-    	<img src="logo.svg" style="width:125px; height:40px;" class="pullleft" onClick="window.location='http://www.pinkbike.com';" alt="Online Check">
+    	<img src="logo.svg" style="width:125px; height:40px;" class="pullleft" onClick="window.location='http://www.pinkbike.com';" alt="Online Check" id="logoSvg" onMouseOver="this.src = 'logo_hover.svg';" onMouseOut="this.src = 'logo.svg';">
         <div class="headerPaneDivide pullleft"></div>
         <div class="siteTitle pullleft">在线教学</div>
         <div class="mainNav pullleft">
@@ -75,11 +75,46 @@
                 </ul>
             </div>
 		</div>
-      <div class="courseTimeLabel">
-        <div class="courseTimeLabelItem pullleft courseTimeLabelItemOne">上一次课：2013-4-12 星期三 上午 3-4节</div>
-        <h4 class="courseTimeLabelItem pullleft courseTimeLabelItemTwo">毛泽东思想</h4>
-        <div class="courseTimeLabelItem pullright courseTimeLabelItemThree">下一次课：2013-4-14 星期五 下午 7-8节</div>
+        <div class="courseTimeLabel">
+            <div class="courseTimeLabelItem pullleft courseTimeLabelItemOne">上一次课：2013-4-12 星期三 上午 3-4节</div>
+            <h4 class="courseTimeLabelItem pullleft courseTimeLabelItemTwo">毛泽东思想</h4>
+            <div class="courseTimeLabelItem pullright courseTimeLabelItemThree">下一次课：2013-4-14 星期五 下午 7-8节</div>
         </div>
+		<div class="firstLR">
+		  <div class="LRleft pullleft">
+		    <div class="cwCoursingTitle">
+            	<div class="cwCoursingTitleTxt">正在进行的课堂练习</div>
+            </div>
+		    <div class="cwCoursing">
+            	<ul>
+            		<li><a href="#">一部分是对马克思列宁主义的创造性的发展...</a></li>
+            		<li><a href="#">一部分是毛泽东思想的活的灵魂</a></li>
+            		<li><a href="#">对于马克思主义创造性的发展主要是指新民...</a></li>
+            		<li><a href="#">毛泽东思想的理论体系概括为</a></li>
+            		<li><a href="#">关于现代世界情况及中国国情的分析</a></li>
+            		<li><a href="#">关于新民主主义的理论与政策</a></li>
+            		<li><a href="#">关于解放农民的理论与政策</a></li>
+            		<li><a href="#">关于革命统一战线的理论与政策</a></li>
+            		<li><a href="#">关于革命战争的理论与政策</a></li>
+            		<li><a href="#">关于革命根据地的理论与政策</a></li>
+            	</ul>
+            </div>
+		  </div><!-- End of LRleft -->
+		  <div class="LRRight pullright">
+		    <div class="workLabelUp">
+            	<input type="checkbox" name="" id="">
+                <div class="btn createCourseButton" id="createCourseButton" onMouseOver="pmt('createCourseButton', '创建新的练习');" onMouseOut="erasePmt();">
+                	<div class="createCourseButtonImg"></div>
+                </div>
+                <div class="btn archiveButton" id="archiveButton" onMouseOver="pmt('archiveButton', '存档');" onMouseOut="erasePmt();">
+                	<div class="archiveButtonImg"></div>
+                </div>
+            </div>
+            <div class="workLabelDown">
+            	<div>习题</div>
+            </div>
+		  </div><!-- End of LRRight -->          
+		</div><!-- End of firstLR -->
     </div>
 </div>
 
