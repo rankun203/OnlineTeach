@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/4/18 21:24:53                           */
+/* Created on:     2013/4/19 23:17:41                           */
 /*==============================================================*/
 
 
@@ -57,7 +57,7 @@ create table t_checkAttendance
 /*==============================================================*/
 create table t_classRoom
 (
-   crID                 int not null,
+   crID                 int not null auto_increment,
    cpID                 int,
    crName               varchar(20),
    crType               int,
@@ -81,7 +81,7 @@ create table t_compositeCheck
 /*==============================================================*/
 create table t_course
 (
-   courseID             int not null,
+   courseID             int not null auto_increment,
    cpID                 int,
    courseName           varchar(50),
    courseDesc           varchar(200),
@@ -93,7 +93,7 @@ create table t_course
 /*==============================================================*/
 create table t_coursePlanItem
 (
-   cpID                 int not null,
+   cpID                 int not null auto_increment,
    teacID               int not null,
    scID                 int not null,
    courseID             int not null,
@@ -110,7 +110,7 @@ alter table t_coursePlanItem comment '课程表原子';
 /*==============================================================*/
 create table t_courseWare
 (
-   cwareID              int not null,
+   cwareID              int not null auto_increment,
    cpID                 int not null,
    tpCourseTime         datetime not null,
    cwareName            varchar(50),
@@ -137,7 +137,7 @@ create table t_courseWork
 /*==============================================================*/
 create table t_file
 (
-   fileID               int not null,
+   fileID               int not null auto_increment,
    cwareID              int,
    filePaths            text,
    originalFileName     varchar(100),
@@ -152,7 +152,7 @@ create table t_file
 /*==============================================================*/
 create table t_major
 (
-   majorID              int not null,
+   majorID              int not null auto_increment,
    majorName            varchar(20),
    primary key (majorID)
 );
@@ -162,7 +162,7 @@ create table t_major
 /*==============================================================*/
 create table t_project
 (
-   projID               int not null,
+   projID               int not null auto_increment,
    projTitle            varchar(255),
    projDesc             varchar(1024),
    primary key (projID)
@@ -185,7 +185,7 @@ create table t_projectDiv
 /*==============================================================*/
 create table t_projectGroup
 (
-   pgID                 int not null,
+   pgID                 int not null auto_increment,
    pgName               varchar(20),
    pgSlogan             varchar(255),
    primary key (pgID)
@@ -209,7 +209,7 @@ create table t_projectReply
 /*==============================================================*/
 create table t_schoolclass
 (
-   scID                 int not null,
+   scID                 int not null auto_increment,
    majorID              int,
    scName               varchar(20),
    primary key (scID)
@@ -220,7 +220,7 @@ create table t_schoolclass
 /*==============================================================*/
 create table t_student
 (
-   stuID                int not null,
+   stuID                int not null auto_increment,
    pgID                 int,
    scID                 int,
    stuName              varchar(20),
@@ -245,7 +245,7 @@ create table t_teachPlan
 /*==============================================================*/
 create table t_teacher
 (
-   teacID               int not null,
+   teacID               int not null auto_increment,
    teacName             varchar(20),
    primary key (teacID)
 );
