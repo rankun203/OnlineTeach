@@ -2,9 +2,7 @@
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     2013/4/18 21:24:53                           */
 /*==============================================================*/
-create database OnlineTeach;
 
-use OnlineTeach;
 
 drop table if exists t_checkAttendance;
 
