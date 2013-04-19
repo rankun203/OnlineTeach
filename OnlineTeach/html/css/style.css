@@ -57,13 +57,21 @@ body{
 .pullright{float:right;}
 .clearboth{clear:both;}
 
+#pmt{
+	background-color:#333;
+	color:#e5e5e5;
+	border-radius:1px;
+	border:1px solid #fff;
+	position:absolute;
+	padding:5px;
+}
 .btn{
 	font-family:Arial;
 	line-height:18px;
 	font-size:13px;
 	text-align:center;
 	vertical-align:middle;
-	cursor:pointer;
+	cursor:default;
 	display:inline-block;
 	padding:4px 10px;
 	color:#333;
@@ -335,8 +343,17 @@ body{
 	border-top:3px solid #3065b0;
 }
 .userProfile{
+	width:257px;
 }
-
+.userProfileLeft, .userProfileRight{
+	height:40px;
+}
+.userProfileRight{
+	margin-right:20px;
+}
+.userProfileItem{
+	line-height:20px;
+}
 
 .subMainNav{
 	border-bottom:1px dashed #d5d5d5;
@@ -716,15 +733,63 @@ input[type="radio"] {
 .courseTimeLabelItemThree{
 	background-color:#CF9;
 }
-.userProfile{
-	width:257px;
+
+
+.firstLR{
+	height:400px;
+	margin-top:10px;
 }
-.userProfileLeft, .userProfileRight{
-	height:40px;
+.LRleft{
+	border: 1px #b5b5b5 solid;
+	padding:10px;
+	width:300px;
+	height:380px;
 }
-.userProfileRight{
-	margin-right:20px;
+.cwCoursingTitle{
+	border-bottom: 1px solid #970000;
+	padding-left:10px;
+	line-height:200%;
 }
+.cwCoursing{
+	padding-left:30px;
+}
+.cwCoursing ul{
+	list-style:decimal;
+}
+.cwCoursing ul li{
+	line-height:35px;
+	height:35px;	
+}
+.LRRight{
+	border: 1px #b5b5b5 solid;
+	margin-left:10px;
+	padding:10px;
+	width:586px;
+	height:380px;
+}
+.archiveButton{
+	
+}
+.archiveButtonImg{
+	background:url(../imgs/filing.svg) no-repeat 0 1px;
+	width:20px;
+	height:20px;
+}
+.createCourseButtonImg{
+	background:url(../imgs/addItem.svg) no-repeat 2px 1px;
+	width:20px;
+	height:20px;	
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

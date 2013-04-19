@@ -15,5 +15,5 @@
 	 <text x="39" y="32" style="fill:#333; font-size:11px; font-family:微软雅黑;">高效</text>
 	 <text x="63" y="32" style="fill:#333; font-size:29px; font-family:微软雅黑;">智能</text>
 	 <rect x="79" y="10" width="11" height="12" style="fill:#f6f6f6;" />
-	 <circle cx="85" cy="15" r="6" style="fill:#4183c4;" />
+	 <circle cx="85" cy="15" r="6" style="fill:#333;" />
 </svg>
