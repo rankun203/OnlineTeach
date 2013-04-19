@@ -4,7 +4,7 @@
 	<infoitem key="MMGuideVisible" value="true" />
 	<infoitem key="MMGuideLocked" value="false" />
 	<infoitem key="MMSnapToGuide" value="true" />
-	<infoitem key="MMGuidesSnapToElements" value="false" />
+	<infoitem key="MMGuidesSnapToElements" value="true" />
 	<infoitem key="MMDistanceColor" value="#0000FF" />
 	<infoitem key="MMGuideCount" value="0" />
 </info>

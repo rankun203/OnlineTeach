@@ -49,25 +49,39 @@ function pmt(eleId, pmt) {
 	var pmtLabel = document.createElement("div");
 	pmtLabel.id = "pmt";
 	pmtLabel.innerHTML = pmt;
+
+	var pmtTriangle = document.createElement("div");
+	pmtTriangle.id = "pmtTriangle";
+
 	
+	document.getElementsByTagName("body").item(0).appendChild(pmtTriangle);
 	document.getElementsByTagName("body").item(0).appendChild(pmtLabel);
 	
 	var element = document.getElementById(eleId);
 	
 	var putWidth = document.getElementById("pmt").offsetWidth;
+	var pmtTriangleWidth = document.getElementById("pmtTriangle").offsetWidth;
 	var eleY = element.offsetTop;
 	var eleX = element.offsetLeft;
 	var eleHeight = element.offsetHeight;
 	var eleWidth = element.offsetWidth;
 	var putY = eleY + eleHeight;
 	var putX = eleX + ( eleWidth / 2 ) - (putWidth / 2);
-	document.getElementById("pmt").style.top = putY + "px";
+	var pmtTriangleX = eleX + ( eleWidth / 2 ) - (pmtTriangleWidth / 2);
+
+	document.getElementById("pmt").style.top = putY + 10 + "px";
 	document.getElementById("pmt").style.left = putX + "px";
-	setTimeout("if (document.getElementById('pmt') != null) document.getElementById('pmt').style.display = 'block'", 1000);
+
+	document.getElementById("pmtTriangle").style.top = putY + 1 + "px";
+	document.getElementById("pmtTriangle").style.left = pmtTriangleX + "px";
+
+	setTimeout("if (document.getElementById('pmt') != null) { document.getElementById('pmt').style.display = 'block'; document.getElementById('pmtTriangle').style.display = 'block'; }", 1000);
 	pmtLabel.style.display = "none";
+	pmtTriangle.style.display = "none";
 }
 function erasePmt(){
 	document.getElementsByTagName("body").item(0).removeChild(document.getElementById("pmt"));
+	document.getElementsByTagName("body").item(0).removeChild(document.getElementById("pmtTriangle"));
 }
 
 

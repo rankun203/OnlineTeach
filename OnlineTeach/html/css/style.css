@@ -60,10 +60,15 @@ body{
 #pmt{
 	background-color:#333;
 	color:#e5e5e5;
-	border-radius:1px;
-	border:1px solid #fff;
+	border-radius:3px;
 	position:absolute;
 	padding:5px;
+}
+#pmtTriangle{
+	background-image:url(../imgs/pmtReverseTriangle.svg);
+	position:absolute;
+	height:10px;
+	width:22px;
 }
 .btn{
 	font-family:Arial;
@@ -797,8 +802,15 @@ input[type="radio"] {
 	width:586px;
 	height:380px;
 }
+.createCourseButton{
+	margin-left:20px;
+	width:20px;
+	height:20px;
+}
 .archiveButton{
-	
+	margin-left:20px;
+	width:20px;
+	height:20px;	
 }
 .archiveButtonImg{
 	background:url(../imgs/filing.svg) no-repeat 0 1px;
@@ -810,7 +822,9 @@ input[type="radio"] {
 	width:20px;
 	height:20px;	
 }
-
+.checkAllCheckbox{
+	margin-left: 5px;
+}
 
 
 
