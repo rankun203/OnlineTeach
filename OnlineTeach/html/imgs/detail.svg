@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="20"
+   height="20"
+   viewBox="0 0 20 20"
+   id="svg3011"
+   xml:space="preserve"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="detail.svg"><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1366"
+   inkscape:window-height="715"
+   id="namedview3003"
+   showgrid="false"
+   inkscape:zoom="20.702515"
+   inkscape:cx="-0.054478897"
+   inkscape:cy="9.8559366"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg3011" /><metadata
+   id="metadata3035"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs3033" />
+
+<polygon
+   points="13,10 13,9 13,1 1,1 1,14 9,14 10,14 13,14 "
+   transform="translate(3.1008268,2.8193142)"
+   id="polygon3015"
+   style="fill:none" />
+
+
+
+
+<rect
+   width="9.4808664"
+   height="1"
+   x="5.5120974"
+   y="7.1136785"
+   id="rect3025" />
+<rect
+   width="9.4808664"
+   height="1"
+   x="5.5120974"
+   y="10.113679"
+   id="rect3027" />
+<rect
+   width="9.4808664"
+   height="1"
+   x="5.5120974"
+   y="13.113679"
+   id="rect3029" />
+<path
+   d="m 3.7019718,2.7801913 0,14.6536817 13.0357242,0 0,-10.7208922 -2.785412,-3.8789156 z"
+   id="path3037"
+   style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+   inkscape:connector-curvature="0" /></svg>

@@ -102,21 +102,436 @@
 		  </div><!-- End of LRleft -->
 		  <div class="mainbox LRRight pullright">
 		    <div class="workLabelUp">
-            	<input type="checkbox" name="" class="checkAllCheckbox" id="checkAllCheckbox" onMouseOver="pmt('checkAllCheckbox', '选择全部练习');" onMouseOut="erasePmt();">
-                <div class="flatbtn createCourseButton" id="createCourseButton" onMouseOver="pmt('createCourseButton', '创建新的练习');" onMouseOut="erasePmt();">
-                	<div class="createCourseButtonImg"></div>
+            	<div class="pullleft cacbDiv">
+	                <input type="checkbox" name="checkAllCheckbox" class="checkAllCheckbox" id="checkAllCheckbox" onMouseOver="pmt('checkAllCheckbox', '全选/取消全选');" onMouseOut="erasePmt();" onChange="slctChange();">
                 </div>
-                <div class="flatbtn archiveButton" id="archiveButton" onMouseOver="pmt('archiveButton', '存档');" onMouseOut="erasePmt();">
+                <div class="pullleft flatbtn wluBtn" id="createCourseButton" onMouseOver="pmt('createCourseButton', '创建新的练习');" onMouseOut="erasePmt();" onClick="showCreateWork();">
+                	<div class="createCourseButtonImg" onClick="showCreateWork();"></div>
+                </div>
+                <div class="pullleft flatbtn wluBtn" id="archiveButton" onMouseOver="pmt('archiveButton', '存档');" onMouseOut="erasePmt();">
                 	<div class="archiveButtonImg"></div>
                 </div>
+                <div class="pullleft flatbtn wluBtn" id="delButton" onMouseOver="pmt('delButton', '删除');" onMouseOut="erasePmt();">
+                	<div class="delButtonImg"></div>
+                </div>
+                <div class="pullleft flatbtn wluBtn shareButton" id="shareButton" onMouseOver="pmt('shareButton', '分享给其他老师啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊');" onMouseOut="erasePmt();">
+                	<div class="shareButtonImg"></div>
+                </div>
+                <div class="clearboth"></div>
             </div>
             <div class="workLabelDown">
-            	<div>习题</div>
+            	<div class="workLabelDownTit" id="workLabelDownTit">我的题库</div>
+                <div class="workLabelDownContainer">
+                	<div class="createWorkBox" id="createWorkBox">
+                    	<div class="cwbTitIptLabel">
+                        	<input type="text" name="" id="cwbTitIpt" class="pullleft inputField sslote cwbTitIpt" onFocus="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');" onBlur="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt', 'blur');" onKeyUp="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');" onChange="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');">
+                            <div class="pullleft cwbBtnBox">
+                                <input type="submit" class="btn submitBtn" value="保存题目" onClick="submitCreateWork();">
+                            </div>
+                            <div class="cwbTitIptPmt inputPmt sslote" id="cwbTitIptPmt" onClick="document.getElementById('cwbTitIpt').focus();">在此处输入标题</div>
+                        </div>
+                    	<div class="cwbCtnIptLabel">
+                        	<textarea name="" id="cwbCtnIpt" class="pullleft inputField sslote cwbCtnIpt" onFocus="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onBlur="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt', 'blur');" onKeyUp="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onChange="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');"></textarea>
+                            <div class="cwbCtnIptPmt inputPmt sslote" id="cwbCtnIptPmt" onClick="document.getElementById('cwbCtnIpt').focus();">在此处输入内容</div>
+                            <div class="cwbCtnTool">
+                            	<div class="pullleft cwbCtnToolImg">
+	                            	<img src="imgs/img.svg" alt="" id="cwbCtnToolImg" onMouseOver="pmt('cwbCtnToolImg', '在当前位置插入一张图片');" onMouseOut="erasePmt();">                            
+                                </div>
+                            	<div class="pullleft cwbCtnToolLink">
+	                            	<img src="imgs/link.svg" alt="" id="cwbCtnToolLink" onMouseOver="pmt('cwbCtnToolLink', '在当前位置插入一个链接');" onMouseOut="erasePmt();">                            
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End of createWorkBox -->
+                    <div class="wldcListBox" id="wldcListBox">
+                        <ul id="wldcListBoxUl">
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci1" onMouseOver="pmt('wldci1', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn1" onMouseOver="pmt('wldcaacAnswerBtn1', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn1" onMouseOver="pmt('wldcaacDetailBtn1', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci2" onMouseOver="pmt('wldci2', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn2" onMouseOver="pmt('wldcaacAnswerBtn2', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn2" onMouseOver="pmt('wldcaacDetailBtn2', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci3" onMouseOver="pmt('wldci3', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn3" onMouseOver="pmt('wldcaacAnswerBtn3', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn3" onMouseOver="pmt('wldcaacDetailBtn3', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci4" onMouseOver="pmt('wldci4', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn4" onMouseOver="pmt('wldcaacAnswerBtn4', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn4" onMouseOver="pmt('wldcaacDetailBtn4', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci5" onMouseOver="pmt('wldci5', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn5" onMouseOver="pmt('wldcaacAnswerBtn5', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn5" onMouseOver="pmt('wldcaacDetailBtn5', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci6" onMouseOver="pmt('wldci6', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn6" onMouseOver="pmt('wldcaacAnswerBtn6', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn6" onMouseOver="pmt('wldcaacDetailBtn6', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci7" onMouseOver="pmt('wldci7', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn7" onMouseOver="pmt('wldcaacAnswerBtn7', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn7" onMouseOver="pmt('wldcaacDetailBtn7', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci8" onMouseOver="pmt('wldci8', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn8" onMouseOver="pmt('wldcaacAnswerBtn8', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn8" onMouseOver="pmt('wldcaacDetailBtn8', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/master.svg" alt="" id="wldci9" onMouseOver="pmt('wldci9', '该习题由我创建');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn9" onMouseOver="pmt('wldcaacAnswerBtn9', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn9" onMouseOver="pmt('wldcaacDetailBtn9', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci10" onMouseOver="pmt('wldci10', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn10" onMouseOver="pmt('wldcaacAnswerBtn10', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn10" onMouseOver="pmt('wldcaacDetailBtn10', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci11" onMouseOver="pmt('wldci11', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn11" onMouseOver="pmt('wldcaacAnswerBtn11', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn11" onMouseOver="pmt('wldcaacDetailBtn11', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci12" onMouseOver="pmt('wldci12', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn12" onMouseOver="pmt('wldcaacAnswerBtn12', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn12" onMouseOver="pmt('wldcaacDetailBtn12', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                           <li>
+                                <div class="wldcItem wldcItemOdd" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci13" onMouseOver="pmt('wldci13', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">我国社会主义开始的标志是</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn13" onMouseOver="pmt('wldcaacAnswerBtn13', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn13" onMouseOver="pmt('wldcaacDetailBtn13', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wldcItem wldcItemEven" onClick="checkCurItem(this);">
+                                    <div class="pullleft wldcCheckboxBox">
+                                        <input type="checkbox" class="wldccb">
+                                    </div>
+                                    <div class="pullleft wldcAttr">
+                                        <img src="imgs/copy.svg" alt="" id="wldci14" onMouseOver="pmt('wldci14', '该习题由王老师分享');" onMouseOut="erasePmt();">
+                                    </div>
+                                    <div class="pullleft wldcAttr"></div>
+                                    <div class="pullleft wldcContent">到底我国社会主义开始的标志是什么啊！！你知不知道？</div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacAnswerBtn14" onMouseOver="pmt('wldcaacAnswerBtn14', '点击查看该题答案');" onMouseOut="erasePmt();">
+                                            <div class="answerButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright wldcAttr wldcAttrAfterCont">
+                                        <div class="flatbtn wldcaacBtn" id="wldcaacDetailBtn14" onMouseOver="pmt('wldcaacDetailBtn14', '查看该习题的完整信息');" onMouseOut="erasePmt();">
+                                            <div class="detailButtonImg"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pullright widcAttr">
+                                        <div class="wldcQuickLookBtn flatbtn wldcAttrAfterCont">快速预览</div>
+                                    </div>
+                                    <div class="clearboth"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- End of wldcListBox -->
+                </div><!-- End of workLabelDownContainer -->
             </div>
 		  </div><!-- End of LRRight -->          
 		</div><!-- End of firstLR -->
+        <div class="dynamicAnswer">
+        	<div class="daTitBox">
+            	<div class="daTit">答题动态</div>
+            </div>
+            <div class="daCtnBox">
+            	<div class="daCtnItemOdd">
+                	<div class="daCtnItemLeft">
+                		<div class="daCtnItemName">章司枫</div>
+                		<div class="daCtnItemTopic">安排命令和程序在一部计算机上按计划运行安排命令和程序在一部计算机上按计划运行安排命令和程序在一部计算机上按计划运行安排命令和程序在一部计算机上按计划运行</div>
+                	</div>
+                </div>
+            	<div class="daCtnItemEven"></div>
+            </div>
+        </div>
     </div>
 </div>
 
 </body>
 </html>
+
