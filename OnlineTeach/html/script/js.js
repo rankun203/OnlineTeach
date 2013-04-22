@@ -137,7 +137,16 @@ function checkCurItem(ele){
 		ele.childNodes.item(1).childNodes.item(1).checked = true;
 	}
 }
-
+function lightUpRow(ele){
+	ele.style.backgroundColor = "#ddd";
+}
+function reBg(ele, oe){
+	if ( oe == "odd" ){
+		ele.style.backgroundColor = "#f5f5f5";
+	} else {
+		ele.style.backgroundColor = "#fff";
+	}
+}
 
 
 
