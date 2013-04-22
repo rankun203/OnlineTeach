@@ -61,11 +61,12 @@ function pmt(eleId, pmt) {
 	
 	var putWidth = document.getElementById("pmt").offsetWidth;
 	var pmtTriangleWidth = document.getElementById("pmtTriangle").offsetWidth;
-	var eleY = element.offsetTop;
-	var eleX = element.offsetLeft;
+	var bodyScolY = document.body.scrollTop == 0 ? document.documentElement.scrollTop : document.body.scrollTop;
+	var eleY = element.getBoundingClientRect().top;
+	var eleX = element.getBoundingClientRect().left;
 	var eleHeight = element.offsetHeight;
 	var eleWidth = element.offsetWidth;
-	var putY = eleY + eleHeight;
+	var putY = eleY + eleHeight + bodyScolY;
 	var putX = eleX + ( eleWidth / 2 ) - (putWidth / 2);
 	var pmtTriangleX = eleX + ( eleWidth / 2 ) - (pmtTriangleWidth / 2);
 
@@ -83,10 +84,69 @@ function erasePmt(){
 	document.getElementsByTagName("body").item(0).removeChild(document.getElementById("pmt"));
 	document.getElementsByTagName("body").item(0).removeChild(document.getElementById("pmtTriangle"));
 }
+function slctChange(){
+	var checked = document.getElementById("checkAllCheckbox").checked;
+	var subNodes = document.getElementsByClassName("wldccb");
+	if(checked == true){
+		for (var i=0; i<subNodes.length; i++) {
+			subNodes.item(i).checked = true;
+		}
+	} else {
+		for (var i=0; i<subNodes.length; i++) {
+			subNodes.item(i).checked = false;
+		}
+	}
+}
 
+function checkIptPmt(ipt, iptPmt, state){
+	var cwbTitIpt = document.getElementById(ipt);
+	if (cwbTitIpt.value.length > 0){
+		document.getElementById(iptPmt).style.display = 'none';
+	} else {
+		document.getElementById(iptPmt).style.display = 'block';
+		if(state == 'blur'){
+			document.getElementById(iptPmt).style.color = "#aaa";
+		} else {
+			document.getElementById(iptPmt).style.color = "#ccc";
+		}
+	}
+}
 
+function showCreateWork(){
+	document.getElementById("wldcListBox").style.display = "none";
+	document.getElementById("createWorkBox").style.display = "block";
+	document.getElementById("workLabelDownTit").innerHTML = "创建习题";
 
+	document.getElementById("createCourseButton").style.display = "none";
+	document.getElementById("checkAllCheckbox").style.display = "none";
+}
+function submitCreateWork(){
+	document.getElementById("createWorkBox").style.display = "none";
+	document.getElementById("wldcListBox").style.display = "block";
+	document.getElementById("workLabelDownTit").innerHTML = "我的题库";
 
+	document.getElementById("createCourseButton").style.display = "block";
+	document.getElementById("checkAllCheckbox").style.display = "block";
+}
+
+function checkCurItem(ele){
+	var eleChk = ele.childNodes.item(1).childNodes.item(1).checked;
+	if (eleChk == true){
+		ele.childNodes.item(1).childNodes.item(1).checked = false;
+	} else {
+		ele.childNodes.item(1).childNodes.item(1).checked = true;
+	}
+}
+function lightUpRow(ele){
+	ele.style.backgroundColor = "#ddd";
+}
+function reBg(ele, oe){
+	if ( oe == "odd" ){
+		ele.style.backgroundColor = "#f5f5f5";
+	} else {
+		ele.style.backgroundColor = "#fff";
+	}
+}
 
 
 
