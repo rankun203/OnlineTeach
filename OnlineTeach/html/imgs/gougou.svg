@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="35"
+   height="35"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <g
+     transform="translate(0,-1017.3622)"
+     id="layer1">
+    <path
+       d="M 0,34.969059 34.962871,0.0371286 35.005286,35 z"
+       transform="translate(0,1017.3622)"
+       id="path3795"
+       style="fill:#666666;fill-opacity:1;stroke:none" />
+    <g
+       transform="matrix(1.383466,0,0,0.72282223,0.70010599,-0.52507937)"
+       id="text3797"
+       style="font-size:26.40384865px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold">
+      <path
+         d="m 22.134071,1428.6119 0.954046,0 -4.022462,25.1017 -6.394682,-13.1632 -2.552716,1.1732 -0.4383447,-0.8251 3.8806437,-1.9468 5.221464,10.6105 z"
+         id="path3802" />
+    </g>
+  </g>
+</svg>
