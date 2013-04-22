@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,13 +23,13 @@ public class ProjectGroup {
 	private String pgName;
 	private String pgSlogan;
 	private Set<Project> projects = new HashSet<Project>();
-	private Student student;
-	@OneToOne(mappedBy="projectGroup", cascade=CascadeType.ALL)
-	public Student getStudent() {
-		return student;
+	private Set<Student> students = new HashSet<Student>();
+	@OneToMany(mappedBy="projectGroup", cascade=CascadeType.ALL)
+	public Set<Student> getStudents() {
+		return students;
 	}
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudents(Set<Student> students) {
+		this.students = students;
 	}
 	@ManyToMany(mappedBy="projectGroups", cascade=CascadeType.ALL)
 	public Set<Project> getProjects() {

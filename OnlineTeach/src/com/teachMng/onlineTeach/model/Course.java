@@ -1,11 +1,15 @@
 package com.teachMng.onlineTeach.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,6 +23,14 @@ public class Course {
 	private String courseName;
 	private String courseDesc;
 	private CoursePlanItem coursePlanItem;
+	private Set<Student> students = new HashSet<Student>();
+	@ManyToMany(mappedBy="courses", cascade=CascadeType.ALL)
+	public Set<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
 	@OneToOne(mappedBy="course", cascade=CascadeType.ALL)
 	public CoursePlanItem getCoursePlanItem() {
 		return coursePlanItem;

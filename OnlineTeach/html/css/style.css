@@ -736,7 +736,14 @@ input[type="radio"] {
 .nextWeek {
 	margin-left:10px;
 }
+.coursePlanTitle1 {
+	width:30px;
+	text-align:center;
+	background-color:#eee;
+}
 .coursePlanTitle {
+	width:100px;
+	text-align:center;
 	background-color:#eee;
 }
 .coursePlanClose {
@@ -744,10 +751,8 @@ input[type="radio"] {
 	text-align:center;
 	font-weight:bold;
 	font-family:"微软雅黑";
-	line-height:15px;
+	line-height:13px;
 	cursor:pointer;
-}
-#A {
 }
 
 /* courseWork */

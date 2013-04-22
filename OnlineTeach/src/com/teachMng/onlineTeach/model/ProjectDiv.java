@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="t_projectdiv")
 public class ProjectDiv {
 	private String pdWorkDesc;
-	private String pdGrade;
+	private float pdGrade;
 	private int pdID;
 	private Project project;
 	private Student student;
@@ -37,7 +37,6 @@ public class ProjectDiv {
 		this.student = student;
 	}
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getPdID() {
 		return pdID;
 	}
@@ -50,10 +49,10 @@ public class ProjectDiv {
 	public void setPdWorkDesc(String pdWorkDesc) {
 		this.pdWorkDesc = pdWorkDesc;
 	}
-	public String getPdGrade() {
+	public float getPdGrade() {
 		return pdGrade;
 	}
-	public void setPdGrade(String pdGrade) {
+	public void setPdGrade(float pdGrade) {
 		this.pdGrade = pdGrade;
 	}
 }

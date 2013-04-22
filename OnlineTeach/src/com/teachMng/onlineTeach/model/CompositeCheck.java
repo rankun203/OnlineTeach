@@ -2,12 +2,47 @@ package com.teachMng.onlineTeach.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /*
  * desc:×ÛºÏ¿¼ºË
  * */
+@Entity
+@Table(name="t_compositecheck")
 public class CompositeCheck {
 	private float ccGrade;
 	private float ccState;
+	private int ccID;
+	private Course course;
+	private Student student;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="courseID")
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="stuID")
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	@Id
+	public int getCcID() {
+		return ccID;
+	}
+	public void setCcID(int ccID) {
+		this.ccID = ccID;
+	}
 	public float getCcGrade() {
 		return ccGrade;
 	}

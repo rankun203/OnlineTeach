@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -25,6 +26,18 @@ public class Student {
 	private SchoolClass schoolClass;
 	private ProjectGroup projectGroup;
 	private Set<Project> projects = new HashSet<Project>();
+	private Set<Course> courses = new HashSet<Course>();
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="t_compositecheck", 
+			joinColumns=@JoinColumn(name="stuID"),
+			inverseJoinColumns=@JoinColumn(name="courseID")
+			)
+	public Set<Course> getCourses() {
+		return courses;
+	}
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
+	}
 	@ManyToMany(mappedBy="students", cascade=CascadeType.ALL)
 	public Set<Project> getProjects() {
 		return projects;
@@ -32,7 +45,7 @@ public class Student {
 	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
 	}
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="pgID")
 	public ProjectGroup getProjectGroup() {
 		return projectGroup;
