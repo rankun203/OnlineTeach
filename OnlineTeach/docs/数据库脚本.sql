@@ -1,7 +1,8 @@
-/*==============================================================*/
+﻿/*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/4/19 23:17:41                           */
+/* Created on:     2013/4/22 11:24:15                           */
 /*==============================================================*/
+
 create database OnlineTeach;
 
 use OnlineTeach;
@@ -60,7 +61,6 @@ create table t_checkAttendance
 create table t_classRoom
 (
    crID                 int not null auto_increment,
-   cpID                 int,
    crName               varchar(20),
    crType               int,
    primary key (crID)
@@ -73,6 +73,7 @@ create table t_compositeCheck
 (
    stuID                int not null,
    courseID             int not null,
+   ccID                 int,
    ccGrade              float,
    ccState              int comment '通没通过',
    primary key (stuID, courseID)
@@ -84,7 +85,6 @@ create table t_compositeCheck
 create table t_course
 (
    courseID             int not null auto_increment,
-   cpID                 int,
    courseName           varchar(50),
    courseDesc           varchar(200),
    primary key (courseID)
@@ -177,6 +177,7 @@ create table t_projectDiv
 (
    stuID                int not null,
    projID               int not null,
+   pdID                 int,
    pdWorkDesc           varchar(255),
    pdGrade              float,
    primary key (stuID, projID)
@@ -200,6 +201,7 @@ create table t_projectReply
 (
    pgID                 int not null,
    projID               int not null,
+   prID                 int,
    prGrade              float,
    prState              int,
    prDate               datetime,
@@ -273,17 +275,11 @@ alter table t_checkAttendance add constraint FK_attendanceIncludeStudent foreign
 alter table t_checkAttendance add constraint FK_teachPlanIncludeCheckAttendance foreign key (cpID, tpCourseTime)
       references t_teachPlan (cpID, tpCourseTime) on delete restrict on update restrict;
 
-alter table t_classRoom add constraint FK_courseRelateClassroom2 foreign key (cpID)
-      references t_coursePlanItem (cpID) on delete restrict on update restrict;
-
 alter table t_compositeCheck add constraint FK_compositeCheckBelongtoStudent foreign key (stuID)
       references t_student (stuID) on delete restrict on update restrict;
 
 alter table t_compositeCheck add constraint FK_compositeCheckRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;
-
-alter table t_course add constraint FK_CourseItemRelateCourseInfo2 foreign key (cpID)
-      references t_coursePlanItem (cpID) on delete restrict on update restrict;
 
 alter table t_coursePlanItem add constraint FK_CourseItemRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;

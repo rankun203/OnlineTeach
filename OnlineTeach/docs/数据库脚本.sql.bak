@@ -1,8 +1,11 @@
-/*==============================================================*/
+﻿/*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/4/19 23:17:41                           */
+/* Created on:     2013/4/22 9:57:28                            */
 /*==============================================================*/
 
+create database OnlineTeach;
+
+use OnlineTeach;
 
 drop table if exists t_checkAttendance;
 
@@ -11,6 +14,8 @@ drop table if exists t_classRoom;
 drop table if exists t_compositeCheck;
 
 drop table if exists t_course;
+
+drop index courseRelateClassroom_FK on t_coursePlanItem;
 
 drop table if exists t_coursePlanItem;
 
@@ -58,7 +63,6 @@ create table t_checkAttendance
 create table t_classRoom
 (
    crID                 int not null auto_increment,
-   cpID                 int,
    crName               varchar(20),
    crType               int,
    primary key (crID)
@@ -82,7 +86,6 @@ create table t_compositeCheck
 create table t_course
 (
    courseID             int not null auto_increment,
-   cpID                 int,
    courseName           varchar(50),
    courseDesc           varchar(200),
    primary key (courseID)
@@ -104,6 +107,14 @@ create table t_coursePlanItem
 );
 
 alter table t_coursePlanItem comment '课程表原子';
+
+/*==============================================================*/
+/* Index: courseRelateClassroom_FK                              */
+/*==============================================================*/
+create index courseRelateClassroom_FK on t_coursePlanItem
+(
+   
+);
 
 /*==============================================================*/
 /* Table: t_courseWare                                          */
@@ -198,6 +209,7 @@ create table t_projectReply
 (
    pgID                 int not null,
    projID               int not null,
+   prID                 int,
    prGrade              float,
    prState              int,
    prDate               datetime,
@@ -271,17 +283,11 @@ alter table t_checkAttendance add constraint FK_attendanceIncludeStudent foreign
 alter table t_checkAttendance add constraint FK_teachPlanIncludeCheckAttendance foreign key (cpID, tpCourseTime)
       references t_teachPlan (cpID, tpCourseTime) on delete restrict on update restrict;
 
-alter table t_classRoom add constraint FK_courseRelateClassroom2 foreign key (cpID)
-      references t_coursePlanItem (cpID) on delete restrict on update restrict;
-
 alter table t_compositeCheck add constraint FK_compositeCheckBelongtoStudent foreign key (stuID)
       references t_student (stuID) on delete restrict on update restrict;
 
 alter table t_compositeCheck add constraint FK_compositeCheckRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;
-
-alter table t_course add constraint FK_CourseItemRelateCourseInfo2 foreign key (cpID)
-      references t_coursePlanItem (cpID) on delete restrict on update restrict;
 
 alter table t_coursePlanItem add constraint FK_CourseItemRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;
