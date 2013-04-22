@@ -531,7 +531,7 @@ body{
 	height:235px;
 }
 .select_btn {
-	margin-top:5px;
+	margin-top:4px;
 	margin-left:5px;
 	color:#FFF;
 	font-size:90px;
@@ -543,7 +543,8 @@ body{
 	cursor:pointer;	
 }
 input[type="radio"] {
-	visibility:hidden;
+	height:0px;
+	width:0px;
 }
 .selectActive {
 	margin-left:70px;
@@ -606,7 +607,7 @@ input[type="radio"] {
 	height:110px;
 	float:left;
 	margin-left:5px;
-	margin-top:5px;
+	margin-top:4px;
 	margin-bottom:5px;	
 	color:#FFF;
 	font-size:90px;
