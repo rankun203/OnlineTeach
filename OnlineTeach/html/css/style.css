@@ -550,13 +550,13 @@ input[type="radio"] {
 	width:0px;
 }
 .selectActive {
-	margin-left:70px;
-	margin-top:-40px;
+	margin-left:75px;
+	margin-top:-35px;
 	//border:1px solid #000;
 	position:absolute;
-	width:40px;
-	height:40px;
-	background-image:url(../imgs/gougou.gif);
+	width:35px;
+	height:35px;
+	background-image:url(../imgs/gougou.svg);
 	background-repeat:no-repeat;
 	display:none;
 }
@@ -736,7 +736,14 @@ input[type="radio"] {
 .nextWeek {
 	margin-left:10px;
 }
+.coursePlanTitle1 {
+	width:40px;
+	text-align:center;
+	background-color:#eee;
+}
 .coursePlanTitle {
+	width:100px;
+	text-align:center;
 	background-color:#eee;
 }
 .coursePlanClose {
@@ -744,10 +751,8 @@ input[type="radio"] {
 	text-align:center;
 	font-weight:bold;
 	font-family:"微软雅黑";
-	line-height:15px;
+	line-height:13px;
 	cursor:pointer;
-}
-#A {
 }
 
 /* courseWork */
