@@ -62,13 +62,14 @@ function pmt(eleId, pmt) {
 	var putWidth = document.getElementById("pmt").offsetWidth;
 	var pmtTriangleWidth = document.getElementById("pmtTriangle").offsetWidth;
 	var bodyScolY = document.body.scrollTop == 0 ? document.documentElement.scrollTop : document.body.scrollTop;
+	var bodyScolX = document.body.scrollLeft == 0 ? document.documentElement.scrollLeft : document.body.scrollLeft;
 	var eleY = element.getBoundingClientRect().top;
 	var eleX = element.getBoundingClientRect().left;
 	var eleHeight = element.offsetHeight;
 	var eleWidth = element.offsetWidth;
 	var putY = eleY + eleHeight + bodyScolY;
-	var putX = eleX + ( eleWidth / 2 ) - (putWidth / 2);
-	var pmtTriangleX = eleX + ( eleWidth / 2 ) - (pmtTriangleWidth / 2);
+	var putX = eleX + ( eleWidth / 2 ) - (putWidth / 2) + bodyScolX;
+	var pmtTriangleX = eleX + ( eleWidth / 2 ) - (pmtTriangleWidth / 2) + bodyScolX;
 
 	document.getElementById("pmt").style.top = putY + 10 + "px";
 	document.getElementById("pmt").style.left = putX + "px";
