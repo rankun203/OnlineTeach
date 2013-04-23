@@ -10,7 +10,28 @@
 
 <div class="header">
 	<div class="container">
-    	<img src="logo.svg" style="width:125px; height:40px;" class="pullleft" onClick="window.location='http://www.pinkbike.com';" alt="Online Check" id="logoSvg" onMouseOver="this.src = 'logo_hover.svg';" onMouseOut="this.src = 'logo.svg';">
+    	<svg version="1.1" 
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:ev="http://www.w3.org/2001/xml-events"     
+            baseProfile="full"
+            height="40"
+            width="125"
+            onmouseover="document.getElementById('theCircle').style.fill='#4183c4';"
+            onmouseout="document.getElementById('theCircle').style.fill='#333';"
+            class="pullleft"
+            onclick="window.location='http://www.pinkbike.com';"
+            id="logoSvg"
+            >
+            <line x1="5" y1="20" x2="60" y2="20" style="stroke:black; stroke-width:1;"/>
+            <text x="5" y="15" style="fill:#333; font-size:17px; font-family:Gabriola; letter-spacing:3px;">Online</text>
+            <text x="5" y="32" style="fill:#333; font-size:14px; font-family:Gabriola; letter-spacing:1px;">Teach</text>
+            <text x="39" y="32" style="fill:#333; font-size:11px; font-family:微软雅黑;">高效</text>
+            <text x="63" y="32" style="fill:#333; font-size:29px; font-family:微软雅黑;">智能</text>
+            <rect x="79" y="10" width="11" height="12" style="fill:#f6f6f6;" />
+            <circle cx="85" cy="15" r="6" style="fill:#333;" id="theCircle" />
+		</svg>
+
         <div class="headerPaneDivide pullleft"></div>
         <div class="siteTitle pullleft">在线教学</div>
         <div class="mainNav pullleft">
@@ -39,8 +60,8 @@
     <div class="container">
 		<div class="subMainNav">
         	<div class="currentLocation">
-            	<a href="main.html">在线教学</a>>
-                <a href="#">课堂练习</a>>
+            	<a href="main.html">在线教学</a>&gt;
+                <a href="#">课堂练习</a>&gt;
                 <a href="#">课堂练习</a>
             </div>
  			<div class="subMainNavItem" id="subNavA">
@@ -133,7 +154,7 @@
                     	<div class="cwbCtnIptLabel">
                         	<textarea name="" id="cwbCtnIpt" class="pullleft inputField sslote cwbCtnIpt" onFocus="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onBlur="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt', 'blur');" onKeyUp="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onChange="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');"></textarea>
                             <div class="cwbCtnIptPmt inputPmt sslote" id="cwbCtnIptPmt" onClick="document.getElementById('cwbCtnIpt').focus();">在此处输入内容</div>
-                            <div class="cwbCtnTool">
+                            <div class="cwbCtnTool sslote" onMouseOver="this.style.opacity='1';" onMouseOut="this.style.opacity='0.3';">
                             	<div class="pullleft cwbCtnToolImg">
 	                            	<img src="imgs/img.svg" alt="" id="cwbCtnToolImg" onMouseOver="pmt('cwbCtnToolImg', '在当前位置插入一张图片');" onMouseOut="erasePmt();">                            
                                 </div>

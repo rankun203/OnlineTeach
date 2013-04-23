@@ -213,6 +213,9 @@ body{
 .logobox{
 	padding:50px 30px 10px 30px;
 }
+#logoSvg:hover{
+	cursor:default;
+}
 .model-header{
 	border-bottom:1px #ddd solid;
 }
@@ -949,6 +952,7 @@ input[type="radio"] {
 	background-image:-ms-linear-gradient(top, #fff, #f5f5f5);
 	border-top:1px solid #ddd;
 	border-right:1px solid #ddd;
+	opacity:0.3;
 }
 .cwbCtnToolImg{
 }
