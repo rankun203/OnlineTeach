@@ -993,7 +993,7 @@ input[type="radio"] {
 	padding-left:8px;
 }
 .dynamicAnswerItem{
-	margin-top:15px;
+	margin-bottom:15px;
 	min-height:110px;
 	position:relative;
 }
