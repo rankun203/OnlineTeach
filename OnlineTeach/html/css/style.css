@@ -964,7 +964,14 @@ input[type="radio"] {
 	border-right:1px solid #ddd;
 	opacity:0.3;
 }
-.cwbCtnToolImg{
+.cwbCtnTool div img{
+	opacity:0.5;
+}
+.cwbCtnTool div img:hover{
+	opacity:0.8;
+}
+.cwbCtnTool div img:active{
+	opacity:1;
 }
 .cwbCtnTool div {
 	margin-left:10px;
