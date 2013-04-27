@@ -49,7 +49,7 @@ public class CompositeCheckTest {
 		Iterator iter = s.createQuery(hql).iterate();
 		while(iter.hasNext()) {
 			cpc = (CompositeCheck) iter.next();
-			System.out.println("µÃ·Ö£º" + cpc.getCcGrade() + "¿Î³ÌÃû³Æ£º" + cpc.getCourse().getCourseName() + "Ñ§ÉúĞÕÃû£º" + cpc.getStudent().getStuName());
+			System.out.println("å¾—åˆ†ï¼š" + cpc.getCcGrade() + "è¯¾ç¨‹åç§°ï¼š" + cpc.getCourse().getCourseName() + "å­¦ç”Ÿå§“åï¼š" + cpc.getStudent().getStuName());
 		}
 		s.getTransaction().commit();
 	}

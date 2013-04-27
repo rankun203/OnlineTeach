@@ -1,22 +1,17 @@
 package com.teachMng.onlineTeach.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
- * desc:¿Î³Ì±íÔ­×Ó£¬Ò»ÖÜ×Ü¹²ÓĞ84Ìõ¿Î³Ì±íÔ­×Ó¼ÇÂ¼¡£
+ * desc:è¯¾ç¨‹è¡¨åŸå­ï¼Œä¸€å‘¨æ€»å…±æœ‰84æ¡è¯¾ç¨‹è¡¨åŸå­è®°å½•ã€‚
  * */
 @Entity
 @Table(name="t_courseplanitem")
@@ -29,7 +24,7 @@ public class CoursePlanItem {
 	private SchoolClass schoolClass;
 	private Teacher teacher;
 	
-	/*¿Î³Ì±íÔ­×ÓÓë½ÌÊ¦µÄ¶à¶ÔÒ»¹ØÏµ*/
+	/*è¯¾ç¨‹è¡¨åŸå­ä¸æ•™å¸ˆçš„å¤šå¯¹ä¸€å…³ç³»*/
 	@ManyToOne(cascade=CascadeType.ALL) 
 	@JoinColumn(name="teacID")
 	public Teacher getTeacher() {
@@ -38,7 +33,7 @@ public class CoursePlanItem {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
-	/*¿Î³Ì±íÔ­×ÓÓë°à¼¶µÄ¶à¶ÔÒ»¹ØÏµ*/
+	/*è¯¾ç¨‹è¡¨åŸå­ä¸ç­çº§çš„å¤šå¯¹ä¸€å…³ç³»*/
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="scID")
 	public SchoolClass getSchoolClass() {
@@ -47,7 +42,7 @@ public class CoursePlanItem {
 	public void setSchoolClass(SchoolClass schoolClass) {
 		this.schoolClass = schoolClass;
 	}
-	/*¿Î³Ì±íÔ­×ÓÓë¿Î³ÌµÄÒ»¶ÔÒ»¹ØÏµ*/
+	/*è¯¾ç¨‹è¡¨åŸå­ä¸è¯¾ç¨‹çš„ä¸€å¯¹ä¸€å…³ç³»*/
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="courseID")
 	public Course getCourse() {
@@ -56,7 +51,7 @@ public class CoursePlanItem {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	/*¿Î³Ì±íÔ­×ÓÓë½ÌÊÒµÄÒ»¶ÔÒ»¹ØÏµ¡£*/
+	/*è¯¾ç¨‹è¡¨åŸå­ä¸æ•™å®¤çš„ä¸€å¯¹ä¸€å…³ç³»ã€‚*/
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="crID")
 	public ClassRoom getClassRoom() {

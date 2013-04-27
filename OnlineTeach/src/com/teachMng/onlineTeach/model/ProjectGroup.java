@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
- * desc:ÏîÄ¿×é
+ * desc:é¡¹ç›®ç»„
  * */
 @Entity
 @Table(name="t_projectGroup")

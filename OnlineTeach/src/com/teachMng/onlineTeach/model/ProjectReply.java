@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 /*
- * desc:ÏîÄ¿´ğ±ç
+ * desc:é¡¹ç›®ç­”è¾©
  * */
 @Entity
 @Table(name="t_projectreply")

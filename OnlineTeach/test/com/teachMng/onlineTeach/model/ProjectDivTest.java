@@ -32,7 +32,7 @@ public class ProjectDivTest {
 		
 		ProjectDiv projectDiv = new ProjectDiv();
 		projectDiv.setPdGrade(98);
-		projectDiv.setPdWorkDesc("±àÂë");
+		projectDiv.setPdWorkDesc("ç¼–ç ");
 		projectDiv.setProject(project);
 		projectDiv.setStudent(student);
 		
@@ -51,9 +51,9 @@ public class ProjectDivTest {
 		Iterator iter = s.createQuery(hql).list().iterator();
 		while(iter.hasNext()) {
 			ProjectDiv projD = (ProjectDiv)iter.next();
-			System.out.println("Ñ§ÉúÃû³Æ£º" + projD.getStudent().getStuName()
-					    + "µÃ·Ö£º" +projD.getPdGrade() + "¹¤×÷ÃèÊö£º" + projD.getPdWorkDesc()
-						+ "ÏîÄ¿Ãû³Æ£º" + projD.getProject().getProjTitle());
+			System.out.println("å­¦ç”Ÿåç§°ï¼š" + projD.getStudent().getStuName()
+					    + "å¾—åˆ†ï¼š" +projD.getPdGrade() + "å·¥ä½œæè¿°ï¼š" + projD.getPdWorkDesc()
+						+ "é¡¹ç›®åç§°ï¼š" + projD.getProject().getProjTitle());
 		}
 		s.getTransaction().commit();		
 	}

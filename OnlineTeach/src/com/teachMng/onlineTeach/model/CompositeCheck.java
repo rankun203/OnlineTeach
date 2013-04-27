@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
- * desc:×ÛºÏ¿¼ºË
+ * desc:ç»¼åˆè€ƒæ ¸
  * */
 @Entity
 @Table(name="t_compositecheck")

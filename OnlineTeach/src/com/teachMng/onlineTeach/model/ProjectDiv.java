@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
- * desc:项目分工
+ * desc:椤圭洰鍒嗗伐
  * */
 @Entity
 @Table(name="t_projectdiv")

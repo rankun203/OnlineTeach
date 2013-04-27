@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
- * desc:¿Î³ÌĞÅÏ¢
+ * desc:è¯¾ç¨‹ä¿¡æ¯
  * */
 @Entity
 @Table(name="t_course")

@@ -19,7 +19,7 @@ public class StudentTest {
 	public static void afterC() {
 		sf.close();
 	}
-	@Test        //±£´æÑ§ÉúºÍ°à¼¶
+	@Test        //ä¿å­˜å­¦ç”Ÿå’Œç­çº§
 	public void testSave1() {
 		SchoolClass sc = null;
 		Session s = sf.openSession();
@@ -29,7 +29,7 @@ public class StudentTest {
 		s.close();
 		
 		Student stu = new Student();
-		stu.setStuName("Ñ§Éú1");
+		stu.setStuName("å­¦ç”Ÿ1");
 		stu.setSchoolClass(sc);
 		
 		s = sf.openSession();
@@ -56,7 +56,7 @@ public class StudentTest {
 		
 		
 		Student stu = new Student();
-		stu.setStuName("Ñ§Éú2");
+		stu.setStuName("å­¦ç”Ÿ2");
 		stu.setSchoolClass(sc);
 		stu.setProjectGroup(pg);
 		
@@ -72,7 +72,7 @@ public class StudentTest {
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
 		stu = (Student) s.get(Student.class, 2);
-		System.out.println("Ñ§ÉúÃû³Æ£º" + stu.getStuName() + " ×éÃû³Æ£º" + stu.getProjectGroup().getPgName() + " °à¼¶Ãû³Æ£º" + stu.getSchoolClass().getScName());
+		System.out.println("å­¦ç”Ÿåç§°ï¼š" + stu.getStuName() + " ç»„åç§°ï¼š" + stu.getProjectGroup().getPgName() + " ç­çº§åç§°ï¼š" + stu.getSchoolClass().getScName());
 		s.getTransaction().commit();
 		
 	}

@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
- * desc:Ñ§Éú
+ * desc:å­¦ç”Ÿ
  * */
 @Entity
 @Table(name="t_student")

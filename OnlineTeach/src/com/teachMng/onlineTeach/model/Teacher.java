@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
- * desc:½ÌÊ¦
+ * desc:æ•™å¸ˆ
  * */
 @Entity
 @Table(name="t_teacher")

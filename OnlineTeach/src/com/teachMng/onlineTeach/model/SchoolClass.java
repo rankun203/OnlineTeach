@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
- * desc:�༶
+ * desc:班级
  * */
 @Entity
 @Table(name="t_schoolclass")

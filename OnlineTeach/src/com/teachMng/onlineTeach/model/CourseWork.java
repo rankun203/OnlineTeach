@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:×÷Òµ
+ * desc:ä½œä¸š
  * */
 public class CourseWork {
 	private String cwTitle;

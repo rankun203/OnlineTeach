@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:¿¼ÇÚ
+ * desc:è€ƒå‹¤
  * */
 public class CheckAttendance {
 	private int caAttendance;

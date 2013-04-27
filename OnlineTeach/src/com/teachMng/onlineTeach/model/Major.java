@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
- * desc:רҵ
+ * desc:专业
  * */
 @Entity
 @Table(name="t_major")

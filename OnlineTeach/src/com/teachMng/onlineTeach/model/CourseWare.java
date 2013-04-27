@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:¿Î¼þ
+ * desc:è¯¾ä»¶
  * */
 public class CourseWare {
 	private int cwareID;

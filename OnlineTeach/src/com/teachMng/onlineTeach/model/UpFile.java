@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:ÎÄ¼şÀà
+ * desc:æ–‡ä»¶ç±»
  * */
 public class UpFile {
 	private int fileID;

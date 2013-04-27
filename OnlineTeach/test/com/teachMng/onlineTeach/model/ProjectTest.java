@@ -24,11 +24,11 @@ public class ProjectTest {
 	@Test
 	public void testProject_group_replySave() {
 		ProjectGroup pg1 = new ProjectGroup();
-		pg1.setPgName("ÉñÓ°1×é");
-		pg1.setPgSlogan("ÎÒÒ»¸ö¹ş£¬ÎÒÃÇÊÇÉñÓ°1×é¡£");
+		pg1.setPgName("ç¥å½±1ç»„");
+		pg1.setPgSlogan("æˆ‘ä¸€ä¸ªå“ˆï¼Œæˆ‘ä»¬æ˜¯ç¥å½±1ç»„ã€‚");
 		Project p1 = new Project();
-		p1.setProjDesc("ÕâÊÇÒ»¸öÓîÖæÎŞµĞ´óÄÑÌâ");
-		p1.setProjTitle("ÕÅÈıĞÕÕÅÂğ£¿");
+		p1.setProjDesc("è¿™æ˜¯ä¸€ä¸ªå®‡å®™æ— æ•Œå¤§éš¾é¢˜");
+		p1.setProjTitle("å¼ ä¸‰å§“å¼ å—ï¼Ÿ");
 		p1.getProjectGroups().add(pg1);
 		
 		Session s = sf.getCurrentSession();

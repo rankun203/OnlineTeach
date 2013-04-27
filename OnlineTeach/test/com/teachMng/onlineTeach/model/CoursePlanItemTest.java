@@ -22,14 +22,14 @@ public class CoursePlanItemTest {
 	@Test
 	public void testSave() {
 		ClassRoom cr = new ClassRoom();
-		cr.setCrName("¹ş¹ş");
+		cr.setCrName("å“ˆå“ˆ");
 		cr.setCrType(1);
 		
 		Teacher teacher = new Teacher();
-		teacher.setTeacName("ÕÅÈı");
+		teacher.setTeacName("å¼ ä¸‰");
 		
 		Major major = new Major();
-		major.setMajorName("Èí¼ş¼¼Êõ");
+		major.setMajorName("è½¯ä»¶æŠ€æœ¯");
 		
 		
 		SchoolClass sc = new SchoolClass();
@@ -42,8 +42,8 @@ public class CoursePlanItemTest {
 		se.getTransaction().commit();
 		se.close();
 		Course course = new Course();
-		course.setCourseName("´óÑ§Ó¢Óï");
-		course.setCourseDesc("ÕâÊÇÒ»ÃÅ±ØĞŞ¿Î");
+		course.setCourseName("å¤§å­¦è‹±è¯­");
+		course.setCourseDesc("è¿™æ˜¯ä¸€é—¨å¿…ä¿®è¯¾");
 		
 		CoursePlanItem cpi = new CoursePlanItem();
 		cpi.setCpParagraph(18);
@@ -65,7 +65,7 @@ public class CoursePlanItemTest {
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
 		cpi = (CoursePlanItem) s.get(CoursePlanItem.class, 1);
-		System.out.println("½Ú£º" + cpi.getCpParagraph() + "½ÌÊÒ£º" + cpi.getClassRoom().getCrName() + 
-				"¿Î³ÌÃû³Æ£º" + cpi.getCourse().getCourseName() + "½ÌÊ¦Ãû³Æ£º" + cpi.getTeacher().getTeacName());
+		System.out.println("èŠ‚ï¼š" + cpi.getCpParagraph() + "æ•™å®¤ï¼š" + cpi.getClassRoom().getCrName() + 
+				"è¯¾ç¨‹åç§°ï¼š" + cpi.getCourse().getCourseName() + "æ•™å¸ˆåç§°ï¼š" + cpi.getTeacher().getTeacName());
 	}
 }

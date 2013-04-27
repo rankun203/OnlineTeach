@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /*
- * desc:ÏîÄ¿
+ * desc:é¡¹ç›®
  * */
 @Entity
 @Table(name="t_project")

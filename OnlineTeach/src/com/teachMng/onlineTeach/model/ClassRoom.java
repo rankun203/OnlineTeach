@@ -1,7 +1,5 @@
 package com.teachMng.onlineTeach.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
- * desc:½ÌÊÒ
+ * desc:æ•™å®¤
  * */
 @Entity
 @Table(name="t_classroom")

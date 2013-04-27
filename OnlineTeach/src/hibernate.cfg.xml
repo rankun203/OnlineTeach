@@ -4,11 +4,12 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
+		<!-- grant all privileges on OnlineTeach.* to gitproject@localhost identified by 'gitproject' -->
 		<property name="connection.url">jdbc:mysql://localhost/OnlineTeach</property>
-		<property name="connection.username">root</property>
+		<property name="connection.username">gitproject</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.password">chenjian</property>
+		<property name="connection.password">gitproject</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 

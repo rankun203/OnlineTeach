@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:Á·Ï°Çé¿ö
+ * desc:ç»ƒä¹ æƒ…å†µ
  * */
 public class WorkState {
 	private int wsID;

@@ -3,7 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.util.Date;
 
 /*
- * desc:½Ì°¸
+ * desc:æ•™æ¡ˆ
  * */
 public class TeachPlan {
 	private Date tpCourseTime;
