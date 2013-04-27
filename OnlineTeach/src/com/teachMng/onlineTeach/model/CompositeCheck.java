@@ -1,8 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,6 +19,7 @@ public class CompositeCheck {
 	private int ccID;
 	private Course course;
 	private Student student;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="courseID")
 	public Course getCourse() {
@@ -37,18 +37,21 @@ public class CompositeCheck {
 		this.student = student;
 	}
 	@Id
+	@Column(nullable = false)
 	public int getCcID() {
 		return ccID;
 	}
 	public void setCcID(int ccID) {
 		this.ccID = ccID;
 	}
+	@Column(nullable = true)
 	public float getCcGrade() {
 		return ccGrade;
 	}
 	public void setCcGrade(float ccGrade) {
 		this.ccGrade = ccGrade;
 	}
+	@Column(nullable = true)
 	public float getCcState() {
 		return ccState;
 	}

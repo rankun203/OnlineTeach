@@ -1,6 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -68,12 +69,14 @@ public class CoursePlanItem {
 	public void setCpID(int cpID) {
 		this.cpID = cpID;
 	}
+	@Column(nullable = true)
 	public int getCpParagraph() {
 		return cpParagraph;
 	}
 	public void setCpParagraph(int cpParagraph) {
 		this.cpParagraph = cpParagraph;
 	}
+	@Column(nullable = true)
 	public int getCpState() {
 		return cpState;
 	}

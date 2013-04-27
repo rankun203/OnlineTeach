@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
 	<session-factory>
 		<!-- grant all privileges on OnlineTeach.* to gitproject@localhost identified by 'gitproject' -->
@@ -17,7 +18,7 @@
 		<!-- this will show us all sql statements -->
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
-
+			
 		<mapping class="com.teachMng.onlineTeach.model.ProjectGroup" />
 		<mapping class="com.teachMng.onlineTeach.model.ProjectReply" />
 		<mapping class="com.teachMng.onlineTeach.model.Project" />
@@ -30,7 +31,9 @@
 		<mapping class="com.teachMng.onlineTeach.model.Student" />
 		<mapping class="com.teachMng.onlineTeach.model.ProjectDiv" />
 		<mapping class="com.teachMng.onlineTeach.model.CompositeCheck" />
-
+ 		<mapping class="com.teachMng.onlineTeach.model.TeachPlan"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CheckAttendance"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWare"/>
 	</session-factory>
 </hibernate-configuration>
 

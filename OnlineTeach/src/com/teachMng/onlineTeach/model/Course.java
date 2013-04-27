@@ -24,6 +24,7 @@ public class Course {
 	private String courseDesc;
 	private CoursePlanItem coursePlanItem;
 	private Set<Student> students = new HashSet<Student>();
+	
 	@ManyToMany(mappedBy="courses", cascade=CascadeType.ALL)
 	public Set<Student> getStudents() {
 		return students;

@@ -1,14 +1,28 @@
 package com.teachMng.onlineTeach.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 /*
  * desc:课件
  * */
+@Entity
+@Table(name = "t_courseware")
 public class CourseWare {
 	private int cwareID;
 	private String cwareName;
 	private String cwareDesc;
+	private TeachPlan teachPlan;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getCwareID() {
 		return cwareID;
 	}
@@ -26,5 +40,16 @@ public class CourseWare {
 	}
 	public void setCwareDesc(String cwareDesc) {
 		this.cwareDesc = cwareDesc;
+	}
+	@ManyToOne
+	@JoinColumns({
+		@JoinColumn(name = "tpCourseTime"),
+		@JoinColumn(name = "coursePlanItem")
+	})
+	public TeachPlan getTeachPlan() {
+		return teachPlan;
+	}
+	public void setTeachPlan(TeachPlan teachPlan) {
+		this.teachPlan = teachPlan;
 	}
 }

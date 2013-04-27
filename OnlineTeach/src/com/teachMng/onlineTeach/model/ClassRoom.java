@@ -18,6 +18,8 @@ public class ClassRoom {
 	private int crID;
 	private String crName;
 	private CoursePlanItem coursePlanItem;
+	private int crType;
+	
 	@OneToOne(mappedBy="classRoom", cascade=CascadeType.ALL)
 	@JoinColumn(name="cpID")
 	public CoursePlanItem getCoursePlanItem() {
@@ -46,5 +48,4 @@ public class ClassRoom {
 	public void setCrType(int crType) {
 		this.crType = crType;
 	}
-	private int crType;
 }

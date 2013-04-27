@@ -2,7 +2,9 @@ package com.teachMng.onlineTeach.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,17 +12,24 @@ import org.junit.Test;
 
 public class ProjectTest {
 	static SessionFactory sf = null;
+
 	@BeforeClass
 	public static void beforeC() {
-		sf = new AnnotationConfiguration().configure().buildSessionFactory();
+		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
+				.buildServiceRegistry();
+		sf = new Configuration().configure().buildSessionFactory(
+				serviceRegistry);
 	}
-	@AfterClass 
+
+	@AfterClass
 	public static void afterC() {
 		sf.close();
 	}
+
 	public static void main(String[] args) {
-		new SchemaExport(new AnnotationConfiguration().configure()).create(true, true);
+		new SchemaExport(new Configuration().configure()).create(true, true);
 	}
+
 	@Test
 	public void testProject_group_replySave() {
 		ProjectGroup pg1 = new ProjectGroup();
@@ -30,12 +39,13 @@ public class ProjectTest {
 		p1.setProjDesc("这是一个宇宙无敌大难题");
 		p1.setProjTitle("张三姓张吗？");
 		p1.getProjectGroups().add(pg1);
-		
+
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();
 		s.save(p1);
 		s.getTransaction().commit();
 	}
+
 	@Test
 	public void testProject_group_replyGet() {
 		ProjectGroup pg1 = null;
