@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<canvas style="border:5px solid #000;" width="1000" height="800" id="myCanvas" onMouseDown="return saveOldPoint(event);" onMouseMove="return drawLine(event);" onMouseUp="return upMouse();" ontouchstart="return saveOldPoint(event);" ontouchmove="return drawLine(event);" ontouchend="return drawLine(event);">your browser does not support the canvas tag </canvas>
+
+<script type="text/javascript">
+
+var canvas=document.getElementById('myCanvas');
+var ctx=canvas.getContext('2d');
+var oldX = 0;
+var oldY = 0;
+var isOn = 0;
+	function saveOldPoint(e) {
+			oldX = e.clientX;
+			oldY = e.clientY;
+			isOn = 1;
+		}
+	function drawLine(e) {
+			if(1 == isOn) {
+				ctx.moveTo(oldX, oldY);
+				ctx.lineTo(e.clientX, e.clientY);
+				ctx.stroke();
+				oldX = e.clientX;
+				oldY = e.clientY;
+			}
+		}
+	function upMouse() {
+			isOn = 0;
+		}
+</script>
+
+</body>
+</html>
+

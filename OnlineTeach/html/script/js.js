@@ -131,6 +131,10 @@ function submitCreateWork(){
 }
 
 function checkCurItem(ele){
+	console.log("ele.type:"+ele.type);
+	if(ele.type="checkbox"){
+		return;
+	}
 	var eleChk = ele.childNodes.item(1).childNodes.item(1).checked;
 	if (eleChk == true){
 		ele.childNodes.item(1).childNodes.item(1).checked = false;
