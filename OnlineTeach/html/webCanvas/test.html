@@ -33,14 +33,22 @@
 		border:1px solid #000;
 		width:1050px;
 		overflow:hidden;
-		-webkit-animation:animations 2s ease-out;
-		//display:none;
+		margin:50px;
+		-webkit-animation:animations 2s ease-in-out;
+		display:none;
 	}
 	@-webkit-keyframes animations {
-		0%{ width:300px;}
-		50%{ width:500px;}
-		70%{ width:700px;}
-		100%{ width:900px;}		
+		0%{ width:5px; height:50px; margin:200px; opacity:.1}	
+		10%{ width:105px; height:100px; margin:290px; opacity:.2}	
+		20%{ width:205px; height:150px; margin:330px; opacity:.3}	
+		30%{ width:305px; height:200px; margin:180px; opacity:.4}	
+		40%{ width:405px; height:250px; margin:160px; opacity:.5}	
+		50%{ width:505px; height:300px; margin:140px; opacity:.6}	
+		60%{ width:605px; height:350px; margin:120px; opacity:.7}	
+		70%{ width:705px; height:400px; margin:100px; opacity:.8}	
+		80%{ width:805px; height:450px; margin:80px; opacity:.9}	
+		90%{ width:905px; height:500px; margin:60px; opacity:1}	
+		100%{ width:1050px; height:550px; margin:50px; opacity:1}													
 	}
 	.canvMenu {
 	}
@@ -60,6 +68,7 @@
         <input type="button" id="clear" value="擦擦" />
         <input type="button" id="draw" value="画画" />
         <input type="button" id="save" value="保存" />
+        <div id="closeCanvas">关闭</div>
     </div>
     <canvas style="border:1px solid #0f0; cursor:url(pencil.png), pointer;" width="800" height="500" id="myCanvas" >你out了，赶快换个浏览器把，不然不能体验次画图板哦！</canvas>
 </div>
@@ -180,8 +189,11 @@
 				}
 			});
 		 $("#showCanvas").click(function () {
-			 
+			 	$("#canv").css("display", "block");
 			 });
+		 $("#closeCanvas").click(function () {
+			 	$("#canv").css("display", "none");
+			 });			 
 		function setCurValue(val) {
 			console.log($("#curValue").get(0));
 			lineWidth = val;
