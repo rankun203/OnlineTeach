@@ -1,37 +1,69 @@
 package com.teachMng.onlineTeach.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 /*
  * desc:作业
  * */
+@Entity
+@Table(name = "t_coursework")
 public class CourseWork {
-	private String cwTitle;
-	private String cwDesc;
-	private int cwType;
-	private int cwState;
-	public String getCwTitle() {
-		return cwTitle;
+	private int cworkID;
+	private String cworkTitle;
+	private String cworkDesc;
+	private int cworkType;
+	private int cworkState;
+	private TeachPlan teachPlan;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public int getCworkID() {
+		return cworkID;
 	}
-	public void setCwTitle(String cwTitle) {
-		this.cwTitle = cwTitle;
+	public void setCworkID(int cworkID) {
+		this.cworkID = cworkID;
 	}
-	public String getCwDesc() {
-		return cwDesc;
+	@ManyToOne
+	@JoinColumns({
+		@JoinColumn(name = "tpCourseTime"),
+		@JoinColumn(name = "coursePlanItem")
+	})
+	public TeachPlan getTeachPlan() {
+		return teachPlan;
 	}
-	public void setCwDesc(String cwDesc) {
-		this.cwDesc = cwDesc;
+	public void setTeachPlan(TeachPlan teachPlan) {
+		this.teachPlan = teachPlan;
 	}
-	public int getCwType() {
-		return cwType;
+	public String getCworkTitle() {
+		return cworkTitle;
 	}
-	public void setCwType(int cwType) {
-		this.cwType = cwType;
+	public void setCworkTitle(String cworkTitle) {
+		this.cworkTitle = cworkTitle;
 	}
-	public int getCwState() {
-		return cwState;
+	public String getCworkDesc() {
+		return cworkDesc;
 	}
-	public void setCwState(int cwState) {
-		this.cwState = cwState;
+	public void setCworkDesc(String cworkDesc) {
+		this.cworkDesc = cworkDesc;
+	}
+	public int getCworkType() {
+		return cworkType;
+	}
+	public void setCworkType(int cworkType) {
+		this.cworkType = cworkType;
+	}
+	public int getCworkState() {
+		return cworkState;
+	}
+	public void setCworkState(int cworkState) {
+		this.cworkState = cworkState;
 	}
 }

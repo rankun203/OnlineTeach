@@ -34,6 +34,7 @@
  		<mapping class="com.teachMng.onlineTeach.model.TeachPlan"/>
  		<mapping class="com.teachMng.onlineTeach.model.CheckAttendance"/>
  		<mapping class="com.teachMng.onlineTeach.model.CourseWare"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWork"/>
 	</session-factory>
 </hibernate-configuration>
 
