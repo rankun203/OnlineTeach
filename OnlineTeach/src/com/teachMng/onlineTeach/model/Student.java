@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_student")
-public class Student {
+public class Student implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int stuID;
 	private String stuName;
 	private SchoolClass schoolClass;

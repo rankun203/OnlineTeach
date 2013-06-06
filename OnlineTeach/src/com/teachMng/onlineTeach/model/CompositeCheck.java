@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_compositecheck")
-public class CompositeCheck {
+public class CompositeCheck implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private float ccGrade;
 	private float ccState;
 	private int ccID;

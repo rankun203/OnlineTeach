@@ -1,11 +1,9 @@
 package com.teachMng.onlineTeach.model;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -13,8 +11,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name = "t_checkattendance")
-public class CheckAttendance {
-	private int caAttendance;
+public class CheckAttendance implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	int id;
+/*	private int caAttendance;
 	private TeachPlan teachPlan;
 	private Student student;
 
@@ -27,7 +28,7 @@ public class CheckAttendance {
 		this.caAttendance = caAttendance;
 	}
 
-	@Id
+	//@Id
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "tpCourseTime"),
@@ -41,7 +42,7 @@ public class CheckAttendance {
 		this.teachPlan = teachPlan;
 	}
 
-	@Id
+	//@Id
 	@ManyToOne
 	@JoinColumn(name = "stuID")
 	public Student getStudent() {
@@ -50,5 +51,5 @@ public class CheckAttendance {
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}
+	}*/
 }

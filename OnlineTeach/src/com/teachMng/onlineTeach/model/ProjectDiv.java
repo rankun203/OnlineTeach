@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,8 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_projectdiv")
-public class ProjectDiv {
+public class ProjectDiv implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String pdWorkDesc;
 	private float pdGrade;
 	private int pdID;

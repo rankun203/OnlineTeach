@@ -1,11 +1,9 @@
-﻿/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/4/22 11:24:15                           */
 /*==============================================================*/
-
-create database OnlineTeach;
-
-use OnlineTeach;
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2013/6/5 15:26:26                            */
+/*==============================================================*/
+create database onlineteach;
+use onlineteach;
 
 drop table if exists t_checkAttendance;
 
@@ -14,6 +12,8 @@ drop table if exists t_classRoom;
 drop table if exists t_compositeCheck;
 
 drop table if exists t_course;
+
+drop table if exists t_courseAndTeacher;
 
 drop table if exists t_coursePlanItem;
 
@@ -24,6 +24,8 @@ drop table if exists t_courseWork;
 drop table if exists t_file;
 
 drop table if exists t_major;
+
+drop table if exists t_majorsCourse;
 
 drop table if exists t_project;
 
@@ -87,7 +89,19 @@ create table t_course
    courseID             int not null auto_increment,
    courseName           varchar(50),
    courseDesc           varchar(200),
+   priority             int,
+   roomType             int,
    primary key (courseID)
+);
+
+/*==============================================================*/
+/* Table: t_courseAndTeacher                                    */
+/*==============================================================*/
+create table t_courseAndTeacher
+(
+   courseID             int not null,
+   teacID               int not null,
+   primary key (courseID, teacID)
 );
 
 /*==============================================================*/
@@ -125,13 +139,14 @@ create table t_courseWare
 /*==============================================================*/
 create table t_courseWork
 (
+   cworkID              int not null auto_increment,
    cpID                 int not null,
    tpCourseTime         datetime not null,
-   cwTitle              varchar(100),
-   cwDesc               varchar(500),
-   cwType               int,
-   cwState              varchar(8),
-   primary key (cpID, tpCourseTime)
+   cworkTitle           varchar(100),
+   cworkDesc            varchar(500),
+   cworkType            int,
+   cworkState           varchar(8),
+   primary key (cworkID)
 );
 
 /*==============================================================*/
@@ -157,6 +172,17 @@ create table t_major
    majorID              int not null auto_increment,
    majorName            varchar(20),
    primary key (majorID)
+);
+
+/*==============================================================*/
+/* Table: t_majorsCourse                                        */
+/*==============================================================*/
+create table t_majorsCourse
+(
+   majorID              int not null,
+   courseID             int not null,
+   paragraph            int,
+   primary key (majorID, courseID)
 );
 
 /*==============================================================*/
@@ -201,7 +227,7 @@ create table t_projectReply
 (
    pgID                 int not null,
    projID               int not null,
-   prID                 int,
+   prID                 int not null,
    prGrade              float,
    prState              int,
    prDate               datetime,
@@ -259,14 +285,13 @@ create table t_teacher
 /*==============================================================*/
 create table t_workstate
 (
-   cpID                 int not null,
-   tpCourseTime         datetime not null,
+   cworkID              int not null,
    stuID                int not null,
    fileID               int not null,
    wsID                 int not null,
    wsGrade              float,
    wsTeacherComment     varchar(1024),
-   primary key (cpID, tpCourseTime, stuID, fileID)
+   primary key (cworkID, stuID, fileID)
 );
 
 alter table t_checkAttendance add constraint FK_attendanceIncludeStudent foreign key (stuID)
@@ -280,6 +305,12 @@ alter table t_compositeCheck add constraint FK_compositeCheckBelongtoStudent for
 
 alter table t_compositeCheck add constraint FK_compositeCheckRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;
+
+alter table t_courseAndTeacher add constraint FK_t_courseAndTeacher foreign key (courseID)
+      references t_course (courseID) on delete restrict on update restrict;
+
+alter table t_courseAndTeacher add constraint FK_t_courseAndTeacher2 foreign key (teacID)
+      references t_teacher (teacID) on delete restrict on update restrict;
 
 alter table t_coursePlanItem add constraint FK_CourseItemRelateCourseInfo foreign key (courseID)
       references t_course (courseID) on delete restrict on update restrict;
@@ -301,6 +332,12 @@ alter table t_courseWork add constraint FK_teachPlanIncludeCourseWork foreign ke
 
 alter table t_file add constraint FK_courseWareIncludeFile foreign key (cwareID)
       references t_courseWare (cwareID) on delete restrict on update restrict;
+
+alter table t_majorsCourse add constraint FK_t_majorsCourse foreign key (majorID)
+      references t_major (majorID) on delete restrict on update restrict;
+
+alter table t_majorsCourse add constraint FK_t_majorsCourse2 foreign key (courseID)
+      references t_course (courseID) on delete restrict on update restrict;
 
 alter table t_projectDiv add constraint FK_projectDivRelateProject foreign key (projID)
       references t_project (projID) on delete restrict on update restrict;
@@ -326,8 +363,8 @@ alter table t_student add constraint FK_studentBelongsToClass foreign key (scID)
 alter table t_teachPlan add constraint FK_coursePlanItemRelateTeachPlan foreign key (cpID)
       references t_coursePlanItem (cpID) on delete restrict on update restrict;
 
-alter table t_workstate add constraint FK_t_workstate foreign key (cpID, tpCourseTime)
-      references t_courseWork (cpID, tpCourseTime) on delete restrict on update restrict;
+alter table t_workstate add constraint FK_t_workstate foreign key (cworkID)
+      references t_courseWork (cworkID) on delete restrict on update restrict;
 
 alter table t_workstate add constraint FK_t_workstate2 foreign key (stuID)
       references t_student (stuID) on delete restrict on update restrict;

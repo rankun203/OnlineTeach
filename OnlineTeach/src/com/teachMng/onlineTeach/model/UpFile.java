@@ -1,11 +1,16 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
  * desc:文件类
  * */
-public class UpFile {
+public class UpFile implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int fileID;
 	private String filePaths;
 	private String originalFileName;

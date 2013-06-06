@@ -9,12 +9,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.teachMng.onlineTeach.util.HibernateUtil;
+import com.teachMng.onlineTeach.util.SerilNumber;
+
 public class CoursePlanItemTest {
 	static SessionFactory sf = null;
 	@BeforeClass
 	public static void beforeC() {
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().buildServiceRegistry();
-		sf = new Configuration().configure().buildSessionFactory(serviceRegistry);
+		sf = HibernateUtil.getSessionFactory();
 	}
 	@AfterClass 
 	public static void afterC() {
@@ -45,7 +47,7 @@ public class CoursePlanItemTest {
 		Course course = new Course();
 		course.setCourseName("大学英语");
 		course.setCourseDesc("这是一门必修课");
-		
+		course.setPriority(SerilNumber.OBLIGCOURSE);
 		CoursePlanItem cpi = new CoursePlanItem();
 		cpi.setCpParagraph(18);
 		cpi.setCpState(1);

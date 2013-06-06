@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name = "t_workstate")
-public class WorkState {
+public class WorkState implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int wsID;
 	private Float wsGrade;
 	private String wsTeacherComment;

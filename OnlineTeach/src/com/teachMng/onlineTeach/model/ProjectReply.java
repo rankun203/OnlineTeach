@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,11 @@ import javax.persistence.Transient;
  * */
 @Entity
 @Table(name="t_projectreply")
-public class ProjectReply {
+public class ProjectReply implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int prID;
 	private float prGrade;
 	private int prState;

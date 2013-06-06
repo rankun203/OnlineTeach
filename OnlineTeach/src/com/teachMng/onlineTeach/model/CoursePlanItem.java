@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +18,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_courseplanitem")
-public class CoursePlanItem {
+public class CoursePlanItem implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cpID;
 	private int cpParagraph;
 	private int cpState;
@@ -26,7 +32,7 @@ public class CoursePlanItem {
 	private Teacher teacher;
 	
 	/*课程表原子与教师的多对一关系*/
-	@ManyToOne(cascade=CascadeType.ALL) 
+	@ManyToOne(cascade=CascadeType.REFRESH) 
 	@JoinColumn(name="teacID")
 	public Teacher getTeacher() {
 		return teacher;
@@ -35,7 +41,7 @@ public class CoursePlanItem {
 		this.teacher = teacher;
 	}
 	/*课程表原子与班级的多对一关系*/
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.REFRESH)
 	@JoinColumn(name="scID")
 	public SchoolClass getSchoolClass() {
 		return schoolClass;
@@ -44,7 +50,7 @@ public class CoursePlanItem {
 		this.schoolClass = schoolClass;
 	}
 	/*课程表原子与课程的一对一关系*/
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.REFRESH)
 	@JoinColumn(name="courseID")
 	public Course getCourse() {
 		return course;
@@ -53,7 +59,7 @@ public class CoursePlanItem {
 		this.course = course;
 	}
 	/*课程表原子与教室的一对一关系。*/
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.REFRESH)
 	@JoinColumn(name="crID")
 	public ClassRoom getClassRoom() {
 		return classRoom;

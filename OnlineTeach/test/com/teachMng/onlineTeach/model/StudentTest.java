@@ -9,15 +9,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.teachMng.onlineTeach.util.HibernateUtil;
+
 public class StudentTest {
 	static SessionFactory sf = null;
 
 	@BeforeClass
 	public static void beforeC() {
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-				.buildServiceRegistry();
-		sf = new Configuration().configure().buildSessionFactory(
-				serviceRegistry);
+		sf = HibernateUtil.getSessionFactory();
 	}
 
 	@AfterClass

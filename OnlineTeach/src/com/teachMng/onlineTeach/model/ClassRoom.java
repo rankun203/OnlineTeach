@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_classroom")
-public class ClassRoom {
+public class ClassRoom implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int crID;
 	private String crName;
 	private CoursePlanItem coursePlanItem;

@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -14,7 +15,11 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name = "t_teachplan")
-public class TeachPlan {
+public class TeachPlan implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date tpCourseTime;
 	private CoursePlanItem coursePlanItem;
 	private String tpTeachMethod;
@@ -23,6 +28,17 @@ public class TeachPlan {
 	@Id
 	public Date getTpCourseTime() {
 		return tpCourseTime;
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		TeachPlan tp = (TeachPlan)obj;
+		return tp.getTpCourseTime() == this.getTpCourseTime() && tp.getCoursePlanItem().getCpID() == this.getCoursePlanItem().getCpID();
 	}
 	public void setTpCourseTime(Date tpCourseTime) {
 		this.tpCourseTime = tpCourseTime;

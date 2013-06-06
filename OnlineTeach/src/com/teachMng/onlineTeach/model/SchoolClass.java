@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,18 +13,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /*
  * desc:班级
  * */
 @Entity
 @Table(name="t_schoolclass")
-public class SchoolClass {
+public class SchoolClass implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int scID;
 	private String scName;
 	private Major major;
 	private Set<CoursePlanItem> coursePlanItems = new HashSet<CoursePlanItem>();
-	private Set<Student> students = new HashSet<Student>();
+	private Set<Student> students = new HashSet<Student>();	
 	@OneToMany(mappedBy="schoolClass", cascade=CascadeType.ALL)
 	public Set<Student> getStudents() {
 		return students;
