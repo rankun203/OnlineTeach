@@ -2,8 +2,12 @@ package com.teachMng.onlineTeach.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -15,7 +19,7 @@ public class CheckAttendance implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	int id;
-/*	private int caAttendance;
+	private int caAttendance;
 	private TeachPlan teachPlan;
 	private Student student;
 
@@ -51,5 +55,5 @@ public class CheckAttendance implements Serializable {
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}*/
+	}
 }

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 /*
  * desc:教案
  * */
-@Entity
+//@Entity
 @Table(name = "t_teachplan")
 public class TeachPlan implements Serializable {
 	/**

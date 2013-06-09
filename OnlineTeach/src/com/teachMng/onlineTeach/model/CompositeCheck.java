@@ -13,7 +13,7 @@ import javax.persistence.Table;
 /*
  * desc:综合考核
  * */
-@Entity
+//@Entity
 @Table(name="t_compositecheck")
 public class CompositeCheck implements Serializable {
 	/**

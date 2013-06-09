@@ -15,7 +15,7 @@ import javax.persistence.Table;
 /*
  * desc:作业
  * */
-@Entity
+//@Entity
 @Table(name = "t_coursework")
 public class CourseWork implements Serializable  {
 	/**
