@@ -32,7 +32,7 @@ public class CoursePlanItem implements Serializable  {
 	private Teacher teacher;
 	
 	/*课程表原子与教师的多对一关系*/
-	@ManyToOne(cascade=CascadeType.REFRESH) 
+	@ManyToOne(cascade=CascadeType.REMOVE) 
 	@JoinColumn(name="teacID")
 	public Teacher getTeacher() {
 		return teacher;
@@ -41,7 +41,7 @@ public class CoursePlanItem implements Serializable  {
 		this.teacher = teacher;
 	}
 	/*课程表原子与班级的多对一关系*/
-	@ManyToOne(cascade=CascadeType.REFRESH)
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="scID")
 	public SchoolClass getSchoolClass() {
 		return schoolClass;
@@ -50,7 +50,7 @@ public class CoursePlanItem implements Serializable  {
 		this.schoolClass = schoolClass;
 	}
 	/*课程表原子与课程的一对一关系*/
-	@OneToOne(cascade=CascadeType.REFRESH)
+	@OneToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="courseID")
 	public Course getCourse() {
 		return course;
@@ -59,7 +59,7 @@ public class CoursePlanItem implements Serializable  {
 		this.course = course;
 	}
 	/*课程表原子与教室的一对一关系。*/
-	@OneToOne(cascade=CascadeType.REFRESH)
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="crID")
 	public ClassRoom getClassRoom() {
 		return classRoom;

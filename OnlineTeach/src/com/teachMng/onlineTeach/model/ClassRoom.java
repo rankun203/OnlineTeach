@@ -1,14 +1,15 @@
 package com.teachMng.onlineTeach.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
@@ -23,17 +24,17 @@ public class ClassRoom implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int crID;
 	private String crName;
-	private CoursePlanItem coursePlanItem;
+	private Set<CoursePlanItem> coursePlanItem = new HashSet<CoursePlanItem>();
 	private int crType;
 	
-	@OneToOne(mappedBy="classRoom", cascade=CascadeType.ALL)
-	@JoinColumn(name="cpID")
-	public CoursePlanItem getCoursePlanItem() {
+	@OneToMany(mappedBy="classRoom", cascade=CascadeType.REMOVE)
+	public Set<CoursePlanItem> getCoursePlanItem() {
 		return coursePlanItem;
 	}
-	public void setCoursePlanItem(CoursePlanItem coursePlanItem) {
+	public void setCoursePlanItem(Set<CoursePlanItem> coursePlanItem) {
 		this.coursePlanItem = coursePlanItem;
 	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getCrID() {
