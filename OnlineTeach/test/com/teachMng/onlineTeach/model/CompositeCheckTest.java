@@ -10,8 +10,10 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-public class CompositeCheckTest {
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+@ContextConfiguration(locations="classpath:applicationContext.xml")
+public class CompositeCheckTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 	@BeforeClass
 	public static void beforeC() {
