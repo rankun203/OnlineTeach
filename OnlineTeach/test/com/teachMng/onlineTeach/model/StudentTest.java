@@ -8,10 +8,12 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.teachMng.onlineTeach.util.HibernateUtil;
-
-public class StudentTest {
+@ContextConfiguration(locations="classpath:applicationContext.xml")
+public class StudentTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 
 	@BeforeClass

@@ -9,8 +9,10 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-public class ProjectTest {
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+@ContextConfiguration(locations="classpath:applicationContext.xml")
+public class ProjectTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 
 	@BeforeClass
