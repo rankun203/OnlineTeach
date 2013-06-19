@@ -37,7 +37,7 @@ public class Major implements Serializable {
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
-	@OneToMany(mappedBy="major", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="major", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	public Set<SchoolClass> getSchoolClasses() {
 		return schoolClasses;
 	}

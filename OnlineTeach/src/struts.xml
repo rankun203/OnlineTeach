@@ -31,5 +31,9 @@
     <include file="example.xml"/> -->
 
     <!-- Add packages here -->
-
+	<package name="default" namespace="/" extends="struts-default">
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+    </package>
 </struts>
