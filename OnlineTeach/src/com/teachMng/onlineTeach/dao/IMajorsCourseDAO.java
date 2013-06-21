@@ -6,6 +6,7 @@ import com.teachMng.onlineTeach.model.Course;
 import com.teachMng.onlineTeach.model.Major;
 import com.teachMng.onlineTeach.model.MajorsCourse;
 
+@SuppressWarnings("unused")
 public interface IMajorsCourseDAO {
 	List<MajorsCourse> allMajorsCourse();
 	List<MajorsCourse> getByMajorId(int majorID);

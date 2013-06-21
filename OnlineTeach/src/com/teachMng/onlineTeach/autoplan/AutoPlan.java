@@ -45,7 +45,7 @@ public class AutoPlan {
 	 */
 	public boolean insToDB() {
 		if(null == coursePlan || 0 >= coursePlan.size()) {
-			System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
+System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
 			return false;
 		}
 		boolean flag = false;
