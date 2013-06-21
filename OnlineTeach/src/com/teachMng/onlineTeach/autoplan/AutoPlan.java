@@ -30,8 +30,10 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Component("autoPlan")
 public class AutoPlan {
 
-	/*
-	 * 排列课程表 此方法不会将数据插入数据库 。return:排列好的所有课程表
+	/**
+	 * 排列课程表 此方法不会将数据插入数据库
+	 * 
+	 * @return 排列好的所有课程表
 	 */
 	public List<CoursePlanItem> beginPlan() {
 		arrange();
@@ -39,11 +41,13 @@ public class AutoPlan {
 		return coursePlan;
 	}
 
-	/*
-	 * 把课程表插入到数据库中。
-	 * return：true-插入成功。false-插入失败
+	/**
+	 * 把课程表插入到数据库中
+	 * 
+	 * @return true-插入成功。false-插入失败
 	 */
 	public boolean insToDB() {
+<<<<<<< HEAD
 		if(null == coursePlan || 0 >= coursePlan.size()) {
 System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
 			return false;
@@ -54,42 +58,100 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		int _count = 0;
 		while (_cpiIter.hasNext()) {
 			_cpi = _cpiIter.next(); //
-			//			System.out.println(cpi.getSchoolClass().getMajor() + ""
-//					+ cpi.getSchoolClass() + "  " + // cpi.getCourse() + "  " +
-//					cpi.getClassRoom() + "  " + // cpi.getTeacher() + "  " +
-//					cpi.getCpParagraph());
-//			System.out.println(cpi.getSchoolClass().getMajor().getMajorName()
-//					+ cpi.getSchoolClass().getScName() + "  "
-//					+ cpi.getCourse().getCourseName() + "  "
-//					+ cpi.getClassRoom().getCrName() + "  "
-//					+ cpi.getTeacher().getTeacName() + "           "
-//					+ cpi.getCpParagraph());
-			try{
+			// System.out.println(cpi.getSchoolClass().getMajor() + ""
+			// + cpi.getSchoolClass() + "  " + // cpi.getCourse() + "  " +
+			// cpi.getClassRoom() + "  " + // cpi.getTeacher() + "  " +
+			// cpi.getCpParagraph());
+			// System.out.println(cpi.getSchoolClass().getMajor().getMajorName()
+			// + cpi.getSchoolClass().getScName() + "  "
+			// + cpi.getCourse().getCourseName() + "  "
+			// + cpi.getClassRoom().getCrName() + "  "
+			// + cpi.getTeacher().getTeacName() + "           "
+			// + cpi.getCpParagraph());
+			try {
 				coursePlanItemService.insCoursePlanItem(_cpi);
-			} catch(Exception e) {       //插入时出错
-				deleteAll();     
+			} catch (Exception e) { // 插入时出错
+				deleteAll();
 				System.out.println("插入课程表到数据库时出错!插入失败。");
 				e.printStackTrace();
 				return false;
 			}
-			 _count++; 
+			_count++;
 		}
 		System.out.println("总共有" + _count + "条");
 		return flag;
 	}
 
+	/**
+	 * 获取自动排课的进度
+	 * 
+	 * @return 返回一个float类型的进度值，
+	 */
+	public float getProgress() {
+		int curCount = getCurCourseCount();
+		float progress;
+		progress = (float) ((curCount + 0.0) / allCourseCount);
+		System.out.println(progress);
+		return 0;
+	}
+
+	/**
+	 * 清空数据库表中的所有数据
+	 */
+	public void deleteAll() {
+		coursePlanItemService.deleteAll();
+		clean();
+	}
+
 	/*
-	 * 开始。
-	 *  return:void
+	 * 全部清空 return：void
+	 */
+	public void clean() {
+		students = null;
+		classRooms = null;
+		courses = null;
+		majors = null;
+		majorsCourse = null;
+		schoolClasses = null;
+		teachers = null;
+		coursePlan = null;
+		ccp = null;
+
+		classRoomService = null;
+		courseService = null;
+		coursePlanItemService = null;
+		majorService = null;
+		schoolClassService = null;
+		studentService = null;
+		teacherService = null;
+		majorsCourseService = null;
+	}
+
+	/**
+	 * 获取当前已经排列的课程总数
+	 * 
+	 * @return 已经排列的班级课程数量
+	 */
+	private int getCurCourseCount() {
+		int curCount = 0;
+		Iterator<CoursePlanItem> _cpiIter = coursePlan.iterator();
+		while (_cpiIter.hasNext()) {
+			_cpiIter.next();
+			curCount++;
+		}
+		return curCount;
+	}
+
+	/**
+	 * 开始
 	 */
 	private void arrange() {
 		init();
 		autoPlan();
 	}
 
-	/*
-	 * 初始化数据。
-	 *  return:void
+	/**
+	 * 初始化数据
 	 */
 	private void init() {
 		students = null;
@@ -109,12 +171,35 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		majorsCourse = majorsCourseService.allMajorsCourse();
 		schoolClasses = schoolClassService.allSchoolClass();
 		teachers = teacherService.allTeacher();
+
+		allCourseCount = getCourseCount();
 	}
 
-	/*
-	 * 检查班级课程是否还没有排完。 mc：这个班级所属专业的所有课程 
-	 * sc：班级 
-	 * return :	 true:此专业还有未安排的课程,false:已经排列完所有课程
+	/**
+	 * 获取所有班级的课程总数
+	 * 
+	 * @return 班级课程的总数
+	 */
+	private int getCourseCount() {
+		int count = 0;
+		MajorsCourse _mc = null;
+		Iterator<MajorsCourse> mcIter = majorsCourse.iterator();
+		while (mcIter.hasNext()) {
+			_mc = mcIter.next();
+			count += _mc.getParagraph()
+					* _mc.getMajor().getSchoolClasses().size();
+		}
+		return count;
+	}
+
+	/**
+	 * 检查班级课程是否还没有排完
+	 * 
+	 * @param mc
+	 *            这个班级所属专业的所有课程
+	 * @param sc
+	 *            班级
+	 * @return true:此专业还有未安排的课程,false:已经排列完所有课程
 	 */
 	private boolean checkCourse(List<MajorsCourse> mc, SchoolClass sc) {
 		Iterator<MajorsCourse> iter = mc.iterator();
@@ -131,13 +216,18 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 				return true; //
 			}
 		}
+		getProgress();
 		System.out.println(sc.getMajor().getMajorName() + sc.getScName()
 				+ "班 over!  ————————   " + mc.size());
 		return false;
 	}
 
-	/*
-	 * 从所有的课程表中根据第几节课取出课程。 paragraph：第几节课 return : 返回当前节数的所有课程表原子
+	/**
+	 * 从所有的课程表中根据第几节课取出课程
+	 * 
+	 * @param paragraph
+	 *            第几节课
+	 * @return 返回当前节数的所有课程表原子
 	 */
 	private List<CoursePlanItem> getCoursePlanByParagraph(int paragraph) { //
 		List<CoursePlanItem> _list = new ArrayList<CoursePlanItem>();
@@ -157,9 +247,14 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return _list;
 	}
 
-	/*
-	 * 根据班级编号和课程编号在课程表中查看此班级的这门课是否已经有教师。 courseID：课程编号 scID：班级编号 return
-	 * ：null-表示没有教师，将获取一个新教师。否则使用返回的教师
+	/**
+	 * 根据班级编号和课程编号在课程表中查看此班级的这门课是否已经有教师
+	 * 
+	 * @param courseID
+	 *            课程编号
+	 * @param scID
+	 *            班级编号
+	 * @return null-表示没有教师，将获取一个新教师。否则使用返回的教师
 	 */
 	private Teacher findTeacher(int courseID, int scID) {
 		// System.out.println("_________________________");
@@ -178,7 +273,18 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	}
 
 	/*
-	 * 获取一个可用的教师。 c:课程 sc:班级 paragraph:那节课 return：返回一个可以用的教师
+	 * 。 c: sc: paragraph: return：
+	 */
+	/**
+	 * 获取一个可用的教师
+	 * 
+	 * @param c
+	 *            课程
+	 * @param sc
+	 *            班级
+	 * @param paragraph
+	 *            那节课
+	 * @return 返回一个可以用的教师
 	 */
 	private Teacher getAvailableTeacher(Course c, SchoolClass sc, int paragraph) {
 		// System.out.println(c.getTeachers());
@@ -220,8 +326,12 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return null;
 	}
 
-	/*
-	 * 获取同一类型的所有教室。 roomType:教室类型 return：返回此类型的所有教室
+	/**
+	 * 获取同一类型的所有教室
+	 * 
+	 * @param roomType
+	 *            教室类型
+	 * @return 返回此类型的所有教室
 	 */
 	private List<ClassRoom> getRoomByType(int roomType) {
 		List<ClassRoom> _rooms = new ArrayList<ClassRoom>();
@@ -236,9 +346,14 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return _rooms;
 	}
 
-	/*
-	 * 查看此班级的此课程是否已经排过一次，获取一样的教室。 courseID：课程编号 scID：班级编号
-	 * return：null-将获取一个新的教室。否则用此教室
+	/**
+	 * 查看此班级的此课程是否已经排过一次，获取一样的教室
+	 * 
+	 * @param courseID
+	 *            课程编号
+	 * @param scID
+	 *            班级编号
+	 * @return null-将获取一个新的教室。否则用此教室
 	 */
 	private ClassRoom findClassRoom(int courseID, int scID) {
 		ClassRoom _classRoom = null;
@@ -254,9 +369,18 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return _classRoom;
 	}
 
-	/*
-	 * 根据教室类型和上课时间获取一个可用的教室。 courseID：课程编号 scID：班级编号 roomType：教室类型 paragraph：第几节课
-	 * return：返回一个这个时间段可以使用的教室
+	/**
+	 * 根据教室类型和上课时间获取一个可用的教室
+	 * 
+	 * @param courseID
+	 *            课程编号
+	 * @param scID
+	 *            班级编号
+	 * @param roomType
+	 *            教室类型
+	 * @param paragraph
+	 *            第几节课
+	 * @return 返回一个这个时间段可以使用的教室
 	 */
 	private ClassRoom getAvailableClassRoom(int courseID, int scID,
 			int roomType, int paragraph) {
@@ -301,8 +425,12 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return null;
 	}
 
-	/*
-	 * 通过专业编号获取此专业的所有课程。 majorID：专业编号 return：此专业的所有课程
+	/**
+	 * 通过专业编号获取此专业的所有课程
+	 * 
+	 * @param majorID
+	 *            专业编号
+	 * @return 此专业的所有课程
 	 */
 	private List<MajorsCourse> getMajorsCourseByMajorId(int majorID) {
 		List<MajorsCourse> _mscs = new ArrayList<MajorsCourse>();
@@ -316,8 +444,14 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return _mscs;
 	}
 
-	/*
-	 * 此班级的此门课程是否已经排列在课程表中。 scID：班级编号 cID：课程编号 return：true-排列过，false-没有排列过
+	/**
+	 * 此班级的此门课程是否已经排列在课程表中
+	 * 
+	 * @param scID
+	 *            班级编号
+	 * @param cID
+	 *            课程编号
+	 * @return true-排列过，false-没有排列过
 	 */
 	private boolean findPlanPara(int scID, int cID) {
 		if (ccp.size() == 0)
@@ -333,8 +467,14 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return false;
 	}
 
-	/*
-	 * 根据班级编号，课程编号查找安排课程节数。 scID：班级编号 cID：课程编号 return：当前班级的此课程已经排列了多少节
+	/**
+	 * 根据班级编号，课程编号查找安排课程节数
+	 * 
+	 * @param scID
+	 *            班级编号
+	 * @param cID
+	 *            课程编号
+	 * @return 当前班级的此课程已经排列了多少节
 	 */
 	private int getPlanPara(int scID, int cID) {
 		int count = 0;
@@ -360,8 +500,15 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return count;
 	}
 
-	/*
-	 * 根据班级编号，课程编号设置安排课程节数。 scID：班级编号 cID：课程编号 para：课程的节数 return：void
+	/**
+	 * 根据班级编号，课程编号设置安排课程节数
+	 * 
+	 * @param scID
+	 *            班级编号
+	 * @param cID
+	 *            课程编号
+	 * @param para
+	 *            课程的节数
 	 */
 	private void setPlanPara(int scID, int cID, int para) {
 		ClassCoursePara _ccp;
@@ -385,8 +532,8 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		}
 	}
 
-	/*
-	 * 自动排课开始方法。 return：void
+	/**
+	 * 自动排课入口方法
 	 */
 	private void autoPlan() {
 		System.out.println("--------------start!");
@@ -425,8 +572,12 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 						course.getCourseID())) { // 如果取出的课程尚未排完
 					// System.out.println("AAAAAAAA");
 					t = getAvailableTeacher(course, sc, paragraph);
+					if (null == t)
+						return;
 					cr = getAvailableClassRoom(course.getCourseID(),
 							sc.getScID(), course.getRoomType(), paragraph);
+					if (null == cr)
+						return;
 					cpi = new CoursePlanItem();
 					cpi.setClassRoom(cr);
 					cpi.setCourse(course);
@@ -450,38 +601,6 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 				}
 			}
 		}
-	}
-
-	/*
-	 * 清空数据库表中的所有数据。return：void
-	 */
-	public void deleteAll() {
-		coursePlanItemService.deleteAll();
-		clean();
-	}
-
-	/*
-	 * 全部清空 return：void
-	 */
-	public void clean() {
-		students = null;
-		classRooms = null;
-		courses = null;
-		majors = null;
-		majorsCourse = null;
-		schoolClasses = null;
-		teachers = null;
-		coursePlan = null;
-		ccp = null;
-
-		classRoomService = null;
-		courseService = null;
-		coursePlanItemService = null;
-		majorService = null;
-		schoolClassService = null;
-		studentService = null;
-		teacherService = null;
-		majorsCourseService = null;
 	}
 
 	/*
@@ -635,6 +754,7 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	/*
 	 * 这坨setter和getter终于结束了
 	 */
+	private static int allCourseCount; // 所有班级的所有课程之和，用于获取排课进度时所需要的变量。
 	private int rePlanCount = 1;
 
 	private List<Student> students = null;
