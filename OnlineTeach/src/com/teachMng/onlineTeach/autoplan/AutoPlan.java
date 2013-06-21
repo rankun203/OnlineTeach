@@ -47,7 +47,6 @@ public class AutoPlan {
 	 * @return true-插入成功。false-插入失败
 	 */
 	public boolean insToDB() {
-<<<<<<< HEAD
 		if(null == coursePlan || 0 >= coursePlan.size()) {
 System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
 			return false;
