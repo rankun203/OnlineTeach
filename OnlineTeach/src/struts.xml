@@ -11,7 +11,7 @@
 <!--     <package name="default" namespace="/" extends="struts-default">
 
         <default-action-ref name="index" />
-
+ 
         <global-results>
             <result name="error">/error.jsp</result>
         </global-results>

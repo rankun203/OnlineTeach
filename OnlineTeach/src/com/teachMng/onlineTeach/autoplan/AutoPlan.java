@@ -32,7 +32,7 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Scope("singleton")
 public class AutoPlan {
 	
-	/**
+	/** 
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
 	 * @return 排列好的所有课程表
