@@ -45,11 +45,11 @@ CREATE TABLE `t_classroom` (
   `crName` varchar(20) DEFAULT NULL,
   `crType` int(11) DEFAULT NULL,
   PRIMARY KEY (`crID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_classroom` */
 
-insert  into `t_classroom`(`crID`,`crName`,`crType`) values (1,'801',1),(2,'802',1),(3,'803',1),(4,'804',1),(5,'B101',2),(6,'B102',2),(7,'A101',2),(8,'A102',2),(9,'A103',2),(10,'A104',2),(11,'A105',2);
+insert  into `t_classroom`(`crID`,`crName`,`crType`) values (1,'801',1),(2,'802',1),(3,'803',1),(4,'804',1),(5,'B101',2),(6,'B102',2),(7,'A101',2),(8,'A102',2),(9,'A103',2),(10,'A104',2),(11,'A105',2),(12,'运动场1',3),(13,'运动场2',3),(14,'运动场3',3),(15,'701',1),(16,'702',1),(17,'703',1),(18,'704',1),(19,'705',1),(20,'706',1),(21,'B103',2),(22,'B104',2),(23,'B105',2),(24,'A201',2),(25,'A202',2),(26,'A203',2),(27,'A204',2),(28,'A205',2),(29,'B201',2),(30,'B202',2),(31,'B203',2),(32,'B204',2),(33,'B205',2);
 
 /*Table structure for table `t_compositecheck` */
 
@@ -80,11 +80,11 @@ CREATE TABLE `t_course` (
   `priority` int(11) DEFAULT NULL,
   `roomType` int(11) DEFAULT NULL,
   PRIMARY KEY (`courseID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_course` */
 
-insert  into `t_course`(`courseID`,`courseName`,`courseDesc`,`priority`,`roomType`) values (1,'大学英语','大学英语',100,2),(2,'C++程序设计','C++程序设计',100,1),(3,'Java程序设计','Java程序设计',100,1),(4,'思科网络','思科网络',100,1),(5,'专业英语','计算机专业英语',100,2),(6,'数据结构','数据结构',100,2),(7,'计算机应用','计算机应用',100,1);
+insert  into `t_course`(`courseID`,`courseName`,`courseDesc`,`priority`,`roomType`) values (1,'大学英语','大学英语',100,2),(2,'C++程序设计','C++程序设计',100,1),(3,'Java程序设计','Java程序设计',100,1),(4,'思科网络','思科网络',100,1),(5,'计算机专业英语','计算机专业英语',100,2),(6,'数据结构','数据结构',100,2),(7,'计算机应用','计算机应用',100,1),(8,'大学物理','大学物理学',100,2),(9,'高等数学','高等数学学',100,2),(10,'大学体育','大学体育',100,3),(11,'发动机原理','发动机原理',100,2),(12,'汽车美容','汽车美容',100,2),(13,'汽车检测与维修','汽车检测与维修',100,2),(14,'初级会计实务','初级会计实务',100,2),(15,'会计基础','会计基础',100,2),(16,'会计专业英语','会计的专业英语',100,2),(17,'数钱技能','会计数钱技能',100,2);
 
 /*Table structure for table `t_courseandteacher` */
 
@@ -101,7 +101,7 @@ CREATE TABLE `t_courseandteacher` (
 
 /*Data for the table `t_courseandteacher` */
 
-insert  into `t_courseandteacher`(`courseID`,`teacID`) values (1,1),(4,1),(5,1),(1,2),(3,2),(6,2),(7,2),(1,3),(3,3),(2,4),(5,4),(6,4),(2,5),(4,5),(7,5);
+insert  into `t_courseandteacher`(`courseID`,`teacID`) values (1,1),(5,1),(9,1),(14,1),(1,2),(5,2),(10,2),(14,2),(1,3),(6,3),(10,3),(14,3),(2,4),(6,4),(10,4),(15,4),(2,5),(6,5),(11,5),(15,5),(2,6),(7,6),(11,6),(15,6),(3,7),(7,7),(11,7),(16,7),(3,8),(7,8),(12,8),(16,8),(3,9),(8,9),(12,9),(16,9),(4,10),(8,10),(12,10),(17,10),(4,11),(8,11),(13,11),(17,11),(4,12),(9,12),(13,12),(17,12),(5,13),(9,13),(13,13);
 
 /*Table structure for table `t_courseplanitem` */
 
@@ -124,7 +124,7 @@ CREATE TABLE `t_courseplanitem` (
   CONSTRAINT `FK_CourseItemRelateCourseInfo` FOREIGN KEY (`courseID`) REFERENCES `t_course` (`courseID`),
   CONSTRAINT `FK_coursePlanItemRelateTeacher` FOREIGN KEY (`teacID`) REFERENCES `t_teacher` (`teacID`),
   CONSTRAINT `FK_courseRelateClassroom` FOREIGN KEY (`crID`) REFERENCES `t_classroom` (`crID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='课程表原子';
+) ENGINE=InnoDB AUTO_INCREMENT=757 DEFAULT CHARSET=utf8 COMMENT='课程表原子';
 
 /*Data for the table `t_courseplanitem` */
 
@@ -193,11 +193,11 @@ CREATE TABLE `t_major` (
   `majorID` int(11) NOT NULL AUTO_INCREMENT,
   `majorName` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`majorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_major` */
 
-insert  into `t_major`(`majorID`,`majorName`) values (1,'软件技术'),(2,'计算机应用');
+insert  into `t_major`(`majorID`,`majorName`) values (1,'软件技术'),(2,'计算机应用'),(3,'汽车检测与维修'),(4,'会计');
 
 /*Table structure for table `t_majorscourse` */
 
@@ -215,7 +215,7 @@ CREATE TABLE `t_majorscourse` (
 
 /*Data for the table `t_majorscourse` */
 
-insert  into `t_majorscourse`(`majorID`,`courseID`,`paragraph`) values (1,1,2),(1,2,4),(1,3,4),(1,5,2),(1,6,2),(2,1,2),(2,4,4),(2,5,2),(2,7,4);
+insert  into `t_majorscourse`(`majorID`,`courseID`,`paragraph`) values (1,1,2),(1,2,4),(1,3,4),(1,5,2),(1,6,2),(1,9,2),(1,10,1),(2,1,2),(2,4,4),(2,5,2),(2,7,4),(2,9,2),(2,10,1),(3,7,2),(3,8,2),(3,9,2),(3,10,1),(3,11,2),(3,12,2),(3,13,4),(4,7,2),(4,10,1),(4,14,2),(4,15,4),(4,16,2),(4,17,2);
 
 /*Table structure for table `t_project` */
 
@@ -291,11 +291,11 @@ CREATE TABLE `t_schoolclass` (
   PRIMARY KEY (`scID`),
   KEY `FK_classBelongToMajor` (`majorID`),
   CONSTRAINT `FK_classBelongToMajor` FOREIGN KEY (`majorID`) REFERENCES `t_major` (`majorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_schoolclass` */
 
-insert  into `t_schoolclass`(`scID`,`majorID`,`scName`) values (1,1,'113-1'),(2,1,'113-2'),(3,2,'113-1'),(4,2,'113-2');
+insert  into `t_schoolclass`(`scID`,`majorID`,`scName`) values (1,1,'113-1'),(2,1,'113-2'),(3,2,'113-1'),(4,2,'113-2'),(5,3,'113-1'),(6,3,'113-2'),(7,4,'113-1'),(8,4,'113-2'),(9,4,'113-3'),(10,4,'113-5'),(11,1,'113-3'),(12,2,'113-3'),(13,3,'113-3'),(14,4,'113-6'),(15,1,'113-4'),(16,1,'113-5'),(17,2,'113-4'),(18,2,'113-5'),(19,3,'113-4'),(20,3,'113-5'),(21,4,'113-7'),(22,4,'113-8'),(23,4,'113-9'),(24,4,'113-11'),(25,4,'113-12'),(26,4,'113-13'),(27,4,'113-14'),(28,4,'113-15');
 
 /*Table structure for table `t_student` */
 
@@ -323,11 +323,11 @@ CREATE TABLE `t_teacher` (
   `teacID` int(11) NOT NULL AUTO_INCREMENT,
   `teacName` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`teacID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_teacher` */
 
-insert  into `t_teacher`(`teacID`,`teacName`) values (1,'张三'),(2,'李四'),(3,'王五'),(4,'赵六'),(5,'孙七');
+insert  into `t_teacher`(`teacID`,`teacName`) values (1,'李灵黛'),(2,'冷文卿'),(3,'韩千叶'),(4,'苏普'),(5,'袁冠南'),(6,'顾莫言'),(7,'董依依'),(8,'杨若涵'),(9,'滕绍武'),(10,'李芊墨'),(11,'刘苏曼'),(12,'张盼会'),(13,'赵盼盼');
 
 /*Table structure for table `t_teachplan` */
 

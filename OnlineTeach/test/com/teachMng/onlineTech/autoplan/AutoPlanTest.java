@@ -1,6 +1,5 @@
 package com.teachMng.onlineTech.autoplan;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,13 +17,18 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 	AutoPlan ap;
 	@Test
 	public void testArrange() {
+		//ap.deleteAll();
+		long pre = System.currentTimeMillis();
 		List<CoursePlanItem> coursePlan = ap.beginPlan();
-		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
-		CoursePlanItem cpi = null;
-		while(cpIter.hasNext()) {
-			cpi = cpIter.next();
-			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
-		}
-		ap.insToDB();//把结果插入数据库
+		System.out.println("此次排课费时" + (System.currentTimeMillis() - pre) + "毫秒");
+		//System.out.println(ap.status);
+//		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
+//		CoursePlanItem cpi = null;
+//		while(cpIter.hasNext()) {
+//			cpi = cpIter.next();
+//			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
+//		}
+		//ap.insToDB();
+
 	}
 }
