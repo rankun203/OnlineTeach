@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dao.IStudentDAO;
 import com.teachMng.onlineTeach.model.Student;
-import com.teachMng.onlineTeach.model.Student;
-import com.teachMng.onlineTeach.util.HibernateUtil;
 @Component("studentDao")
 public class StudentDAOImpl implements IStudentDAO {
 	private SessionFactory sf;

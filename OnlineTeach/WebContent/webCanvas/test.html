@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="jQuery/jquery-2.0.0.js" ></script>
+<title>画画</title>
+<style type="text/css">
+	.scrollBar {
+		height:20px;
+		float:left;
+	}
+	#changeLineWidth {
+			background-color:#0F9;
+			margin-top:5px;
+			height:10px;
+			width:200px;
+			float:left;
+		}
+	#curPosition {
+			margin-top:-4px;
+			position:absolute;
+			height:20px;
+			width:7px;
+			margin-left:0px;
+			background-color:#000;
+			cursor:w-resize;
+		}
+	#curValue {
+			margin-left:5px;
+			float:right;
+		}
+	#canv {
+		border:1px solid #000;
+		width:1050px;
+		overflow:hidden;
+		margin:50px;
+		-webkit-animation:animations 2s ease-in-out;
+		display:none;
+	}
+	@-webkit-keyframes animations {
+		0%{ width:5px; height:50px; margin:200px; opacity:.1}	
+		10%{ width:105px; height:100px; margin:290px; opacity:.2}	
+		20%{ width:205px; height:150px; margin:330px; opacity:.3}	
+		30%{ width:305px; height:200px; margin:180px; opacity:.4}	
+		40%{ width:405px; height:250px; margin:160px; opacity:.5}	
+		50%{ width:505px; height:300px; margin:140px; opacity:.6}	
+		60%{ width:605px; height:350px; margin:120px; opacity:.7}	
+		70%{ width:705px; height:400px; margin:100px; opacity:.8}	
+		80%{ width:805px; height:450px; margin:80px; opacity:.9}	
+		90%{ width:905px; height:500px; margin:60px; opacity:1}	
+		100%{ width:1050px; height:550px; margin:50px; opacity:1}													
+	}
+	.canvMenu {
+	}
+</style>
+</head>
+<body>
+<div id="showCanvas">显示</div>
+<div id="canv">
+    <!--线宽：<input type="text" id="setLineWidth" />-->
+    <div class="canvMenu">
+        <div class="scrollBar">
+            <div id="changeLineWidth" >
+                <div id="curPosition"></div>
+            </div>
+            <div id="curValue">1</div>
+        </div>
+        <input type="button" id="clear" value="擦擦" />
+        <input type="button" id="draw" value="画画" />
+        <input type="button" id="save" value="保存" />
+        <div id="closeCanvas">关闭</div>
+    </div>
+    <canvas style="border:1px solid #0f0; cursor:url(pencil.png), pointer;" width="800" height="500" id="myCanvas" >你out了，赶快换个浏览器把，不然不能体验次画图板哦！</canvas>
+</div>
+<script type="text/javascript">
+	var canvas=document.getElementById("myCanvas");
+	var ctx=canvas.getContext('2d');
+	var lineWidth = 1;
+	var oldX = 0;
+	var oldY = 0;
+	var afterColor = "#fff";    //背景色
+	var frontColor = "#000";     //前景色
+	var isDraw = 0;      //0是初始化状态，1是画先状态，2是点击擦除状态, 3是移动擦除
+	canvas.onmousedown = function (e) {
+			e = window.event || e;
+			oldX = e.clientX - this.offsetLeft + 8;
+			oldY = e.clientY - this.offsetTop + 20;  
+			ctx.lineJoin="round";         //线的交接处
+			ctx.lineCap="round";       //线的端点样式。
+					
+			if(2 == isDraw) {
+				ctx.strokeStyle = afterColor;
+				ctx.fillStyle = afterColor;	
+				isDraw = 3;
+			} else if(0 == isDraw) {
+				ctx.fillStyle = frontColor;	
+				ctx.strokeStyle = frontColor;
+				isDraw = 1;
+			}
+			ctx.beginPath();
+			ctx.arc(oldX, oldY, lineWidth/2, 0, 360, true);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.moveTo(oldX,oldY);
+		}
+	canvas.onmousemove = function(e) {
+			oldX = e.clientX - this.offsetLeft + 8;
+			oldY = e.clientY - this.offsetTop + 20;
+			e = window.event || e;
+			if(1 == isDraw) {
+				ctx.lineWidth = lineWidth;
+				ctx.lineTo(oldX, oldY);
+				ctx.stroke();
+			} else if(3 == isDraw) {
+				ctx.lineWidth = lineWidth;
+				ctx.lineTo(oldX, oldY);
+				ctx.stroke();
+			}
+		}
+	canvas.onmouseup = function() {
+			switch(isDraw) {
+				case 1: {
+					isDraw = 0;
+					}break;
+				case 2:
+				case 3:{
+					isDraw = 2;
+					}break;
+			}
+		}
+	canvas.onmouseout = function() {
+			isDraw = 0;
+		}	
+		
+	$(document).ready(function() {
+		$("#canv").bind("contextmenu", function() {
+				return false;
+			});	
+		$("#canv").bind("selectstart", function() {
+			return false;	
+		});				
+		//对canvas的几个事件定义
+		$("#myCanvas").bind("selectstart", function() {
+			return false;	
+		});			
+		$("#clear").click(function () {
+				$("#myCanvas").css("cursor", "url(eraser.png), pointer");
+				isDraw = 2;
+			});
+		$("#draw").click(function () {
+				$("#myCanvas").css("cursor", "url(pencil.png), pointer");
+				isDraw = 0;
+			});
+		$("#save").click( function () {
+			window.location.href=canvas.toDataURL("image/png");
+		});
+		$("#setLineWidth").blur(function () {
+				lineWidth = this.value;
+			});
+		
+		//改变线宽
+		var clwIsDown = 0;
+		$("#changeLineWidth").mousedown(function () {
+				var e = window.event;
+				var maxPst = $("#changeLineWidth").css("width").substr(0, $("#changeLineWidth").css("width").length - 2);
+				//console.log((e.clientX - this.offsetLeft) + "<=" + maxPst);
+				if((e.clientX - this.offsetLeft) <= maxPst) {
+					$("#curPosition").css("margin-left", e.clientX - this.offsetLeft);
+					setCurValue( e.clientX - this.offsetLeft);
+					clwIsDown = 1;						
+				}
+			});
+		$("#changeLineWidth").mouseup(function () {
+				clwIsDown = 0;
+			});
+		$("#changeLineWidth").mouseout( function () {
+				clwIsDown = 0;			
+			});
+		$("#changeLineWidth").mousemove(function () {
+				if(1 == clwIsDown) {
+					var e = window.event;
+					var maxPst = $("#changeLineWidth").css("width").substr(0, $("#changeLineWidth").css("width").length - 2);
+					//console.log((e.clientX - this.offsetLeft) + "<=" + maxPst);
+					if((e.clientX - this.offsetLeft) <= maxPst) {
+						$("#curPosition").css("margin-left", e.clientX - this.offsetLeft);
+						setCurValue( e.clientX - this.offsetLeft);
+					}
+				}
+			});
+		 $("#showCanvas").click(function () {
+			 	$("#canv").css("display", "block");
+			 });
+		 $("#closeCanvas").click(function () {
+			 	$("#canv").css("display", "none");
+			 });			 
+		function setCurValue(val) {
+			console.log($("#curValue").get(0));
+			lineWidth = val;
+			$("#curValue").html(val);
+		}				
+	});	
+</script>
+</body>
+</html>
+

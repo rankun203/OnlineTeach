@@ -8,40 +8,10 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
  	<constant name="struts.objectFactory" value="spring" />
-<!--     <package name="default" namespace="/" extends="struts-default">
+ 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
-        <default-action-ref name="index" />
- 
-        <global-results>
-            <result name="error">/error.jsp</result>
-        </global-results>
-
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error"/>
-        </global-exception-mappings>
-
-        <action name="index">
-            <result type="redirectAction">
-                <param name="actionName">HelloWorld</param>
-                <param name="namespace">/example</param>
-            </result>
-        </action>
-    </package>
-
-    <include file="example.xml"/> -->
-
-	<include file="strutsConfig/autoPlan.xml"/>
-	
-    <!-- Add packages here -->
-	<package name="default" namespace="/" extends="struts-default">		
-        <action name="autoPlan1" class="com.teachMng.onlineTeach.action.AutoPlanAction">
-            <result>/index1.jsp</result>
-        </action>
-        
-        <action name="autoPlan2" class="autoPlanAction">
-            <result>/index2.jsp</result>
-        </action>
-        
-    </package>
     
+	<include file="strutsConfig/autoPlan.xml"/>
+
+
 </struts>

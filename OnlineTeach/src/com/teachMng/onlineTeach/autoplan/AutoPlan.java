@@ -2,7 +2,9 @@ package com.teachMng.onlineTeach.autoplan;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -32,6 +34,7 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Scope("singleton")
 public class AutoPlan {
 
+	Queue <String>msgQueue;
 	/**
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
@@ -91,11 +94,21 @@ public class AutoPlan {
 	 * @return 返回一个float类型的进度值，
 	 */
 	public float getProgress() {
-		int curCount = getCurCourseCount();
-		float progress;
-		progress = (float) ((curCount + 0.0) / allCourseCount);
-		System.out.println(progress);
-		return 0;
+		return (float) ((getCurCourseCount() + 0.0) / allCourseCount);
+	}
+	
+	/**
+	 * 从排课进度消息的开头获取一个消息字符串
+	 * @return 一个字符串，队列中的最旧的消息
+	 */
+	public String getMsg(){
+		String msg = "[";
+		while(!msgQueue.isEmpty()){
+			msg += "\"" + msgQueue.poll() + "\",";
+		}
+		msg = msg.substring(0, msg.length() - 1);
+		msg += "]";
+		return msg;
 	}
 
 	/**
@@ -132,6 +145,7 @@ public class AutoPlan {
 	}
 
 	private AutoPlan() {
+		msgQueue = new LinkedList<String>();
 	};
 
 	/**
@@ -161,6 +175,7 @@ public class AutoPlan {
 	 * 初始化数据
 	 */
 	private void init() {
+System.out.println("init()");
 		students = null;
 		classRooms = null;
 		courses = null;
@@ -213,18 +228,11 @@ public class AutoPlan {
 		MajorsCourse msc;
 		while (iter.hasNext()) {
 			msc = iter.next();
-			// System.out.println(msc.getCourse().getCourseName() + "-->" +
-			// msc.getParagraph() + "-->" + getPlanPara(sc.getScID(),
-			// msc.getCourse().getCourseID()));
 			if (msc.getParagraph() > getPlanPara(sc.getScID(), msc.getCourse()
 					.getCourseID())) {
-				// System.out.println(msc.getCourse().getCourseName() + "-->" +
-				// msc.getParagraph() + "-->" + sc.getPlanPara());
 				return true; //
 			}
 		}
-		// getProgress();
-		System.out.println(getCurClassName());
 		System.out.println(sc.getMajor().getMajorName() + sc.getScName()
 				+ "班 over!  ————————   " + mc.size());
 		return false;
@@ -573,7 +581,9 @@ public class AutoPlan {
 	 * 自动排课入口方法
 	 */
 	private void autoPlan() {
-		System.out.println("--------------start!");
+		onProgress = true;
+		msgQueue.add("--------------start!");
+System.out.println(msgQueue.poll());
 		Random rand = new Random();
 		CoursePlanItem cpi = null;
 		int index;
@@ -582,33 +592,22 @@ public class AutoPlan {
 		ClassRoom cr = null;
 		Major major = null;
 		Course course = null;
-		// List<Course> specCourse = null; //某专业的所有课程
 		MajorsCourse msc = null;
 		List<MajorsCourse> majorsCourse = null; // 某专业与其课程的对应关系
-		// System.out.println(schoolClasses.size() +
-		// "***************************************************88");
 		Iterator<SchoolClass> scIter = schoolClasses.iterator();
 		while (scIter.hasNext()) {
 			sc = scIter.next();
 			paragraph = 1;
 			major = sc.getMajor();
-			setCurClassName(major.getMajorName() + " " + sc.getScName());
+			msgQueue.add((major.getMajorName() + " " + sc.getScName()));
 			majorsCourse = getMajorsCourseByMajorId(major.getMajorID());
-			// System.out.println(checkCourse(majorsCourse, sc) +
-			// "_____________________________________----");
 			while (checkCourse(majorsCourse, sc)) {
-				// System.out.println("AAAAAAAAAAAAAAAAAAAA");
-				// System.out.println(index + " _    " + majorsCourse.size());
-				// System.out.println(msc.getCourse().getCourseName() + "  " +
-				// msc.getParagraph() + "      " + msc.getPlanPara());
-				// System.out.println("**" + msc.getParagraph() + "->" +
-				// msc.getPlanPara());
+
 				index = rand.nextInt(majorsCourse.size()); // 随机取课进行排列
 				msc = majorsCourse.get(index);
 				course = msc.getCourse();
 				if (msc.getParagraph() > getPlanPara(sc.getScID(),
 						course.getCourseID())) { // 如果取出的课程尚未排完
-					// System.out.println("AAAAAAAA");
 					t = getAvailableTeacher(course, sc);
 					if (null == t)
 						return;
@@ -625,20 +624,20 @@ public class AutoPlan {
 					coursePlan.add(cpi);
 					setPlanPara(sc.getScID(), course.getCourseID(),
 							getPlanPara(sc.getScID(), course.getCourseID()) + 1);
-					// System.out.println("**" + msc.getParagraph() + "->" +
-					// msc.getPlanPara());
-					// System.out.println("**" +
-					// majorsCourse.get(index).getParagraph() + "->" +
-					// majorsCourse.get(index).getPlanPara());
-					// System.out.println(major + " " + sc + "__" + course +
-					// "__" + t + "_____ " + cr + "______" + paragraph);
-					// System.out.println(major.getMajorName() + sc.getScName()
-					// + "__" + course.getCourseName() + "__" + t.getTeacName()
-					// + "_____ " + cr.getCrName() + "______" + paragraph);
 					paragraph++;
+					
+					
+try {
+	Thread.sleep(1000);
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
 				}
 			}
 		}
+		onProgress = false;
 	}
 
 	/*
@@ -789,14 +788,6 @@ public class AutoPlan {
 		this.majorsCourseService = majorsCourseService;
 	}
 
-	public String getCurClassName() {
-		return curClassName;
-	}
-
-	public void setCurClassName(String curClassName) {
-		this.curClassName = curClassName;
-	}
-
 	/*
 	 * 这坨setter和getter终于结束了
 	 */
@@ -807,7 +798,6 @@ public class AutoPlan {
 	
 	private static int allCourseCount; // 所有班级的所有课程之和，用于获取排课进度时所需要的变量。
 
-	private String curClassName; // 当前正在排课的班级名称
 	private int paragraph = 0;
 	/**
 	 * 检测到冲突时的重排次数
@@ -837,5 +827,7 @@ public class AutoPlan {
 	private IStudentService studentService;
 	private ITeacherService teacherService;
 	private IMajorsCourseService majorsCourseService;
+	public boolean onProgress = false;//正在排课？？？
+
 
 }

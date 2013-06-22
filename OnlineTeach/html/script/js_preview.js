@@ -8,21 +8,28 @@ function addOneAnswer(){
 	document.getElementById("daTit").parentNode.insertBefore(insertedNode, document.getElementById("daTit").nextSibling);
 }
 
+
+//generateCoursePlan.html 预正脚本
 $(document).ready(function(){
 	$("button.apstart").click(function(){
 		$("#pbprogress")
 			.text("")
 			.css("width", "0%");
-		$.get("xx.action", function(data){
+		var startUrl = "http://localhost:8080/OnlineTeach/ap/start";
+		$.get(startUrl, function(data){
 			console.log(data);
-			if(data == "success")	定时运行getProgress
+			if(data == "start")	progress();
 		});
     });
 });
-function getProgress(){
-	$.get("progress.action", function(data){
-		console.log(data);
-	});
+function progress(){
+	setTimeout(function(){
+		var progressUrl = "http://localhost:8080/OnlineTeach/ap/ppp";
+		$.get(progressUrl, function(data){
+			console.log(data);
+		});
+	}, 1000);
+	
 }
 
 

@@ -24,8 +24,6 @@ public class StudentServiceImpl implements IStudentService {
 	@Transactional
 	@Override
 	public List<Student> allStudent() {
-		// TODO Auto-generated method stub
-		//System.out.println("________________" + studentDao);
 		return studentDao.allStudent();
 	}
 	@Transactional
@@ -37,7 +35,6 @@ public class StudentServiceImpl implements IStudentService {
 	@Transactional
 	@Override
 	public boolean updStudent(Student stu) {
-		// TODO Auto-generated method stub
 		return studentDao.updStudent(stu);
 	}
 

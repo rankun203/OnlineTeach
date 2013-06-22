@@ -9,9 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dao.IMajorDAO;
-import com.teachMng.onlineTeach.model.Course;
 import com.teachMng.onlineTeach.model.Major;
-import com.teachMng.onlineTeach.util.HibernateUtil;
 @Component("majorDao")
 public class MajorDAOImpl implements IMajorDAO {
 	private SessionFactory sf;

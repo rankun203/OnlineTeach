@@ -1,28 +1,49 @@
 package com.teachMng.onlineTeach.service;
 
-import java.util.Iterator;
-import java.util.List;
-
 import javax.annotation.Resource;
 
-import com.teachMng.onlineTeach.autoplan.AutoPlan;
-import com.teachMng.onlineTeach.model.CoursePlanItem;
+import org.springframework.stereotype.Component;
 
-@Resource(name="autoPlan")
+import com.teachMng.onlineTeach.autoplan.AutoPlan;
+import com.teachMng.onlineTeach.util.Timer;
+
+@Component("runnableAutoPlanTask")
 public class RunnableAutoPlanTask implements Runnable{
-	AutoPlan ap;
+	private AutoPlan ap;
+	private Timer t;
 	public RunnableAutoPlanTask(){
 	}
 	@Override
 	public void run() {
-		List<CoursePlanItem> coursePlan = ap.beginPlan();
-		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
-		CoursePlanItem cpi = null;
-		while(cpIter.hasNext()) {
-			cpi = cpIter.next();
-			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
-		}
-		ap.insToDB();//把结果插入数据库
-
+		t = new Timer();
+		ap.beginPlan();
+		ap.insToDB();
+		t.reset();
 	}
+	public double usedTime(){
+		return t.total();
+	}
+	/**
+	 * 取出消息队列中的所有消息
+	 * @return
+	 */
+	public String pollMsg(){
+		return ap.getMsg();
+	}
+	public double progressedPercent(){
+		return ap.getProgress();
+	}
+	public void init(){
+//		ap.deleteAll();
+	}
+
+	public AutoPlan getAp() {
+		return ap;
+	}
+
+	@Resource(name="autoPlan")
+	public void setAp(AutoPlan autoPlan) {
+		this.ap = autoPlan;
+	}
+	
 }

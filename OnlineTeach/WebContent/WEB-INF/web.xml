@@ -4,14 +4,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>OnlineTeach</display-name>
-<!-- 	<welcome-file-list> -->
-<!-- 	<welcome-file>index.html</welcome-file> -->
-<!-- 	<welcome-file>index.htm</welcome-file> -->
-<!-- 	<welcome-file>index.jsp</welcome-file> -->
-<!-- 	<welcome-file>default.html</welcome-file> -->
-<!-- 	<welcome-file>default.htm</welcome-file> -->
-<!-- 	<welcome-file>default.jsp</welcome-file> -->
-<!-- 	</welcome-file-list> -->
 
 	<filter>
 		<filter-name>struts2</filter-name>
@@ -32,6 +24,5 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext*.xml,classpath*:applicationContext*.xml</param-value>
 	</context-param>
- 
 
 </web-app>

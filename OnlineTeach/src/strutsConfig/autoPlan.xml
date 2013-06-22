@@ -4,9 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="autoplan" namespace="ap">
-    	<action name="start" class="" method="">
-    	</action>
+	<package name="ap" extends="struts-default" namespace="/ap">
+        <action name="start" class="autoPlanAction" method="start" />
+        <action name="ppp" class="autoPlanAction" method="printProgressPercent" />
     </package>
     
 </struts>

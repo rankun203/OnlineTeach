@@ -2,8 +2,6 @@ package com.teachMng.onlineTeach.dao;
 
 import java.util.List;
 
-import com.teachMng.onlineTeach.model.Course;
-import com.teachMng.onlineTeach.model.Major;
 import com.teachMng.onlineTeach.model.MajorsCourse;
 
 @SuppressWarnings("unused")

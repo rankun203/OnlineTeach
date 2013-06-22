@@ -2,8 +2,6 @@ package com.teachMng.onlineTeach.service;
 
 import java.util.List;
 
-import com.teachMng.onlineTeach.model.Course;
-import com.teachMng.onlineTeach.model.Major;
 import com.teachMng.onlineTeach.model.MajorsCourse;
 
 public interface IMajorsCourseService {
