@@ -19,12 +19,12 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void testArrange() {
 		List<CoursePlanItem> coursePlan = ap.beginPlan();
-		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
-		CoursePlanItem cpi = null;
-		while(cpIter.hasNext()) {
-			cpi = cpIter.next();
-			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
-		}
+//		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
+//		CoursePlanItem cpi = null;
+//		while(cpIter.hasNext()) {
+//			cpi = cpIter.next();
+//			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
+//		}
 		//ap.insToDB();
 	}
 }

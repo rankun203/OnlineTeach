@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dto.ClassCoursePara;
@@ -28,8 +29,9 @@ import com.teachMng.onlineTeach.service.IStudentService;
 import com.teachMng.onlineTeach.service.ITeacherService;
 
 @Component("autoPlan")
+@Scope("singleton")
 public class AutoPlan {
-
+	
 	/**
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
@@ -102,8 +104,8 @@ public class AutoPlan {
 		clean();
 	}
 
-	/*
-	 * 全部清空 return：void
+	/**
+	 * 全部清空
 	 */
 	public void clean() {
 		students = null;
@@ -125,7 +127,8 @@ public class AutoPlan {
 		teacherService = null;
 		majorsCourseService = null;
 	}
-
+	private AutoPlan(){};   
+	
 	/**
 	 * 获取当前已经排列的课程总数
 	 * 
@@ -215,7 +218,8 @@ public class AutoPlan {
 				return true; //
 			}
 		}
-		getProgress();
+		//getProgress();
+		System.out.println(getCurClassName());
 		System.out.println(sc.getMajor().getMajorName() + sc.getScName()
 				+ "班 over!  ————————   " + mc.size());
 		return false;
@@ -554,6 +558,7 @@ public class AutoPlan {
 			sc = scIter.next();
 			paragraph = 1;
 			major = sc.getMajor();
+			setCurClassName(major.getMajorName() + " " + sc.getScName());
 			majorsCourse = getMajorsCourseByMajorId(major.getMajorID());
 			// System.out.println(checkCourse(majorsCourse, sc) +
 			// "_____________________________________----");
@@ -750,10 +755,20 @@ public class AutoPlan {
 		this.majorsCourseService = majorsCourseService;
 	}
 
+	public String getCurClassName() {
+		return curClassName;
+	}
+	
+	public void setCurClassName(String curClassName) {
+		this.curClassName = curClassName;
+	}
 	/*
 	 * 这坨setter和getter终于结束了
 	 */
+	
 	private static int allCourseCount; // 所有班级的所有课程之和，用于获取排课进度时所需要的变量。
+	
+	private String curClassName;     //当前正在排课的班级名称
 	private int rePlanCount = 1;
 
 	private List<Student> students = null;
