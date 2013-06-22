@@ -1029,3 +1029,136 @@ input[type="radio"] {
 .disabledIF{
 	background-color:#fff;
 }
+
+/*progress bar*/
+.progress-bar {
+	height: 20px;
+	padding: 4px 4px 3px 4px;
+	width: 800px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 4px;
+	box-shadow: 0 1px 5px #BEBEBE inset, 0 1px 0 #BEBEBE;
+	margin: 11px 0 0 11px;
+}
+
+.progress-bar span {
+	display: inline-block;
+	height: 100%;	
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+        -webkit-transition: width .4s ease-in-out;
+        transition: width .4s ease-in-out;    
+}
+
+.blue span {
+	background-color: #4183c4;   
+}
+
+.stripes span {
+	-webkit-background-size: 30px 30px;
+	-moz-background-size: 30px 30px;
+	background-size: 30px 30px;			
+	background-image: -webkit-gradient(linear, left top, right bottom,
+						color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+						color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+						color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+						to(transparent));
+	background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+						transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+						transparent 75%, transparent);
+	background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+						transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+						transparent 75%, transparent);
+	background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+						transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+						transparent 75%, transparent);
+	background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+						transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+						transparent 75%, transparent);
+	background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+						transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+						transparent 75%, transparent);            
+	
+	-webkit-animation: animate-stripes 3s linear infinite;
+	-moz-animation: animate-stripes 3s linear infinite;       		
+}
+
+@-webkit-keyframes animate-stripes { 
+	0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+
+@-moz-keyframes animate-stripes {
+	0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+.shine span {
+	position: relative;
+}
+
+.shine span::after {
+	content: '';
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;			
+	
+	-webkit-animation: animate-shine 2s ease-out infinite;
+	-moz-animation: animate-shine 2s ease-out infinite; 			
+}
+
+@-webkit-keyframes animate-shine { 
+	0% {opacity: 0; width: 0;}
+	50% {opacity: .5;}
+	100% {opacity: 0; width: 95%;}
+}
+
+
+@-moz-keyframes animate-shine {
+	0% {opacity: 0; width: 0;}
+	50% {opacity: .5;}
+	100% {opacity: 0; width: 95%;}
+}
+
+/*auto plan*/
+.autoplantitle{
+	margin: 40px 0 5px 0;
+}
+.pb{
+	height: 200px;
+}
+.pbBtn{
+	width: 99px;
+	height: 49px;
+	text-align: center;
+	border-right: 1px dashed #ccc;
+	border-bottom: 1px dashed #ccc;
+}
+.pbBtn:hover{
+	border-right: 1px dashed #aaa;
+	border-bottom: 1px dashed #aaa;
+}
+.apstart{
+	margin-top: 10px;
+}
+.pbpb{
+	height: 49;
+	border-bottom: 1px dashed #ccc;
+}
+.pbpb:hover{
+	height: 49;
+	border-bottom: 1px dashed #aaa;
+	border-left: 1px dashed #aaa;
+}
+#pbprogress{
+	width:100%;
+	color: #fff;
+	text-align: center;
+}

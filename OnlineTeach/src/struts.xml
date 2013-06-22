@@ -30,10 +30,13 @@
 
     <include file="example.xml"/> -->
 
+	<include file="strutsConfig/autoPlan.xml"/>
+	
     <!-- Add packages here -->
 	<package name="default" namespace="/" extends="struts-default">
         <action name="index">
             <result>/index.jsp</result>
         </action>
     </package>
+    
 </struts>
