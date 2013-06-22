@@ -31,15 +31,17 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Component("autoPlan")
 @Scope("singleton")
 public class AutoPlan {
-	
-	/** 
+
+	/**
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
 	 * @return 排列好的所有课程表
 	 */
 	public List<CoursePlanItem> beginPlan() {
+		status = 1;
 		arrange();
 		System.out.println("-----------end!");
+		status = 3;
 		return coursePlan;
 	}
 
@@ -49,8 +51,8 @@ public class AutoPlan {
 	 * @return true-插入成功。false-插入失败
 	 */
 	public boolean insToDB() {
-		if(null == coursePlan || 0 >= coursePlan.size()) {
-System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
+		if (null == coursePlan || 0 >= coursePlan.size()) {
+			System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
 			return false;
 		}
 		boolean flag = false;
@@ -102,6 +104,7 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	public void deleteAll() {
 		coursePlanItemService.deleteAll();
 		clean();
+		System.out.println("已成功清除所有数据！");
 	}
 
 	/**
@@ -127,8 +130,10 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		teacherService = null;
 		majorsCourseService = null;
 	}
-	private AutoPlan(){};   
-	
+
+	private AutoPlan() {
+	};
+
 	/**
 	 * 获取当前已经排列的课程总数
 	 * 
@@ -218,7 +223,7 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 				return true; //
 			}
 		}
-		//getProgress();
+		// getProgress();
 		System.out.println(getCurClassName());
 		System.out.println(sc.getMajor().getMajorName() + sc.getScName()
 				+ "班 over!  ————————   " + mc.size());
@@ -232,7 +237,7 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	 *            第几节课
 	 * @return 返回当前节数的所有课程表原子
 	 */
-	private List<CoursePlanItem> getCoursePlanByParagraph(int paragraph) { //
+	private List<CoursePlanItem> getCoursePlanByParagraph() { //
 		List<CoursePlanItem> _list = new ArrayList<CoursePlanItem>();
 		Iterator<CoursePlanItem> _iter = coursePlan.iterator();
 		CoursePlanItem _cpi;
@@ -275,9 +280,6 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		return _teacher;
 	}
 
-	/*
-	 * 。 c: sc: paragraph: return：
-	 */
 	/**
 	 * 获取一个可用的教师
 	 * 
@@ -289,13 +291,42 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	 *            那节课
 	 * @return 返回一个可以用的教师
 	 */
-	private Teacher getAvailableTeacher(Course c, SchoolClass sc, int paragraph) {
+	private Teacher getAvailableTeacher(Course c, SchoolClass sc) {
 		// System.out.println(c.getTeachers());
+		Teacher t = getTeacherByParagraph(c, sc);
+		if(null == t) {
+			rePlanCount++;
+			status = 2;
+			System.out.println("师资力量不够强大啊！没教师了。第" + rePlanCount
+					+ "次重新排列中..........");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			arrange();
+			return null;
+		} else {
+			return t;
+		}
+	}
+	
+	/**
+	 * 检测此节课的老师是否有冲突
+	 * @param c
+	 *            课程
+	 * @param sc
+	 *            班级
+	 * @param paragraph
+	 *            那节课
+	 * @return 返回一个教师
+	 */
+	private Teacher getTeacherByParagraph(Course c, SchoolClass sc) {
 		List<Teacher> _teachers = new ArrayList<Teacher>(c.getTeachers());
 		Teacher t = null;
 		Boolean b = true;
 		Iterator<Teacher> _iter = _teachers.iterator();
-		List<CoursePlanItem> _list = getCoursePlanByParagraph(paragraph);
+		List<CoursePlanItem> _list = getCoursePlanByParagraph();
 		t = findTeacher(c.getCourseID(), sc.getScID());
 		if (null != t) {
 			return t;
@@ -305,30 +336,28 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 			return _teachers.get(index);
 		}
 		Iterator<CoursePlanItem> _cpiIter = _list.iterator();
+		CoursePlanItem _cpi;
 		while (_iter.hasNext()) {
 			t = _iter.next();
 			b = true;
+			//System.out.println(t.getTeacName());
 			while (_cpiIter.hasNext()) {
-				if (_cpiIter.next().getTeacher().getTeacID() == t.getTeacID()) {
+				_cpi = _cpiIter.next();
+				if (_cpi.getTeacher().getTeacID() == t.getTeacID()) {
 					b = false;
+					//System.out.println(_cpi.getTeacher().getTeacID() + " + " + t.getTeacID() + "_____" + paragraph);
 					break;
 				}
 			}
 			if (b)
 				return t;
 		}
-		System.out.println("师资力量不够强大啊！没教师了。第" + rePlanCount
-				+ "次重新排列中..........");
-		rePlanCount++;
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if(paragraph < MAXPARAGRAPH)  {
+			paragraph++;
+			return getTeacherByParagraph(c, sc);
 		}
-		arrange();
 		return null;
 	}
-
 	/**
 	 * 获取同一类型的所有教室
 	 * 
@@ -386,8 +415,8 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	 * @return 返回一个这个时间段可以使用的教室
 	 */
 	private ClassRoom getAvailableClassRoom(int courseID, int scID,
-			int roomType, int paragraph) {
-		List<CoursePlanItem> _list = getCoursePlanByParagraph(paragraph);
+			int roomType) {
+		List<CoursePlanItem> _list = getCoursePlanByParagraph();
 		List<ClassRoom> _classRooms = getRoomByType(roomType);
 		ClassRoom _cr = findClassRoom(courseID, scID);
 		if (null != _cr)
@@ -417,8 +446,13 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 			if (b)
 				return _cr;
 		}
-		System.out.println("该拨款了！没教室上课了。第" + rePlanCount + "次重新排列中.........");
+		if(paragraph < MAXPARAGRAPH)  {
+			paragraph++;
+			return getAvailableClassRoom(courseID, scID, roomType);
+		}		
 		rePlanCount++;
+		status = 2;
+		System.out.println("该拨款了！没教室上课了。第" + rePlanCount + "次重新排列中.........");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -542,7 +576,7 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 		System.out.println("--------------start!");
 		Random rand = new Random();
 		CoursePlanItem cpi = null;
-		int index, paragraph = 1;
+		int index;
 		SchoolClass sc = null;
 		Teacher t = null;
 		ClassRoom cr = null;
@@ -575,11 +609,11 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 				if (msc.getParagraph() > getPlanPara(sc.getScID(),
 						course.getCourseID())) { // 如果取出的课程尚未排完
 					// System.out.println("AAAAAAAA");
-					t = getAvailableTeacher(course, sc, paragraph);
+					t = getAvailableTeacher(course, sc);
 					if (null == t)
 						return;
 					cr = getAvailableClassRoom(course.getCourseID(),
-							sc.getScID(), course.getRoomType(), paragraph);
+							sc.getScID(), course.getRoomType());
 					if (null == cr)
 						return;
 					cpi = new CoursePlanItem();
@@ -758,19 +792,33 @@ System.out.println("你神经病啊！什么数据都没有，我存什么进去
 	public String getCurClassName() {
 		return curClassName;
 	}
-	
+
 	public void setCurClassName(String curClassName) {
 		this.curClassName = curClassName;
 	}
+
 	/*
 	 * 这坨setter和getter终于结束了
 	 */
+	/**
+	 * 最大节数
+	 */
+	public final int MAXPARAGRAPH = 30;
 	
 	private static int allCourseCount; // 所有班级的所有课程之和，用于获取排课进度时所需要的变量。
-	
-	private String curClassName;     //当前正在排课的班级名称
-	private int rePlanCount = 1;
 
+	private String curClassName; // 当前正在排课的班级名称
+	private int paragraph = 0;
+	/**
+	 * 检测到冲突时的重排次数
+	 */
+	public int rePlanCount = 0;
+	/**
+	 * 当前排课的状态， 0——未进行，1——正在排课，2-检测到冲突进行重排，3——排课完成
+	 */
+	public int status = 0; 
+	
+	
 	private List<Student> students = null;
 	private List<ClassRoom> classRooms = null;
 	private List<Course> courses = null;

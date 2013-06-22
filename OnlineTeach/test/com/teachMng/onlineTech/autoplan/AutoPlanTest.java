@@ -17,8 +17,11 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 	AutoPlan ap;
 	@Test
 	public void testArrange() {
+		//ap.deleteAll();
+		long pre = System.currentTimeMillis();
 		List<CoursePlanItem> coursePlan = ap.beginPlan();
-
+		System.out.println("此次排课费时" + (System.currentTimeMillis() - pre) + "毫秒");
+		//System.out.println(ap.status);
 //		Iterator<CoursePlanItem> cpIter = coursePlan.iterator();
 //		CoursePlanItem cpi = null;
 //		while(cpIter.hasNext()) {
