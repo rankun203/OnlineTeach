@@ -9,9 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dao.ICourseDAO;
-import com.teachMng.onlineTeach.model.ClassRoom;
 import com.teachMng.onlineTeach.model.Course;
-import com.teachMng.onlineTeach.util.HibernateUtil;
 @Component("courseDao")
 public class CourseDAOImpl implements ICourseDAO {
 	private SessionFactory sf;
