@@ -106,7 +106,7 @@ public class AutoPlan {
 		while(!msgQueue.isEmpty()){
 			msg += "\"" + msgQueue.poll() + "\",";
 		}
-		msg = msg.substring(0, msg.length() - 1);
+		if(msg.length() > 1)	msg = msg.substring(0, msg.length() - 1);
 		msg += "]";
 		return msg;
 	}
@@ -628,9 +628,8 @@ System.out.println(msgQueue.poll());
 					
 					
 try {
-	Thread.sleep(1000);
+	Thread.sleep(300);
 } catch (InterruptedException e) {
-	// TODO Auto-generated catch block
 	e.printStackTrace();
 }
 
