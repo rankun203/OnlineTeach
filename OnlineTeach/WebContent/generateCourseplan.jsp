@@ -125,7 +125,7 @@
 						<!-- <span style="width: 40%"></span> -->
 						<span id="pbprogress">已就绪</span>
 					</div>
-				</div>
+				</div> 
 				<button class="evert btn">翻转</button>
 				<div id="autoPlanInfo">
 					<div id="console" style="display: none;">
