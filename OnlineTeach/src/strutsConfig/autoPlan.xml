@@ -8,5 +8,7 @@
         <action name="start" class="autoPlanAction" method="start" />
         <action name="ppp" class="autoPlanAction" method="printProgressPercent" />
     </package>
-    
+    <package name="test" extends="struts-default" namespace="/test">
+    	<action name="show" class="ajaxTestAction" method="show"></action>
+    </package>
 </struts>
