@@ -1049,8 +1049,8 @@ input[type="radio"] {
 	border-radius: 3px;
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-        -webkit-transition: width .4s ease-in-out;
-        transition: width .4s ease-in-out;    
+        -webkit-transition: width .5s ease-in-out, background-color .5s ease-in-out;
+        transition: width .5s ease-in-out, background-color .5s ease-in-out;    
 }
 
 .blue span {
@@ -1155,7 +1155,6 @@ input[type="radio"] {
 .pbpb:hover{
 	height: 49;
 	border-bottom: 1px dashed #aaa;
-	border-left: 1px dashed #aaa;
 }
 #pbprogress{
 	width:100%;

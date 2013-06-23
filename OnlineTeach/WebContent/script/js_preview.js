@@ -17,23 +17,30 @@ $(document).ready(function(){
 			.css("width", "0%");
 		var startUrl = "ap/start";
 		$.get(startUrl, function(data){
-			console.log(data);
-			if(data == "start")	progress();
+			if(data == "start")	$.refreshProgressBar();
 		});
     });
 });
 
-function progress(){
-	$.extend({
-		refreshProgressBar:function(){
-			var progressUrl = "ap/ppp";
-			$.post(progressUrl, "" , function(data){
-				console.log(data);
-			});
-			window.setTimeout($.refreshProgressBar(), 1000);
-		}
-	});
-}
+$.extend({
+	refreshProgressBar:function(){
+		var progressUrl = "ap/ppp";
+		$.post(progressUrl, "" , function(data){
+			if(data == 100.0)	{
+				$("#pbprogress")
+				.css("width", "100%")
+				.css("background-color", "#41C44B")
+				.text("已完成");
+				return;
+			}
+			$("#pbprogress")
+				.css("width", data+"%");
+			setTimeout("$.refreshProgressBar()", 1000);
+		});
+	}
+});
+	
+
 
 
 
