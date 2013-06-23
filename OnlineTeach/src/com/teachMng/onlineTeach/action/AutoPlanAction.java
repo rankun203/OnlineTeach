@@ -77,6 +77,7 @@ public class AutoPlanAction extends ActionSupport implements ServletResponseAwar
 //	util
 	public PrintWriter out(){
 		try {
+			response.setCharacterEncoding("utf-8");
 			return response.getWriter();
 		} catch (IOException e) {
 			System.err.println("系统错误，获取response对象失败！");
