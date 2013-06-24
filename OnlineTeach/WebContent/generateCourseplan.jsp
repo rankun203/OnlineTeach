@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>学期课表生成</title>
 <link rel="stylesheet" href="css/style.css" />
+
 </head>
 
 <body>
@@ -140,5 +141,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="include/footer.jsp"></jsp:include>
 </body>
 </html>
