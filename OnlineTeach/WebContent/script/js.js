@@ -1,5 +1,5 @@
  // JavaScript Document
-
+var flag = true;
 function mainNavExchange(mainNav, activePane) {
 	
     var allSubNavItem = document.getElementsByClassName("subMainNavItem");
@@ -164,6 +164,26 @@ $(document).ready(function(){
 			if(data == "start")	$.refreshProgressBar();
 		});
     });
+    $("button.evert").click(function() {	
+		var con, api, anima;
+		if(true == flag) {
+			con = "hideAnimation 1s ease";
+			api = "showAnimation 1s ease";			
+			anima = "evert0_360 2s ease";
+			console.log("AAAAAAAAAAAAAA");
+			flag = false;
+		}  else  {
+			con = "showAnimation 1s ease";
+			api = "hideAnimation 1s ease";
+			anima = "evert360_0 2s ease";
+			console.log("BBBBBBBBBB");
+			flag = true;
+		}
+		$("div#console").css("-webkit-animation", con);
+		$("div#apiList").css("-webkit-animation", api);			
+		$("div#autoPlanInfo").css("-webkit-animation", anima);		
+		setTimeout("changeStatus('apiList','console')", 900);
+	});		
 });
 
 $.extend({
@@ -185,7 +205,19 @@ $.extend({
 });
 //-------
 
-
+function changeStatus(var1, var2) {
+	console.log(var1 + "(((" + var2);
+	var v1 = document.getElementById(var1).style.display;
+	var v2 = document.getElementById(var2).style.display;
+	console.log(v1 + "__" + v2);
+	document.getElementById(var1).style.display = v2;
+	document.getElementById(var2).style.display = v1;
+}
+function addInfoToConsole(info) {
+	var val = document.getElementById("console").innerHTML;
+	val = info + "<br />" + val;
+	document.getElementById("console").innerHTML = val;
+}
 
 
 

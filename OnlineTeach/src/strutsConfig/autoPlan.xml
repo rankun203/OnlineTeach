@@ -9,5 +9,7 @@
         <action name="ppp" class="autoPlanAction" method="printProgressPercent" />
         <action name="msg" class="autoPlanAction" method="msg" />
     </package>
-    
+    <package name="test" extends="struts-default" namespace="/test">
+    	<action name="show" class="ajaxTestAction" method="show"></action>
+    </package>
 </struts>
