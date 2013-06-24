@@ -32,6 +32,6 @@ function progress(){
 			});
 			window.setTimeout($.refreshProgressBar(), 1000);
 		}
-	});
+	});    
 }	
 
