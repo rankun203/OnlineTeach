@@ -6,9 +6,6 @@
 <meta charset="utf-8">
 <title>课堂练习创建</title>
 <link rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="script/js.js"></script>
-<script type="text/javascript" src="script/js_preview.js"></script>
-<script src="script/jquery-1.9.1.js"></script>
 </head>
 
 <body>

@@ -6,10 +6,6 @@
 <meta charset="utf-8">
 <title>学期课表生成</title>
 <link rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="script/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="script/js.js"></script>
-<script type="text/javascript" src="script/js_preview.js"></script>
-
 </head>
 
 <body>
