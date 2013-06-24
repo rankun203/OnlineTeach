@@ -22,14 +22,12 @@ public class AjaxTestAction extends ActionSupport implements ServletResponseAwar
 		try {
 			return response.getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
-		// TODO Auto-generated method stub
 		response = arg0;
 	}
 

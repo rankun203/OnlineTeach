@@ -24,7 +24,6 @@ public class TeacherServiceImpl implements ITeacherService {
 	@Override
 	@Transactional
 	public List<Teacher> allTeacher() {
-		// TODO Auto-generated method stub
 		return teacherDao.allTeacher();
 	}
 
@@ -37,7 +36,6 @@ public class TeacherServiceImpl implements ITeacherService {
 	@Override
 	@Transactional
 	public boolean updTeacher(Teacher teacher) {
-		// TODO Auto-generated method stub
 		return teacherDao.updTeacher(teacher);
 	}
 

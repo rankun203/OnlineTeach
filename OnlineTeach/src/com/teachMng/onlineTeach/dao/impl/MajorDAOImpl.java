@@ -25,7 +25,6 @@ public class MajorDAOImpl implements IMajorDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Major> allMajor() {
-		// TODO Auto-generated method stub
 		List<Major> list = null;
 		String hql = "from Major";
 		Session s = sf.getCurrentSession();
@@ -48,7 +47,6 @@ public class MajorDAOImpl implements IMajorDAO {
 
 	@Override
 	public boolean updMajor(Major major) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(major);

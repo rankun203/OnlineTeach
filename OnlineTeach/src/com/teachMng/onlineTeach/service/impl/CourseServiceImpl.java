@@ -36,7 +36,6 @@ public class CourseServiceImpl implements ICourseService {
 	@Override
 	@Transactional
 	public boolean updCourse(Course course) {
-		// TODO Auto-generated method stub
 		return courseDao.updCourse(course);
 	}
 

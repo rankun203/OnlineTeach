@@ -25,7 +25,6 @@ public class MajorServiceImpl implements IMajorService {
 	@Override
 	@Transactional
 	public List<Major> allMajor() {
-		// TODO Auto-generated method stub
 		return majorDao.allMajor();
 	}
 
@@ -38,7 +37,6 @@ public class MajorServiceImpl implements IMajorService {
 	@Override
 	@Transactional
 	public boolean updMajor(Major major) {
-		// TODO Auto-generated method stub
 		return majorDao.updMajor(major);
 	}
 

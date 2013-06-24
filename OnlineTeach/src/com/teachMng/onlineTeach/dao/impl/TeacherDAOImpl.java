@@ -25,7 +25,6 @@ public class TeacherDAOImpl implements ITeacherDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Teacher> allTeacher() {
-		// TODO Auto-generated method stub
 		List<Teacher> list = null;
 		String hql = "from Teacher";
 		Session s = sf.getCurrentSession();
@@ -48,7 +47,6 @@ public class TeacherDAOImpl implements ITeacherDAO {
 
 	@Override
 	public boolean updTeacher(Teacher teacher) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(teacher);

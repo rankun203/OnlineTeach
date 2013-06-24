@@ -25,7 +25,6 @@ public class ClassRoomDAOImpl implements IClassRoomDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ClassRoom> allClassRoom() {
-		// TODO Auto-generated method stub
 		List<ClassRoom> list = null;
 		String hql = "from ClassRoom";
 		Session s = sf.getCurrentSession();
@@ -37,7 +36,6 @@ public class ClassRoomDAOImpl implements IClassRoomDAO {
 
 	@Override
 	public ClassRoom findById(int crID) {
-		// TODO Auto-generated method stub
 		ClassRoom cr = null;
 		String hql = "from ClassRoom where crID=?";
 		Session s = sf.getCurrentSession();
@@ -49,7 +47,6 @@ public class ClassRoomDAOImpl implements IClassRoomDAO {
 
 	@Override
 	public boolean updClassRoom(ClassRoom cr) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(cr);

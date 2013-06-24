@@ -25,7 +25,6 @@ public class SchoolClassDAOImpl implements ISchoolClassDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SchoolClass> allSchoolClass() {
-		// TODO Auto-generated method stub
 		List<SchoolClass> list = null;
 		String hql = "from SchoolClass";
 		Session s = sf.getCurrentSession();
@@ -48,7 +47,6 @@ public class SchoolClassDAOImpl implements ISchoolClassDAO {
 
 	@Override
 	public boolean updSchoolClass(SchoolClass sc) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(sc);

@@ -27,38 +27,32 @@ public class CoursePlanItemServiceImpl implements ICoursePlanItemService {
 	@Override
 	@Transactional
 	public boolean insCoursePlanItem(CoursePlanItem cpi) {
-		// TODO Auto-generated method stu
 		return cpiDao.insCoursePlanItem(cpi);
 	}
 	@Override
 	@Transactional
 	public List<CoursePlanItem> allCoursePlan() {
-		// TODO Auto-generated method stub
 		return cpiDao.allCoursePlan();
 	}
 
 	@Override
 	@Transactional
 	public boolean updCoursePlan(CoursePlanItem cpi) {
-		// TODO Auto-generated method stub
 		return cpiDao.updCoursePlan(cpi);
 	}
 	@Override
 	@Transactional
 	public List<CoursePlanItem> allCoursePlanByClassId(int classID) {
-		// TODO Auto-generated method stub
 		return cpiDao.allCoursePlanByClassId(classID);
 	}
 	@Override
 	@Transactional
 	public List<CoursePlanItem> allCoursePlanByTeacherId(int teacherID) {
-		// TODO Auto-generated method stub
 		return cpiDao.allCoursePlanByTeacherId(teacherID);
 	}
 	@Override
 	@Transactional
 	public List<CoursePlanItem> allCoursePlanByRoomId(int roomID) {
-		// TODO Auto-generated method stub
 		return cpiDao.allCoursePlanByRoomId(roomID);
 	}
 
