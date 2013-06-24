@@ -6,10 +6,6 @@
 <meta charset="utf-8">
 <title>课堂练习作答</title>
 <link rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="script/js.js"></script>
-<script language="javascript" type="text/javascript" >
-
-</script>
 </head>
 
 <body>
