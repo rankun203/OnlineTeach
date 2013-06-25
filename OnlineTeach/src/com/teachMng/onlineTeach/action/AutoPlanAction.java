@@ -2,6 +2,8 @@ package com.teachMng.onlineTeach.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.teachMng.onlineTeach.dto.InfoTagItem;
 import com.teachMng.onlineTeach.service.RunnableAutoPlanTask;
 
 @SuppressWarnings("serial")
@@ -17,6 +20,14 @@ import com.teachMng.onlineTeach.service.RunnableAutoPlanTask;
 public class AutoPlanAction extends ActionSupport implements ServletResponseAware{
 
 	private HttpServletResponse response;
+	private Set<InfoTagItem> infoTag = new HashSet<InfoTagItem>();
+	public Set<InfoTagItem> getInfoTag() {
+		return infoTag;
+	}
+	public void setInfoTag(Set<InfoTagItem> infoTag) {
+		this.infoTag = infoTag;
+	}
+
 	/**
 	 * 定义一个线程引用，保存排课线程
 	 */
@@ -39,6 +50,10 @@ public class AutoPlanAction extends ActionSupport implements ServletResponseAwar
 		} else {
 			out().print("onProgress");
 		}
+	}
+	public String generateCoursePlan() {
+		out().print(task.getInfoTag());
+		return null;
 	}
 	public String cancel(){
 		apt.interrupt();

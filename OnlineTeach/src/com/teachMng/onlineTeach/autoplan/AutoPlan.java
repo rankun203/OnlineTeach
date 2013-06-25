@@ -1,11 +1,15 @@
 package com.teachMng.onlineTeach.autoplan;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -13,13 +17,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dto.ClassCoursePara;
+import com.teachMng.onlineTeach.dto.InfoTagItem;
 import com.teachMng.onlineTeach.model.ClassRoom;
 import com.teachMng.onlineTeach.model.Course;
 import com.teachMng.onlineTeach.model.CoursePlanItem;
 import com.teachMng.onlineTeach.model.Major;
 import com.teachMng.onlineTeach.model.MajorsCourse;
 import com.teachMng.onlineTeach.model.SchoolClass;
-import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.Teacher;
 import com.teachMng.onlineTeach.service.IClassRoomService;
 import com.teachMng.onlineTeach.service.ICoursePlanItemService;
@@ -33,8 +37,9 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Component("autoPlan")
 @Scope("singleton")
 public class AutoPlan {
-
+	boolean isInstToDB = false;
 	Queue <String>msgQueue;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 	/**
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
@@ -43,7 +48,8 @@ public class AutoPlan {
 	public List<CoursePlanItem> beginPlan() {
 		status = 1;
 		arrange();
-		System.out.println("-----------end!");
+		System.out.println(getCurTime() + " 排课结束！");
+		msgQueue.add(getCurTime() + " 排课结束!系统正在保存数据，请稍候...");
 		status = 3;
 		return coursePlan;
 	}
@@ -55,7 +61,8 @@ public class AutoPlan {
 	 */
 	public boolean insToDB() {
 		if (null == coursePlan || 0 >= coursePlan.size()) {
-			System.out.println("你神经病啊！什么数据都没有，我存什么进去。fuck");
+			System.out.println(getCurTime() + " 你神经病啊！什么数据都没有，我存什么进去。fuck");
+			msgQueue.add(getCurTime() + " 你神经病啊！什么数据都没有，我存什么进去。fuck");
 			return false;
 		}
 		boolean flag = false;
@@ -78,13 +85,16 @@ public class AutoPlan {
 				coursePlanItemService.insCoursePlanItem(_cpi);
 			} catch (Exception e) { // 插入时出错
 				deleteAll();
-				System.out.println("插入课程表到数据库时出错!插入失败。");
+				System.out.println(getCurTime() + " 插入课程表到数据库时出错!插入失败。");
+				msgQueue.add(getCurTime() + " 插入课程表到数据库时出错!插入失败。");
 				e.printStackTrace();
 				return false;
 			}
 			_count++;
 		}
 		System.out.println("总共有" + _count + "条");
+		msgQueue.add("保存成功!");
+		isInstToDB = true;
 		return flag;
 	}
 
@@ -94,7 +104,11 @@ public class AutoPlan {
 	 * @return 返回一个float类型的进度值，
 	 */
 	public float getProgress() {
-		return (float) ((getCurCourseCount() + 0.0) / allCourseCount);
+		if(isInstToDB) {
+			return (float)2.0;
+		} else {
+			return (float) ((getCurCourseCount() + 0.0) / allCourseCount);
+		}
 	}
 	
 	/**
@@ -116,15 +130,55 @@ public class AutoPlan {
 	 */
 	public void deleteAll() {
 		coursePlanItemService.deleteAll();
-		clean();
-		System.out.println("已成功清除所有数据！");
+		System.out.println(getCurTime() + " 已成功清除所有数据！");
 	}
-
+	public String getInfoTag() {
+		classRooms = classRoomService.allClassRoom();
+		schoolClasses = schoolClassService.allSchoolClass();
+		teachers = teacherService.allTeacher();		
+		Set<InfoTagItem> infoTag = new HashSet<InfoTagItem>();
+		InfoTagItem _iti = null;
+		Iterator _iter = classRooms.iterator();
+		while(_iter.hasNext()) {
+			_iti = new InfoTagItem();
+			_iti.setName(((ClassRoom)_iter.next()).getCrName());
+			_iti.setID(3);
+			infoTag.add(_iti);
+		}
+		_iter = schoolClasses.iterator();
+		SchoolClass _sc = null;
+		while(_iter.hasNext()) {
+			_iti = new InfoTagItem();
+			_sc = (SchoolClass)_iter.next();
+			_iti.setName(_sc.getMajor().getMajorName() + " " + _sc.getScName());
+			_iti.setID(1);
+			infoTag.add(_iti);
+		}
+		_iter = teachers.iterator();
+		while(_iter.hasNext()) {
+			_iti = new InfoTagItem();
+			_iti.setName(((Teacher)_iter.next()).getTeacName());
+			_iti.setID(2);
+			infoTag.add(_iti);
+			
+		}
+		_iter = infoTag.iterator();
+		String json = "[";
+		while(_iter.hasNext()) {
+			_iti = (InfoTagItem)_iter.next();
+			json += "{\"name\":\"" + _iti.getName() + "\",";
+			json += "\"id\":\"" + _iti.getID() + "\"},";
+		}
+		json += "]";
+		//System.out.println(json);
+		//return infoTag;
+		return json;
+	}
+	
 	/**
 	 * 全部清空
 	 */
 	public void clean() {
-		students = null;
 		classRooms = null;
 		courses = null;
 		majors = null;
@@ -147,7 +201,9 @@ public class AutoPlan {
 	private AutoPlan() {
 		msgQueue = new LinkedList<String>();
 	};
-
+	private String getCurTime() {
+		return sdf.format(new Date()).toString();
+	}
 	/**
 	 * 获取当前已经排列的课程总数
 	 * 
@@ -175,8 +231,8 @@ public class AutoPlan {
 	 * 初始化数据
 	 */
 	private void init() {
-System.out.println("init()");
-		students = null;
+		System.out.println(getCurTime() + " 数据初始化成功，系统准备排课中...");
+		msgQueue.add(getCurTime() + " 数据初始化成功，系统准备排课中...");
 		classRooms = null;
 		courses = null;
 		majors = null;
@@ -186,7 +242,6 @@ System.out.println("init()");
 		coursePlan = new ArrayList<CoursePlanItem>();
 		ccp = new ArrayList<ClassCoursePara>();
 
-		students = studentService.allStudent();
 		classRooms = classRoomService.allClassRoom();
 		courses = courseService.allCourse();
 		majors = majorService.allMajor();
@@ -305,7 +360,9 @@ System.out.println("init()");
 		if(null == t) {
 			rePlanCount++;
 			status = 2;
-			System.out.println("师资力量不够强大啊！没教师了。第" + rePlanCount
+			System.out.println(getCurTime() + " 师资力量不够强大啊！没教师了。第" + rePlanCount
+					+ "次重新排列中..........");
+			msgQueue.add(getCurTime() + " 师资力量不够强大啊！没教师了。第" + rePlanCount
 					+ "次重新排列中..........");
 			try {
 				Thread.sleep(3000);
@@ -460,7 +517,8 @@ System.out.println("init()");
 		}		
 		rePlanCount++;
 		status = 2;
-		System.out.println("该拨款了！没教室上课了。第" + rePlanCount + "次重新排列中.........");
+		System.out.println(getCurTime() + " 该拨款了！没教室上课了。第" + rePlanCount + "次重新排列中.........");
+		msgQueue.add(getCurTime() + " 该拨款了！没教室上课了。第" + rePlanCount + "次重新排列中.........");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -582,8 +640,8 @@ System.out.println("init()");
 	 */
 	private void autoPlan() {
 		onProgress = true;
-		msgQueue.add("--------------start!");
-System.out.println(msgQueue.poll());
+		msgQueue.add(getCurTime() + " 排课开始！");
+		System.out.println(getCurTime() + " 排课开始！");
 		Random rand = new Random();
 		CoursePlanItem cpi = null;
 		int index;
@@ -599,7 +657,7 @@ System.out.println(msgQueue.poll());
 			sc = scIter.next();
 			paragraph = 1;
 			major = sc.getMajor();
-			msgQueue.add((major.getMajorName() + " " + sc.getScName()));
+			msgQueue.add(getCurTime() + " 正在为 " + (major.getMajorName() + " " + sc.getScName()) + " 班安排课程");
 			majorsCourse = getMajorsCourseByMajorId(major.getMajorID());
 			while (checkCourse(majorsCourse, sc)) {
 
@@ -625,15 +683,13 @@ System.out.println(msgQueue.poll());
 					setPlanPara(sc.getScID(), course.getCourseID(),
 							getPlanPara(sc.getScID(), course.getCourseID()) + 1);
 					paragraph++;
-					
-					
-try {
-	Thread.sleep(100);
-} catch (InterruptedException e) {
-	e.printStackTrace();
-}
-
-				}
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}  
 			}
 		}
 		onProgress = false;
@@ -642,13 +698,6 @@ try {
 	/*
 	 * 一大陀getter和setter方法的开始，你尽情的往下滚，我会提示你 "这坨" 的结束位置的。
 	 */
-	public List<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
 
 	public List<ClassRoom> getClassRooms() {
 		return classRooms;
@@ -808,7 +857,6 @@ try {
 	public int status = 0; 
 	
 	
-	private List<Student> students = null;
 	private List<ClassRoom> classRooms = null;
 	private List<Course> courses = null;
 	private List<Major> majors = null;

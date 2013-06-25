@@ -1,10 +1,13 @@
 package com.teachMng.onlineTeach.service;
 
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.autoplan.AutoPlan;
+import com.teachMng.onlineTeach.dto.InfoTagItem;
 import com.teachMng.onlineTeach.util.Timer;
 
 @Component("runnableAutoPlanTask")
@@ -12,6 +15,10 @@ public class RunnableAutoPlanTask implements Runnable{
 	private AutoPlan ap;
 	private Timer t;
 	public RunnableAutoPlanTask(){
+	}
+	public String getInfoTag() {
+		
+		return ap.getInfoTag();
 	}
 	@Override
 	public void run() {
