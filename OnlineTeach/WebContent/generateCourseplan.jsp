@@ -21,9 +21,9 @@
 				</div>
 				<div class="subMainNavItem" id="subNavA" style="display: block;">
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/ap/generateCP" onClick="return true;"
+						<li><a href="generateCourseplan.jsp" onClick="return true;"
 							class="subMainNavItemActive">学期课表生成</a></li>
-						<li><a href="main.html" onClick="return true;">课表分类查询</a></li>
+						<li><a href="courseplanCateSearch.jsp" onClick="return true;">课表分类查询</a></li>
 						<li><a href="courseplanExport.html" onClick="return true;">课表分类导出</a></li>
 						<li><a href="courseplanUphold.html" onClick="return true;">课表分类维护</a></li>
 					</ul>
