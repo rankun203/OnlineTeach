@@ -30,12 +30,10 @@ public class TeachPlan implements Serializable {
 	}
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		TeachPlan tp = (TeachPlan)obj;
 		return tp.getTpCourseTime() == this.getTpCourseTime() && tp.getCoursePlanItem().getCpID() == this.getCoursePlanItem().getCpID();
 	}

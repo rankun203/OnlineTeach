@@ -28,7 +28,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	}
 	@Override
 	public boolean insCoursePlanItem(CoursePlanItem cpi) {
-		// TODO Auto-generated method stu
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.save(cpi);
@@ -39,7 +38,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CoursePlanItem> allCoursePlan() {
-		// TODO Auto-generated method stub
 		List<CoursePlanItem> cpis = null;
 		String hql = "from CoursePlanItem";
 		Session s = sf.getCurrentSession();
@@ -51,7 +49,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 
 	@Override
 	public boolean updCoursePlan(CoursePlanItem cpi) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(cpi);
@@ -61,7 +58,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CoursePlanItem> allCoursePlanByClassId(int classID) {
-		// TODO Auto-generated method stub
 		//System.out.println("aaaaaaaaaaaa");
 		List<CoursePlanItem> cpis = null;
 		String hql = "from CoursePlanItem where scID=?";
@@ -72,7 +68,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CoursePlanItem> allCoursePlanByTeacherId(int teacherID) {
-		// TODO Auto-generated method stub
 		List<CoursePlanItem> cpis = null;
 		String hql = "from CoursePlanItem where teacID=?";
 		Session s = sf.getCurrentSession();
@@ -82,7 +77,6 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CoursePlanItem> allCoursePlanByRoomId(int roomID) {
-		// TODO Auto-generated method stub
 		List<CoursePlanItem> cpis = null;
 		String hql = "from CoursePlanItem where crID=?";
 		Session s = sf.getCurrentSession();

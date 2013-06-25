@@ -24,7 +24,6 @@ public class SchoolClassServiceImpl implements ISchoolClassService {
 	@Override
 	@Transactional
 	public List<SchoolClass> allSchoolClass() {
-		// TODO Auto-generated method stub
 		return schoolClassDao.allSchoolClass();
 	}
 
@@ -37,7 +36,6 @@ public class SchoolClassServiceImpl implements ISchoolClassService {
 	@Override
 	@Transactional
 	public boolean updSchoolClass(SchoolClass sc) {
-		// TODO Auto-generated method stub
 		return schoolClassDao.updSchoolClass(sc);
 	}
 

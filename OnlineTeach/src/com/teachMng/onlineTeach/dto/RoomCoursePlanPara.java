@@ -69,7 +69,6 @@ public class RoomCoursePlanPara {
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return paragraph;
 	}
 

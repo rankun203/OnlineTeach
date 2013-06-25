@@ -31,14 +31,12 @@ public class ClassRoomServiceImpl implements IClassRoomService {
 	@Override
 	@Transactional
 	public ClassRoom findById(int crID) {
-		// TODO Auto-generated method stub
 		return classRoomDao.findById(crID);
 	}
 
 	@Override
 	@Transactional
 	public boolean updClassRoom(ClassRoom cr) {
-		// TODO Auto-generated method stub
 		return classRoomDao.updClassRoom(cr);
 	}
 

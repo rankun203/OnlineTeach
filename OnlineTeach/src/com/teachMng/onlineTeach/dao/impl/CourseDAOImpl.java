@@ -25,7 +25,6 @@ public class CourseDAOImpl implements ICourseDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Course> allCourse() {
-		// TODO Auto-generated method stub
 		List<Course> list = null;
 		String hql = "from Course";
 		Session s = sf.getCurrentSession();
@@ -48,7 +47,6 @@ public class CourseDAOImpl implements ICourseDAO {
 
 	@Override
 	public boolean updCourse(Course course) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(course);

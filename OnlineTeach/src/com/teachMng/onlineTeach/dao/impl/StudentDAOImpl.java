@@ -25,7 +25,6 @@ public class StudentDAOImpl implements IStudentDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> allStudent() {
-		// TODO Auto-generated method stub
 		List<Student> list = null;
 		String hql = "from Student";
 		Session s = sf.getCurrentSession();
@@ -48,7 +47,6 @@ public class StudentDAOImpl implements IStudentDAO {
 
 	@Override
 	public boolean updStudent(Student stu) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
 		s.update(stu);

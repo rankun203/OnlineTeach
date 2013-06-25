@@ -68,7 +68,6 @@ public class TeacherCoursePlanPara {
 	
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return majorID + courseID + roomID + classID;
 	}
 

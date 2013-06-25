@@ -9,3 +9,6 @@ function addOneAnswer(){
 	document.getElementById("daTit").parentNode.insertBefore(insertedNode, document.getElementById("daTit").nextSibling);
 }
 
+
+
+
