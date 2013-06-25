@@ -31,7 +31,7 @@ public class IExerciseTest {
 
 		sec1.setScore(5);
 		sec1.setTeacherComment("你个2B，这么简单的题都会做错，第一个空明显不是“我的答案1！！！”");
-		
+
 		System.out.println("题目：\r\n" + te1.getFullTopic().replaceAll(IExerciseTeacher.spaceHolder, "_______").replaceAll(IExerciseTeacher.newLineHolder, "\r\n"));
 		System.out.println("老师的答案：");
 		for(String s : te1.getAnswers())

@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 import com.teachMng.onlineTeach.model.exercise.teacher.IExerciseImplSelection;
@@ -22,6 +23,7 @@ public class StudentExerciseSelection implements IExerciseStudent {
 	private IExerciseImplSelection originExercise;
 	private String teacherComment;
 	private double score;
+	private Student student;
 	private enum Selection{
 		A,
 		B,
@@ -88,6 +90,16 @@ public class StudentExerciseSelection implements IExerciseStudent {
 	@Override
 	public void setScore(double score) {
 		this.score = score;
+	}
+	@Override
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+
+	@Override
+	public Student getStudent() {
+		return student;
 	}
 
 }

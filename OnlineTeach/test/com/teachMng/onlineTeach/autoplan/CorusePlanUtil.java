@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.teachMng.onlineTeach.autoplan.CoursePlanUtil;
 import com.teachMng.onlineTeach.dto.ClassCoursePlanPara;
 import com.teachMng.onlineTeach.dto.RoomCoursePlanPara;
 import com.teachMng.onlineTeach.dto.TeacherCoursePlanPara;

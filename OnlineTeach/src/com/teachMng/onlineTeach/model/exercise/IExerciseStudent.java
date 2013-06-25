@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model.exercise;
 
+import com.teachMng.onlineTeach.model.Student;
+
 /**
  * 老师布置题的时候，从TeacherExercise里面把每道题复制一份到学生题中，
  * 然后系统根据学生答题情况对题目进行作答，本接口只包含与学生作答相关的内容， 
@@ -21,6 +23,16 @@ public interface IExerciseStudent {
 	 */
 	public void setId(int id);
 
+	/**
+	 * 设置该题的答题学生 
+	 * @param student 学生{@link Student}对象
+	 */
+	public void setStudent(Student student);
+	/**
+	 * 获取该题的答题学生
+	 * @return student 学生{@link Student}对象
+	 */
+	public Student getStudent();
 	/**
 	 * 获取这道学生题的教师题
 	 * 

@@ -1,6 +1,5 @@
 package com.teachMng.onlineTeach.autoplan;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

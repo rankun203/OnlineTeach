@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.UpFile;
 import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
@@ -23,6 +24,7 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 	private IExerciseImplCompletion originExercise;
 	private String teacherComment;
 	private double score;
+	private Student student;
 
 
 	@Id
@@ -117,6 +119,17 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 	@Override
 	public void setScore(double score) {
 		this.score = score;
+	}
+
+	@Override
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+
+	@Override
+	public Student getStudent() {
+		return student;
 	}
 
 }
