@@ -32,12 +32,8 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 	private List<String> answers = new LinkedList<String>();
 	private List<Teacher> belongToTeachers;
 	private Teacher origin;
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getId()
-	 */
+	private double stdScore;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Override
@@ -45,56 +41,26 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 		return id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
 	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#setOrigin(com.teachMng
-	 * .onlineTeach.model.Teacher)
-	 */
 	@Override
 	public void setOrigin(Teacher origin) {
 		this.origin = origin;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getOrigin()
-	 */
 	@Override
 	public Teacher getOrigin() {
 		return origin;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#addBelongTeacher(com
-	 * .teachMng.onlineTeach.model.Teacher)
-	 */
 	@Override
 	public void addBelongTeacher(Teacher teacher) {
 		belongToTeachers.add(teacher);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#getAuthorizedTeachers()
-	 */
 	@Override
 	public List<Teacher> getAuthorizedTeachers() {
 		return belongToTeachers;
@@ -107,6 +73,10 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 	 *            答案
 	 */
 	public void addAnswer(String answer) {
+		if(answers.size() == spaceCounts) {
+			System.err.println("IExerciseImplCompletion#addAnswer:答案(" + spaceCounts + "个)已经够了！");
+			return;
+		}
 		this.answers.add(answer);
 	}
 
@@ -119,23 +89,11 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 		return answers;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getFullTopic()
-	 */
 	@Override
 	public String getFullTopic() {
 		return fullTopic;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#setFullTopic(java.lang
-	 * .String)
-	 */
 	@Override
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
@@ -175,11 +133,6 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 		return spaceCounts;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		String desc = "";
@@ -187,6 +140,16 @@ public class IExerciseImplCompletion implements IExerciseTeacher {
 			desc += "第" + i + "空：" + answers.get(i - 1) + "；";
 		}
 		return desc;
+	}
+
+	@Override
+	public double getStdScore() {
+		return stdScore;
+	}
+
+	@Override
+	public void setStdScore(double stdScore) {
+		this.stdScore = stdScore;
 	}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import com.teachMng.onlineTeach.model.UpFile;
 import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
+import com.teachMng.onlineTeach.model.exercise.teacher.IExerciseImplQuestion;
 
 /**
  * @author mindfine
@@ -19,7 +20,9 @@ public class StudentExerciseQuestion implements IExerciseStudent {
 	private long id;
 	private String answerStr;
 	private List<UpFile> answerAttachments = new LinkedList<UpFile>();
-	private IExerciseTeacher originExercise;
+	private IExerciseImplQuestion originExercise;
+	private String teacherComment;
+	private double score;
 
 	/**
 	 * 获取题目的id
@@ -33,11 +36,6 @@ public class StudentExerciseQuestion implements IExerciseStudent {
 		return id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
 	@Override
 	public void setId(int id) {
 		this.id = id;
@@ -81,38 +79,38 @@ public class StudentExerciseQuestion implements IExerciseStudent {
 		return answerAttachments;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return answerStr;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExerciseStudent#getOriginExercise
-	 * ()
-	 */
 	@Override
 	public IExerciseTeacher getOriginExercise() {
 		return originExercise;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExerciseStudent#setOriginExercise
-	 * (com.teachMng.onlineTeach.model.exercise.IExerciseTeacher)
-	 */
 	@Override
 	public void setOriginExercise(IExerciseTeacher originExercise) {
-		this.originExercise = originExercise;
+		this.originExercise = (IExerciseImplQuestion)originExercise;
+	}
+
+	@Override
+	public void setTeacherComment(String comment) {
+		this.teacherComment = comment;
+	}
+
+	@Override
+	public String getTeacherComment() {
+		return teacherComment;
+	}
+	@Override
+	public double getScore() {
+		return score;
+	}
+
+	@Override
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 }

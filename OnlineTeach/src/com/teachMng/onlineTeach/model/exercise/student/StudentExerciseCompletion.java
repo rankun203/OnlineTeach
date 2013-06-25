@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import com.teachMng.onlineTeach.model.UpFile;
 import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
+import com.teachMng.onlineTeach.model.exercise.teacher.IExerciseImplCompletion;
 
 /**
  * @author mindfine
@@ -17,16 +18,13 @@ import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 public class StudentExerciseCompletion implements IExerciseStudent {
 
 	private long id;
-	private int spaceCounts;
 	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
 	private List<String> answers = new LinkedList<String>();
-	private IExerciseTeacher originExercise;
+	private IExerciseImplCompletion originExercise;
+	private String teacherComment;
+	private double score;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getId()
-	 */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Override
@@ -34,11 +32,7 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 		return id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
+
 	@Override
 	public void setId(int id) {
 		this.id = id;
@@ -51,6 +45,10 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 	 *            答案
 	 */
 	public void addAnswer(String answer) {
+		if(answers.size() == originExercise.getSpaceCount()) {
+			System.err.println("StudentExerciseCompletion#addAnswer:答案(" + originExercise.getSpaceCount() + "个)已经够了！");
+			return;
+		}
 		this.answers.add(answer);
 	}
 
@@ -79,20 +77,7 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 		return topicAttachments;
 	}
 
-	/**
-	 * 获取题目中含有的空格数
-	 * 
-	 * @return int类型的数，表示题目中含有空格的数量
-	 */
-	public int getSpaceCount() {
-		return spaceCounts;
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		String desc = "";
@@ -102,20 +87,36 @@ public class StudentExerciseCompletion implements IExerciseStudent {
 		return desc;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExerciseStudent#getOriginExercise()
-	 */
+
 	@Override
 	public IExerciseTeacher getOriginExercise() {
 		return originExercise;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExerciseStudent#setOriginExercise(com.teachMng.onlineTeach.model.exercise.IExerciseTeacher)
-	 */
 	@Override
 	public void setOriginExercise(IExerciseTeacher originExercise) {
-		this.originExercise = originExercise;
+		this.originExercise = (IExerciseImplCompletion)originExercise;
+	}
+
+
+	@Override
+	public void setTeacherComment(String comment) {
+		this.teacherComment = comment;
+	}
+
+	@Override
+	public String getTeacherComment() {
+		return teacherComment;
+	}
+
+	@Override
+	public double getScore() {
+		return score;
+	}
+
+	@Override
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 }

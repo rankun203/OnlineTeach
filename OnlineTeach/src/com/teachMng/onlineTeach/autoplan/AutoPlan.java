@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.autoplan;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -686,7 +687,6 @@ public class AutoPlan {
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}  

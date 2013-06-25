@@ -31,6 +31,7 @@ public class IExerciseImplQuestion implements IExerciseTeacher {
 	private List<UpFile> answerAttachments = new LinkedList<UpFile>();
 	private List<Teacher> belongToTeachers;
 	private Teacher origin;
+	private double stdScore;
 
 	/**
 	 * 获取题目的id
@@ -44,11 +45,6 @@ public class IExerciseImplQuestion implements IExerciseTeacher {
 		return id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
 	@Override
 	public void setId(int id) {
 		this.id = id;
@@ -108,79 +104,48 @@ public class IExerciseImplQuestion implements IExerciseTeacher {
 		return topicAttachments;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return answerStr;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.ITopic#getFullTopic()
-	 */
 	@Override
 	public String getFullTopic() {
 		return fullTopic;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.ITopic#setFullTopic(java.lang.String)
-	 */
 	@Override
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#setOrigin(com.teachMng
-	 * .onlineTeach.model.Teacher)
-	 */
 	@Override
 	public void setOrigin(Teacher origin) {
 		this.origin = origin;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getOrigin()
-	 */
 	@Override
 	public Teacher getOrigin() {
 		return origin;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#addBelongTeacher(com
-	 * .teachMng.onlineTeach.model.Teacher)
-	 */
 	@Override
 	public void addBelongTeacher(Teacher teacher) {
 		belongToTeachers.add(teacher);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.teachMng.onlineTeach.model.exercise.IExercise#getAuthorizedTeachers()
-	 */
 	@Override
 	public List<Teacher> getAuthorizedTeachers() {
 		return belongToTeachers;
+	}
+	@Override
+	public double getStdScore() {
+		return stdScore;
+	}
+
+	@Override
+	public void setStdScore(double stdScore) {
+		this.stdScore = stdScore;
 	}
 
 }

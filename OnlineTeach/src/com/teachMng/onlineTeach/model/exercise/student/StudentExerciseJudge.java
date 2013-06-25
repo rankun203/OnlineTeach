@@ -6,6 +6,7 @@ import javax.persistence.Id;
 
 import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
+import com.teachMng.onlineTeach.model.exercise.teacher.IExerciseImplJudge;
 
 /**
  * @author mindfine
@@ -14,7 +15,9 @@ public class StudentExerciseJudge implements IExerciseStudent {
 
 	private long id;
 	private boolean answer;
-	private IExerciseTeacher originExercise;
+	private IExerciseImplJudge originExercise;
+	private String teacherComment;
+	private double score;
 	
 	/**
 	 * 设置答案
@@ -70,7 +73,31 @@ public class StudentExerciseJudge implements IExerciseStudent {
 	 */
 	@Override
 	public void setOriginExercise(IExerciseTeacher originExercise) {
-		this.originExercise = originExercise;
+		this.originExercise = (IExerciseImplJudge)originExercise;
+	}
+	/* (non-Javadoc)
+	 * @see com.teachMng.onlineTeach.model.exercise.IExerciseStudent#setTeacherComment(java.lang.String)
+	 */
+	@Override
+	public void setTeacherComment(String comment) {
+		this.teacherComment = comment;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.teachMng.onlineTeach.model.exercise.IExerciseStudent#getTeacherComment()
+	 */
+	@Override
+	public String getTeacherComment() {
+		return teacherComment;
+	}
+	@Override
+	public double getScore() {
+		return score;
+	}
+
+	@Override
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 }

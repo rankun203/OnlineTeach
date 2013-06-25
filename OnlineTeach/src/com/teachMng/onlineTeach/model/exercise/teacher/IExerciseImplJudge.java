@@ -29,6 +29,7 @@ public class IExerciseImplJudge implements IExerciseTeacher {
 	private List<Teacher> belongToTeachers;
 	private Teacher origin;
 	private boolean answer;
+	private double stdScore;
 	
 	/**
 	 * 设置答案
@@ -44,72 +45,49 @@ public class IExerciseImplJudge implements IExerciseTeacher {
 	public boolean getAnswer(){
 		return answer;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString(){
 		return "" + answer;
 	}
-
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getId()
-	 */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Override
 	public long getId() {
 		return id;
 	}
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
+
 	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setOrigin(com.teachMng.onlineTeach.model.Teacher)
-	 */
+
 	@Override
 	public void setOrigin(Teacher origin) {
 		this.origin = origin;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getOrigin()
-	 */
 	@Override
 	public Teacher getOrigin() {
 		return origin;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#addBelongTeacher(com.teachMng.onlineTeach.model.Teacher)
-	 */
+
 	@Override
 	public void addBelongTeacher(Teacher teacher){
 		belongToTeachers.add(teacher);
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getAuthorizedTeachers()
-	 */
+
 	@Override
 	public List<Teacher> getAuthorizedTeachers(){
 		return belongToTeachers;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getFullTopic()
-	 */
+
 	@Override
 	public String getFullTopic() {
 		return fullTopic;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setFullTopic(java.lang.String)
-	 */
 	@Override
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
@@ -126,6 +104,15 @@ public class IExerciseImplJudge implements IExerciseTeacher {
 	 */
 	public List<UpFile> getTopicAttachments(){
 		return topicAttachments;
+	}
+	@Override
+	public double getStdScore() {
+		return stdScore;
+	}
+
+	@Override
+	public void setStdScore(double stdScore) {
+		this.stdScore = stdScore;
 	}
 
 }
