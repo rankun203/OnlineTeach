@@ -1137,7 +1137,7 @@ input[type="radio"] {
 	margin: 40px 0 5px 0;
 }
 .pb{
-	height: 200px;
+/* 	height: 200px; */
 }
 .pbBtn{
 	width: 99px;
@@ -1234,4 +1234,102 @@ input[type="radio"] {
 @-webkit-keyframes hideAnimation {
 	from {opacity: .9;}
 	to {opacity: 0;}
+}
+/* 课程表查询*/
+.selectView_coursePlan { 
+	display:block;
+}
+.coursePlanView {
+	margin-top:40px;
+	margin-left:200px;
+}
+.absoluteCoursePlanNav {
+	margin-top:10px;
+	margin-left:200px;
+}
+
+#coursePlanView {
+	margin-top:10px;
+	margin-left:300px;	
+	width:800px;
+	height:600px;
+	display:block;
+	text-align:center;
+}
+#coursePlanView table {
+	border-top:1px solid #000;
+	border-right:1px solid #000;
+	width:800px;
+	height:600px;
+}
+#coursePlanView table td {
+	border-bottom:1px solid #000;
+	border-left:1px solid #000;
+	cursor:pointer;
+}
+.coursePlanNav {
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	border-top:1px solid #000;
+	height:30px;
+	width:798px;
+}
+.monthView {
+	height:30px;
+	width:100px;
+	color:#fff;
+	line-height:30px;
+	text-align:center;
+	background-color:#06F;
+	float:left;
+	cursor:pointer;
+}
+.coursePlanView {
+	height:30px;
+	width:100px;
+	cursor:pointer;
+	line-height:30px;
+	color:#fff;
+	text-align:center;
+	background-color:#73E93A;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	float:left;
+}
+.currentDateTime {
+	height:30px;
+	line-height:30px;
+	float:right;
+	margin-right:170px;
+}
+.preWeek {
+	margin-right:10px;
+}
+.changeWeek {
+	color:#600;
+	text-decoration:none;
+	margin-top:2px;
+	height:25px;
+	width:50px;
+	cursor:pointer;
+	float:left;
+	text-align:center;
+	line-height:25px;	
+}
+.dateWeek {
+	float:left;
+}
+.nextWeek {
+	margin-left:10px;
+}
+.coursePlanTitle {
+	background-color:#eee;
+}
+.coursePlanClose {
+	color:#F00;
+	text-align:center;
+	font-weight:bold;
+	font-family:"微软雅黑";
+	line-height:15px;
+	cursor:pointer;
 }

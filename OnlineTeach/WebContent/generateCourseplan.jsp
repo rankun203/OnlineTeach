@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
 <meta charset="utf-8">
 <title>学期课表生成</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css" />
 
 </head>
 
 <body>
 
-<jsp:include page="include/header.jsp" />
+	<jsp:include page="include/header.jsp" />
 
 	<div class="site">
 		<div class="container">
@@ -21,9 +22,9 @@
 				</div>
 				<div class="subMainNavItem" id="subNavA" style="display: block;">
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/ap/generateCP" onClick="return true;"
+						<li><a href="generateCourseplan.jsp" onClick="return true;"
 							class="subMainNavItemActive">学期课表生成</a></li>
-						<li><a href="main.html" onClick="return true;">课表分类查询</a></li>
+						<li><a href="courseplanCateSearch.jsp" onClick="return true;">课表分类查询</a></li>
 						<li><a href="courseplanExport.html" onClick="return true;">课表分类导出</a></li>
 						<li><a href="courseplanUphold.html" onClick="return true;">课表分类维护</a></li>
 					</ul>
@@ -66,18 +67,16 @@
 						<!-- <span style="width: 40%"></span> -->
 						<span id="pbprogress">已就绪</span>
 					</div>
-				</div> 
-					<div id="autoPlaninfoLeft">
-						<button class="evert btn">翻转</button>
+				</div>
+				<div id="autoPlaninfoLeft">
+					<button class="evert btn">翻转</button>
+				</div>
+				<div id="autoPlanInfo">
+					<div id="console" style="display: none;">
+						<font id="pkTitle">Studio325排课系统</font>
 					</div>
-					<div id="autoPlanInfo">
-						<div id="console" style="display: none;">
-							<font id="pkTitle">Studio325排课系统</font>
-						</div>
-						<div id="apiList" style="display: block;">
-							正在加载信息中...
-						</div>
-					</div>
+					<div id="apiList" style="display: block;">正在加载信息中...</div>
+				</div>
 			</div>
 		</div>
 	</div>
