@@ -1,5 +1,7 @@
 package com.teachMng.onlineTech.autoplan;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -30,5 +32,9 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 //		}
 		//ap.insToDB();
 
+	}
+	@Test
+	public void testTime() {
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd kk:mm:ss").format(new Date()));
 	}
 }

@@ -155,54 +155,91 @@ function reBg(ele, oe){
 
 //排课进度
 $(document).ready(function(){
+	$.get("ap/generateCP", function(data){
+		var obj = eval("(" + data + ")");
+		var oldInfo = "";
+		var cName = "";
+		for(var i = 0; i < obj.length; i++) {
+			if("1" == obj[i].id) 
+				cName = "studentTag showTag"; 
+			else if("2" == obj[i].id) 
+				cName = "teacherTag showTag";
+			else if("3" == obj[i].id)
+				cName = "roomTag showTag";
+			oldInfo += "<div class=\"" + cName + "\" >" + obj[i].name + "</div>";
+		}
+		console.log(oldInfo);
+		document.getElementById("apiList").innerHTML = oldInfo;
+	});
 	$("button.apstart").click(function(){
 		$("#pbprogress")
 			.text("")
-			.css("width", "0%");
+			.css("width", "0%")
+			.css("background-color", "#4183c4");
 		var startUrl = "ap/start";
 		$.get(startUrl, function(data){
-			if(data == "start")	$.refreshProgressBar();
+			if(data == "start")	{
+				$("#pkTitle").css("display", "none");
+				$.refreshProgressBar();
+			}
 		});
     });
     $("button.evert").click(function() {	
 		var con, api, anima;
 		if(true == flag) {
-			con = "hideAnimation 1s ease";
-			api = "showAnimation 1s ease";			
-			anima = "evert0_360 2s ease";
-			console.log("AAAAAAAAAAAAAA");
-			flag = false;
-		}  else  {
 			con = "showAnimation 1s ease";
 			api = "hideAnimation 1s ease";
+			anima = "evert0_360 2s ease";
+			//console.log("AAAAAAAAAAAAAA");
+			flag = false;
+		}  else  {
+			con = "hideAnimation 1s ease";
+			api = "showAnimation 1s ease";			
 			anima = "evert360_0 2s ease";
-			console.log("BBBBBBBBBB");
+			//console.log("BBBBBBBBBB");
 			flag = true;
 		}
 		$("div#console").css("-webkit-animation", con);
 		$("div#apiList").css("-webkit-animation", api);			
 		$("div#autoPlanInfo").css("-webkit-animation", anima);		
-		setTimeout("changeStatus('apiList','console')", 900);
+		setTimeout("changeStatus('apiList','console')", 1000);
 	});		
 });
-
+function getAutoPlanMsg() {
+	//console.log("hello");
+	var progressUrl = "ap/msg";
+	$.post(progressUrl, "" , function(data){
+		console.log(data);
+		var obj = eval(data);
+		for(var i = 0; i < obj.length; i++)
+			addInfoToConsole(obj[i]);
+	});	
+}
 $.extend({
 	refreshProgressBar:function(){
 		var progressUrl = "ap/ppp";
 		$.post(progressUrl, "" , function(data){
 			if(data == 100.0)	{
 				$("#pbprogress")
-				.css("width", "100%")
+				.css("width", "100%");
+				getAutoPlanMsg();
+				setTimeout("$.refreshProgressBar()", 1000);				
+				return;
+			} else if(200.0 == data) {
+				$("#pbprogress")
 				.css("background-color", "#41C44B")
 				.text("已完成");
+				getAutoPlanMsg();
 				return;
 			}
 			$("#pbprogress")
 				.css("width", data+"%");
+			getAutoPlanMsg();
 			setTimeout("$.refreshProgressBar()", 1000);
 		});
 	}
 });
+
 //-------
 
 function changeStatus(var1, var2) {
@@ -214,9 +251,11 @@ function changeStatus(var1, var2) {
 	document.getElementById(var2).style.display = v1;
 }
 function addInfoToConsole(info) {
-	var val = document.getElementById("console").innerHTML;
-	val = info + "<br />" + val;
-	document.getElementById("console").innerHTML = val;
+	var con = document.getElementById("console");
+	var val = con.innerHTML;
+	val = val + info + "<br />";
+	con.innerHTML = val;
+	con.scrollTop = con.scrollHeight;
 }
 
 

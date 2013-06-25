@@ -1376,42 +1376,69 @@ input[type="radio"] {
 
 #autoPlanInfo {
 	height: 300px;
-	width: 600px;
-	margin-left:auto;
+	width: 820px;
+	margin-left:100px;
 	margin-right:auto;
-	margin-top:10px;
+	margin-top:60px;
 	margin-bottom: 20px;
 }
-
+#autoPlanInfoLeft {
+	margin:10px;
+	float:left;
+}
 #console {
-	border:4px solid #ADFF2F;
+	border:4px solid #A9A9A9;
 	font-size: 12px;
+	padding-left:5px;
+	padding-top:1px;
 	overflow-y: scroll;
 	color: #fff;
 	height: 100%;
-	width: 100%;
+	width: 810px;
 	background-color: #000;
 }
-
+.evert {
+	width:70px;	
+}
+.showTag {
+ 	margin-left:5px;  
+ 	margin-top:5px;
+	padding:5px 10px;
+	float:left;
+	border-radius:11px;
+}
+#pkTitle {
+	line-height:190px;
+	margin-left:200px;
+	font-size: 40px;
+}
+.studentTag {
+	background-color: #0ff;	
+}
+.teacherTag {
+	background-color: #f0f;
+}
+.roomTag {
+	background-color: #ff0;
+}
 #apiList {
 	font-size:12px;
 	height: 100%;
 	width: 100%;
 }
-
 @-webkit-keyframes evert0_360 {
-	from {-webkit-transform: perspective(1600px) rotateY(0deg);}
-	to{-webkit-transform: perspective(1600px) rotateY(360deg);}
+	from {-webkit-transform: perspective(1600px) rotateY(180deg);}
+	to{-webkit-transform: perspective(1600px) rotateY(0deg);}
 }
 @-webkit-keyframes evert360_0 {
-	from {-webkit-transform: perspective(1600px) rotateY(360deg);}
-	to {-webkit-transform: perspective(1600px) rotateY(0deg);}
+	from {-webkit-transform: perspective(1600px) rotateY(0deg);}
+	to {-webkit-transform: perspective(1600px) rotateY(180deg);}
 }
 @-webkit-keyframes showAnimation {
-	from {opacity: .1;}
+	from {opacity: 0;}
 	to {opacity: .9;}
 }
 @-webkit-keyframes hideAnimation {
 	from {opacity: .9;}
-	to {opacity: .1;}
+	to {opacity: 0;}
 }
