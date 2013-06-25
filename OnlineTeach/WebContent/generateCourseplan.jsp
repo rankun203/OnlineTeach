@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
 <meta charset="utf-8">
 <title>学期课表生成</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css" />
 
 </head>
 
 <body>
 
-<jsp:include page="include/header.jsp" />
+	<jsp:include page="include/header.jsp" />
 
 	<div class="site">
 		<div class="container">
@@ -66,18 +67,16 @@
 						<!-- <span style="width: 40%"></span> -->
 						<span id="pbprogress">已就绪</span>
 					</div>
-				</div> 
-					<div id="autoPlaninfoLeft">
-						<button class="evert btn">翻转</button>
+				</div>
+				<div id="autoPlaninfoLeft">
+					<button class="evert btn">翻转</button>
+				</div>
+				<div id="autoPlanInfo">
+					<div id="console" style="display: none;">
+						<font id="pkTitle">Studio325排课系统</font>
 					</div>
-					<div id="autoPlanInfo">
-						<div id="console" style="display: none;">
-							<font id="pkTitle">Studio325排课系统</font>
-						</div>
-						<div id="apiList" style="display: block;">
-							正在加载信息中...
-						</div>
-					</div>
+					<div id="apiList" style="display: block;">正在加载信息中...</div>
+				</div>
 			</div>
 		</div>
 	</div>
