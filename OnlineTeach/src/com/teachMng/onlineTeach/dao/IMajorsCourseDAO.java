@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.teachMng.onlineTeach.model.MajorsCourse;
 
-@SuppressWarnings("unused")
 public interface IMajorsCourseDAO {
 	List<MajorsCourse> allMajorsCourse();
 	List<MajorsCourse> getByMajorId(int majorID);
