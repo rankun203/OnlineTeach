@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import com.teachMng.onlineTeach.model.Teacher;
 import com.teachMng.onlineTeach.model.UpFile;
-import com.teachMng.onlineTeach.model.exercise.IExercise;
+import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 
 /**
  * FIXME 测试我，并添加Hibernate支持 问答题的题目<br>
@@ -22,7 +22,7 @@ import com.teachMng.onlineTeach.model.exercise.IExercise;
  * 
  * @author mindfine
  */
-public class IExerciseImplQuestion implements IExercise {
+public class IExerciseImplQuestion implements IExerciseTeacher {
 
 	private long id;
 	private String fullTopic;

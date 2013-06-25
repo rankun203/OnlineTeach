@@ -1,4 +1,4 @@
-package com.teachMng.onlineTech.autoplan;
+package com.teachMng.onlineTeach.autoplan;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

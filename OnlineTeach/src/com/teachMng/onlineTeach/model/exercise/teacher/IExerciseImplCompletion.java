@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import com.teachMng.onlineTeach.model.Teacher;
 import com.teachMng.onlineTeach.model.UpFile;
-import com.teachMng.onlineTeach.model.exercise.IExercise;
+import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 
 /**
  * FIXME 测试我，并添加Hibernate支持 老师的填空题<br>
@@ -23,7 +23,7 @@ import com.teachMng.onlineTeach.model.exercise.IExercise;
  * 
  * @author mindfine
  */
-public class IExerciseImplCompletion implements IExercise {
+public class IExerciseImplCompletion implements IExerciseTeacher {
 
 	private long id;
 	private String fullTopic;
@@ -111,8 +111,7 @@ public class IExerciseImplCompletion implements IExercise {
 	}
 
 	/**
-	 * 获取答案，如果要获取答案的描述，请调用 @See
-	 * {@link com.teachMng.onlineTeach.model.answerImpl.CompletionAnswer#desc()}
+	 * 获取答案
 	 * 
 	 * @return 答案集
 	 */

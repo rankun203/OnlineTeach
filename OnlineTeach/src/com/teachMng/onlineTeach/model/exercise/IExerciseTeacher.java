@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.teachMng.onlineTeach.model.Teacher;
 
-public interface IExercise {
+public interface IExerciseTeacher {
 	public String spaceHolder = "#!space!#";
 
 	/**
@@ -25,7 +25,6 @@ public interface IExercise {
 	public long getId();
 	/**
 	 * 设置题目的id
-	 * @return 题目的id
 	 */
 	public void setId(int id);
 	/**

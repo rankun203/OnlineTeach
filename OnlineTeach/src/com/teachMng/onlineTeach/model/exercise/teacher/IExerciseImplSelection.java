@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import com.teachMng.onlineTeach.model.Teacher;
 import com.teachMng.onlineTeach.model.UpFile;
-import com.teachMng.onlineTeach.model.exercise.IExercise;
+import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 
 /**
  * FIXME 测试我，并添加Hibernate支持
@@ -22,7 +22,7 @@ import com.teachMng.onlineTeach.model.exercise.IExercise;
  * 空格的位置在<b>#!space!#</b>占位符的位置。
  * @author mindfine
  */
-public class IExerciseImplSelection implements IExercise {
+public class IExerciseImplSelection implements IExerciseTeacher {
 
 	private long id;
 	private String fullTopic;
