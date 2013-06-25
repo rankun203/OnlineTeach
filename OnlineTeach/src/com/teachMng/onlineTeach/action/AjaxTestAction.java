@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
+@SuppressWarnings("serial")
 @Component("ajaxTestAction")
 public class AjaxTestAction extends ActionSupport implements ServletResponseAware{
 	HttpServletResponse response;
