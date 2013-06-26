@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -17,10 +17,9 @@ import javax.persistence.Table;
 @Table(name = "t_checkattendance")
 public class CheckAttendance implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id
-	int id;
+	private int id;
 	private int caAttendance;
-	private TeachPlan teachPlan;
+//	private TeachPlan teachPlan;
 	private Student student;
 
 	@Column(nullable = true)
@@ -32,6 +31,8 @@ public class CheckAttendance implements Serializable {
 		this.caAttendance = caAttendance;
 	}
 
+	
+/*
 	//@Id
 	@ManyToOne
 	@JoinColumns({
@@ -45,7 +46,7 @@ public class CheckAttendance implements Serializable {
 	public void setTeachPlan(TeachPlan teachPlan) {
 		this.teachPlan = teachPlan;
 	}
-
+*/
 	//@Id
 	@ManyToOne
 	@JoinColumn(name = "stuID")
@@ -55,5 +56,15 @@ public class CheckAttendance implements Serializable {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -53,7 +55,8 @@ public class SelectionExercise {
 
 	
 	
-	
+	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}

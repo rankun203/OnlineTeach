@@ -1,5 +1,7 @@
 package com.teachMng.onlineTeach.model.exercise;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -12,6 +14,7 @@ import com.teachMng.onlineTeach.model.Teacher;
  */
 public class ExerciseSet {
 
+	private long id;
 	private Teacher founder;
 	/**
 	 * 如果给了student的值，则说明这张试卷下发给某学生<br>
@@ -64,6 +67,14 @@ public class ExerciseSet {
 	}
 	public void setSelectionExercise(SelectionExercise selectionExercise) {
 		this.selectionExercise = selectionExercise;
+	}
+	@Id
+	@GeneratedValue
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 

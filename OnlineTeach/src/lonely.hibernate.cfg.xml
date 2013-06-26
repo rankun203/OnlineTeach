@@ -22,9 +22,24 @@
 
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
-
- 		<mapping class="com.teachMng.onlineTeach.model.Student"/>
-  		<mapping class="com.teachMng.onlineTeach.model.Teacher"/>
+		
+		
+		<mapping class="com.teachMng.onlineTeach.model.ProjectGroup" />
+		<mapping class="com.teachMng.onlineTeach.model.ProjectReply" />
+		<mapping class="com.teachMng.onlineTeach.model.Project" />
+		<mapping class="com.teachMng.onlineTeach.model.CoursePlanItem" />
+		<mapping class="com.teachMng.onlineTeach.model.ClassRoom" />
+		<mapping class="com.teachMng.onlineTeach.model.Course" />
+		<mapping class="com.teachMng.onlineTeach.model.Major" />
+		<mapping class="com.teachMng.onlineTeach.model.SchoolClass" />
+		<mapping class="com.teachMng.onlineTeach.model.Teacher" />
+		<mapping class="com.teachMng.onlineTeach.model.Student" />
+		<mapping class="com.teachMng.onlineTeach.model.ProjectDiv" />
+		<mapping class="com.teachMng.onlineTeach.model.CompositeCheck" />
+ 		<mapping class="com.teachMng.onlineTeach.model.TeachPlan"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CheckAttendance"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWare"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWork"/>
  		<mapping class="com.teachMng.onlineTeach.model.UpFile"/>
 
  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSet"/>
@@ -32,6 +47,7 @@
  		<mapping class="com.teachMng.onlineTeach.model.exercise.CompletionExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.SelectionExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.QuestionExercise"/>
- 	</session-factory>
+ 
+  	</session-factory>
 </hibernate-configuration>
 
