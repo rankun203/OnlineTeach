@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 import com.teachMng.onlineTeach.model.Teacher;
 import com.teachMng.onlineTeach.model.UpFile;
-import com.teachMng.onlineTeach.model.exercise.IExercise;
+import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
 
 /**
  * FIXME 测试我，并添加Hibernate支持
@@ -22,7 +22,7 @@ import com.teachMng.onlineTeach.model.exercise.IExercise;
  * 空格的位置在<b>#!space!#</b>占位符的位置。
  * @author mindfine
  */
-public class IExerciseImplSelection implements IExercise {
+public class IExerciseImplSelection implements IExerciseTeacher {
 
 	private long id;
 	private String fullTopic;
@@ -30,6 +30,7 @@ public class IExerciseImplSelection implements IExercise {
 	private List<Teacher> belongToTeachers;
 	private Teacher origin;
 	private Selection selected;
+	private double stdScore;
 	private enum Selection{
 		A,
 		B,
@@ -52,70 +53,44 @@ public class IExerciseImplSelection implements IExercise {
 		this.selected = selected;
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString(){
 		return "" + selected;
 	}
-
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getId()
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Override
 	public long getId() {
 		return id;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setId(int)
-	 */
 	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setOrigin(com.teachMng.onlineTeach.model.Teacher)
-	 */
+
 	@Override
 	public void setOrigin(Teacher origin) {
 		this.origin = origin;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getOrigin()
-	 */
 	@Override
 	public Teacher getOrigin() {
 		return origin;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#addBelongTeacher(com.teachMng.onlineTeach.model.Teacher)
-	 */
+
 	@Override
 	public void addBelongTeacher(Teacher teacher){
 		belongToTeachers.add(teacher);
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getAuthorizedTeachers()
-	 */
 	@Override
 	public List<Teacher> getAuthorizedTeachers(){
 		return belongToTeachers;
 	}
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#getFullTopic()
-	 */
 	@Override
 	public String getFullTopic() {
 		return fullTopic;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.teachMng.onlineTeach.model.exercise.IExercise#setFullTopic(java.lang.String)
-	 */
 	@Override
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
@@ -132,6 +107,15 @@ public class IExerciseImplSelection implements IExercise {
 	 */
 	public List<UpFile> getTopicAttachments(){
 		return topicAttachments;
+	}
+	@Override
+	public double getStdScore() {
+		return stdScore;
+	}
+
+	@Override
+	public void setStdScore(double stdScore) {
+		this.stdScore = stdScore;
 	}
 
 

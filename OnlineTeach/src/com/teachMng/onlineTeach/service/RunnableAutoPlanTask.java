@@ -1,13 +1,10 @@
 package com.teachMng.onlineTeach.service;
 
-import java.util.Set;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.autoplan.AutoPlan;
-import com.teachMng.onlineTeach.dto.InfoTagItem;
 import com.teachMng.onlineTeach.util.Timer;
 
 @Component("runnableAutoPlanTask")
@@ -55,7 +52,7 @@ public class RunnableAutoPlanTask implements Runnable{
 	}
 	/**
 	 * 取出消息队列中的所有消息
-	 * @return
+	 * @return 消息字符串
 	 */
 	public String pollMsg(){
 		return ap.getMsg();

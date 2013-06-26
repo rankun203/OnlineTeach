@@ -1,4 +1,4 @@
-package com.teachMng.onlineTech.autoplan;
+package com.teachMng.onlineTeach.autoplan;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import com.teachMng.onlineTeach.autoplan.AutoPlan;
 import com.teachMng.onlineTeach.model.CoursePlanItem;
 
 @ContextConfiguration(locations="classpath:applicationContext.xml")

@@ -4,8 +4,13 @@ import java.util.List;
 
 import com.teachMng.onlineTeach.model.Teacher;
 
-public interface IExercise {
+/**
+ * 教师练习题接口
+ * @author mindfine
+ */
+public interface IExerciseTeacher {
 	public String spaceHolder = "#!space!#";
+	public String newLineHolder = "#!newline!#";
 
 	/**
 	 * 返回题目的内容
@@ -25,7 +30,6 @@ public interface IExercise {
 	public long getId();
 	/**
 	 * 设置题目的id
-	 * @return 题目的id
 	 */
 	public void setId(int id);
 	/**
@@ -51,5 +55,14 @@ public interface IExercise {
 	 * @return 拥有该体的老师的集合
 	 */
 	public List<Teacher> getAuthorizedTeachers();
+	/**
+	 * 获得这道题的分值
+	 * @return float类型的分值
+	 */
+	public double getStdScore();
+	/**
+	 * 设置这道题的分值
+	 */
+	void setStdScore(double stdScore);
 
 }

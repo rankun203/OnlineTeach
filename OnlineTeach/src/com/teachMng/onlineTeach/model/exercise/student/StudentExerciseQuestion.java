@@ -1,4 +1,4 @@
-package com.teachMng.onlineTeach.model.exercise.teacher;
+package com.teachMng.onlineTeach.model.exercise.student;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -7,31 +7,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.teachMng.onlineTeach.model.Teacher;
+import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.UpFile;
+import com.teachMng.onlineTeach.model.exercise.IExerciseStudent;
 import com.teachMng.onlineTeach.model.exercise.IExerciseTeacher;
+import com.teachMng.onlineTeach.model.exercise.teacher.IExerciseImplQuestion;
 
 /**
- * FIXME 测试我，并添加Hibernate支持 问答题的题目<br>
- * 问答题模型：
- * <ol>
- * <li>问答题只有一段题目描述</li>
- * <li>问答题有一个或多个附件</li>
- * </ol>
- * <br>
- * 
  * @author mindfine
  */
-public class IExerciseImplQuestion implements IExerciseTeacher {
+public class StudentExerciseQuestion implements IExerciseStudent {
 
 	private long id;
-	private String fullTopic;
-	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
 	private String answerStr;
 	private List<UpFile> answerAttachments = new LinkedList<UpFile>();
-	private List<Teacher> belongToTeachers;
-	private Teacher origin;
-	private double stdScore;
+	private IExerciseImplQuestion originExercise;
+	private String teacherComment;
+	private double score;
+	private Student student;
 
 	/**
 	 * 获取题目的id
@@ -88,64 +81,48 @@ public class IExerciseImplQuestion implements IExerciseTeacher {
 		return answerAttachments;
 	}
 
-	/**
-	 * 添加一个附件
-	 */
-	public void addAttachment(UpFile file) {
-		topicAttachments.add(file);
-	}
-
-	/**
-	 * 获取所有的附件
-	 * 
-	 * @return 附件链表
-	 */
-	public List<UpFile> getAttachments() {
-		return topicAttachments;
-	}
-
 	@Override
 	public String toString() {
 		return answerStr;
 	}
 
 	@Override
-	public String getFullTopic() {
-		return fullTopic;
+	public IExerciseTeacher getOriginExercise() {
+		return originExercise;
 	}
 
 	@Override
-	public void setFullTopic(String fullTopic) {
-		this.fullTopic = fullTopic;
+	public void setOriginExercise(IExerciseTeacher originExercise) {
+		this.originExercise = (IExerciseImplQuestion)originExercise;
 	}
 
 	@Override
-	public void setOrigin(Teacher origin) {
-		this.origin = origin;
+	public void setTeacherComment(String comment) {
+		this.teacherComment = comment;
 	}
 
 	@Override
-	public Teacher getOrigin() {
-		return origin;
+	public String getTeacherComment() {
+		return teacherComment;
+	}
+	@Override
+	public double getScore() {
+		return score;
 	}
 
 	@Override
-	public void addBelongTeacher(Teacher teacher) {
-		belongToTeachers.add(teacher);
+	public void setScore(double score) {
+		this.score = score;
+	}
+	@Override
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	@Override
-	public List<Teacher> getAuthorizedTeachers() {
-		return belongToTeachers;
-	}
-	@Override
-	public double getStdScore() {
-		return stdScore;
-	}
 
 	@Override
-	public void setStdScore(double stdScore) {
-		this.stdScore = stdScore;
+	public Student getStudent() {
+		return student;
 	}
 
 }

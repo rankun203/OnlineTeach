@@ -84,14 +84,12 @@ public class AutoPlanAction extends ActionSupport implements ServletResponseAwar
 	}
 	/**
 	 * 返回处理百分比
-	 * @return
 	 */
 	public void printProgressPercent(){
 		out().print( task.progressedPercent() * 100);
 	}
 	/**
 	 * 返回消息
-	 * @return
 	 */
 	public void msg(){
 		out().print(task.pollMsg());
