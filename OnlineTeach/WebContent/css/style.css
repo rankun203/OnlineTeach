@@ -1236,6 +1236,10 @@ input[type="radio"] {
 	to {opacity: 0;}
 }
 /* 课程表查询*/
+#searchType {
+	margin-top:5px;
+	margin-left:450px;	
+}
 .selectView_coursePlan { 
 	display:block;
 }
@@ -1251,8 +1255,8 @@ input[type="radio"] {
 #coursePlanView {
 	margin-top:10px;
 	margin-left:300px;	
-	width:800px;
-	height:600px;
+	width:750px;
+	height:550px;
 	display:block;
 	text-align:center;
 }
@@ -1265,7 +1269,8 @@ input[type="radio"] {
 #coursePlanView table td {
 	border-bottom:1px solid #000;
 	border-left:1px solid #000;
-	cursor:pointer;
+	font-size:12;
+	text-align:center;
 }
 .coursePlanNav {
 	border-left:1px solid #000;
@@ -1324,6 +1329,18 @@ input[type="radio"] {
 }
 .coursePlanTitle {
 	background-color:#eee;
+	text-align:center;	
+}
+.coursePlanTitle1 {
+}
+.coursePlanTitle2 {
+	height:20px;
+}
+.coursePlanTitle3 {
+	width:40px;
+}
+.coursePlanTitle1 td {
+	height:20px;
 }
 .coursePlanClose {
 	color:#F00;

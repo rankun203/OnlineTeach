@@ -20,6 +20,21 @@ import com.teachMng.onlineTeach.service.RunnableAutoPlanTask;
 public class AutoPlanAction extends ActionSupport implements ServletResponseAware{
 
 	private HttpServletResponse response;
+	private String typeName;
+	private String selectName;
+	public void setSelectName(String selectName) {
+		this.selectName = selectName;
+	}
+	public String getSelectName() {
+		return selectName;
+	}
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
 	private Set<InfoTagItem> infoTag = new HashSet<InfoTagItem>();
 	public Set<InfoTagItem> getInfoTag() {
 		return infoTag;
@@ -51,8 +66,16 @@ public class AutoPlanAction extends ActionSupport implements ServletResponseAwar
 			out().print("onProgress");
 		}
 	}
+	public String getSName() {
+		out().print(task.getSelectList(getTypeName()));
+		return null;
+	}
 	public String generateCoursePlan() {
 		out().print(task.getInfoTag());
+		return null;
+	}
+	public String getCoursePlan() {
+		out().print(task.getCoursePlanBysName(typeName, selectName));
 		return null;
 	}
 	public String cancel(){

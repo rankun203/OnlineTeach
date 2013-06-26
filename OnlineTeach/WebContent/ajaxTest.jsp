@@ -20,7 +20,6 @@
 </script>
 </head>
 <body>
-	<button class="begin">开始获取</button>
-	计数器值：<div class="test"></div>
+	<%=request.getParameter("typeName") %>
 </body>
 </html>

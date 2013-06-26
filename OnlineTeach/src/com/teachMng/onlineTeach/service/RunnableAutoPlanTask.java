@@ -13,9 +13,32 @@ public class RunnableAutoPlanTask implements Runnable{
 	private Timer t;
 	public RunnableAutoPlanTask(){
 	}
+	public String getCoursePlanBysName(String sType, String sName) {
+		if("sbClass".equals(sType)) {
+			return "{coursePlan:[" + ap.getClassStringById(Integer.parseInt(sName)) + "]}";
+		} else if("sbTeacher".equals(sType)) {
+			return "{coursePlan:[" + ap.getTeacherStringById(Integer.parseInt(sName)) + "]}";
+		} else if("sbRoom".equals(sType)) {
+			System.out.println("hello");
+			return "{coursePlan:[" + ap.getRoomStringById(Integer.parseInt(sName)) + "]}";
+		}
+		return null;
+	}
 	public String getInfoTag() {
-		
 		return ap.getInfoTag();
+	}
+	public String getSelectList(String sType) {
+		if("sbClass".equals(sType)) {
+			System.out.println("sbClass");
+			return ap.getClassList();
+		} else if("sbTeacher".equals(sType)) {
+			System.out.println("sbTeacher");
+			return ap.getTeacherList();
+		} else if("sbRoom".equals(sType)) {
+			System.out.println("sbRoom");
+			return ap.getRoomList();
+		}
+		return null;
 	}
 	@Override
 	public void run() {

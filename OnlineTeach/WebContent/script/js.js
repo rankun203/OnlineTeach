@@ -155,21 +155,11 @@ function reBg(ele, oe){
 
 //排课进度
 $(document).ready(function(){
-	$.get("ap/generateCP", function(data){
-		var obj = eval("(" + data + ")");
-		var oldInfo = "";
-		var cName = "";
-		for(var i = 0; i < obj.length; i++) {
-			if("1" == obj[i].id) 
-				cName = "studentTag showTag"; 
-			else if("2" == obj[i].id) 
-				cName = "teacherTag showTag";
-			else if("3" == obj[i].id)
-				cName = "roomTag showTag";
-			oldInfo += "<div class=\"" + cName + "\" >" + obj[i].name + "</div>";
-		}
-		console.log(oldInfo);
-		document.getElementById("apiList").innerHTML = oldInfo;
+	$("#sType").change(function(){
+		$.getSelectName($("#sType").val());
+	});
+	$("#sName").change(function(){
+		$.getCoursePlan($("#sType").val(), $("#sName").val());
 	});
 	$("button.apstart").click(function(){
 		$("#pbprogress")
@@ -215,7 +205,108 @@ function getAutoPlanMsg() {
 			addInfoToConsole(obj[i]);
 	});	
 }
+
 $.extend({
+	clearCoursePlan:function() {
+		for(var i=1; i < 43; i++) {
+			$("#p" + i).html("&nbsp;");
+		}
+	},
+	clearSName:function(){
+		$("#sName").text("");
+	},
+	getCoursePlan:function(sType, sName) {
+		var url = "ap/getCoursePlan?typeName=" + sType + "&selectName=" + sName;
+		$.get(url, function(data){
+			if("sbRoom" == sType) {
+				//console.log(eval("(" + data + ")"));
+				$.showRoomCoursePlan(eval("(" + data + ")").coursePlan);				
+			} else if("sbClass" == sType) {
+				$.showClassCoursePlan(eval("(" + data + ")").coursePlan);
+			} else if("sbTeacher" == sType) {
+				$.showTeacherCoursePlan(eval("(" + data + ")").coursePlan);
+			}
+		});	
+	},
+	setTeacherCoursePlan:function(data) {
+		var obj = eval("(" + data + ")");
+		var tmp, str;
+		$.clearSName();
+		for(var i = 0; i < obj.list.length; i++) {
+			tmp = obj.list[i];
+			//console.log(tmp.id + "___" + tmp.name);
+			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
+			$("#sName").html($("#sName").html() + str);
+		}
+		$.showTeacherCoursePlan(obj.coursePlan);
+	},
+	showTeacherCoursePlan:function(teacherCP) {
+		$.clearCoursePlan();
+		var tmp, str;
+		for(var i = 0; i < teacherCP.length; i++) {
+			tmp = teacherCP[i];
+			str = tmp.courseName + "<br />" + tmp.majorName + " " + tmp.className +
+			"<br />" + tmp.roomName;
+			//console.log(str + "  p" + tmp.paragraph);
+			$("#p" + tmp.paragraph).html(str);
+		}
+	},	
+	showRoomCoursePlan:function(roomCP) {
+		$.clearCoursePlan();
+		var tmp, str;
+		for(var i = 0; i < roomCP.length; i++) {
+			tmp = roomCP[i];
+			str = tmp.majorName + " " + tmp.className +
+			"<br />" + tmp.courseName + "<br/>" + tmp.teacherName;
+			//console.log(str + "  p" + tmp.paragraph);
+			$("#p" + tmp.paragraph).html(str);
+		}
+	},
+	showClassCoursePlan:function(classCP) {
+		$.clearCoursePlan();
+		var tmp, str;
+		for(var i = 0; i < classCP.length; i++) {
+			tmp = classCP[i];
+			str = tmp.courseName + 	"<br />" + tmp.roomName + "<br/>" + tmp.teacherName;
+			//console.log(str + "  p" + tmp.paragraph);
+			$("#p" + tmp.paragraph).html(str);
+		}
+	},
+	setClassCoursePlan:function(data) {
+		var obj = eval("(" + data + ")");
+		var tmp, str;
+		$.clearSName();
+		for(var i = 0; i < obj.list.length; i++) {
+			tmp = obj.list[i];
+			//console.log(tmp.id + "___" + tmp.name);
+			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
+			$("#sName").html($("#sName").html() + str);
+		}
+		$.showClassCoursePlan(obj.coursePlan);
+	},
+	setRoomCoursePlan:function(data) {
+		var obj = eval("(" + data + ")");
+		var tmp, str;
+		$.clearSName();
+		for(var i = 0; i < obj.list.length; i++) {
+			tmp = obj.list[i];
+			//console.log(tmp.id + "___" + tmp.name);
+			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
+			$("#sName").html($("#sName").html() + str);
+		}
+		$.showRoomCoursePlan(obj.coursePlan);
+	},
+	getSelectName:function(sType) {
+		var url = "ap/selectName?typeName=" + sType;
+		$.get(url, function(data){
+			if("sbRoom" == sType) 
+				$.setRoomCoursePlan(data);
+			if("sbClass" == sType)
+				$.setClassCoursePlan(data);
+			if("sbTeacher" == sType) 
+				$.setTeacherCoursePlan(data);
+		});	
+	},
 	refreshProgressBar:function(){
 		var progressUrl = "ap/ppp";
 		$.post(progressUrl, "" , function(data){

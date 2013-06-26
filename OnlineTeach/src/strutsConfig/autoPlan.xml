@@ -9,6 +9,8 @@
         <action name="ppp" class="autoPlanAction" method="printProgressPercent" />
         <action name="msg" class="autoPlanAction" method="msg" />
         <action name="generateCP" class="autoPlanAction" method="generateCoursePlan" />
+        <action name="selectName" class="autoPlanAction" method="getSName" />
+        <action name="getCoursePlan" class="autoPlanAction" method="getCoursePlan" />
     </package>
     <package name="test" extends="struts-default" namespace="/test">
     	<action name="show" class="ajaxTestAction" method="show"></action>

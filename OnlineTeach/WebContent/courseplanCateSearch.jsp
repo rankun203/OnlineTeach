@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
+<html id="courseplanCateSearch">
 <head>
 <meta charset="utf-8">
 <title>课表分类查询</title>
@@ -51,10 +51,19 @@
 		</div>
     </div>
 </div>
-
+	<div id="searchType">
+		查询类型：<select id="sType">
+			<option value="sbClass">班级</option>
+			<option value="sbTeacher">教师</option>
+			<option value="sbRoom">教室</option>
+		</select>
+		选项：
+		<select id="sName">
+		</select>
+	</div>
     <div id="coursePlanView">
         <table cellspacing="0" onselectstart="return false;">
-            <tr class="coursePlanTitle">
+            <tr class="coursePlanTitle1 coursePlanTitle">
                 <td>&nbsp;</td>
                 <td>节数</td>
                 <td>星期一</td>
@@ -66,112 +75,95 @@
                 <td>星期日</td>
             </tr>
             <tr>
-                <td rowspan="4" class="coursePlanTitle">上<br />午</td>
-                <td class="coursePlanTitle">第一节</td>
-                <td id="oneone" onmousedown="return setMouseDown('oneone');" onmouseup="return setMouseUp('oneone');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="onetwo" onmousedown="return setMouseDown('onetwo');" onmouseup="return setMouseUp('onetwo');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="onethree" onmousedown="return setMouseDown('onethree');" onmouseup="return setMouseUp('onethree');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="onefour" onmousedown="return setMouseDown('onefour');" onmouseup="return setMouseUp('onefour');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="onefive" onmousedown="return setMouseDown('onefive');" onmouseup="return setMouseUp('onefive');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="onesix" onmousedown="return setMouseDown('onesix');" onmouseup="return setMouseUp('onesix');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="oneseven" onmousedown="return setMouseDown('oneseven');" onmouseup="return setMouseUp('oneseven');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td rowspan="4" class="coursePlanTitle3 coursePlanTitle">上<br />午</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第一节</td>
+                <td id="p1" rowspan="2">&nbsp;</td>
+                <td id="p7" rowspan="2">&nbsp;</td>
+                <td id="p13" rowspan="2">&nbsp;</td>
+                <td id="p19" rowspan="2">&nbsp;</td>
+                <td id="p25" rowspan="2">&nbsp;</td>
+                <td id="p31" rowspan="2">&nbsp;</td>
+                <td id="p37" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第二节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第二节</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第三节</td>
-                <td id="twoone" onmousedown="return setMouseDown('twoone');" onmouseup="return setMouseUp('twoone');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="twotwo" onmousedown="return setMouseDown('twotwo');" onmouseup="return setMouseUp('twotwo');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="twothree" onmousedown="return setMouseDown('twothree');" onmouseup="return setMouseUp('twothree');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="twofour" onmousedown="return setMouseDown('twofour');" onmouseup="return setMouseUp('twofour');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">体育</td>
-                <td id="twofive" onmousedown="return setMouseDown('twofive');" onmouseup="return setMouseUp('twofive');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="twosix" onmousedown="return setMouseDown('twosix');" onmouseup="return setMouseUp('twosix');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="twoseven" onmousedown="return setMouseDown('twoseven');" onmouseup="return setMouseUp('twoseven');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第三节</td>
+                <td id="p2" rowspan="2">&nbsp;</td>
+                <td id="p8" rowspan="2">&nbsp;</td>
+                <td id="p14" rowspan="2">&nbsp;</td>
+                <td id="p20" rowspan="2">&nbsp;</td>
+                <td id="p26" rowspan="2">&nbsp;</td>
+                <td id="p32" rowspan="2">&nbsp;</td>
+                <td id="p38" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第四节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第四节</td>
             </tr>
             <tr>
-                <td rowspan="4" class="coursePlanTitle">下<br />午</td>
-                <td class="coursePlanTitle">第五节</td>
-                <td id="threeone" onmousedown="return setMouseDown('threeone');" onmouseup="return setMouseUp('threeone');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">物理</td>
-                <td id="threetwo" onmousedown="return setMouseDown('threetwo');" onmouseup="return setMouseUp('threetwo');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">化学</td>
-                <td id="threethree" onmousedown="return setMouseDown('threethree');" onmouseup="return setMouseUp('threethree');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">生物</td>
-                <td id="threefour" onmousedown="return setMouseDown('threefour');" onmouseup="return setMouseUp('threefour');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">政治</td>
-                <td id="threefive" onmousedown="return setMouseDown('threefive');" onmouseup="return setMouseUp('threefive');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="threesix" onmousedown="return setMouseDown('threesix');" onmouseup="return setMouseUp('threesix');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
-                <td id="threeseven" onmousedown="return setMouseDown('threeseven');" onmouseup="return setMouseUp('threeseven');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td rowspan="4" class="coursePlanTitle3 coursePlanTitle">下<br />午</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第五节</td>
+                <td id="p3" rowspan="2">&nbsp;</td>
+                <td id="p9" rowspan="2">&nbsp;</td>
+                <td id="p15" rowspan="2">&nbsp;</td>
+                <td id="p21" rowspan="2">&nbsp;</td>
+                <td id="p27" rowspan="2">&nbsp;</td>
+                <td id="p33" rowspan="2">&nbsp;</td>
+                <td id="p39" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第六节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第六节</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第七节</td>
-                <td id="fourone" onmousedown="return setMouseDown('fourone');" onmouseup="return setMouseUp('fourone');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">生物</td>
-                <td id="fourtwo" onmousedown="return setMouseDown('fourtwo');" onmouseup="return setMouseUp('fourtwo');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">物理</td>
-                <td id="fourthree" onmousedown="return setMouseDown('fourthree');" onmouseup="return setMouseUp('fourthree');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">化学</td>
-                <td id="fourfour" onmousedown="return setMouseDown('fourfour');" onmouseup="return setMouseUp('fourfour');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">生物</td>
-                <td id="fourfive" onmousedown="return setMouseDown('fourfive');" onmouseup="return setMouseUp('fourfive');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">物理</td>
-                <td id="foursix" onmousedown="return setMouseDown('foursix');" onmouseup="return setMouseUp('foursix');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
-                <td id="fourseven" onmousedown="return setMouseDown('fourseven');" onmouseup="return setMouseUp('fourseven');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第七节</td>
+                <td id="p4" rowspan="2">&nbsp;</td>
+                <td id="p10" rowspan="2">&nbsp;</td>
+                <td id="p16" rowspan="2">&nbsp;</td>
+                <td id="p22" rowspan="2">&nbsp;</td>
+                <td id="p28" rowspan="2">&nbsp;</td>
+                <td id="p34" rowspan="2">&nbsp;</td>
+                <td id="p40" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第八节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第八节</td>
             </tr>
             <tr>
-                <td rowspan="4" class="coursePlanTitle">晚<br />上</td>
-                <td class="coursePlanTitle">第九节</td>
-                <td id="fiveone" onmousedown="return setMouseDown('fiveone');" onmouseup="return setMouseUp('fiveone');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="fivetwo" onmousedown="return setMouseDown('fivetwo');" onmouseup="return setMouseUp('fivetwo');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="fivethree" onmousedown="return setMouseDown('fivethree');" onmouseup="return setMouseUp('fivethree');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="fivefour" onmousedown="return setMouseDown('fivefour');" onmouseup="return setMouseUp('fivefour');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="fivefive" onmousedown="return setMouseDown('fivefive');" onmouseup="return setMouseUp('fivefive');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">化学</td>
-                <td id="fivesix" onmousedown="return setMouseDown('fivesix');" onmouseup="return setMouseUp('fivesix');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
-                <td id="fiveseven" onmousedown="return setMouseDown('fiveseven');" onmouseup="return setMouseUp('fiveseven');" rowspan="2" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td rowspan="4" class="coursePlanTitle3 coursePlanTitle">晚<br />上</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第九节</td>
+                <td id="p5" rowspan="2">&nbsp;</td>
+                <td id="p11" rowspan="2">&nbsp;</td>
+                <td id="p17" rowspan="2">&nbsp;</td>
+                <td id="p23" rowspan="2">&nbsp;</td>
+                <td id="p29" rowspan="2">&nbsp;</td>
+                <td id="p35" rowspan="2">&nbsp;</td>
+                <td id="p41" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第十节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第十节</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第十一节</td>
-                <td id="sixone" rowspan="2" onmousedown="return setMouseDown('sixone');" onmouseup="return setMouseUp('sixone');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">语文</td>
-                <td id="sixtwo" rowspan="2" onmousedown="return setMouseDown('sixtwo');" onmouseup="return setMouseUp('sixtwo');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">物理</td>
-                <td id="sixthree" rowspan="2" onmousedown="return setMouseDown('sixthree');" onmouseup="return setMouseUp('sixthree');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">生物</td>
-                <td id="sixfour" rowspan="2" onmousedown="return setMouseDown('sixfour');" onmouseup="return setMouseUp('sixfour');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">英语</td>
-                <td id="sixfive" rowspan="2" onmousedown="return setMouseDown('sixfive');" onmouseup="return setMouseUp('sixfive');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">数学</td>
-                <td id="sixsix" rowspan="2" onmousedown="return setMouseDown('sixsix');" onmouseup="return setMouseUp('sixsix');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
-                <td id="sixseven" rowspan="2" onmousedown="return setMouseDown('sixseven');" onmouseup="return setMouseUp('sixseven');" onmousemove="this.bgColor='#ACEBA0';" onmouseout="this.bgColor='#FFFFFF';">&nbsp;</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第十一节</td>
+                <td id="p6" rowspan="2">&nbsp;</td>
+                <td id="p12" rowspan="2">&nbsp;</td>
+                <td id="p18" rowspan="2">&nbsp;</td>
+                <td id="p24" rowspan="2">&nbsp;</td>
+                <td id="p30" rowspan="2">&nbsp;</td>
+                <td id="p36" rowspan="2">&nbsp;</td>
+                <td id="p42" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="coursePlanTitle">第十二节</td>
+                <td class="coursePlanTitle2 coursePlanTitle">第十二节</td>
             </tr>                                                                                                        
         </table>
     </div>
 </div>
-<script type="text/javascript">
-	var isDown = false;
-	var curID,tagID;
-	function setMouseDown(cid) {
-		curID = cid;
-		isDown = true;
-	}
-	function setMouseUp(tid) {
-		tagID = tid;
-		if(curID != tagID) {
-			dragChange();
-		}
-		isDown = false;
-	}
-	function dragChange() {
-			var curValue = document.getElementById(curID).innerHTML;
-			var tagValue = document.getElementById(tagID).innerHTML;
-			document.getElementById(curID).innerHTML = tagValue;
-			document.getElementById(tagID).innerHTML = curValue;
-			console.log(curValue + " ____  " + tagValue);
-		}
-</script>
 
 <jsp:include page="include/footer.jsp"/>
+<script type="text/javascript">
+	$("#courseplanCateSearch").ready(function() {
+		$.getSelectName($("#sType").val());
+	});
+</script>
 </body>
 </html>

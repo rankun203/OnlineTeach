@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<html>
+<html id="generateCoursePlan">
 <head>
 <meta charset="utf-8">
 <title>学期课表生成</title>
@@ -81,5 +81,23 @@
 		</div>
 	</div>
 	<jsp:include page="include/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+		$("#generateCoursePlan").load("ap/generateCP", null, function(data){
+			var obj = eval("(" + data + ")");
+			var oldInfo = "";
+			var cName = "";
+			for(var i = 0; i < obj.length; i++) {
+				if("1" == obj[i].id) 
+					cName = "studentTag showTag"; 
+				else if("2" == obj[i].id) 
+					cName = "teacherTag showTag";
+				else if("3" == obj[i].id)
+					cName = "roomTag showTag";
+				oldInfo += "<div class=\"" + cName + "\" >" + obj[i].name + "</div>";
+			}
+			console.log(oldInfo);
+			$("#apiList").html(oldInfo);
+		});
+	</script>
 </body>
 </html>

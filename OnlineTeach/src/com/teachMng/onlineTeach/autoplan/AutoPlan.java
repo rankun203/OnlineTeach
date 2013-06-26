@@ -17,7 +17,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dto.ClassCoursePara;
+import com.teachMng.onlineTeach.dto.ClassCoursePlanPara;
 import com.teachMng.onlineTeach.dto.InfoTagItem;
+import com.teachMng.onlineTeach.dto.RoomCoursePlanPara;
+import com.teachMng.onlineTeach.dto.TeacherCoursePlanPara;
 import com.teachMng.onlineTeach.model.ClassRoom;
 import com.teachMng.onlineTeach.model.Course;
 import com.teachMng.onlineTeach.model.CoursePlanItem;
@@ -40,6 +43,8 @@ public class AutoPlan {
 	boolean isInstToDB = false;
 	Queue <String>msgQueue;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+	@Resource(name="coursePlanUtil")
+	CoursePlanUtil _cpu;
 	/**
 	 * 排列课程表 此方法不会将数据插入数据库
 	 * 
@@ -110,7 +115,96 @@ public class AutoPlan {
 			return (float) ((getCurCourseCount() + 0.0) / allCourseCount);
 		}
 	}
-	
+	/*
+	 * {list:[{id:"1", name:"ds"}]}
+	 * */
+	public String getClassList() {
+		String json = "{list:[";
+		schoolClasses = schoolClassService.allSchoolClass();
+		Iterator<SchoolClass> _scIter = schoolClasses.iterator();
+		SchoolClass _sc;
+		while(_scIter.hasNext()) {
+			_sc = _scIter.next();
+			json += "{id:\"" + _sc.getScID() + "\", name:\"" + _sc.getMajor().getMajorName() + " " + _sc.getScName() + "\"}, "; 
+		}
+		json += "], coursePlan:[";
+		json += getClassStringById(schoolClasses.get(0).getScID());
+		json += "]}";
+		return json;
+	}
+	public String getClassStringById(int id) {
+		String json = "";
+		if(null == _cpu.getClassCoursePlanByClassId(id)) 
+			return "";
+		Iterator<ClassCoursePlanPara> _rcppIter = _cpu.getClassCoursePlanByClassId(id).iterator();
+		ClassCoursePlanPara _rcpp = null;
+		while(_rcppIter.hasNext()) {
+			_rcpp = _rcppIter.next();
+			json += "{courseId:\"" + _rcpp.getCourseID() + "\", courseName:\"" + _rcpp.getCourseName() +"\", roomId:\"" + _rcpp.getRoomID() + 
+					"\", roomName:\"" + _rcpp.getRoomName() + "\", teacherId:\"" + _rcpp.getTeacherID() + "\", teacherName:\"" + 
+					_rcpp.getTeacherName() + "\", paragraph:\"" + _rcpp.getParagraph() + "\"}, ";		
+		}
+		return json;
+	}
+	public String getTeacherList() {
+		String json = "{list:[";
+		teachers = teacherService.allTeacher();
+		Iterator<Teacher> _tIter = teachers.iterator();
+		Teacher _t;
+		while(_tIter.hasNext()) {
+			_t = _tIter.next();
+			json += "{id:\"" + _t.getTeacID() + "\", name:\"" + _t.getTeacName() + "\"}, "; 
+		}
+		json += "], coursePlan:[";
+		json += getTeacherStringById(teachers.get(0).getTeacID());
+		json += "]}";
+		return json;
+	}
+	public String getTeacherStringById(int id) {
+		String json = "";
+		if(null == _cpu.getTeacherCoursePlanByTeacherId(id)) 
+			return "";
+		Iterator<TeacherCoursePlanPara> _rcppIter = _cpu.getTeacherCoursePlanByTeacherId(id).iterator();
+		TeacherCoursePlanPara _rcpp = null;
+		while(_rcppIter.hasNext()) {
+			_rcpp = _rcppIter.next();
+			json += "{courseId:\"" + _rcpp.getCourseID() + "\", courseName:\"" + _rcpp.getCourseName() +"\", roomId:\"" + 
+					_rcpp.getRoomID() + "\", roomName:\"" + _rcpp.getRoomName() + "\", majorId:\"" + _rcpp.getMajorID() +
+					"\", majorName:\"" + _rcpp.getMajorName() + "\", classId:\"" + _rcpp.getClassID() + 
+					"\", className:\"" + _rcpp.getClassName() + "\", paragraph:\"" + _rcpp.getParagraph() + "\"}, ";		
+		}
+		return json;
+	}
+	public String getRoomList() {
+		String json = "{list:[";
+		classRooms = classRoomService.allClassRoom();
+		Iterator<ClassRoom> _crIter = classRooms.iterator();
+		ClassRoom _cr;
+		while(_crIter.hasNext()) {
+			_cr = _crIter.next();
+			json += "{id:\"" + _cr.getCrID() + "\", name:\"" + _cr.getCrName() + "\"}, "; 
+		} 
+		json += "], coursePlan:[";	
+		json += getRoomStringById(classRooms.get(0).getCrID());
+		json += "]}";
+		return json;
+	}
+	public String getRoomStringById(int id) {
+		String json = "";
+		if(null == _cpu.getRoomCoursePlanByRoomId(id)) {
+			return "";
+		}
+		Iterator<RoomCoursePlanPara> _rcppIter = _cpu.getRoomCoursePlanByRoomId(id).iterator();
+		RoomCoursePlanPara _rcpp = null;
+		while(_rcppIter.hasNext()) {
+			_rcpp = _rcppIter.next();
+			json += "{majorId:\"" + _rcpp.getMajorID() + "\", majorName:\"" + _rcpp.getMajorName() +"\", classId:\"" + _rcpp.getClassID() + 
+					"\", className:\"" + _rcpp.getClassName() + "\", courseId:\"" + _rcpp.getCourseID() + "\", courseName:\"" + 
+					_rcpp.getCourseName() + "\", teacherId:\"" + _rcpp.getTeacherID() + "\", teacherName:\"" + _rcpp.getTeacherName() +
+					"\", paragraph:\"" + _rcpp.getParagraph() + "\"}, ";		
+		}
+		return json;
+	}
 	/**
 	 * 从排课进度消息的开头获取一个消息字符串
 	 * @return 一个字符串，队列中的最旧的消息
