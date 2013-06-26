@@ -1,22 +1,29 @@
 package com.teachMng.onlineTeach.model;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /*
  * desc:文件类
  * */
-public class UpFile implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "t_file")
+public class UpFile {
 	private int fileID;
 	private String filePaths;
 	private String originalFileName;
 	private String generateFileName;
 	private Date uploadDateTime;
 	private int downloadCount;
+	private String comment;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFileID() {
 		return fileID;
 	}
@@ -52,5 +59,11 @@ public class UpFile implements Serializable {
 	}
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }

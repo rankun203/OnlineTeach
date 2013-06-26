@@ -1,18 +1,9 @@
 package com.teachMng.onlineTeach.model;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -20,17 +11,16 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_student")
-public class Student implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Student {
 	private int stuID;
 	private String stuName;
-	private SchoolClass schoolClass;
-	private ProjectGroup projectGroup;
-	private Set<Project> projects = new HashSet<Project>();
-	private Set<Course> courses = new HashSet<Course>();
+
+//	private SchoolClass schoolClass;
+//	private ProjectGroup projectGroup;
+//	private Set<Project> projects = new HashSet<Project>();
+//	private Set<Course> courses = new HashSet<Course>();
+
+/*
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="t_compositecheck", 
 			joinColumns=@JoinColumn(name="stuID"),
@@ -65,6 +55,7 @@ public class Student implements Serializable {
 	public void setSchoolClass(SchoolClass schoolClass) {
 		this.schoolClass = schoolClass;
 	}
+*/
 	public String getStuName() {
 		return stuName;
 	}
