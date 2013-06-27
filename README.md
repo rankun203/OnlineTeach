@@ -5,14 +5,16 @@ OnlineTeach
 
 ===========
 <h3>Installation</h3><br>
-<h4>Environment     : Tomcat 6.0+<br>
-Compiler        : JDK 6+<br>
-Dependences     : Struts2.3.8<br>
+<h4>Environment：Tomcat 6.0+</b4><br>
+<b4>Compiler：JDK 6+</b4><br>
+
+<b4>Dependences：</b4>
+                        Struts2.3.8<br>
                         Hibernate4.1.8<br>
                         Spring3.2.3<br>
                         MySQL connector:5.1.6<br>
-                        ... ...<br></b4>
-Dependences Detail:<br>
+                        ... ...<br>
+<b4>Dependences Detail:</b4><br>
     antlr-2.7.7.jar<br>
     aopalliance.jar<br>
     asm-3.3.jar<br>
