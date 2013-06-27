@@ -28,6 +28,10 @@ public class Student {
 	private Set<Project> projects = new HashSet<Project>();
 	private Set<Course> courses = new HashSet<Course>();
 
+	public Student(){}
+	public Student(String stuName){
+		this.stuName = stuName;
+	}
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="t_compositecheck", 
 			joinColumns=@JoinColumn(name="stuID"),

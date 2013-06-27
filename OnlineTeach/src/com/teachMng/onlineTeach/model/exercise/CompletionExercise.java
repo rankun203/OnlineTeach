@@ -1,6 +1,6 @@
 package com.teachMng.onlineTeach.model.exercise;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,36 +8,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.teachMng.onlineTeach.model.UpFile;
 
 /**
  * 填空题
+ * 添加答案的时候，先把答案取出去，再添加一个进去，再set回来。
  * @author mindfine
  */
 @Entity
 @Table(name="t_completionexercise")
 public class CompletionExercise {
+	@Transient
+	public static String spaceHolder = "@space@";
+	@Transient
+	public static String newLineHolder = "@newline@";
+	@Transient
+	public static String imgHolder = "@img@";
 	/**
 	 * 标识符
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 题目的内容
 	 */
 	private String fullTopic;
 	/**
-	 * 有几个空
-	 */
-	private int spaceCounts;
-	/**
 	 * 题目自身包含的附件
 	 */
-	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
+	private List<UpFile> topicAttachments = new ArrayList<UpFile>();
 	/**
 	 * 回答问题时贴的附件
 	 */
-	private List<UpFile> answerAttachments = new LinkedList<UpFile>();
+	private List<UpFile> answerAttachments = new ArrayList<UpFile>();
 	/**
 	 * 满分的分数
 	 */
@@ -64,25 +68,22 @@ public class CompletionExercise {
 	
 	
 	
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getFullTopic() {
 		return fullTopic;
 	}
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
 	}
+	@Transient
 	public int getSpaceCounts() {
+		int spaceCounts = 0;
+		int curTemp = 0;
+		while(curTemp != -1){
+			curTemp = fullTopic.indexOf(CompletionExercise.spaceHolder, 
+					curTemp + spaceHolder.length());
+			spaceCounts++;
+		}
 		return spaceCounts;
-	}
-	public void setSpaceCounts(int spaceCounts) {
-		this.spaceCounts = spaceCounts;
 	}
 	@OneToMany
 	public List<UpFile> getTopicAttachments() {
@@ -127,6 +128,14 @@ public class CompletionExercise {
 	}
 	public void setStuScore(double stuScore) {
 		this.stuScore = stuScore;
+	}
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

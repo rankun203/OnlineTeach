@@ -1,13 +1,15 @@
 package com.teachMng.onlineTeach.model.exercise;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.teachMng.onlineTeach.model.UpFile;
 
@@ -18,10 +20,15 @@ import com.teachMng.onlineTeach.model.UpFile;
 @Entity
 @Table(name="t_questionexercise")
 public class QuestionExercise {
+	@Transient
+	public static String newLineHolder = "@newline@";
+	@Transient
+	public static String imgHolder = "@img@";
+
 	/**
 	 * 标识符
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 题目的内容
 	 */
@@ -29,11 +36,11 @@ public class QuestionExercise {
 	/**
 	 * 题目自身包含的附件
 	 */
-	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
+	private List<UpFile> topicAttachments = new ArrayList<UpFile>();
 	/**
-	 * 老师给出的答案<br>
+	 * 老师给出的答案的关键字<br>
 	 */
-	private String stdAnswer;
+	private String stdKeyword;
 	/**
 	 * 学生答题的答案<br>
 	 */
@@ -54,14 +61,6 @@ public class QuestionExercise {
 	
 	
 	
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getFullTopic() {
 		return fullTopic;
 	}
@@ -74,12 +73,6 @@ public class QuestionExercise {
 	}
 	public void setTopicAttachments(List<UpFile> topicAttachments) {
 		this.topicAttachments = topicAttachments;
-	}
-	public String getStdAnswer() {
-		return stdAnswer;
-	}
-	public void setStdAnswer(String stdAnswer) {
-		this.stdAnswer = stdAnswer;
 	}
 	public String getStuAnswer() {
 		return stuAnswer;
@@ -104,5 +97,20 @@ public class QuestionExercise {
 	}
 	public void setStuScore(double stuScore) {
 		this.stuScore = stuScore;
+	}
+	@Column(length=4096)
+	public String getStdKeyword() {
+		return stdKeyword;
+	}
+	public void setStdKeyword(String stdKeyword) {
+		this.stdKeyword = stdKeyword;
+	}
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

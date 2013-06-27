@@ -1,6 +1,6 @@
 package com.teachMng.onlineTeach.model.exercise;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.teachMng.onlineTeach.model.UpFile;
 
@@ -18,10 +19,17 @@ import com.teachMng.onlineTeach.model.UpFile;
 @Entity
 @Table(name="t_selectionexercise")
 public class SelectionExercise {
+	@Transient
+	public static String spaceHolder = "@space@";
+	@Transient
+	public static String newLineHolder = "@newline@";
+	@Transient
+	public static String imgHolder = "@img@";
+
 	/**
 	 * 标识符
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 题目的内容
 	 */
@@ -29,7 +37,7 @@ public class SelectionExercise {
 	/**
 	 * 题目自身包含的附件
 	 */
-	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
+	private List<UpFile> topicAttachments = new ArrayList<UpFile>();
 	/**
 	 * 老师给出的答案<br>
 	 * 字符：A、B、C、D
@@ -55,14 +63,6 @@ public class SelectionExercise {
 
 	
 	
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getFullTopic() {
 		return fullTopic;
 	}
@@ -105,6 +105,14 @@ public class SelectionExercise {
 	}
 	public void setStuScore(double stuScore) {
 		this.stuScore = stuScore;
+	}
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

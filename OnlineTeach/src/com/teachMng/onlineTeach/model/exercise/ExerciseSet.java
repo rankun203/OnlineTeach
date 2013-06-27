@@ -1,9 +1,16 @@
 package com.teachMng.onlineTeach.model.exercise;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.Teacher;
@@ -12,9 +19,11 @@ import com.teachMng.onlineTeach.model.Teacher;
  * 试题集，好比一张试卷
  * @author mindfine
  */
+@Entity
+@Table(name="t_exerciseset")
 public class ExerciseSet {
 
-	private long id;
+	private int id;
 	private Teacher founder;
 	/**
 	 * 如果给了student的值，则说明这张试卷下发给某学生<br>
@@ -23,12 +32,12 @@ public class ExerciseSet {
 	 */
 	private Student student;
 
-	private JudgeExercise judgeExercise;
-	private CompletionExercise completionExercise;
-	private QuestionExercise questionExercise;
-	private SelectionExercise selectionExercise;
-	
-	@ManyToOne
+	private List<JudgeExercise> judgeExercise = new ArrayList<JudgeExercise>();
+	private List<CompletionExercise> completionExercise = new ArrayList<CompletionExercise>();
+	private List<QuestionExercise> questionExercise = new ArrayList<QuestionExercise>();
+	private List<SelectionExercise> selectionExercise = new ArrayList<SelectionExercise>();
+
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="teacId")
 	public Teacher getFounder() {
 		return founder;
@@ -36,7 +45,7 @@ public class ExerciseSet {
 	public void setFounder(Teacher founder) {
 		this.founder = founder;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="stuId")
 	public Student getStudent() {
 		return student;
@@ -44,36 +53,40 @@ public class ExerciseSet {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	public JudgeExercise getJudgeExercise() {
+	@OneToMany(cascade=CascadeType.MERGE)
+	public List<JudgeExercise> getJudgeExercise() {
 		return judgeExercise;
 	}
-	public void setJudgeExercise(JudgeExercise judgeExercise) {
+	public void setJudgeExercise(List<JudgeExercise> judgeExercise) {
 		this.judgeExercise = judgeExercise;
 	}
-	public CompletionExercise getCompletionExercise() {
+	@OneToMany(cascade=CascadeType.MERGE)
+	public List<CompletionExercise> getCompletionExercise() {
 		return completionExercise;
 	}
-	public void setCompletionExercise(CompletionExercise completionExercise) {
+	public void setCompletionExercise(List<CompletionExercise> completionExercise) {
 		this.completionExercise = completionExercise;
 	}
-	public QuestionExercise getQuestionExercise() {
+	@OneToMany(cascade=CascadeType.MERGE)
+	public List<QuestionExercise> getQuestionExercise() {
 		return questionExercise;
 	}
-	public void setQuestionExercise(QuestionExercise questionExercise) {
+	public void setQuestionExercise(List<QuestionExercise> questionExercise) {
 		this.questionExercise = questionExercise;
 	}
-	public SelectionExercise getSelectionExercise() {
+	@OneToMany(cascade=CascadeType.MERGE)
+	public List<SelectionExercise> getSelectionExercise() {
 		return selectionExercise;
 	}
-	public void setSelectionExercise(SelectionExercise selectionExercise) {
+	public void setSelectionExercise(List<SelectionExercise> selectionExercise) {
 		this.selectionExercise = selectionExercise;
 	}
 	@Id
 	@GeneratedValue
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

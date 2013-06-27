@@ -23,6 +23,11 @@ public class Teacher {
 	private Set<CoursePlanItem> coursePlanItems = new HashSet<CoursePlanItem>();
 	private Set<Course> course = new HashSet<Course>();
 
+	public Teacher(){};
+	public Teacher(String teacName) {
+		super();
+		this.teacName = teacName;
+	}
 	@ManyToMany(cascade=CascadeType.ALL, mappedBy="teachers")
 	public Set<Course> getCourse() {
 		return course;

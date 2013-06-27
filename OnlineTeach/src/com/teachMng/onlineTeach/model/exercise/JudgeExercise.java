@@ -1,6 +1,6 @@
 package com.teachMng.onlineTeach.model.exercise;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class JudgeExercise {
 	/**
 	 * 标识符
 	 */
-	private long id;
+	private int id;
 	/**
 	 * 题目的内容
 	 */
@@ -30,7 +30,7 @@ public class JudgeExercise {
 	/**
 	 * 题目自身包含的附件
 	 */
-	private List<UpFile> topicAttachments = new LinkedList<UpFile>();
+	private List<UpFile> topicAttachments = new ArrayList<UpFile>();
 	/**
 	 * 满分的分数
 	 */
@@ -53,14 +53,6 @@ public class JudgeExercise {
 	private double stuScore;
 	
 	
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getFullTopic() {
 		return fullTopic;
 	}
@@ -103,5 +95,13 @@ public class JudgeExercise {
 	}
 	public void setStuScore(double stuScore) {
 		this.stuScore = stuScore;
+	}
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
