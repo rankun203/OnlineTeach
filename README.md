@@ -5,15 +5,20 @@ OnlineTeach
 
 ===========
 <h3>Installation</h3><br>
+
+1.编译整个项目<br>
+2.部署数据库（docs/dbbackup.sql）<br>
+3.部署程序<br>
+
 <h4>Environment：Tomcat 6.0+</b4><br>
 <b4>Compiler：JDK 6+</b4><br>
 
-<b4>Dependences：</b4>
+<b4>Dependences：</b4><br>
                         Struts2.3.8<br>
                         Hibernate4.1.8<br>
                         Spring3.2.3<br>
                         MySQL connector:5.1.6<br>
-                        ... ...<br>
+                        <br>
 <b4>Dependences Detail:</b4><br>
     antlr-2.7.7.jar<br>
     aopalliance.jar<br>
