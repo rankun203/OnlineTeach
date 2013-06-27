@@ -1,6 +1,5 @@
 package com.teachMng.onlineTeach.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,15 +17,17 @@ import javax.persistence.Table;
  * */
 @Entity
 @Table(name="t_teacher")
-public class Teacher implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Teacher {
 	private int teacID;
 	private String teacName;
 	private Set<CoursePlanItem> coursePlanItems = new HashSet<CoursePlanItem>();
 	private Set<Course> course = new HashSet<Course>();
+
+	public Teacher(){};
+	public Teacher(String teacName) {
+		super();
+		this.teacName = teacName;
+	}
 	@ManyToMany(cascade=CascadeType.ALL, mappedBy="teachers")
 	public Set<Course> getCourse() {
 		return course;
@@ -41,6 +42,7 @@ public class Teacher implements Serializable {
 	public void setCoursePlanItems(Set<CoursePlanItem> coursePlanItems) {
 		this.coursePlanItems = coursePlanItems;
 	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getTeacID() {
@@ -55,4 +57,5 @@ public class Teacher implements Serializable {
 	public void setTeacName(String teacName) {
 		this.teacName = teacName;
 	}
+	
 }

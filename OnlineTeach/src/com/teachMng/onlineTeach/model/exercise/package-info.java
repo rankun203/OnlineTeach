@@ -1,4 +1,4 @@
 /**
- * 练习题的数据库模型接口
+ * 练习题，试题集（试卷）
  */
 package com.teachMng.onlineTeach.model.exercise;

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- grant all privileges on OnlineTeach.* to gitproject@localhost identified by 'gitproject' -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/onlineteach</property>
+		<property name="connection.username">gitproject</property>
+		<property name="connection.password">gitproject</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+		
+		<mapping class="com.teachMng.onlineTeach.model.ProjectGroup" />
+		<mapping class="com.teachMng.onlineTeach.model.ProjectReply" />
+		<mapping class="com.teachMng.onlineTeach.model.Project" />
+		<mapping class="com.teachMng.onlineTeach.model.CoursePlanItem" />
+		<mapping class="com.teachMng.onlineTeach.model.ClassRoom" />
+		<mapping class="com.teachMng.onlineTeach.model.Course" />
+		<mapping class="com.teachMng.onlineTeach.model.Major" />
+		<mapping class="com.teachMng.onlineTeach.model.SchoolClass" />
+		<mapping class="com.teachMng.onlineTeach.model.Teacher" />
+		<mapping class="com.teachMng.onlineTeach.model.Student" />
+		<mapping class="com.teachMng.onlineTeach.model.ProjectDiv" />
+		<mapping class="com.teachMng.onlineTeach.model.CompositeCheck" />
+ 		<mapping class="com.teachMng.onlineTeach.model.TeachPlan"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CheckAttendance"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWare"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.CourseWork"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.UpFile"/>
+
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSet"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.JudgeExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.CompletionExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.SelectionExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.QuestionExercise"/>
+ 
+  	</session-factory>
+</hibernate-configuration>
+
