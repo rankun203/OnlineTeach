@@ -923,6 +923,7 @@ input[type="radio"] {
 .wldcAttrAfterContEnd{
 	margin-right:10px;
 }
+
 .createWorkBox{
 	position:relative;
 	display:none;	
@@ -1033,6 +1034,10 @@ input[type="radio"] {
 }
 .disabledIF{
 	background-color:#fff;
+}
+/* 创建习题栏目的样式 */
+.exerciseTypeSelectBox{
+	
 }
 
 /*progress bar*/
