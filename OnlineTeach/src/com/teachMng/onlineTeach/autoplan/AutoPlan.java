@@ -905,11 +905,11 @@ public class AutoPlan {
 						paragraph = 1;
 					}
 					
-					// try {
-					// Thread.sleep(100);
-					// } catch (InterruptedException e) {
-					// e.printStackTrace();
-					// }
+					 try {
+					 Thread.sleep(100);
+					 } catch (InterruptedException e) {
+					 e.printStackTrace();
+					 }
 				}
 			}
 		}
