@@ -4,7 +4,7 @@
 <html id="generateCoursePlan">
 <head>
 <meta charset="utf-8">
-<title>学期课表生成</title>
+<title>添加题目</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
 
