@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="css/style.css" />
 <!-- 
                 	<div class="createWorkBox" id="createWorkBox">
                     	<div class="cwbTitIptLabel">
@@ -27,9 +26,32 @@
 
 	<div class="createWorkBox" id="createWorkBox">
 		<div class="exerciseTypeSelectBox">
-			<div class="et-opt">选择题</div>
-			<div class="et-opt">填空题</div>
-			<div class="et-opt">问答题</div>
-			<div class="et-opt">判断题</div>
+			<form action="exercise/create">
+				<div class="selectTabBox">
+					<div class="et-opt-tit pullleft">题目类别</div>
+					<div class="et-opt pullleft selecttab" id="selectionExercise">选择题</div>
+					<div class="et-opt pullleft selecttab" id="completionExercise">填空题</div>
+					<div class="et-opt pullleft selecttab" id="answerExercise">问答题</div>
+					<div class="et-opt pullleft selecttab" id="judgeExercise">判断题</div>
+					<div class="clearboth"></div>
+				</div>
+				<div class="etsb-row2">
+					<div class="etsb-row2-column-box">
+						<div class="etsb-row2-column-tit pullleft">分值</div>
+						<div class="ercb-item etsb-row2-column selecttab pullleft" id="sg1">1分</div>
+						<div class="ercb-item etsb-row2-column selecttab pullleft" id="sg2">2分</div>
+						<div class="ercb-item etsb-row2-column selecttab pullleft" id="sg5">5分</div>
+						<div class="ercb-item etsb-row2-column selecttab pullleft" id="sg10">10分</div>
+						<div class="ercb-item etsb-row2-column-input-box selecttab pullleft" id="sgxbox">
+							<input type="text" name="" id="sgx" class="etsb-row2-column-input pullleft inputField sslote" />
+						 	<label for="etsb-row2-column-input">&nbsp;分</label>
+						</div>
+						<div class="clearboth"></div>
+					</div>
+						<div class="etsb-row2-submit pullright">
+							<div class="submitBtn">保存题目</div>
+						</div>
+				</div>
+			</form>
 		</div>
 	</div>
