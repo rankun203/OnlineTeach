@@ -126,8 +126,48 @@ body{
 .flatbtn:active{
 	box-shadow:inset 0px 2px 2px #f0f0f0;
 }
+/* 选项卡 */
+.selectTabBox{
+	border: 1px solid #ddd;
+}
+.selecttab{
+	font-family:Arial;
+	font-size:13px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:default;
+	color:#333;
+	background-image:-webkit-linear-gradient(top, #fff, #f5f5f5);
+	background-image:-ms-linear-gradient(top, #fff, #f5f5f5);
+	background-repeat:repeat-x;
+	box-shadow: inset 0 1px 0px rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+}
+.selecttab:hover{
+	box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.25);
+}
+.selecttab:active{
+	box-shadow: inset 0 0 7px rgba(0, 255, 0, 0.4);
+}
+.selectedtab{
+	font-family:Arial;
+	font-size:13px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:default;
+	color:#333;
+	background-image:-webkit-linear-gradient(top, #fff, #f5f5f5);
+	background-image:-ms-linear-gradient(top, #fff, #f5f5f5);
+	background-repeat:repeat-x;
+	box-shadow: inset 0 0 7px rgba(0, 255, 0, 0.4);
+}
+.selectedtab:hover{
+	box-shadow: inset 0 0 7px rgba(0, 255, 0, 0.4);
+}
+
 
 .submitBtn{
+	text-align: center;
+	border-radius: 4px;
 	color:#fff;
 	background-color:#04c;
 	background-image:-webkit-linear-gradient(top, #08c, #04c);
@@ -926,7 +966,7 @@ input[type="radio"] {
 
 .createWorkBox{
 	position:relative;
-	display:none;	
+//	display:none;	
 }
 .cwbTitIpt{
 	width:450px;
@@ -1037,7 +1077,18 @@ input[type="radio"] {
 }
 /* 创建习题栏目的样式 */
 .exerciseTypeSelectBox{
-	
+}
+.et-opt{
+	width:100px;
+	padding: 5px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #fff;
+}
+.et-opt-tit{
+	width:126px;
+	padding: 5px;
+	text-align: center;
+	background-color: #eee;
 }
 
 /*progress bar*/
@@ -1407,4 +1458,45 @@ input[type="radio"] {
 	font-family:"微软雅黑";
 	line-height:15px;
 	cursor:pointer;
+}
+
+
+/* 创建题目界面 - 设置分数 */
+.etsb-row2{
+	border-top: 1px dashed #970000;
+}
+.etsb-row2-column-box{
+	position: absolute;
+	border: 1px solid #ddd;
+	width: 440px;
+}
+.ercb-item {
+	height: 30px;
+	line-height: 30px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #fff;
+}
+.etsb-row2-column-tit{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #eee;
+	width:136px;
+}
+.etsb-row2-column{
+	width: 50px;
+}
+.etsb-row2-column-input-box{
+	width: 94px;
+}
+.etsb-row2-column-input{
+	height: 20px;
+	width: 40px;
+}
+
+.etsb-row2-submit{
+	width: 80px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 2px;
 }
