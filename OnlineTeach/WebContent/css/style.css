@@ -1238,7 +1238,7 @@ input[type="radio"] {
 /* 课程表查询*/
 #searchType {
 	margin-top:5px;
-	margin-left:450px;	
+	margin-left:300px;	
 }
 .selectView_coursePlan { 
 	display:block;
@@ -1270,7 +1270,61 @@ input[type="radio"] {
 	border-bottom:1px solid #000;
 	border-left:1px solid #000;
 	font-size:12;
+	table-layout: fixed;
+	width:40px;
+	height:40px;
 	text-align:center;
+}
+#coursePlanView table .coursePlanTitle1 td {
+	height:30px;
+}
+#coursePlanView table .coursePlanTitle2 td {
+	height:40px;
+}
+#coursePlanView table .coursePlanTitle3 td {
+	width:20px;
+}
+#colorPoint {
+	//border:1px solid #f00;
+	height:20px;
+	width:250px;
+	position: absolute;
+	margin-top:3px;
+	margin-left:546px;
+}
+.roomColor {
+	float:left;
+	background-color: #CD5C5C;	
+	height:20px;
+	width:20px;	
+}
+.prompt {
+	margin-left:10px;
+	width:50px;
+	height:25px;
+	float:left;
+}
+.coursePlanLink:visit {
+	
+}
+.teacherColor {
+	float:left;
+	background-color: #00CED1;
+	height:20px;
+	width:20px;
+}
+.classColor {
+	float:left;	
+	background-color: #9932CC;
+	height:20px;
+	width:20px;
+	
+}
+.courseColor {
+	float:left;
+	background-color: #1E90FF;
+	height:20px;
+	width:20px;
 }
 .coursePlanNav {
 	border-left:1px solid #000;
@@ -1329,18 +1383,17 @@ input[type="radio"] {
 }
 .coursePlanTitle {
 	background-color:#eee;
+	height:30px;
 	text-align:center;	
+}
+.cpDanyuange td {
+	height:40px;
 }
 .coursePlanTitle1 {
 }
 .coursePlanTitle2 {
-	height:20px;
 }
 .coursePlanTitle3 {
-	width:40px;
-}
-.coursePlanTitle1 td {
-	height:20px;
 }
 .coursePlanClose {
 	color:#F00;

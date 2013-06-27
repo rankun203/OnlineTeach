@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class ClassRoom implements Serializable {
 	private Set<CoursePlanItem> coursePlanItem = new HashSet<CoursePlanItem>();
 	private int crType;
 	
-	@OneToMany(mappedBy="classRoom", cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy="classRoom", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	public Set<CoursePlanItem> getCoursePlanItem() {
 		return coursePlanItem;
 	}
