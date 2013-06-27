@@ -174,6 +174,7 @@ $(document).ready(function(){
 			}
 		});
     });
+
     $("button.evert").click(function() {	
 		var con, api, anima;
 		if(true == flag) {
@@ -245,32 +246,44 @@ $.extend({
 		var tmp, str;
 		for(var i = 0; i < teacherCP.length; i++) {
 			tmp = teacherCP[i];
-			str = tmp.courseName + "<br />" + tmp.majorName + " " + tmp.className +
-			"<br />" + tmp.roomName;
+			str = "<a href='#' style='color:#1E90FF' class='coursePlanLink'> " + tmp.courseName + "</a><br /><a href='#' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
+			"</a><br /><a href='#' style='color:#CD5C5C' class='coursePlanLink'>" + tmp.roomName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
+		$(".coursePlanLink").click(function(){
+			console.log(this);
+		});
 	},	
 	showRoomCoursePlan:function(roomCP) {
 		$.clearCoursePlan();
 		var tmp, str;
 		for(var i = 0; i < roomCP.length; i++) {
 			tmp = roomCP[i];
-			str = tmp.majorName + " " + tmp.className +
-			"<br />" + tmp.courseName + "<br/>" + tmp.teacherName;
+			str = "<a href='#' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
+			"</a><br /><a href='#' style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br/><a href='#' style='color:#00CED1' class='coursePlanLink'>" +
+			tmp.teacherName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
+		$(".coursePlanLink").click(function(){
+			console.log(this);
+		});
 	},
 	showClassCoursePlan:function(classCP) {
 		$.clearCoursePlan();
 		var tmp, str;
 		for(var i = 0; i < classCP.length; i++) {
 			tmp = classCP[i];
-			str = tmp.courseName + 	"<br />" + tmp.roomName + "<br/>" + tmp.teacherName;
+			str = "<a href='id=" + tmp.courseId + "' style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + 	"</a><br /><a href='id=" + tmp.roomId + "' style='color:#CD5C5C' class='coursePlanLink'>" + 
+			tmp.roomName + "</a><br/><a href='id=" + tmp.teacherId + "' style='color:#00CED1' class='coursePlanLink'>" + tmp.teacherName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
+		$(".coursePlanLink").click(function(){
+			console.log(this.href.substring(37,this.href.length));
+			return false;
+		});
 	},
 	setClassCoursePlan:function(data) {
 		var obj = eval("(" + data + ")");

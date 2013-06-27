@@ -29,11 +29,7 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 //			cpi = cpIter.next();
 //			System.out.println(cpi.getCpParagraph() + "————————" + cpi.getClassRoom().getCrName());
 //		}
-		//ap.insToDB();
+		ap.insToDB();
 
-	}
-	@Test
-	public void testTime() {
-		System.out.println(new SimpleDateFormat("yyyy-MM-dd kk:mm:ss").format(new Date()));
 	}
 }

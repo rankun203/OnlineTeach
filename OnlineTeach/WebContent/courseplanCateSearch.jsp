@@ -11,6 +11,20 @@
 <jsp:include page="include/header.jsp"/>
 <div class="site">
 	<div id="searchType">
+		<div id="colorPoint">
+			<div class="prompt">
+			<div class="teacherColor"></div>教师
+			</div>
+			<div class="prompt">
+			<div class="classColor"></div>班级
+			</div>
+			<div class="prompt">
+			<div class="roomColor"></div>教室
+			</div>
+			<div class="prompt">
+			<div class="courseColor"></div>课程
+			</div>
+		</div>
 		查询类型：<select id="sType">
 			<option value="sbClass">班级</option>
 			<option value="sbTeacher">教师</option>
@@ -36,13 +50,15 @@
             <tr>
                 <td rowspan="4" class="coursePlanTitle3 coursePlanTitle">上<br />午</td>
                 <td class="coursePlanTitle2 coursePlanTitle">第一节</td>
-                <td id="p1" rowspan="2">&nbsp;</td>
+                <div>
+                <td id="p1" rowspan="2" >&nbsp;</td>
                 <td id="p7" rowspan="2">&nbsp;</td>
                 <td id="p13" rowspan="2">&nbsp;</td>
                 <td id="p19" rowspan="2">&nbsp;</td>
                 <td id="p25" rowspan="2">&nbsp;</td>
                 <td id="p31" rowspan="2">&nbsp;</td>
                 <td id="p37" rowspan="2">&nbsp;</td>
+                </div>
             </tr>
             <tr>
                 <td class="coursePlanTitle2 coursePlanTitle">第二节</td>

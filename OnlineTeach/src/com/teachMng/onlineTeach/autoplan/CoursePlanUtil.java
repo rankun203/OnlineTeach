@@ -22,6 +22,7 @@ public class CoursePlanUtil {
 	 * return：null-传入的班级编号有误。否则返回此班级的课程表
 	 */
 	public Set<ClassCoursePlanPara> getClassCoursePlanByClassId(int classID) {
+		System.out.println(classID);
 		List<CoursePlanItem> coursePlan = coursePlanItemService.allCoursePlanByClassId(classID);
 		if(0 >= coursePlan.size()) {
 			System.out.println("可能是你给我的班级编号有误！此班级没有课程。");
