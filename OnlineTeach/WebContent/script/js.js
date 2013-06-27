@@ -1,5 +1,6 @@
  // JavaScript Document
 var flag = true;
+var selectName = -1;
 function mainNavExchange(mainNav, activePane) {
 	
     var allSubNavItem = document.getElementsByClassName("subMainNavItem");
@@ -156,9 +157,11 @@ function reBg(ele, oe){
 //排课进度
 $(document).ready(function(){
 	$("#sType").change(function(){
+		selectName = -1;
 		$.getSelectName($("#sType").val());
 	});
 	$("#sName").change(function(){
+		selectName = -1;
 		$.getCoursePlan($("#sType").val(), $("#sName").val());
 	});
 	$("button.apstart").click(function(){
@@ -239,6 +242,7 @@ $.extend({
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
+		if(-1 != selectName) $("#sName").val(selectName);
 		$.showTeacherCoursePlan(obj.coursePlan);
 	},
 	showTeacherCoursePlan:function(teacherCP) {
@@ -246,13 +250,18 @@ $.extend({
 		var tmp, str;
 		for(var i = 0; i < teacherCP.length; i++) {
 			tmp = teacherCP[i];
-			str = "<a href='#' style='color:#1E90FF' class='coursePlanLink'> " + tmp.courseName + "</a><br /><a href='#' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
-			"</a><br /><a href='#' style='color:#CD5C5C' class='coursePlanLink'>" + tmp.roomName + "</a>";
+			str = "<a style='color:#1E90FF' class='coursePlanLink'> " + tmp.courseName + "</a><br /><a href='id=" + tmp.classId + ",sbClass' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
+			"</a><br /><a href='id=" + tmp.roomId + ",sbRoom' style='color:#CD5C5C' class='coursePlanLink'>" + tmp.roomName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
-			console.log(this);
+			var ary = this.href.substring(37,this.href.length).split(",");
+			$("#sType").val(ary[1]);
+			$.getSelectName(ary[1]);
+//			$.getCoursePlan(ary[1], ary[0]);
+			selectName = ary[0];
+			return false;
 		});
 	},	
 	showRoomCoursePlan:function(roomCP) {
@@ -260,14 +269,19 @@ $.extend({
 		var tmp, str;
 		for(var i = 0; i < roomCP.length; i++) {
 			tmp = roomCP[i];
-			str = "<a href='#' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
-			"</a><br /><a href='#' style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br/><a href='#' style='color:#00CED1' class='coursePlanLink'>" +
+			str = "<a href='id=" + tmp.classId + ",sbClass' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
+			"</a><br /><a style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br/><a href='id=" + tmp.teacherId + ",sbTeacher' style='color:#00CED1' class='coursePlanLink'>" +
 			tmp.teacherName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
-			console.log(this);
+			var ary = this.href.substring(37,this.href.length).split(",");
+			$("#sType").val(ary[1]);
+			$.getSelectName(ary[1]);
+//			$.getCoursePlan(ary[1], ary[0]);
+			selectName = ary[0];
+			return false;
 		});
 	},
 	showClassCoursePlan:function(classCP) {
@@ -275,13 +289,17 @@ $.extend({
 		var tmp, str;
 		for(var i = 0; i < classCP.length; i++) {
 			tmp = classCP[i];
-			str = "<a href='id=" + tmp.courseId + "' style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + 	"</a><br /><a href='id=" + tmp.roomId + "' style='color:#CD5C5C' class='coursePlanLink'>" + 
-			tmp.roomName + "</a><br/><a href='id=" + tmp.teacherId + "' style='color:#00CED1' class='coursePlanLink'>" + tmp.teacherName + "</a>";
+			str = "<a style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br /><a href='id=" + tmp.roomId + ",sbRoom' style='color:#CD5C5C' class='coursePlanLink'>" + 
+			tmp.roomName + "</a><br/><a href='id=" + tmp.teacherId + ",sbTeacher' style='color:#00CED1' class='coursePlanLink'>" + tmp.teacherName + "</a>";
 			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
-			console.log(this.href.substring(37,this.href.length));
+			var ary = this.href.substring(37,this.href.length).split(",");
+			$("#sType").val(ary[1]);
+			$.getSelectName(ary[1]);
+//			$.getCoursePlan(ary[1], ary[0]);
+			selectName = ary[0];
 			return false;
 		});
 	},
@@ -295,6 +313,7 @@ $.extend({
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
+		if(-1 != selectName) $("#sName").val(selectName);
 		$.showClassCoursePlan(obj.coursePlan);
 	},
 	setRoomCoursePlan:function(data) {
@@ -307,6 +326,7 @@ $.extend({
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
+		if(-1 != selectName) $("#sName").val(selectName);
 		$.showRoomCoursePlan(obj.coursePlan);
 	},
 	getSelectName:function(sType) {
