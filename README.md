@@ -4,10 +4,10 @@ OnlineTeach
 软件技术专业教学综合管理平台 在线教学模块
 
 ===========
-Installation<br>
-Environment  : Tomcat 6.0+<br>
+<h3>Installation</h3><br>
+Environment     : Tomcat 6.0+<br>
 Compiler        : JDK 6+<br>
-Dependences: Struts2.3.8<br>
+Dependences     : Struts2.3.8<br>
                         Hibernate4.1.8<br>
                         Spring3.2.3<br>
                         MySQL connector:5.1.6<br>
