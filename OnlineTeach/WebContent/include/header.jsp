@@ -13,7 +13,7 @@
             onmouseover="document.getElementById('theCircle').style.fill='#4183c4';"
             onmouseout="document.getElementById('theCircle').style.fill='#333';"
             class="pullleft"
-            onclick="window.location='http://www.pinkbike.com';"
+            onclick="window.location='http://localhost:8080/OnlineTeach';"
             id="logoSvg"
             >
             <line x1="5" y1="20" x2="60" y2="20" style="stroke:black; stroke-width:1;"/>

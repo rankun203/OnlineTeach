@@ -28,14 +28,12 @@ public class RunnableAutoPlanTask implements Runnable{
 		return ap.getInfoTag();
 	}
 	public String getSelectList(String sType) {
+		System.out.println(sType);
 		if("sbClass".equals(sType)) {
-			System.out.println("sbClass");
 			return ap.getClassList();
 		} else if("sbTeacher".equals(sType)) {
-			System.out.println("sbTeacher");
 			return ap.getTeacherList();
 		} else if("sbRoom".equals(sType)) {
-			System.out.println("sbRoom");
 			return ap.getRoomList();
 		}
 		return null;
