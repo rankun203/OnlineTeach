@@ -1,29 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 
-                	<div class="createWorkBox" id="createWorkBox">
-                    	<div class="cwbTitIptLabel">
-                        	<input type="text" name="" id="cwbTitIpt" class="pullleft inputField sslote cwbTitIpt" onFocus="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');" onBlur="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt', 'blur');" onKeyUp="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');" onChange="checkIptPmt('cwbTitIpt', 'cwbTitIptPmt');">
-                            <div class="pullleft cwbBtnBox">
-                                <input type="submit" class="btn submitBtn" value="保存题目" onClick="submitCreateWork();">
-                            </div>
-                            <div class="cwbTitIptPmt inputPmt sslote" id="cwbTitIptPmt" onClick="document.getElementById('cwbTitIpt').focus();">在此处输入标题</div>
-                        </div>
-                    	<div class="cwbCtnIptLabel">
-                        	<textarea name="" id="cwbCtnIpt" class="pullleft inputField sslote cwbCtnIpt" onFocus="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onBlur="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt', 'blur');" onKeyUp="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');" onChange="checkIptPmt('cwbCtnIpt', 'cwbCtnIptPmt');"></textarea>
-                            <div class="cwbCtnIptPmt inputPmt sslote" id="cwbCtnIptPmt" onClick="document.getElementById('cwbCtnIpt').focus();">在此处输入内容</div>
-                            <div class="cwbCtnTool sslote" onMouseOver="this.style.opacity='1';" onMouseOut="this.style.opacity='0.3';">
-                            	<div class="pullleft cwbCtnToolImg">
-	                            	<img src="imgs/img.svg" alt="" id="cwbCtnToolImg" onMouseOver="pmt('cwbCtnToolImg', '在当前位置插入一张图片');" onMouseOut="erasePmt();">
-                                </div>
-                            	<div class="pullleft cwbCtnToolLink">
-	                            	<img src="imgs/link.svg" alt="" id="cwbCtnToolLink" onMouseOver="pmt('cwbCtnToolLink', '在当前位置插入一个链接');" onMouseOut="erasePmt();">                            
-                                </div>
-                            </div>
-                        </div>
-                    </div>End of createWorkBox
- -->                    
-
 	<div class="createWorkBox" id="createWorkBox">
 		<div class="exerciseTypeSelectBox">
 			<form action="exercise/create">
@@ -49,8 +25,128 @@
 						<div class="clearboth"></div>
 					</div>
 						<div class="etsb-row2-submit pullright">
-							<div class="submitBtn">保存题目</div>
+							<div class="submitBtn te" id="etsb-save">保存题目</div>
 						</div>
+				</div>
+				<!-- 题目框开始 -->
+				<div class="etsb-ctnrow">
+					<div class="row3" id="seltab">
+						<div class="seltab-ctn-box">
+							<div class="seltab-ctn-tit pullleft">题目内容</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>
+							
+							<div class="seltab-ctn-texta pullleft">
+								<textarea name="fulltopic" id="seltab-fulltopic" class="inputField sslote"></textarea>
+							</div>
+							<div class="scb-rightbox pullleft">
+								<div class="clearboth"></div>
+								<h2 class="scb-rb-tit">参考答案</h2>
+								<div class="scb-rb-sb">
+									<div class="scb-rb-sb-inbox">
+										<div class="scb-rb-sb-item pullleft" id="scbA">A</div>
+										<div class="scb-rb-sb-item pullleft" id="scbB">B</div>
+										<div class="scb-rb-sb-item pullleft" id="scbC">C</div>
+										<div class="scb-rb-sb-item pullleft" id="scbD">D</div>
+									</div>
+				 				</div>
+							</div>
+							<div class="clearboth"></div>
+						</div>
+					</div>
+					<div class="row3" id="comtab" style="display: none;">
+						<div class="seltab-ctn-box">
+							<div class="seltab-ctn-tit pullleft">题目内容</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>
+							
+							<div class="seltab-ctn-texta pullleft">
+								<textarea name="fulltopic" id="cpltopic" class="inputField sslote"></textarea>
+							</div>
+							<div class="scb-rightbox pullleft">
+								<div class="clearboth"></div>
+								<h2 class="scb-rb-tit">参考答案</h2>
+								<div class="cplItem-box">
+									<ol class="cplItem" id="cpllist">
+										<li>自动提取答案</li>
+									</ol>
+								</div>
+							</div>
+							<div class="clearboth"></div>
+						</div>
+					</div>
+					<div class="row3" id="anstab" style="display: none;">
+						<div class="seltab-ctn-box">
+							<div class="seltab-ctn-tit pullleft">题目内容</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>							
+							<div class="ansta pullleft">
+								<textarea name="anstopic" id="anstopic" class="inputField sslote"></textarea>
+							</div>
+							
+							<div class="seltab-ctn-tit pullleft">参考答案</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>
+							<div class="ansta pullleft">
+								<textarea name="anskw" id="anskw" class="inputField sslote"></textarea>
+							</div>
+							<div class="clearboth"></div>
+						</div>
+					</div>
+					<div class="row3" id="jugtab" style="display: none;">
+						<div class="seltab-ctn-box">
+							<div class="seltab-ctn-tit pullleft">题目内容</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>							
+							<div class="ansta pullleft">
+								<textarea name="jgtopic" id="jgtopic" class="inputField sslote"></textarea>
+							</div>
+							
+							<div class="seltab-ctn-tit pullleft">参考答案</div>
+							<div class="pointerdown pullleft"></div>
+							<div class="clearboth"></div>
+							<div class="jgans pullleft">
+								<div class="jgans-opt jgans-opt1 pullleft" id="jgans1">√</div>
+								<div class="jgans-opt jgans-opt2 pullleft" id="jgans2">x</div>
+							</div>
+							<div class="clearboth"></div>
+						</div>					
+					</div>
+				</div>
+				<!-- 题目框结束 -->
+				<div class="etsb-tip">
+					<div class="etsb-tip-box">
+						<div class="etsb-tip-ctn" id="toggleTip">
+							<div class="etsb-tip-ctn-tit pullleft">帮助信息</div>
+							<div class="etsb-tip-ctn-more pullleft">
+								<div class="etsb-tip-ctn-more-svg"></div>
+							</div>
+							<div class="clearboth"></div>
+							<div class="etsb-tip-ctn-ctn">
+								<pre class="etcc" id="pre1">1、选择题目的类别
+2、选择或直接输入该题的分值
+3、在题目内容输入框中输入题目的内容
+*、选择参考答案
+5、提交该题</pre>
+								<pre class="etcc"  id="pre2" style="display: none;">1、选择题目的类别
+2、选择或直接输入该题的分值
+3、在题目内容输入框中输入题目的内容
+*、答案嵌在问题中：[答案]，输入‘[’或‘]’请用"/["和"/]"
+5、提交该题</pre>
+								<pre class="etcc"  id="pre3" style="display: none;">1、选择题目的类别
+2、选择或直接输入该题的分值
+3、在题目内容输入框中输入题目的内容
+*、输入参考答案
+5、提交该题</pre>
+								<pre class="etcc"  id="pre4" style="display: none;">1、选择题目的类别
+2、选择或直接输入该题的分值
+3、在题目内容输入框中输入题目的内容
+*、点击“√”或“x”选择答案
+5、提交该题</pre>
+							</div>
+						</div>
+						<div class="etsb-tip-toggle"></div>
+					</div>
 				</div>
 			</form>
 		</div>
