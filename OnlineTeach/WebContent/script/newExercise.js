@@ -120,14 +120,48 @@ $("document").ready(function(){
 			}
 		} else if(createExerciseType=="completionExercise") {
 			var cplCtn = $("#cpltopic").val();
-			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&cplCtn=" + cplCtn + ";";
+			if($.trim(cplCtn)!=""){
+				$.post("ce/newOne",
+				{
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					cplCtn:cplCtn
+				}, function(){
+					msgok("OK, 题目保存成功！");
+				});
+			} else {
+				msgerror("ERROR, 请输入题目的内容！");
+			}
 		} else if(createExerciseType=="answerExercise") {
 			var anstopic = $("#anstopic").val();
 			var anskw = $("#anskw").val();
-			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&anstopic=" + anstopic + "&anskw=" + anskw + ";";
+			if($.trim(anstopic)!=""&&$.trim(anskw)!=""){
+				$.post("ce/newOne",
+				{
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					anstopic:anstopic,
+					anskw:anskw
+				}, function(){
+					msgok("OK, 题目保存成功！");
+				});
+			} else {
+				msgerror("ERROR, 请输入题目和解答！");
+			}
 		} else if(createExerciseType=="judgeExercise") {
 			var jgtopic = $("#jgtopic").val();
-			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&jgtopic=" + jgtopic + "&judgeans=" + judgeans + ";";			
+			if($.trim(jgtopic)!=""){
+				$.post("ce/newOne",
+				{
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					jgtopic:jgtopic
+				}, function(){
+					msgok("OK, 题目保存成功！");
+				});
+			} else {
+				msgerror("ERROR, 请输入题目的内容！");
+			}
 		}
 	});
 	

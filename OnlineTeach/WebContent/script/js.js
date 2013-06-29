@@ -145,14 +145,21 @@ function showCreateWork(){
 	document.getElementById("wldcListBox").style.display = "none";
 	document.getElementById("createWorkBox").style.display = "block";
 	document.getElementById("workLabelDownTit").innerHTML = "创建习题";
+	$("#returnToList").css("display", "block");
 
 	document.getElementById("createCourseButton").style.display = "none";
 	document.getElementById("checkAllCheckbox").style.display = "none";
 }
+$("document").ready(function(){
+	$("#returnToList").click(function(){
+		submitCreateWork();	
+	});
+});
 function submitCreateWork(){
 	document.getElementById("createWorkBox").style.display = "none";
 	document.getElementById("wldcListBox").style.display = "block";
 	document.getElementById("workLabelDownTit").innerHTML = "我的题库";
+	$("#returnToList").css("display", "none");
 
 	document.getElementById("createCourseButton").style.display = "block";
 	document.getElementById("checkAllCheckbox").style.display = "block";
@@ -219,7 +226,7 @@ $(document).ready(function(){
 		}
 		$("div#console").css("-webkit-animation", con);
 		$("div#apiList").css("-webkit-animation", api);			
-		$("div#autoPlanInfo").css("-webkit-animation", anima);		
+		$("div#autoPlanInfo").css("-webkit-animation", anima);
 		setTimeout("changeStatus('apiList','console')", 1000);
 	});		
 });

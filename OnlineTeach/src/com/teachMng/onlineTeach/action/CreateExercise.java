@@ -33,6 +33,38 @@ public class CreateExercise extends ActionSupport {
 		System.out.println("jgtopic:" + jgtopic);
 		System.out.println("judgeans:" + judgeans);
 		
+		//题目们的service & dao...存储之
+
+		if(createExerciseType!=null&&!createExerciseType.equals("")){
+			if(createExerciseType.equals("selectionExercise")){
+/*
+					stdGrade:stdGrade,
+					selCtn:selCtn,
+					selted:selted
+*/			
+			} else if (createExerciseType.equals("completionExercise")) {
+/*
+					stdGrade:stdGrade,
+					cplCtn:cplCtn
+*/			
+				
+			} else if (createExerciseType.equals("answerExercise")) {
+/*
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					anstopic:anstopic,
+					anskw:anskw
+*/			
+				
+			} else if (createExerciseType.equals("judgeExercise")) {
+/*
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					jgtopic:jgtopic
+*/			
+				
+			}
+		}
 		
 	}
 	public String getCreateExerciseType() {

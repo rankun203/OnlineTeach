@@ -18,5 +18,8 @@
 			<result name="success">/index.jsp</result>
 			<result name="login">/login.jsp</result>
 		</action>
+		<action name="logout" class="loginAction" method="logout">
+			<result name="success">/index.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -300,17 +300,17 @@ insert  into `t_schoolclass`(`scID`,`majorID`,`scName`) values (1,1,'113-1'),(2,
 /*Table structure for table `t_student` */
 
 DROP TABLE IF EXISTS `t_student`;
-
 CREATE TABLE `t_student` (
   `stuID` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) DEFAULT NULL,
+  `stuName` varchar(255) DEFAULT NULL,
   `pgID` int(11) DEFAULT NULL,
   `scID` int(11) DEFAULT NULL,
-  `stuName` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`stuID`),
-  KEY `FK_projectGroupIncludeStudent` (`pgID`),
-  KEY `FK_studentBelongsToClass` (`scID`),
-  CONSTRAINT `FK_projectGroupIncludeStudent` FOREIGN KEY (`pgID`) REFERENCES `t_projectgroup` (`pgID`),
-  CONSTRAINT `FK_studentBelongsToClass` FOREIGN KEY (`scID`) REFERENCES `t_schoolclass` (`scID`)
+  KEY `FK4B907570B47F4B6E` (`scID`),
+  KEY `FK4B907570A6D0D279` (`pgID`),
+  CONSTRAINT `FK4B907570A6D0D279` FOREIGN KEY (`pgID`) REFERENCES `t_projectGroup` (`pgID`),
+  CONSTRAINT `FK4B907570B47F4B6E` FOREIGN KEY (`scID`) REFERENCES `t_schoolclass` (`scID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_student` */
@@ -318,16 +318,17 @@ CREATE TABLE `t_student` (
 /*Table structure for table `t_teacher` */
 
 DROP TABLE IF EXISTS `t_teacher`;
-
 CREATE TABLE `t_teacher` (
   `teacID` int(11) NOT NULL AUTO_INCREMENT,
   `teacName` varchar(20) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`teacID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_teacher` */
 
-insert  into `t_teacher`(`teacID`,`teacName`) values (1,'李灵黛'),(2,'冷文卿'),(3,'韩千叶'),(4,'苏普'),(5,'袁冠南'),(6,'顾莫言'),(7,'董依依'),(8,'杨若涵'),(9,'滕绍武'),(10,'李芊墨'),(11,'刘苏曼'),(12,'张盼会'),(13,'赵盼盼');
+insert  into `t_teacher`(`teacID`,`teacName`, `username`, `password`) values (1,'李灵黛','teachera','password'),(2,'冷文卿','teacherb','password'),(3,'韩千叶','teacherc','password'),(4,'苏普','teacherd','password'),(5,'袁冠南','teachere','password'),(6,'顾莫言','teacherf','password'),(7,'董依依','teacherg','password'),(8,'杨若涵','teacherh','password'),(9,'滕绍武','teacheri','password'),(10,'李芊墨','teacherj','password'),(11,'刘苏曼','teacherk','password'),(12,'张盼会','teacherl','password'),(13,'赵盼盼','teacherm','password');
 
 /*Table structure for table `t_teachplan` */
 

@@ -20,8 +20,10 @@ public class AuthenticationFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse rep,
 			FilterChain fc) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)req).getSession();
-		if(((HttpServletRequest)req).getRequestURI().indexOf("login.jsp") > 0){
+		String reqUrl = ((HttpServletRequest)req).getRequestURI();
+		if(reqUrl.indexOf("login") > 0||reqUrl.indexOf("index") > 0){
 			fc.doFilter(req, rep);
+			return;
 		}
 		String usertype = (String) session.getAttribute("usertype");
 		if(usertype!=null && usertype.equals("学生")){

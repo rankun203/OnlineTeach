@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/jsp; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.teachMng.onlineTeach.model.*"%>
-
+<%
+	String userRole = (String)(session.getAttribute("usertype"));
+	String role = "";
+	if (userRole!=null && userRole.equals("学生"))	role = "student";
+	else if (userRole!=null && userRole.equals("教师"))	role="teacher";
+%>
 <div class="header">
     <div class="container">
         <svg version="1.1" 
@@ -41,14 +46,18 @@
             <div class="userProfileLeft pullleft">
                 <div class="userProfileItem">
                 	<%
-	                	String userRole = (String)(session.getAttribute("usertype"));
-                		if(userRole!=null && userRole.equals("学生")) {
+                		if (userRole != null && userRole.equals("学生")) {
                 			Object userObject = (session.getAttribute("user"));
-                			if(userObject!=null)
-	                			out.println(((Student)userObject).getStuName());
-                		}
-                		else if(userRole!=null) out.println(((Teacher)(session.getAttribute("user"))).getTeacName());
-                		else out.println("未登录");
+                			if (userObject != null)
+                				out.print(((Student) userObject).getStuName());
+                			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
+                		} else if (userRole != null) {
+                			Object userObject = (session.getAttribute("user"));
+                			if (userObject != null)
+                				out.print(((Teacher) userObject).getTeacName());
+                			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
+                		} else
+                			out.println("未登录");
                 	%>
                 </div>
                 <div class="userProfileItem"><%=userRole==null?"未登录":userRole%></div>
@@ -58,6 +67,12 @@
                 <div class="userProfileItem">2013年 4月 8日</div>
             </div>
         </div>
+        <%if(role!=null&&role!=""&&!(role.equals(""))){%>
+	        <a class="logooffbox" id="logoffbox" href="login/logout"></a>
+        <%} else {%>
+	        <a href="<%=request.getContextPath()%>/login.jsp" class="nav-logina submitBtn">登录</a>
+        <%}
+        %>
         <div class="clearboth"></div>
     </div>
 </div>

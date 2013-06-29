@@ -52,7 +52,11 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 		}
 		return LOGIN;
 	}
-	
+	public String logout(){
+		session.put("usertype", null);
+		session.put("user", null);		
+		return SUCCESS;
+	}
 	
 	public String getUsername() {
 		return username;

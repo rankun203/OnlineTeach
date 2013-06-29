@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>课堂练习作答</title>
 <link rel="stylesheet" href="css/style.css" />
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
 </head>
 
 <body>
@@ -144,37 +145,7 @@
                 <a href="#">课堂练习</a>>
                 <a href="#">课堂练习创建</a>
             </div>
- 			<div class="subMainNavItem" id="subNavA">
-                <ul>
-                    <li><a href="generateCourseplan.html" onClick="return true;">学期课表生成</a></li>
-                    <li><a href="main.html" onClick="return true;">课表分类查询</a></li>
-                    <li><a href="courseplanExport.html" onClick="return true;">课表分类导出</a></li>
-                    <li><a href="courseplanUphold.html" onClick="return true;">课表分类维护</a></li>
-                </ul>
-            </div>
-            <div class="subMainNavItem" id="subNavB" style="display:block;">
-                <ul>
-                    <li><a href="createWork.html" onClick="return true;">课堂练习创建</a></li>
-                    <li><a href="workReply.html" onClick="return true;" class="subMainNavItemActive">课堂练习作答</a></li>
-                    <li><a href="workCheck.html" onClick="return true;">训练结果考核</a></li>
-                    <li><a href="workUphold.html" onClick="return true;">课堂练习维护</a></li>
-                </ul>
-            </div>
-            <div class="subMainNavItem" id="subNavC">
-                <ul>
-                    <li><a href="teachplanUphold.html" onClick="return true;">教案制作维护</a></li>
-                    <li><a href="coursewareUp_Down.html" onClick="return true;">课件上传下载</a></li>
-                    <li><a href="homeWork.html" onClick="return true;">课外作业管理</a></li>
-                    <li><a href="teachSchedule.html" onClick="return true;">授课计划管理</a></li>
-                </ul>
-            </div>
-            <div class="subMainNavItem" id="subNavD">
-                <ul>
-                    <li><a href="attendance.html" onClick="return true;">在线考勤管理</a></li>
-                    <li><a href="projectReply.html" onClick="return true;">项目答辩考核</a></li>
-                    <li><a href="compositeCheck.html" onClick="return true;">课程综合考核</a></li>
-                </ul>
-            </div>
+ 			<jsp:include page="include/menu2.jsp"></jsp:include>
 		</div>
       <div class="courseTimeLabel">
         <div class="courseTimeLabelItem pullleft courseTimeLabelItemOne">上一次课：2013-4-12 星期三 上午 3-4节</div>

@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.teachMng.onlineTeach.model.*" %>
+<%
+	String userRole = (String)(session.getAttribute("usertype"));
+	if(userRole!=null && userRole.equals("学生")) {
+		Object userObject = (session.getAttribute("user"));
+		if(userObject!=null)
+			out.println(((Student)userObject).getStuName());
+	}
+	else if(userRole!=null) {
+		Object userObject = (session.getAttribute("user"));
+		if (userObject != null)
+			out.println(((Teacher)userObject).getTeacName());
+	}
+	else out.println("未登录");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +22,7 @@
 <meta charset="utf-8">
 <title>课堂练习创建</title>
 <link rel="stylesheet" href="css/style.css" />
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
 </head>
 
 <body>
@@ -18,38 +33,7 @@
 		<div class="currentLocation">
 			<a href="main.jsp">在线教学</a>> <a href="#">教学排课</a>> <a href="#">学期课表生成</a>
 		</div>
-		<div class="subMainNavItem" id="subNavA" style="display: block;">
-			<ul>
-				<li><a href="generateCourseplan.jsp" onClick="return true;"
-					class="subMainNavItemActive">学期课表生成</a></li>
-				<li><a href="courseplanCateSearch.jsp" onClick="return true;">课表分类查询</a></li>
-				<li><a href="courseplanExport.jsp" onClick="return true;">课表分类导出</a></li>
-				<li><a href="courseplanUphold.jsp" onClick="return true;">课表分类维护</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavB">
-			<ul>
-				<li><a href="createWork.jsp" onClick="return true;">课堂练习创建</a></li>
-				<li><a href="workReply.jsp" onClick="return true;">课堂练习作答</a></li>
-				<li><a href="workCheck.jsp" onClick="return true;">训练结果考核</a></li>
-				<li><a href="workUphold.jsp" onClick="return true;">课堂练习维护</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavC">
-			<ul>
-				<li><a href="teachplanUphold.jsp" onClick="return true;">教案制作维护</a></li>
-				<li><a href="coursewareUp_Down.jsp" onClick="return true;">课件上传下载</a></li>
-				<li><a href="homeWork.jsp" onClick="return true;">课外作业管理</a></li>
-				<li><a href="teachSchedule.jsp" onClick="return true;">授课计划管理</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavD">
-			<ul>
-				<li><a href="attendance.jsp" onClick="return true;">在线考勤管理</a></li>
-				<li><a href="projectReply.jsp" onClick="return true;">项目答辩考核</a></li>
-				<li><a href="compositeCheck.jsp" onClick="return true;">课程综合考核</a></li>
-			</ul>
-		</div>
+		<jsp:include page="include/menu2.jsp"></jsp:include>
 	</div>
 </div>
 <div class="site">
@@ -83,6 +67,9 @@
 		    <div class="workLabelUp">
             	<div class="pullleft cacbDiv">
 	                <input type="checkbox" name="checkAllCheckbox" class="checkAllCheckbox" id="checkAllCheckbox" onMouseOver="pmt('checkAllCheckbox', '全选/取消全选');" onMouseOut="erasePmt();" onChange="slctChange();">
+                </div>
+                <div class="pullleft flatbtn wluBtn" id="returnToList" style="display:none;">
+                	<div class="returnToListImg" id="returnToListImg"></div>
                 </div>
                 <div class="pullleft flatbtn wluBtn" id="createCourseButton" onMouseOver="pmt('createCourseButton', '创建新的练习');" onMouseOut="erasePmt();" onClick="showCreateWork();">
                 	<div class="createCourseButtonImg" onClick="showCreateWork();"></div>
@@ -565,17 +552,6 @@
 
 <jsp:include page="include/footer.jsp" />
 <script src="script/newExercise.js"></script>
-<%
-	String userRole = (String)(session.getAttribute("usertype"));
-	if(userRole!=null && userRole.equals("学生")) {
-		Object userObject = (session.getAttribute("user"));
-		if(userObject!=null)
-			out.println(((Student)userObject).getStuName());
-	}
-	else if(userRole!=null) out.println(((Teacher)(session.getAttribute("user"))).getTeacName());
-	else out.println("未登录");
-
-%>
 </body>
 </html>
 
