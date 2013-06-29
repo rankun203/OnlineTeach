@@ -7,6 +7,8 @@ $("document").ready(function(){
 	//设置默认值，可以从服务器获取
 	$("#selectionExercise").addClass("selectedtab");
 	$("#sg1").addClass("selectedtab");
+	$("#scbA").addClass("scb-rb-sb-item-selected");
+	$("#jgans2").addClass("jgans2-selected");
 	
 	//获取题目的类型
 	$(".et-opt").click(function(){
@@ -117,6 +119,23 @@ $("document").ready(function(){
 		}
 		
 		console.log("提交结果为：" + newExerciseSubmit);
+	});
+	
+	//设置按钮事件
+	$("#delButton").click(function(){
+		var isCreateMode = $("#createWorkBox").css("display") == "block";
+		if(isCreateMode){
+			if (createExerciseType=="selectionExercise") $("#seltab-fulltopic").val("");
+			else if (createExerciseType=="completionExercise") {
+				$("#cpltopic").val("");
+				$("#cpllist").empty();
+			}
+			else if (createExerciseType=="answerExercise") {
+				$("#anstopic").val("");
+				$("#anskw").val("");
+			}
+			else if (createExerciseType=="judgeExercise") $("#jgtopic").val("");
+		}
 	});
 });
 

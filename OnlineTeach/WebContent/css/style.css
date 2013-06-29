@@ -1693,16 +1693,18 @@ input[type="radio"] {
 .jgans1-selected{
 	background-color: rgb(200, 240, 200);
 	box-shadow: inset 70px 0 rgba(50, 140, 50, 1);
+	transition: all .5s cubic-bezier(0,.98,.34,.99) 0;
 }
 .jgans1-selected:active{
-	background-color: rgb(50, 140, 50);
+	box-shadow: inset 280px 0 rgba(50, 140, 50, 1);
 }
 .jgans2-selected{
 	background-color: rgb(240, 200, 200);
 	box-shadow: inset 70px 0 rgba(200, 50, 50, 1);
+	transition: all .5s cubic-bezier(0,.98,.34,.99) 0;
 }
 .jgans2-selected:active{
-	background-color: rgb(200, 50, 50);
+	box-shadow: inset 280px 0 rgba(200, 50, 50, 1);
 }
 
 

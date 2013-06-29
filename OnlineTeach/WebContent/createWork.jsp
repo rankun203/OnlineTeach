@@ -62,7 +62,7 @@
             	<div class="workLabelDownTit" id="workLabelDownTit">我的题库</div>
                 <div class="workLabelDownContainer">
  					<jsp:include page="include/newExerciseSnippet.jsp" />
-                    <div class="wldcListBox" id="wldcListBox" style="display:none;">
+                    <div class="wldcListBox" id="wldcListBox">
                         <ul id="wldcListBoxUl">
                            <li>
                                 <div class="wldcItem wldcItemOdd" onMouseOver="lightUpRow(this);" onMouseOut="reBg(this, 'odd');">

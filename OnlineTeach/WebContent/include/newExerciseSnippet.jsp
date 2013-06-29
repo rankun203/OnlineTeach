@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<div class="createWorkBox" id="createWorkBox">
+	<div class="createWorkBox" id="createWorkBox" style="display:none;">
 		<div class="exerciseTypeSelectBox">
 			<form action="exercise/create">
 				<div class="selectTabBox">
