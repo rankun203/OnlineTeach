@@ -1,7 +1,5 @@
 package com.teachMng.onlineTeach.autoplan;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +14,7 @@ import com.teachMng.onlineTeach.model.CoursePlanItem;
 public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 	@Resource(name="autoPlan")
 	AutoPlan ap;
+	@SuppressWarnings("unused")
 	@Test
 	public void testArrange() {
 //		ap.deleteAll();

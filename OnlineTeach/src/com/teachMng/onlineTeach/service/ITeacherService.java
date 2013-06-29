@@ -8,4 +8,5 @@ public interface ITeacherService {
 	List<Teacher> allTeacher();
 	Teacher findById(int tID);
 	boolean updTeacher(Teacher teacher);
+	Teacher login(String username, String password);
 }

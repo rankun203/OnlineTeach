@@ -1,7 +1,7 @@
 var createExerciseType = "selectionExercise";
-var stdGrade = "sg1";
+var stdGrade = "1";
 var selted = "scbA";
-var judgeans = false;
+var judgeans = "false";
 var newExerciseSubmit = "";
 $("document").ready(function(){	
 	//设置默认值，可以从服务器获取
@@ -36,11 +36,11 @@ $("document").ready(function(){
 	$(".jgans-opt").click(function(){
 		var temp = $(this).attr("id");
 		if(temp=="jgans1") {
-			judgeans = true;
+			judgeans = "true";
 			$("#jgans2").removeClass("jgans2-selected").addClass("jgans-opt2");
 			$(this).removeClass("jgans-opt1").addClass("jgans1-selected");
 		} else {
-			judgeans = false;
+			judgeans = "false";
 			$("#jgans1").removeClass("jgans1-selected").addClass("jgans-opt1");
 			$(this).removeClass("jgans-opt2").addClass("jgans2-selected");
 		}
@@ -57,7 +57,7 @@ $("document").ready(function(){
 				if(sgxTemp!="") stdGrade = sgxTemp;
 				else {
 					$(".ercb-item").removeClass("selectedtab");
-					$("#"+stdGrade).addClass("selectedtab");
+					$("#sg"+stdGrade).addClass("selectedtab");
 				}
 				$("#sgx").unbind("blur");
 			});
@@ -105,16 +105,19 @@ $("document").ready(function(){
 	$("#etsb-save").click(function(){
 		if(createExerciseType=="selectionExercise"){
 			var selCtn = $("#seltab-fulltopic").val();
-			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&selCtn=" + selCtn + "&selted=" + selted + ";";
-			$.post("ce/newOne",
-			{
-				createExerciseType:createExerciseType,
-				stdGrade:stdGrade,
-				selCtn:selCtn,
-				selted:selted
-			}, function(){
-				ss.dd();//!!!!!!!!!!!!!!执行消息函数
-			});
+			if($.trim(selCtn)!=""){
+				$.post("ce/newOne",
+				{
+					createExerciseType:createExerciseType,
+					stdGrade:stdGrade,
+					selCtn:selCtn,
+					selted:selted
+				}, function(){
+					msgok("OK, 题目保存成功！");
+				});
+			} else {
+				msgerror("ERROR, 请输入题目的内容！");
+			}
 		} else if(createExerciseType=="completionExercise") {
 			var cplCtn = $("#cpltopic").val();
 			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&cplCtn=" + cplCtn + ";";

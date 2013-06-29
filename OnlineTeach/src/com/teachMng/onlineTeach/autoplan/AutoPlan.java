@@ -261,6 +261,7 @@ public class AutoPlan {
 		System.out.println(getCurTime() + " 已成功清除所有数据！");
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String getInfoTag() {
 		classRooms = classRoomService.allClassRoom();
 		schoolClasses = new HashSet<SchoolClass>(schoolClassService.allSchoolClass());
@@ -695,6 +696,7 @@ public class AutoPlan {
 		return null;
 	}
 
+	@SuppressWarnings("unused")
 	private List<CoursePlanItem> getCoursePlanByClassId(int classId) {
 		List<CoursePlanItem> _list = new ArrayList<CoursePlanItem>();
 		Iterator<CoursePlanItem> _iter = coursePlan.iterator();

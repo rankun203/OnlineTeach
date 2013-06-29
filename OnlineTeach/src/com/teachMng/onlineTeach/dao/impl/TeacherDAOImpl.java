@@ -53,5 +53,12 @@ public class TeacherDAOImpl implements ITeacherDAO {
 		//s.getTransaction().commit();
 		return true;
 	}
+	@Override
+	public Teacher login(String username, String password) {
+		String hql = "from Teacher where username=? and password=?";
+		Session s = sf.getCurrentSession();
+		Teacher teacher = (Teacher) s.createQuery(hql).setString(0, username).setString(1, password).uniqueResult();
+		return teacher;
+	}
 
 }

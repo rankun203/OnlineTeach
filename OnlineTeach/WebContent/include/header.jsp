@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/jsp; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.teachMng.onlineTeach.model.*"%>
 
 <div class="header">
     <div class="container">
@@ -38,8 +39,19 @@
         <div class="headerPaneDivide pullleft"></div>
         <div class="userProfile pullleft">
             <div class="userProfileLeft pullleft">
-                <div class="userProfileItem">张曦</div>
-                <div class="userProfileItem">学生</div>
+                <div class="userProfileItem">
+                	<%
+	                	String userRole = (String)(session.getAttribute("usertype"));
+                		if(userRole!=null && userRole.equals("学生")) {
+                			Object userObject = (session.getAttribute("user"));
+                			if(userObject!=null)
+	                			out.println(((Student)userObject).getStuName());
+                		}
+                		else if(userRole!=null) out.println(((Teacher)(session.getAttribute("user"))).getTeacName());
+                		else out.println("未登录");
+                	%>
+                </div>
+                <div class="userProfileItem"><%=userRole==null?"未登录":userRole%></div>
             </div>
             <div class="userProfileRight pullright">
                 <div class="userProfileItem">正在上课：计软113-2 Java</div>

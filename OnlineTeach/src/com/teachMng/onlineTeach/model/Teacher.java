@@ -14,12 +14,15 @@ import javax.persistence.Table;
 
 /*
  * desc:教师
+ * create unique index username_unique on t_teacher(username)
  * */
 @Entity
 @Table(name="t_teacher")
 public class Teacher {
 	private int teacID;
 	private String teacName;
+	private String username;
+	private String password;
 	private Set<CoursePlanItem> coursePlanItems = new HashSet<CoursePlanItem>();
 	private Set<Course> course = new HashSet<Course>();
 
@@ -56,6 +59,18 @@ public class Teacher {
 	}
 	public void setTeacName(String teacName) {
 		this.teacName = teacName;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

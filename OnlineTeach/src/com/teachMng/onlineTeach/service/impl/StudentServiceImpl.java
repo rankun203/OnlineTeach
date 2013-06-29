@@ -37,5 +37,11 @@ public class StudentServiceImpl implements IStudentService {
 	public boolean updStudent(Student stu) {
 		return studentDao.updStudent(stu);
 	}
+	@Transactional
+	@Override
+	public Student login(String username, String password) {
+		int stuId = Integer.parseInt(username);
+		return studentDao.login(stuId, password);
+	}
 
 }

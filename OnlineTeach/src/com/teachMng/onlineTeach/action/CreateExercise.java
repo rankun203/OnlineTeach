@@ -1,17 +1,13 @@
 package com.teachMng.onlineTeach.action;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @Component("createExercise")
-public class CreateExercise extends ActionSupport implements ServletResponseAware{
+public class CreateExercise extends ActionSupport {
 
-	private HttpServletResponse response;
 	private String createExerciseType;
 	private String stdGrade;
 	private String selCtn;
@@ -22,10 +18,6 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 	private String jgtopic;
 	private String judgeans;
 	
-	@Override
-	public void setServletResponse(HttpServletResponse resp) {
-		response = resp;
-	}
 	public String success(){
 		return SUCCESS;
 	}
@@ -40,7 +32,6 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		System.out.println("anskw:" + anskw);
 		System.out.println("jgtopic:" + jgtopic);
 		System.out.println("judgeans:" + judgeans);
-		
 		
 		
 	}

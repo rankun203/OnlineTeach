@@ -188,7 +188,7 @@ body{
 }
 
 .te{
-	transition-duration:.1s;
+	transition-duration:.3s;
 	transition-property:all;
 	transition-timing-function:ease-in-out;
 }
@@ -243,6 +243,11 @@ body{
 .upfoot{
 	border-bottom: 1px dashed #444;
 }
+.gray{
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+}
 
 /* container 样式 */
 .container{ 
@@ -252,13 +257,25 @@ body{
 }
 
 /* login 专用样式 */
+.login-student-box{
+	background-image: url(../imgs/student.png);
+	background-repeat: no-repeat;
+	margin: 30px 0 0 60px;
+	width: 128px;
+	height: 128px;
+}
+.login-teacher-box{
+	background-image: url(../imgs/teacher.png);
+	background-repeat: no-repeat;
+	margin: 30px 0 0 60px;
+	width: 128px;
+	height: 128px;
+}
 .login-mainbox{ 
-	position:absolute; 
 	background-color:#fff;
-	left:50%; 
-	width:340px;
+	margin: 80px 0 0 10%;
+	width:80%;
 	top:80px;
-	margin:0 0 0 -170px; 
 }
 .logobox{
 	padding:50px 30px 10px 30px;
@@ -273,6 +290,7 @@ body{
 	font-family:"Courier New", Courier,  monospace;
 	font-size:40px;
 	text-shadow:0px 1px 3px #666;
+	letter-spacing: 30px;
 }
 .logo-a:hover{
 	text-shadow:0px 1px 8px #666;
@@ -289,9 +307,24 @@ body{
 .login-tit{
 	padding:15px;
 }
+.login-inputbox input{
+	width: 260px;
+	color: #720E0E;
+	letter-spacing: 3px;
+	font-size: 14px;
+}
 
 .model-body{
-	padding:15px;
+	padding:30px;
+	margin-left: 25px;
+}
+.login-img{
+	box-shadow: 0 20px 0 rgba(10, 172, 10, 1);
+}
+.login-img:hover{
+	-webkit-filter: grayscale(0);
+	filter: grayscale(100%);
+	filter: gray;
 }
 .model-footer{
 	height:28px;
@@ -1722,8 +1755,8 @@ input[type="radio"] {
 }
 @-webkit-keyframes slideMsgAnimation{
 	0%{-webkit-transform:translateY(-60px);opacity:0;}
-	30%{-webkit-transform:translateY(-40px);opacity:.9;}
-	80%{-webkit-transform:translateY(-25px);opacity:.9;}
+	30%{-webkit-transform:translateY(-35px);opacity:.9;}
+	80%{-webkit-transform:translateY(-30px);opacity:.9;}
 	100%{-webkit-transform:translateY(0px);opacity:0;}
 }
 
@@ -1746,6 +1779,7 @@ input[type="radio"] {
 	line-height: 20px;
 	text-align: center;
 	vertical-align: middle;
+	font-size: 15px;
 }
 
 

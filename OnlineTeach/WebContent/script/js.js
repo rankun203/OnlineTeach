@@ -25,7 +25,7 @@ var msgDivs = ""+
 '	<div class="msg pullleft" id="msg"></div>'+
 '	<div class="clearboth"></div>'+
 '</div>';
-var clearMsgTime = 3000;
+var clearMsgTime = 3000;//与动画效果过渡时间相同：-webkit-animation: slideMsgAnimation 3s ease-in-out;中的3s
 function msgok(msg){
 	$("body").append(msgDivs);
 	$(".msg-stat").css("display", "none");
@@ -40,8 +40,9 @@ function msgerror(msg){
 	$("#msg-no").css("display", "block");
 	$("#msg").text(msg);
 	$("#msgQueue").css("display", "block");
-	setTimeout("$(#msgQueue).remove();", clearMsgTime);
+	setTimeout('$("#msgQueue").remove();', clearMsgTime);
 }
+//-------------------------
 function setSelectActive(id1, id2, id3, id4) {
 	
 	var dgi1 = document.getElementById(id1);
@@ -158,7 +159,6 @@ function submitCreateWork(){
 }
 
 function checkCurItem(ele){
-	console.log("ele.type:"+ele.type);
 	if(ele.type="checkbox"){
 		return;
 	}
@@ -210,13 +210,11 @@ $(document).ready(function(){
 			con = "showAnimation 1s ease";
 			api = "hideAnimation 1s ease";
 			anima = "evert0_360 2s ease";
-			//console.log("AAAAAAAAAAAAAA");
 			flag = false;
 		}  else  {
 			con = "hideAnimation 1s ease";
 			api = "showAnimation 1s ease";			
 			anima = "evert360_0 2s ease";
-			//console.log("BBBBBBBBBB");
 			flag = true;
 		}
 		$("div#console").css("-webkit-animation", con);
@@ -226,10 +224,8 @@ $(document).ready(function(){
 	});		
 });
 function getAutoPlanMsg() {
-	//console.log("hello");
 	var progressUrl = "ap/msg";
 	$.post(progressUrl, "" , function(data){
-		console.log(data);
 		var obj = eval(data);
 		for(var i = 0; i < obj.length; i++)
 			addInfoToConsole(obj[i]);
@@ -249,7 +245,6 @@ $.extend({
 		var url = "ap/getCoursePlan?typeName=" + sType + "&selectName=" + sName;
 		$.get(url, function(data){
 			if("sbRoom" == sType) {
-				//console.log(eval("(" + data + ")"));
 				$.showRoomCoursePlan(eval("(" + data + ")").coursePlan);				
 			} else if("sbClass" == sType) {
 				$.showClassCoursePlan(eval("(" + data + ")").coursePlan);
@@ -264,7 +259,6 @@ $.extend({
 		$.clearSName();
 		for(var i = 0; i < obj.list.length; i++) {
 			tmp = obj.list[i];
-			//console.log(tmp.id + "___" + tmp.name);
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
@@ -278,14 +272,12 @@ $.extend({
 			tmp = teacherCP[i];
 			str = "<a style='color:#1E90FF' class='coursePlanLink'> " + tmp.courseName + "</a><br /><a href='id=" + tmp.classId + ",sbClass' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
 			"</a><br /><a href='id=" + tmp.roomId + ",sbRoom' style='color:#CD5C5C' class='coursePlanLink'>" + tmp.roomName + "</a>";
-			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
 			var ary = this.href.substring(37,this.href.length).split(",");
 			$("#sType").val(ary[1]);
 			$.getSelectName(ary[1]);
-//			$.getCoursePlan(ary[1], ary[0]);
 			selectName = ary[0];
 			return false;
 		});
@@ -298,7 +290,6 @@ $.extend({
 			str = "<a href='id=" + tmp.classId + ",sbClass' style='color:#9932CC' class='coursePlanLink'>" + tmp.majorName + " " + tmp.className +
 			"</a><br /><a style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br/><a href='id=" + tmp.teacherId + ",sbTeacher' style='color:#00CED1' class='coursePlanLink'>" +
 			tmp.teacherName + "</a>";
-			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
@@ -317,14 +308,12 @@ $.extend({
 			tmp = classCP[i];
 			str = "<a style='color:#1E90FF' class='coursePlanLink'>" + tmp.courseName + "</a><br /><a href='id=" + tmp.roomId + ",sbRoom' style='color:#CD5C5C' class='coursePlanLink'>" + 
 			tmp.roomName + "</a><br/><a href='id=" + tmp.teacherId + ",sbTeacher' style='color:#00CED1' class='coursePlanLink'>" + tmp.teacherName + "</a>";
-			//console.log(str + "  p" + tmp.paragraph);
 			$("#p" + tmp.paragraph).html(str);
 		}
 		$(".coursePlanLink").click(function(){
 			var ary = this.href.substring(37,this.href.length).split(",");
 			$("#sType").val(ary[1]);
 			$.getSelectName(ary[1]);
-//			$.getCoursePlan(ary[1], ary[0]);
 			selectName = ary[0];
 			return false;
 		});
@@ -335,7 +324,6 @@ $.extend({
 		$.clearSName();
 		for(var i = 0; i < obj.list.length; i++) {
 			tmp = obj.list[i];
-			//console.log(tmp.id + "___" + tmp.name);
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
@@ -348,7 +336,6 @@ $.extend({
 		$.clearSName();
 		for(var i = 0; i < obj.list.length; i++) {
 			tmp = obj.list[i];
-			//console.log(tmp.id + "___" + tmp.name);
 			str = "<option value=\"" + tmp.id + "\">" + tmp.name + "</div>";
 			$("#sName").html($("#sName").html() + str);
 		}
@@ -393,10 +380,8 @@ $.extend({
 //-------
 
 function changeStatus(var1, var2) {
-	console.log(var1 + "(((" + var2);
 	var v1 = document.getElementById(var1).style.display;
 	var v2 = document.getElementById(var2).style.display;
-	console.log(v1 + "__" + v2);
 	document.getElementById(var1).style.display = v2;
 	document.getElementById(var2).style.display = v1;
 }
@@ -407,6 +392,49 @@ function addInfoToConsole(info) {
 	con.innerHTML = val;
 	con.scrollTop = con.scrollHeight;
 }
+
+//控制登录角色
+$("document").ready(function(){
+	$("#sturole").removeClass("gray");
+	
+	$(".login-img").click(function(){
+		$(".login-img").addClass("gray");
+		var role = $(this).attr("id");
+		if(role=="sturole")	{
+			$("#loginRole").val("student");
+			$("#sturole").removeClass("gray");
+			$("#login-input-unl").text("学　号");
+		}
+		else {
+			$("#loginRole").val("teacher");
+			$("#tchrole").removeClass("gray");
+			$("#login-input-unl").text("用户名");
+		}
+		
+	});
+});
+//控制登录验证
+$("document").ready(function(){
+	$("#login-form").submit(function(){
+		var iduname = $("#id_username").val();
+		var loginRole = $("#loginRole").val();
+		if(loginRole=="student"){
+			if(/\D/.test(iduname)) {
+				msgerror("注意：学号，只能是数字噢");
+				return false;
+			}
+		}
+	});
+});
+
+//初始化通知
+$("document").ready(function(){
+	var oktip = $("#oktip").attr("class");
+	if (oktip!="" && oktip=="true")	msgok($("#oktip").text());
+	else if (oktip!="" && oktip=="false") msgerror($("#oktip").text());
+});
+
+
 
 
 

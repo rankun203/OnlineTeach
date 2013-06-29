@@ -9,10 +9,14 @@
     <constant name="struts.devMode" value="true" />
  	<constant name="struts.objectFactory" value="spring" />
  	<constant name="struts.i18n.encoding" value="UTF-8" />
-
     
 	<include file="strutsConfig/autoPlan.xml"/>
 	<include file="strutsConfig/createExercise.xml"/>
 
-
+	<package name="login" extends="struts-default" namespace="/login">
+		<action name="login" class="loginAction" method="login">
+			<result name="success">/index.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+	</package>
 </struts>

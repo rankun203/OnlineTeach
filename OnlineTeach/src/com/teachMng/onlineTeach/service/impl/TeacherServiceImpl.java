@@ -38,5 +38,10 @@ public class TeacherServiceImpl implements ITeacherService {
 	public boolean updTeacher(Teacher teacher) {
 		return teacherDao.updTeacher(teacher);
 	}
+	@Transactional
+	@Override
+	public Teacher login(String username, String password) {
+		return teacherDao.login(username, password);
+	}
 
 }
