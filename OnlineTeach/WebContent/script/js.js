@@ -16,6 +16,32 @@ function mainNavExchange(mainNav, activePane) {
     document.getElementById(mainNav).className = "aMainNavItem aMainNavItemActive";
 
 }
+
+/* 通知代码 */
+var msgDivs = ""+
+'<div class="msgQueue" id="msgQueue" style="display:none">'+
+'	<div class="msg-stat pullleft" id="msg-ok"></div>'+
+'	<div class="msg-stat pullleft" id="msg-no" style="display:none"></div>'+
+'	<div class="msg pullleft" id="msg"></div>'+
+'	<div class="clearboth"></div>'+
+'</div>';
+var clearMsgTime = 3000;
+function msgok(msg){
+	$("body").append(msgDivs);
+	$(".msg-stat").css("display", "none");
+	$("#msg-ok").css("display", "block");
+	$("#msg").text(msg);
+	$("#msgQueue").css("display", "block");
+	setTimeout('$("#msgQueue").remove();', clearMsgTime);
+}
+function msgerror(msg){
+	$("body").append(msgDivs);
+	$(".msg-stat").css("display", "none");
+	$("#msg-no").css("display", "block");
+	$("#msg").text(msg);
+	$("#msgQueue").css("display", "block");
+	setTimeout("$(#msgQueue).remove();", clearMsgTime);
+}
 function setSelectActive(id1, id2, id3, id4) {
 	
 	var dgi1 = document.getElementById(id1);

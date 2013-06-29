@@ -106,6 +106,15 @@ $("document").ready(function(){
 		if(createExerciseType=="selectionExercise"){
 			var selCtn = $("#seltab-fulltopic").val();
 			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&selCtn=" + selCtn + "&selted=" + selted + ";";
+			$.post("ce/newOne",
+			{
+				createExerciseType:createExerciseType,
+				stdGrade:stdGrade,
+				selCtn:selCtn,
+				selted:selted
+			}, function(){
+				ss.dd();//!!!!!!!!!!!!!!执行消息函数
+			});
 		} else if(createExerciseType=="completionExercise") {
 			var cplCtn = $("#cpltopic").val();
 			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&cplCtn=" + cplCtn + ";";
@@ -117,8 +126,6 @@ $("document").ready(function(){
 			var jgtopic = $("#jgtopic").val();
 			newExerciseSubmit = "createExerciseType=" + createExerciseType + "&stdGrade=" + stdGrade + "&jgtopic=" + jgtopic + "&judgeans=" + judgeans + ";";			
 		}
-		
-		console.log("提交结果为：" + newExerciseSubmit);
 	});
 	
 	//设置按钮事件

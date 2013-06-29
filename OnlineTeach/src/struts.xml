@@ -12,6 +12,7 @@
 
     
 	<include file="strutsConfig/autoPlan.xml"/>
+	<include file="strutsConfig/createExercise.xml"/>
 
 
 </struts>
