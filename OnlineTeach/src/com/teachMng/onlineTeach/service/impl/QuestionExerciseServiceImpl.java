@@ -67,5 +67,12 @@ public class QuestionExerciseServiceImpl implements IQuestionExerciseService {
 		json += "问答题：" + ce.getFullTopic() + "}";
 		return json;
 	}
-
+	@Transactional
+	public String getAnswerInfo(int id) {
+		QuestionExercise ce = findById(id);
+		String json="{";
+		json += "标准答案：" + ce.getStdKeyword().replaceAll("@newline@", "<br />") + "(仅供参考)";
+		json +="}";
+		return json;
+	}
 }

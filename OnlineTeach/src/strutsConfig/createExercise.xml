@@ -8,5 +8,6 @@
 		<action name="newOne" class="createExercise" method="newOne" />
 		<action name="getAllExercise" class="createExercise" method="getAllExercise" />		
 		<action name="quickLook" class="createExercise" method="quickLook" />		
+		<action name="showAnswerInfo" class="createExercise" method="showAnswerInfo" />		
     </package>
 </struts>

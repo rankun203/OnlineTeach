@@ -1822,7 +1822,7 @@ input[type="radio"] {
 }
 .quickLook{
 	font-size:14px;
-	margin-left:330px;
+	margin-left:-70px;
 	width:400px;
 	-webkit-animation: showAnimation 1s ease-in-out;
 	min-height:200px;

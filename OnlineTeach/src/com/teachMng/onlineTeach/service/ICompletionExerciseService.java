@@ -10,4 +10,5 @@ public interface ICompletionExerciseService {
 	boolean insert(CompletionExercise ce);
 	String getCEString();
 	String quickLook(int id);
+	String getAnswerInfo(int id);
 }

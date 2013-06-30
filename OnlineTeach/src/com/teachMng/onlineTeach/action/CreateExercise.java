@@ -131,6 +131,19 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		}
 		out().print(json);
 	}
+	public void showAnswerInfo() {
+		String json = "";
+		if("completionExercise".equals(type)) {
+			json = ceService.getAnswerInfo(Integer.parseInt(id));
+		} else if("judgeExercise".equals(type)) {
+			json = jeService.getAnswerInfo(Integer.parseInt(id));
+		} else if("questionExercise".equals(type)) {
+			json = qeService.getAnswerInfo(Integer.parseInt(id));
+		} else if("selectionExercise".equals(type)) {
+			json = seService.getAnswerInfo(Integer.parseInt(id));
+		}
+		out().print(json);
+	}
 	public String getCreateExerciseType() {
 		return createExerciseType;
 	}

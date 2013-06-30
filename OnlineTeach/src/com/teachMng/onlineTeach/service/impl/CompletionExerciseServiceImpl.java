@@ -63,10 +63,21 @@ public class CompletionExerciseServiceImpl implements ICompletionExerciseService
 	@Override
 	@Transactional
 	public String quickLook(int id) {
-		// TODO Auto-generated method stub
 		CompletionExercise ce = findById(id);
 		String json="{";
 		json += "填空题：" + ce.getFullTopic().replaceAll("@space@", "_______") + "}";
+		return json;
+	}
+	@Override
+	@Transactional
+	public String getAnswerInfo(int id) {
+		CompletionExercise ce = findById(id);
+		String json="{";
+		String[] ans = ce.getStdAnswer().split(",");
+		for(int i = 0; i < ans.length; i++) {
+			json += (i+1) + "：" + ans[i] + "    ";
+		}
+		json +="}";
 		return json;
 	}
 

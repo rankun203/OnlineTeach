@@ -22,9 +22,7 @@ public class GeneralTest {
 	}
 	@Test
 	public void test() {
-//		String s = "我今天[早上]没有吃早饭";
-//		System.out.println(s.replaceAll("\\[[^\\[]*\\]", "@place@"));
-		String s = "我今天@space@没有吃@space@饭";
-		System.out.println(s.replaceAll("@space@", "_______"));
+		String s = "下面名字中谁是猴子？@newline@A.孙悟空@newline@B.猪八戒@newline@C.沙悟净@newline@D.唐僧";
+		System.out.println(s.substring(s.indexOf("A" + "."), s.indexOf("B" + ".")));
 	}
 }
