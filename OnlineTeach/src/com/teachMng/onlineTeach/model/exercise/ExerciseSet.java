@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Index;
 
 import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.Teacher;
@@ -53,28 +56,28 @@ public class ExerciseSet {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<JudgeExercise> getJudgeExercise() {
 		return judgeExercise;
 	}
 	public void setJudgeExercise(List<JudgeExercise> judgeExercise) {
 		this.judgeExercise = judgeExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<CompletionExercise> getCompletionExercise() {
 		return completionExercise;
 	}
 	public void setCompletionExercise(List<CompletionExercise> completionExercise) {
 		this.completionExercise = completionExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<QuestionExercise> getQuestionExercise() {
 		return questionExercise;
 	}
 	public void setQuestionExercise(List<QuestionExercise> questionExercise) {
 		this.questionExercise = questionExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<SelectionExercise> getSelectionExercise() {
 		return selectionExercise;
 	}

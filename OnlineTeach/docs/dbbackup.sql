@@ -314,6 +314,11 @@ CREATE TABLE `t_student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_student` */
+INSERT INTO `onlineteach`.`t_student` (`password`, `stuName`, `scID`) VALUES ('password', '李鹏', '1');
+INSERT INTO `onlineteach`.`t_student` (`password`, `stuName`, `scID`) VALUES ('password', '杨刚', '2');
+INSERT INTO `onlineteach`.`t_student` (`password`, `stuName`, `scID`) VALUES ('password', '李阳', '2');
+INSERT INTO `onlineteach`.`t_student` (`password`, `stuName`, `scID`) VALUES ('password', '王强', '1');
+INSERT INTO `onlineteach`.`t_student` (`password`, `stuName`, `scID`) VALUES ('password', '李婷', '1');
 
 /*Table structure for table `t_teacher` */
 

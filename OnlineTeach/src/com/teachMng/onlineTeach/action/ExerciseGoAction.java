@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
-import org.springframework.test.web.client.ResponseActions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.teachMng.onlineTeach.model.Student;
@@ -58,6 +57,8 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 	 		teacherId	:	教师的编号
 			classId		:	班级编号,
 			exs			:	10:selection,14:completion,12:judge,15:answer
+			
+	 * eg http://localhost:8080/OnlineTeach/ei/assignment?teacherId=1&classId=1&exs=1:selection,2:selection,3:selection,4:selection,1:answer,2:answer,1:judge,2:judge,3:judge,4:judge,1:completion,2:completion,3:completion,4:completion#
 	 * @throws IOException 打印消息的时候如果出错会抛出异常
 	 */
 	public void assignment() throws IOException{
@@ -65,12 +66,12 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 			int teacherIdInt = Integer.parseInt(teacherId);
 			int classIdInt = Integer.parseInt(classId);
 			String[] exsArray = exs.split(",");
-			
+
 			//试题类型数组
 			String[] exsTypeArray = new String[exsArray.length];
 			//试题ID数组
 			int[] exIds = new int[exsArray.length];
-			
+
 			for(int i=0; i<exsArray.length; i++){
 				String[] temps = exsArray[i].split(":");
 				exIds[i] = Integer.parseInt(temps[0]);
@@ -102,6 +103,7 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 					}
 				}
 			}
+			boolean isOk = false;
 			//每个学生
 			while(stuItor.hasNext()){
 				es = new ExerciseSet();
@@ -111,11 +113,11 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 				es.setQuestionExercise(qusList);
 				es.setJudgeExercise(jugList);
 				es.setCompletionExercise(cplList);
-				boolean isOk = ess.save(es);
-System.out.println("save ExerciseSet is: " + isOk);
-				String sucFaild = isOk?"成功！":"失败！";
-				response.getWriter().print("oktip:"+isOk+",tip:试卷发布"+sucFaild);
+System.out.println(es.getFounder().getTeacName()+"|"+es.getJudgeExercise().size()+"|"+es.getQuestionExercise().size()+"|"+es.getSelectionExercise().size()+"|"+es.getCompletionExercise().size()+"|"+es.getStudent().getStuName());
+				isOk = ess.save(es) && isOk;
 			}
+			String sucFaild = isOk?"成功！":"失败！";
+			response.getWriter().print("{oktip:\""+isOk+"\",tip:\"试卷发布"+sucFaild+"\"}");
 		}
 	}
 
