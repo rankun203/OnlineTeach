@@ -1,6 +1,7 @@
 package com.teachMng.onlineTeach.model;
 
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -234,6 +235,7 @@ public class exerciseSetTest {
 		session.save(j3);
 		session.save(j4);
 
+		es1.setCreateDate(new Date());
 		session.save(es1);
 		
 		session.getTransaction().commit();

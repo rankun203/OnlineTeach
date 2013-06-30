@@ -1,16 +1,21 @@
 package com.teachMng.onlineTeach.model.exercise;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Index;
 
 import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.Teacher;
@@ -31,6 +36,7 @@ public class ExerciseSet {
 	 * 但一个学生可能会有很多试题集
 	 */
 	private Student student;
+	private Date createDate;
 
 	private List<JudgeExercise> judgeExercise = new ArrayList<JudgeExercise>();
 	private List<CompletionExercise> completionExercise = new ArrayList<CompletionExercise>();
@@ -53,28 +59,28 @@ public class ExerciseSet {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<JudgeExercise> getJudgeExercise() {
 		return judgeExercise;
 	}
 	public void setJudgeExercise(List<JudgeExercise> judgeExercise) {
 		this.judgeExercise = judgeExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<CompletionExercise> getCompletionExercise() {
 		return completionExercise;
 	}
 	public void setCompletionExercise(List<CompletionExercise> completionExercise) {
 		this.completionExercise = completionExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<QuestionExercise> getQuestionExercise() {
 		return questionExercise;
 	}
 	public void setQuestionExercise(List<QuestionExercise> questionExercise) {
 		this.questionExercise = questionExercise;
 	}
-	@OneToMany(cascade=CascadeType.MERGE)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	public List<SelectionExercise> getSelectionExercise() {
 		return selectionExercise;
 	}
@@ -88,6 +94,12 @@ public class ExerciseSet {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

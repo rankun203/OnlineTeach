@@ -36,22 +36,13 @@
 <div class="mainbox container" style="border:1px solid #ccc; margin-top:10px;">
 	<div class="topicList">
     	<div class="topicTitle">
-        	<div class="tTitle">本节课题目</div>
-            <a href='#question_begin' class="beginAnswer">开始答题</a>
+        	<div class="tTitle ttNo pullleft">试卷号</div>
+        	<div class="tTeacher pullleft">授题老师</div>
+        	<div class="tCreateTime pullleft">创建时间</div>
+            <div class="clearboth"></div>
         </div>
         <div class="topicNameList">
-        	<ul style="list-style:decimal;">
-            	<li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>  
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>  
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>  
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>     
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>     
-                <li><a href="#">告诉 Windows 验证文件是否正确写入磁盘……</a></li>     
-            </ul>
+        	<table id="exList" class="exList"></table>
         </div>
     </div>
     
@@ -70,9 +61,9 @@
             </div>
             <div class="note">
             	<ul style="list-style:disc;">
-                	<li><a href="#">在交互命令外壳里显示 WMI 信息……</a></li>
-                	<li><a href="#">在交互命令外壳里显示 WMI 信息……</a></li>
-                    <li><a href="#">终止正在运行的进程或应用程序……</a></li>                    
+                	<li><a href="#">为什么金属会有不同的堆积方式？</a></li>
+                	<li><a href="#">决定金属堆积方式的因素是什么？</a></li>
+                    <li><a href="#">为什么过渡金属（从钪到锌）4s层……</a></li>                    
                 </ul>
             </div>
         </div>
@@ -83,9 +74,9 @@
             </div>
             <div class="note">
             	<ul style="list-style:disc;">
-                	<li><a href="#">在交互命令外壳里显示 WMI 信息……</a></li>
-                    <li><a href="#">终止正在运行的进程或应用程序……</a></li>
-                	<li><a href="#">在交互命令外壳里显示 WMI 信息……</a></li>                  
+                	<li><a href="#">能否介绍一下诱变育种和秋水仙素育种以及其……</a></li>
+                    <li><a href="#">胰岛素是含有51个氨基酸的蛋白质,控制合成……</a></li>
+                	<li><a href="#">为什么定时给成年狗注射甲状腺激素出现的现……</a></li>                  
                 </ul>
             </div>
         </div>
