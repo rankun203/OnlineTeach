@@ -46,23 +46,96 @@ $("document").ready(function(){
 			var exs = '<tr><td style="width:10%;">@NO@</td>' +
 					'<td style="width:30%;"><a href="#">@HOLD@</a></td>' +
 					'<td style="width:45%;">@TI@</td>' +
-					'<td style="width:15%;"><a href="#question_begin" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise($(this));" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
 			exs = exs.replace(/@HOLD@/,field.founder).replace(/@TI@/,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/,field.esId);
-console.log(exs);
 			$("#exList").append(exs);
-			$("#ba-"+field.esId).click(refreshStudentExerciseList($(this)));
 		});
 	});
-
 	
+
+
+
 });
 
-//刷新学生题目的方法
-function refreshStudentExerciseList(me){
-	var meid = me.attr("id");
-	var esId = meid.substring(3, meid.length);
-	//TODO 拿到ExerciseSet的ID了，从数据库抽出来显示在workReply.jsp上面。
+var selectionTpl = ""+
+'    <div class="mainbox container replyItem" id="sel-tpl">'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'        <div class="single_question_answer">'+
+'            <div class="single_question" id="selQes-tpl">@ctn@</div>'+
+'        </div>'+
+'        <div class="sel-select-box">'+
+'        	<input type="hidden" name="sel-tpl-val" value="" id="sel-tpl-val" />'+
+'			<div class="sel-sb-opt sel-sb-a sel-opt-tpl pullleft" id="sel-a-tpl">A<div class="sel-tpl-ed" id="sel-a-tpl-ed"></div></div>'+
+'			<div class="sel-sb-opt sel-sb-b sel-opt-tpl pullleft" id="sel-b-tpl">B<div class="sel-tpl-ed" id="sel-b-tpl-ed"></div></div>'+
+'			<div class="sel-sb-opt sel-sb-c sel-opt-tpl pullleft" id="sel-c-tpl">C<div class="sel-tpl-ed" id="sel-c-tpl-ed"></div></div>'+
+'			<div class="sel-sb-opt sel-sb-d sel-opt-tpl pullleft" id="sel-d-tpl">D<div class="sel-tpl-ed" id="sel-d-tpl-ed"></div></div>'+
+'			<div class="clearboth"></div>'+
+'        </div>'+
+'    </div>';
+var questionTpl = ""+
+'    <div class="mainbox container replyItem" id="ans-tpl">'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'        <div class="answer_question">'+
+'            <div class="a_question" id="ans-tpl">@ctn@</div>'+
+'            <div class="inputArea">'+
+'                <div class="a_txt">答：</div>'+
+'                <textarea rows="10" cols="131" class="a_answer inputField sslote" name="answer1" id="ans-tpl-val" ></textarea>'+
+'            </div>'+
+'        </div>'+
+'    </div>';
+var judgeTpl = ""+
+'    <div class="mainbox container replyItem" id="jug-tpl">'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'        <div class="judge_question">'+
+'            <div class="j_question">@ctn@</div>'+
+'        </div>'+
+'        <div class="j_answer_box">'+
+'        	<input type="hidden" name="jug-tpl-val" value="" id="jug-tpl-val" />'+
+'			<div class="j_true j_answer jug-tpl-opt pullleft" id="jug-tpl-opt-a">√<div class="jug-tpl-ed" id="jug-tpl-opt-a-ed"></div></div>'+
+'			<div class="j_false j_answer jug-tpl-opt pullleft" id="jug-tpl-opt-b">x<div class="jug-tpl-ed" id="jug-tpl-opt-b-ed"></div></div>'+
+'			<div class="clearboth"></div>'+
+'        </div>'+
+'    </div>';
+var completionTpl = ""+
+'    <div class="mainbox container replyItem" id="cpl-tpl" >'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'        <div class="fill_vacant_question">'+
+'            <div class="fv_question" id="cpl-ctn-tpl">@ctn@</div>'+
+'        </div>'+
+'    </div>';
+var completionSpaceTpl = '<input type="text" name="fv_answer" class="fv_input cpl-tpl-vals" />';
+
+
+var COUNTER = 0;
+$.extend({TplPlus:function(){
+		COUNTER++;
+	}
+});
+
+//TODO 能在控制台显示了，将其显示到页面上去。未完成
+function setExercise(ele){
+	var idStr = ele.attr("id");
+	esId = idStr.substring(3,idStr.length);
+	$.getJSON("ei/getExs?esId="+esId, function(result){
+		$.each(result, function(i, field){
+			var type = field.type;
+			if(type!=null&&type!=""&&type=="selection"){
+				var myDiv = selectionTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER+1).replace(/@ctn@/g,field.selCtn).replace(/@br@/g,"<br>");
+				$.TplPlus();
+				$("#daTit").append(myDiv);
+			} else if(type!=null&&type!=""&&type=="judge"){
+				console.log("判断题："+field.jugCtn);
+			} else if(type!=null&&type!=""&&type=="completion"){
+				console.log("填空题："+field.cplCtn);
+			} else if(type!=null&&type!=""&&type=="question"){
+				console.log("问答题："+field.qesCtn);
+			}  else return false;
+		});
+	});
+	return true;
 }
+
 
 //获取指定选择题(rpl_no为rpl_no)答案
 //get selection reply answer

@@ -66,52 +66,12 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 			}
 		]
 	 * @throws IOException  打印消息的时候如果出错会抛出异常
-	 * TODO http://localhost:8080/OnlineTeach/ei/getExs?esId=2 访问出错无法获取到题目 No session... http://hi.baidu.com/hzeewpeffeacyze/item/19aa91285368670f73863e77
 	 */
 	public void getExerciseSet() throws IOException{
 		if(esId!=null&&!esId.equals("")){
 			int esID = Integer.parseInt(esId);
-			ExerciseSet es = ess.findById(esID);
+			String str = ess.getExerciseSet(esID);
 			response.setCharacterEncoding("utf-8");
-			String str = "[";
-			List<SelectionExercise> seList = es.getSelectionExercise();
-			List<CompletionExercise> ceList = es.getCompletionExercise();
-			List<JudgeExercise> jeList = es.getJudgeExercise();
-			List<QuestionExercise> qeList = es.getQuestionExercise();
-			
-			for(int i=0; i<seList.size(); i++){
-				if(i==0)	str += "{";
-				else str += ",{";
-				str += "\"type\":\"selection\",";
-				String selCtn = seList.get(i).getFullTopic();
-				str += "\"selCtn\":\""+selCtn+"\"";
-				str += "}";
-			}
-			for(int i=0; i<ceList.size(); i++){
-				if(str.indexOf("type") >0)	str += ",{";
-				else str += "{";
-				str += "\"type\":\"selection\",";
-				String cplCtn = ceList.get(i).getFullTopic();
-				str += "\"cplCtn\":\""+cplCtn+"\"";
-				str += "}";
-			}
-			for(int i=0; i<jeList.size(); i++){
-				if(str.indexOf("type") >0)	str += ",{";
-				else str += "{";
-				str += "\"type\":\"judge\",";
-				String jugCtn = ceList.get(i).getFullTopic();
-				str += "\"jugCtn\":\""+jugCtn+"\"";
-				str += "}";
-			}
-			for(int i=0; i<qeList.size(); i++){
-				if(str.indexOf("type") >0)	str += ",{";
-				else str += "{";
-				str += "\"type\":\"question\",";
-				String qesCtn = ceList.get(i).getFullTopic();
-				str += "\"qesCtn\":\""+qesCtn+"\"";
-				str += "}";
-			}
-			str += "]";
 			response.getWriter().print(str);
 		}
 	}

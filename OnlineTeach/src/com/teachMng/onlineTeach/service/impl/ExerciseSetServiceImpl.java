@@ -8,7 +8,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.IExerciseSetDAO;
+import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
+import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
+import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
+import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
 import com.teachMng.onlineTeach.service.IExerciseSetService;
 @Component("exerciseSetService")
 public class ExerciseSetServiceImpl implements IExerciseSetService {
@@ -55,6 +59,52 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 	public boolean save(ExerciseSet es) {
 		
 		return exerciseSetDao.save(es);
+	}
+	@Override
+	@Transactional
+	public String getExerciseSet(int esID){
+		ExerciseSet es = findById(esID);
+
+		String str = "[";
+		List<SelectionExercise> seList = es.getSelectionExercise();
+		List<CompletionExercise> ceList = es.getCompletionExercise();
+		List<JudgeExercise> jeList = es.getJudgeExercise();
+		List<QuestionExercise> qeList = es.getQuestionExercise();
+		
+		for(int i=0; i<seList.size(); i++){
+			if(i==0)	str += "{";
+			else str += ",{";
+			str += "\"type\":\"selection\",";
+			String selCtn = seList.get(i).getFullTopic();
+			str += "\"selCtn\":\""+selCtn+"\"";
+			str += "}";
+		}
+		for(int i=0; i<ceList.size(); i++){
+			if(str.indexOf("type") >0)	str += ",{";
+			else str += "{";
+			str += "\"type\":\"completion\",";
+			String cplCtn = ceList.get(i).getFullTopic();
+			str += "\"cplCtn\":\""+cplCtn+"\"";
+			str += "}";
+		}
+		for(int i=0; i<jeList.size(); i++){
+			if(str.indexOf("type") >0)	str += ",{";
+			else str += "{";
+			str += "\"type\":\"judge\",";
+			String jugCtn = ceList.get(i).getFullTopic();
+			str += "\"jugCtn\":\""+jugCtn+"\"";
+			str += "}";
+		}
+		for(int i=0; i<qeList.size(); i++){
+			if(str.indexOf("type") >0)	str += ",{";
+			else str += "{";
+			str += "\"type\":\"question\",";
+			String qesCtn = ceList.get(i).getFullTopic();
+			str += "\"qesCtn\":\""+qesCtn+"\"";
+			str += "}";
+		}
+		str += "]";
+		return str;
 	}
 
 }

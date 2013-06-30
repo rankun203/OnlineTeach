@@ -157,7 +157,7 @@ public class exerciseSetTest {
 		q2.setStdKeyword("不");
 		
 		SelectionExercise se1 = new SelectionExercise(); 
-		se1.setFullTopic("请选择最酷毙的职业：" + SelectionExercise.brHolder +
+		se1.setFullTopic("请选择最酷毙的职业：" + SelectionExercise.hrHolder +
 				"A.理发师" + SelectionExercise.brHolder +
 				"B.园丁" + SelectionExercise.brHolder +
 				"C.码农" + SelectionExercise.brHolder +
@@ -165,7 +165,7 @@ public class exerciseSetTest {
 		se1.setStdAnswer('D');
 		se1.setStdScore(5);
 		SelectionExercise se2 = new SelectionExercise(); 
-		se2.setFullTopic("请选择最苦逼的职业：" + SelectionExercise.brHolder +
+		se2.setFullTopic("请选择最苦逼的职业：" + SelectionExercise.hrHolder +
 				"A.理发师" + SelectionExercise.brHolder +
 				"B.园丁" + SelectionExercise.brHolder +
 				"C.程序员" + SelectionExercise.brHolder +
@@ -173,7 +173,7 @@ public class exerciseSetTest {
 		se2.setStdAnswer('C');
 		se2.setStdScore(5);
 		SelectionExercise se3 = new SelectionExercise(); 
-		se3.setFullTopic("请选择最高尚的职业：" + SelectionExercise.brHolder +
+		se3.setFullTopic("请选择最高尚的职业：" + SelectionExercise.hrHolder +
 				"A.理发师" + SelectionExercise.brHolder +
 				"B.园丁" + SelectionExercise.brHolder +
 				"C.码农" + SelectionExercise.brHolder +
@@ -181,7 +181,7 @@ public class exerciseSetTest {
 		se3.setStdAnswer('B');
 		se3.setStdScore(5);
 		SelectionExercise se4 = new SelectionExercise(); 
-		se4.setFullTopic("请选择最有型的职业：" + SelectionExercise.brHolder +
+		se4.setFullTopic("请选择最有型的职业：" + SelectionExercise.hrHolder +
 				"A.理发师" + SelectionExercise.brHolder +
 				"B.园丁" + SelectionExercise.brHolder +
 				"C.码农" + SelectionExercise.brHolder +

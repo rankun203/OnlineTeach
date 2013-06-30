@@ -11,4 +11,5 @@ public interface IExerciseSetService {
 	List<ExerciseSet> findByStudentId(int sid);
 	boolean insert(ExerciseSet es);
 	boolean save(ExerciseSet es);
+	String getExerciseSet(int esID);
 }

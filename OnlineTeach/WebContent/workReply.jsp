@@ -88,63 +88,6 @@
 <a name="question_begin" id="question_begin" ></a>
 <form method="post">
 	<div class="daTit tbHead container" id="daTit">题目列表</div>
-
-    <div class="mainbox container replyItem" id="sel-tpl">
-    	<h3 class="itemCount divInfo" id="itemCount-tpl">1</h3>
-        <div class="single_question_answer">
-            <div class="single_question" id="selQes-tpl">
-            	选择题题目<hr><br>A.你是什么<br>B.我是B<br>C.我是C<br>D.我是D
-            </div>
-        </div>
-        <div class="sel-select-box">
-        	<input type="hidden" name="sel-tpl-val" value="" id="sel-tpl-val" />
-			<div class="sel-sb-opt sel-sb-a sel-opt-tpl pullleft" id="sel-a-tpl">A<div class="sel-tpl-ed" id="sel-a-tpl-ed"></div></div>
-			<div class="sel-sb-opt sel-sb-b sel-opt-tpl pullleft" id="sel-b-tpl">B<div class="sel-tpl-ed" id="sel-b-tpl-ed"></div></div>
-			<div class="sel-sb-opt sel-sb-c sel-opt-tpl pullleft" id="sel-c-tpl">C<div class="sel-tpl-ed" id="sel-c-tpl-ed"></div></div>
-			<div class="sel-sb-opt sel-sb-d sel-opt-tpl pullleft" id="sel-d-tpl">D<div class="sel-tpl-ed" id="sel-d-tpl-ed"></div></div>
-			<div class="clearboth"></div>
-        </div>
-    </div>
-
-    <div class="mainbox container replyItem" id="ans-tpl">
-    	<h3 class="itemCount divInfo" id="itemCount-tpl">2</h3>
-        <div class="answer_question">
-            <div class="a_question" id="ans-tpl">
-                我是问题，我是问题，我就是题噢。你晓得了卜？
-            </div>
-            <div class="inputArea">
-                <div class="a_txt">答：</div>
-                <textarea rows="10" cols="131" class="a_answer inputField sslote" name="answer1" id="ans-tpl-val" ></textarea>
-            </div>
-        </div>
-    </div>
-
-    <div class="mainbox container replyItem" id="jug-tpl">
-    	<h3 class="itemCount divInfo" id="itemCount-tpl">15</h3>
-        <div class="judge_question">
-            <div class="j_question">
-                我对不对？你说我对不对？你说我到底对不对？？？
-            </div>
-        </div>
-        <div class="j_answer_box">
-        	<input type="hidden" name="jug-tpl-val" value="" id="jug-tpl-val" />
-			<div class="j_true j_answer jug-tpl-opt pullleft" id="jug-tpl-opt-a">√<div class="jug-tpl-ed" id="jug-tpl-opt-a-ed"></div></div>
-			<div class="j_false j_answer jug-tpl-opt pullleft" id="jug-tpl-opt-b">x<div class="jug-tpl-ed" id="jug-tpl-opt-b-ed"></div></div>
-			<div class="clearboth"></div>
-        </div>
-    </div>
-
-    <div class="mainbox container replyItem" id="cpl-tpl" >
-    	<h3 class="itemCount divInfo" id="itemCount-tpl">23</h3>
-        <div class="fill_vacant_question">
-            <div class="fv_question">
-	            我是问题，我后面是填空<input type="text" name="fv_answer" class="fv_input cpl-tpl-vals" />前面是填空
-	            我是问题，我后面是填空<input type="text" name="fv_answer" class="fv_input cpl-tpl-vals" />前面是填空
-	            我是问题，我后面是填空<input type="text" name="fv_answer" class="fv_input cpl-tpl-vals" />前面是填空
-            </div>
-        </div>
-    </div>
-
 </form>
 
 <jsp:include page="include/footer.jsp" />
