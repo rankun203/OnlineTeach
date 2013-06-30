@@ -164,8 +164,7 @@ $("document").ready(function(){
 				{
 					createExerciseType:createExerciseType,
 					stdGrade:stdGrade,
-					jgtopic:jgtopic,
-					judgeans:judgeans
+					jgtopic:jgtopic
 				}, function(){
 					msgok("OK, 题目保存成功！");
 				});
@@ -191,6 +190,7 @@ $("document").ready(function(){
 			else if (createExerciseType=="judgeExercise") $("#jgtopic").val("");
 		}
 	});
+	
 });
 $.extend({
 	getAllExercise:function() {

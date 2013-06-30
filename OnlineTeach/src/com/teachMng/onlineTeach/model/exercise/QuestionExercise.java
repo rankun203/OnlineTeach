@@ -21,7 +21,7 @@ import com.teachMng.onlineTeach.model.UpFile;
 @Table(name="t_questionexercise")
 public class QuestionExercise {
 	@Transient
-	public static String newLineHolder = "@newline@";
+	public static String brHolder = "@br@";
 	@Transient
 	public static String imgHolder = "@img@";
 

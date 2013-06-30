@@ -83,72 +83,72 @@ public class exerciseSetTest {
 		QuestionExercise q1 = new QuestionExercise(); 
 		q1.setFullTopic("请，默写 林俊杰-《不潮不用花钱》");
 		q1.setStdScore(10);
-		q1.setStdKeyword("Hey greedy,don’t fret"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		"You name it,I have it"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"左左 左左 偏左 就用左手"+QuestionExercise.newLineHolder+
-		"生活 就不用 想太多"+QuestionExercise.newLineHolder+
-		"怦怦 怦怦 心动 张开眼睛"+QuestionExercise.newLineHolder+
-		"就记得当下的 强烈"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"有时灵光一闪而过"+QuestionExercise.newLineHolder+
-		"牛顿也吃苹果"+QuestionExercise.newLineHolder+
-		"我的念头不太罗嗦"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"限时间能入座"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"请你 不要到处叩叩"+QuestionExercise.newLineHolder+
-		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.newLineHolder+
-		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.newLineHolder+
-		"钱买不到绝活"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"你说 听说 听说 你听谁说"+QuestionExercise.newLineHolder+
-		"跟着 乱走 闹哄哄"+QuestionExercise.newLineHolder+
-		"通通 通通 普通 普通"+QuestionExercise.newLineHolder+
-		"如果不懂 不要 随便 拒绝"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"有时灵光一闪而过"+QuestionExercise.newLineHolder+
-		"牛顿也吃苹果"+QuestionExercise.newLineHolder+
-		"我的念头不太罗嗦"+QuestionExercise.newLineHolder+
-		"限时间能入座"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"请你 不要到处叩叩"+QuestionExercise.newLineHolder+
-		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.newLineHolder+
-		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.newLineHolder+
-		"钱买不到绝活"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"Little chick having chips on my sofa"+QuestionExercise.newLineHolder+
-		"Bearbricxs take a shit on my sofa"+QuestionExercise.newLineHolder+
-		"Smudge babies lying on my sofa"+QuestionExercise.newLineHolder+
-		"Neighborhxxds and kiks singing “so-fa”"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"Little chick having chips on my sofa"+QuestionExercise.newLineHolder+
-		"Bearbricxs take a shit on my sofa"+QuestionExercise.newLineHolder+
-		"Smudge babies lying on my sofa"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"Hey greedy,don’t fret"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		"You name it,I have it"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"请你 不要到处叩叩"+QuestionExercise.newLineHolder+
-		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.newLineHolder+
-		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.newLineHolder+
-		"钱买不到绝活"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"Hey greedy,don’t fret(叩叩)"+QuestionExercise.newLineHolder+
-		"What you see is what you get(叩叩)"+QuestionExercise.newLineHolder+
-		"You name it,I have it(不要到处叩叩)"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
-		"Hey greedy,don’t fret(不要到处叩叩)"+QuestionExercise.newLineHolder+
-		"What you see is what you get(叩叩)"+QuestionExercise.newLineHolder+
-		"You name it,I have it(叩叩)"+QuestionExercise.newLineHolder+
-		"What you see is what you get"+QuestionExercise.newLineHolder+
-		""+QuestionExercise.newLineHolder+
+		q1.setStdKeyword("Hey greedy,don’t fret"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		"You name it,I have it"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"左左 左左 偏左 就用左手"+QuestionExercise.brHolder+
+		"生活 就不用 想太多"+QuestionExercise.brHolder+
+		"怦怦 怦怦 心动 张开眼睛"+QuestionExercise.brHolder+
+		"就记得当下的 强烈"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"有时灵光一闪而过"+QuestionExercise.brHolder+
+		"牛顿也吃苹果"+QuestionExercise.brHolder+
+		"我的念头不太罗嗦"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"限时间能入座"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"请你 不要到处叩叩"+QuestionExercise.brHolder+
+		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.brHolder+
+		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.brHolder+
+		"钱买不到绝活"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"你说 听说 听说 你听谁说"+QuestionExercise.brHolder+
+		"跟着 乱走 闹哄哄"+QuestionExercise.brHolder+
+		"通通 通通 普通 普通"+QuestionExercise.brHolder+
+		"如果不懂 不要 随便 拒绝"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"有时灵光一闪而过"+QuestionExercise.brHolder+
+		"牛顿也吃苹果"+QuestionExercise.brHolder+
+		"我的念头不太罗嗦"+QuestionExercise.brHolder+
+		"限时间能入座"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"请你 不要到处叩叩"+QuestionExercise.brHolder+
+		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.brHolder+
+		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.brHolder+
+		"钱买不到绝活"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"Little chick having chips on my sofa"+QuestionExercise.brHolder+
+		"Bearbricxs take a shit on my sofa"+QuestionExercise.brHolder+
+		"Smudge babies lying on my sofa"+QuestionExercise.brHolder+
+		"Neighborhxxds and kiks singing “so-fa”"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"Little chick having chips on my sofa"+QuestionExercise.brHolder+
+		"Bearbricxs take a shit on my sofa"+QuestionExercise.brHolder+
+		"Smudge babies lying on my sofa"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"Hey greedy,don’t fret"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		"You name it,I have it"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"请你 不要到处叩叩"+QuestionExercise.brHolder+
+		"潮流需要抠抠 不小心就没抠抠"+QuestionExercise.brHolder+
+		"用力到处扣扣 花掉所有抠抠"+QuestionExercise.brHolder+
+		"钱买不到绝活"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"Hey greedy,don’t fret(叩叩)"+QuestionExercise.brHolder+
+		"What you see is what you get(叩叩)"+QuestionExercise.brHolder+
+		"You name it,I have it(不要到处叩叩)"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
+		"Hey greedy,don’t fret(不要到处叩叩)"+QuestionExercise.brHolder+
+		"What you see is what you get(叩叩)"+QuestionExercise.brHolder+
+		"You name it,I have it(叩叩)"+QuestionExercise.brHolder+
+		"What you see is what you get"+QuestionExercise.brHolder+
+		""+QuestionExercise.brHolder+
 		"叩叩... 叩叩 ...");
 		QuestionExercise q2 = new QuestionExercise(); 
 		q2.setFullTopic("《天上掉下个猪八戒》 是一本书吗？");
@@ -156,34 +156,34 @@ public class exerciseSetTest {
 		q2.setStdKeyword("不");
 		
 		SelectionExercise se1 = new SelectionExercise(); 
-		se1.setFullTopic("请选择最酷毙的职业：" + SelectionExercise.newLineHolder +
-				"A.理发师" + SelectionExercise.newLineHolder +
-				"B.园丁" + SelectionExercise.newLineHolder +
-				"C.码农" + SelectionExercise.newLineHolder +
+		se1.setFullTopic("请选择最酷毙的职业：" + SelectionExercise.brHolder +
+				"A.理发师" + SelectionExercise.brHolder +
+				"B.园丁" + SelectionExercise.brHolder +
+				"C.码农" + SelectionExercise.brHolder +
 				"D.糕帅富");
 		se1.setStdAnswer('D');
 		se1.setStdScore(5);
 		SelectionExercise se2 = new SelectionExercise(); 
-		se2.setFullTopic("请选择最苦逼的职业：" + SelectionExercise.newLineHolder +
-				"A.理发师" + SelectionExercise.newLineHolder +
-				"B.园丁" + SelectionExercise.newLineHolder +
-				"C.程序员" + SelectionExercise.newLineHolder +
+		se2.setFullTopic("请选择最苦逼的职业：" + SelectionExercise.brHolder +
+				"A.理发师" + SelectionExercise.brHolder +
+				"B.园丁" + SelectionExercise.brHolder +
+				"C.程序员" + SelectionExercise.brHolder +
 				"D.糕帅富");
 		se2.setStdAnswer('C');
 		se2.setStdScore(5);
 		SelectionExercise se3 = new SelectionExercise(); 
-		se3.setFullTopic("请选择最高尚的职业：" + SelectionExercise.newLineHolder +
-				"A.理发师" + SelectionExercise.newLineHolder +
-				"B.园丁" + SelectionExercise.newLineHolder +
-				"C.码农" + SelectionExercise.newLineHolder +
+		se3.setFullTopic("请选择最高尚的职业：" + SelectionExercise.brHolder +
+				"A.理发师" + SelectionExercise.brHolder +
+				"B.园丁" + SelectionExercise.brHolder +
+				"C.码农" + SelectionExercise.brHolder +
 				"D.糕帅富");
 		se3.setStdAnswer('B');
 		se3.setStdScore(5);
 		SelectionExercise se4 = new SelectionExercise(); 
-		se4.setFullTopic("请选择最有型的职业：" + SelectionExercise.newLineHolder +
-				"A.理发师" + SelectionExercise.newLineHolder +
-				"B.园丁" + SelectionExercise.newLineHolder +
-				"C.码农" + SelectionExercise.newLineHolder +
+		se4.setFullTopic("请选择最有型的职业：" + SelectionExercise.brHolder +
+				"A.理发师" + SelectionExercise.brHolder +
+				"B.园丁" + SelectionExercise.brHolder +
+				"C.码农" + SelectionExercise.brHolder +
 				"D.糕帅富");
 		se4.setStdAnswer('A');
 		se4.setStdScore(5);

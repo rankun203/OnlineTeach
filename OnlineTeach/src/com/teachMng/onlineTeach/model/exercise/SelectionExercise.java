@@ -22,9 +22,11 @@ public class SelectionExercise {
 	@Transient
 	public static String spaceHolder = "@space@";
 	@Transient
-	public static String newLineHolder = "@newline@";
+	public static String brHolder = "@br@";
 	@Transient
 	public static String imgHolder = "@img@";
+	@Transient
+	public static String hrHolder = "@hr@";
 
 	/**
 	 * 标识符

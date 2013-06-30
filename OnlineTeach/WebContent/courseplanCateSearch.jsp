@@ -5,7 +5,9 @@
 <meta charset="utf-8">
 <title>课表分类查询</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
-<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
 </head>
 
 <body>
