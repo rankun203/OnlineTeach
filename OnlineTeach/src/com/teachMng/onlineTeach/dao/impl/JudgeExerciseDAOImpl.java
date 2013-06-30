@@ -31,7 +31,8 @@ public class JudgeExerciseDAOImpl implements IJudgeExerciseDAO {
 	@Override
 	public JudgeExercise findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (JudgeExercise) s.createQuery("from JudgeExercise as je where je.id=?").setInteger(0, id).uniqueResult();
 	}
 
 	@Override

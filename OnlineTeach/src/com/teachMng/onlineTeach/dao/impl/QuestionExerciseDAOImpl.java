@@ -31,7 +31,8 @@ public class QuestionExerciseDAOImpl implements IQuestionExerciseDAO {
 	@Override
 	public QuestionExercise findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (QuestionExercise) s.createQuery("from QuestionExercise as qe where qe.id=?").setInteger(0, id).uniqueResult();
 	}
 
 	@Override

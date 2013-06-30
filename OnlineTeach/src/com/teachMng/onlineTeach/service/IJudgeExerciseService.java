@@ -9,4 +9,6 @@ public interface IJudgeExerciseService {
 	List<JudgeExercise> allExercise();
 	JudgeExercise findById(int id);
 	boolean insert(JudgeExercise je);
+	String getCEString();	
+	String quickLook(int id);	
 }

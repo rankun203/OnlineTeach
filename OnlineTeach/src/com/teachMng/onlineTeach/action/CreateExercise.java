@@ -1,11 +1,19 @@
 package com.teachMng.onlineTeach.action;
 
-import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
+import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
+import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
 import com.teachMng.onlineTeach.service.ICompletionExerciseService;
 import com.teachMng.onlineTeach.service.IExerciseSetService;
 import com.teachMng.onlineTeach.service.IJudgeExerciseService;
@@ -14,8 +22,9 @@ import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 
 @SuppressWarnings("serial")
 @Component("createExercise")
-public class CreateExercise extends ActionSupport {
+public class CreateExercise extends ActionSupport implements ServletResponseAware {
 	
+	private HttpServletResponse response;	
 	private ICompletionExerciseService ceService;
 	private IExerciseSetService esService;
 	private IJudgeExerciseService jeService;
@@ -30,7 +39,26 @@ public class CreateExercise extends ActionSupport {
 	private String anskw;
 	private String jgtopic;
 	private String judgeans;
+	private String completionAnswer;
 	
+	private String id;
+	private String type;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String success(){
 		return SUCCESS;
 	}
@@ -40,49 +68,64 @@ public class CreateExercise extends ActionSupport {
 		System.out.println("stdGrade:" + stdGrade);
 		System.out.println("selCtn:" + selCtn);
 		System.out.println("selted:" + selted);
-		System.out.println("cplCtn:" + stdGrade);
+		System.out.println("cplCtn:" + cplCtn);
+		System.out.println("completionAnswer:" + completionAnswer);
 		System.out.println("anstopic:" + anstopic);
 		System.out.println("anskw:" + anskw);
 		System.out.println("jgtopic:" + jgtopic);
 		System.out.println("judgeans:" + judgeans);
-		
 		//题目们的service & dao...存储之
 
 		if(createExerciseType!=null&&!createExerciseType.equals("")){
 			if(createExerciseType.equals("selectionExercise")){
-/*
-					stdGrade:stdGrade,
-					selCtn:selCtn,
-					selted:selted
-*/			
+				SelectionExercise se = new SelectionExercise();
+				se.setFullTopic(selCtn.replaceAll("\\s", SelectionExercise.newLineHolder));
+				se.setStdAnswer(selted.charAt(selted.length() - 1));
+				se.setStdScore(Double.parseDouble(stdGrade));
+				seService.insert(se);		
 			} else if (createExerciseType.equals("completionExercise")) {
-/*
-					stdGrade:stdGrade,
-					cplCtn:cplCtn
-*/			
-				
+				CompletionExercise ce = new CompletionExercise();
+				ce.setFullTopic(cplCtn.replaceAll("\\[[^\\[]*\\]", "@space@"));
+				ce.setStdAnswer((String) completionAnswer.subSequence(0, completionAnswer.length()-1));
+				ce.setStdScore(Double.parseDouble(stdGrade));
+				ceService.insert(ce);	
 			} else if (createExerciseType.equals("answerExercise")) {
-/*
-					createExerciseType:createExerciseType,
-					stdGrade:stdGrade,
-					anstopic:anstopic,
-					anskw:anskw
-*/			
+				QuestionExercise ae = new QuestionExercise();
+				ae.setFullTopic(anstopic);
+				ae.setStdScore(Double.parseDouble(stdGrade));
+				ae.setStdKeyword(anskw);
+				qeService.insert(ae);		
 				
 			} else if (createExerciseType.equals("judgeExercise")) {
 				JudgeExercise je = new JudgeExercise();
 				je.setFullTopic(jgtopic);
 				je.setStdScore(Double.parseDouble(stdGrade));
 				je.setStdAnswerIsRight(Boolean.parseBoolean(judgeans));
-				jeService.insert(je);
-/*
-					createExerciseType:createExerciseType,
-					stdGrade:stdGrade,
-					jgtopic:jgtopic
-*/				
+				jeService.insert(je);	
 			}
 		}
-		
+	}
+	public void getAllExercise() {
+		String json = "[";
+		json += ceService.getCEString();
+		json += jeService.getCEString();
+		json += qeService.getCEString();
+		json += seService.getCEString();
+		json += "]";
+		out().print(json);
+	}
+	public void quickLook() {
+		String json = "";
+		if("completionExercise".equals(type)) {
+			json = ceService.quickLook(Integer.parseInt(id));
+		} else if("judgeExercise".equals(type)) {
+			json = jeService.quickLook(Integer.parseInt(id));
+		} else if("questionExercise".equals(type)) {
+			json = qeService.quickLook(Integer.parseInt(id));
+		} else if("selectionExercise".equals(type)) {
+			json = seService.quickLook(Integer.parseInt(id));
+		}
+		out().print(json);
 	}
 	public String getCreateExerciseType() {
 		return createExerciseType;
@@ -177,6 +220,28 @@ public class CreateExercise extends ActionSupport {
 	@Resource(name="selectionExerciseService")
 	public void setSeService(ISelectionExerciseService seService) {
 		this.seService = seService;
+	}
+
+	public String getCompletionAnswer() {
+		return completionAnswer;
+	}
+
+	public void setCompletionAnswer(String completionAnswer) {
+		this.completionAnswer = completionAnswer;
+	}
+	public PrintWriter out() {
+		try {
+			response.setCharacterEncoding("utf-8");
+			return response.getWriter();
+		} catch (IOException e) {
+			System.err.println("系统错误，获取response对象失败！");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public void setServletResponse(HttpServletResponse arg0) {
+		response = arg0;
 	};
 
 }

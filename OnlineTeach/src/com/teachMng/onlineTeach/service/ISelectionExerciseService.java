@@ -8,4 +8,6 @@ public interface ISelectionExerciseService {
 	List<SelectionExercise> allExercise();
 	SelectionExercise findById(int id);
 	boolean insert(SelectionExercise ce);
+	String getCEString();	
+	String quickLook(int id);	
 }

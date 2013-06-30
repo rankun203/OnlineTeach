@@ -31,7 +31,8 @@ public class SelectionExerciseDAOImpl implements ISelectionExerciseDAO {
 	@Override
 	public SelectionExercise findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (SelectionExercise) s.createQuery("from SelectionExercise as se where se.id=?").setInteger(0, id).uniqueResult();
 	}
 
 	@Override

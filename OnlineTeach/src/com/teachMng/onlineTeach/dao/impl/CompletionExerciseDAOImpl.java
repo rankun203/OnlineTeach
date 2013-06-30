@@ -32,7 +32,8 @@ public class CompletionExerciseDAOImpl implements ICompletionExerciseDAO {
 	@Override
 	public CompletionExercise findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (CompletionExercise) s.createQuery("from CompletionExercise as ce where ce.id=?").setInteger(0, id).uniqueResult();
 	}
 
 	@Override
