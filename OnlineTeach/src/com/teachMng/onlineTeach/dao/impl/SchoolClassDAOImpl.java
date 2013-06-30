@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dao.ISchoolClassDAO;
 import com.teachMng.onlineTeach.model.SchoolClass;
+import com.teachMng.onlineTeach.model.Student;
 @Component("schoolClassDao")
 public class SchoolClassDAOImpl implements ISchoolClassDAO {
 	private SessionFactory sf;
@@ -53,5 +54,10 @@ public class SchoolClassDAOImpl implements ISchoolClassDAO {
 		//s.getTransaction().commit();
 		return true;
 	}
-
+	@Override
+	public List<Student> getStudents(int scId) {
+		Session s = sf.getCurrentSession();
+		List stuList = s.createQuery("from Student s where s.schoolClass=?").setInteger(0, scId).list();
+		return (List<Student>)stuList;
+	}
 }

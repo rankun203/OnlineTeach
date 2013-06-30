@@ -26,21 +26,18 @@ public class JudgeExerciseServiceImpl implements IJudgeExerciseService {
 	@Override
 	@Transactional
 	public List<JudgeExercise> allExercise() {
-		// TODO Auto-generated method stub
 		return judgeExerciseDao.allExercise();
 	}
 
 	@Override
 	@Transactional
 	public JudgeExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return judgeExerciseDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public boolean insert(JudgeExercise je) {
-		// TODO Auto-generated method stub
 		return judgeExerciseDao.insert(je);
 	}
 	@Override

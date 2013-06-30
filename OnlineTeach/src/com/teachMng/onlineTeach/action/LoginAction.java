@@ -33,6 +33,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 				if(student!=null){
 					session.put("usertype", "学生");
 					session.put("user", student);
+					req.setAttribute("oktip", "true");
+					req.setAttribute("tip", "亲爱的"+student.getStuName()+"，您已成功登录，祝你学习顺利。");
 					return SUCCESS;
 				} else {
 					req.setAttribute("oktip", "false");
@@ -43,6 +45,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 				if(teacher!=null){
 					session.put("usertype", "教师");
 					session.put("user", teacher);
+					req.setAttribute("oktip", "true");
+					req.setAttribute("tip", "尊敬的"+teacher.getTeacName()+"，您已成功登录，祝您工作顺利。");
 					return SUCCESS;
 				} else {
 					req.setAttribute("oktip", "false");

@@ -3,12 +3,12 @@
 <!doctype html>
 <html>
 <head>
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
 <meta charset="utf-8">
 <title>登录界面</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/style.css" />
-<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
 </head>
 
 <body>
@@ -61,6 +61,14 @@
         </div>
     </div>
 </div>
-<jsp:include page="include/footer.jsp"></jsp:include>
+
+<div id="tipCtn">
+	<div class="${requestScope.oktip}" id="oktip" style="display:none;">${requestScope.tip}</div>
+</div>
+
+<script type="text/javascript" src="<%=request.getContextPath() %>/script/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/script/js.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/script/js_preview.js"></script>
+
 </body>
 </html>

@@ -22,4 +22,10 @@
 			<result name="success">/index.jsp</result>
 		</action>
 	</package>
+	
+	<package name="exercising" extends="struts-default" namespace="/ei">
+		<action name="getExs" class="exsGoAction" method="getMyExercises" />
+		<action name="assignment" class="exsGoAction" method="assignment" />
+	</package>
+	
 </struts>

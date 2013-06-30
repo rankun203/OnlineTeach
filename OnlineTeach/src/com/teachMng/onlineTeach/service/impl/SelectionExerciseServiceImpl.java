@@ -27,21 +27,18 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 	@Override
 	@Transactional
 	public List<SelectionExercise> allExercise() {
-		// TODO Auto-generated method stub
 		return selectionExerciseDao.allExercise();
 	}
 
 	@Override
 	@Transactional
 	public SelectionExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return selectionExerciseDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public boolean insert(SelectionExercise ce) {
-		// TODO Auto-generated method stub
 		return selectionExerciseDao.insert(ce);
 	}
 	@Transactional

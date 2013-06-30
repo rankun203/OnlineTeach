@@ -33,11 +33,6 @@ $("document").ready(function(){
 			$("#pre4").css("display", "block");
 		}
 	});
-//	$("#seltab-fulltopic").keydown(function(e){
-//	      if(e.which==13) {
-//	          $("#seltab-fulltopic").val($("#seltab-fulltopic").val() + "<br />");
-//	      }
-//	});
 	//获取判断题答案
 	$(".jgans-opt").click(function(){
 		var temp = $(this).attr("id");
