@@ -181,6 +181,7 @@ $("document").ready(function(){
 			else if (createExerciseType=="judgeExercise") $("#jgtopic").val("");
 		}
 	});
+	
 });
 
 

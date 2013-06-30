@@ -63,7 +63,6 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 	@Override
 	public boolean logout(String stuId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -3,11 +3,12 @@
 <!doctype html>
 <html>
 <head>
-<base href="<%="http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>" />
 <meta charset="utf-8">
 <title>登录界面</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="css/style.css" />
-<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
 </head>
 
 <body>
