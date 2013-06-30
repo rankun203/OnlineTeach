@@ -6,6 +6,15 @@
 	<display-name>OnlineTeach</display-name>
 
 	<filter>
+		<filter-name>logFilter</filter-name>
+		<filter-class>com.teachMng.onlineTeach.filter.AuthenticationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>logFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
 	</filter>
@@ -15,7 +24,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- 记得添加struts2-spring-plugin-2.3.8.jar包 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

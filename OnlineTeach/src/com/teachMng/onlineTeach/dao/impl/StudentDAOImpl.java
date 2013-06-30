@@ -53,5 +53,18 @@ public class StudentDAOImpl implements IStudentDAO {
 		//s.getTransaction().commit();
 		return true;
 	}
+	@Override
+	public Student login(int stuID, String password) {
+		Student student = null;
+		String hql = "from Student where stuID=? and password=?";
+		Session s = sf.getCurrentSession();
+		student = (Student) s.createQuery(hql).setInteger(0, stuID).setString(1, password).uniqueResult();
+		return student;
+	}
+	@Override
+	public boolean logout(String stuId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

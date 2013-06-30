@@ -22,6 +22,7 @@ import javax.persistence.Table;
 public class Student {
 	private int stuID;
 	private String stuName;
+	private String password;
 
 	private SchoolClass schoolClass;
 	private ProjectGroup projectGroup;
@@ -79,5 +80,11 @@ public class Student {
 	}
 	public void setStuID(int stuID) {
 		this.stuID = stuID;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/jsp; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.teachMng.onlineTeach.model.*"%>
+<%
+	String userRole = (String)(session.getAttribute("usertype"));
+	String role = "";
+	if (userRole!=null && userRole.equals("学生"))	role = "student";
+	else if (userRole!=null && userRole.equals("教师"))	role="teacher";
+%>
 <div class="header">
     <div class="container">
         <svg version="1.1" 
@@ -38,54 +44,37 @@
         <div class="headerPaneDivide pullleft"></div>
         <div class="userProfile pullleft">
             <div class="userProfileLeft pullleft">
-                <div class="userProfileItem">张曦</div>
-                <div class="userProfileItem">学生</div>
+                <div class="userProfileItem">
+                	<%
+                		if (userRole != null && userRole.equals("学生")) {
+                			Object userObject = (session.getAttribute("user"));
+                			if (userObject != null)
+                				out.print(((Student) userObject).getStuName());
+                			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
+                		} else if (userRole != null) {
+                			Object userObject = (session.getAttribute("user"));
+                			if (userObject != null)
+                				out.print(((Teacher) userObject).getTeacName());
+                			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
+                		} else
+                			out.println("未登录");
+                	%>
+                </div>
+                <div class="userProfileItem"><%=userRole==null?"未登录":userRole%></div>
             </div>
             <div class="userProfileRight pullright">
                 <div class="userProfileItem">正在上课：计软113-2 Java</div>
                 <div class="userProfileItem">2013年 4月 8日</div>
             </div>
         </div>
+        <%if(role!=null&&role!=""&&!(role.equals(""))){%>
+	        <a class="logooffbox" id="logoffbox" href="login/logout"></a>
+        <%} else {%>
+	        <a href="<%=request.getContextPath()%>/login.jsp" class="nav-logina submitBtn">登录</a>
+        <%}
+        %>
         <div class="clearboth"></div>
     </div>
 </div>
 
-<div class="container">
-	<div class="subMainNav">
-		<div class="currentLocation">
-			<a href="main.jsp">在线教学</a>> <a href="#">教学排课</a>> <a href="#">学期课表生成</a>
-		</div>
-		<div class="subMainNavItem" id="subNavA" style="display: block;">
-			<ul>
-				<li><a href="generateCourseplan.jsp" onClick="return true;"
-					class="subMainNavItemActive">学期课表生成</a></li>
-				<li><a href="courseplanCateSearch.jsp" onClick="return true;">课表分类查询</a></li>
-				<li><a href="courseplanExport.jsp" onClick="return true;">课表分类导出</a></li>
-				<li><a href="courseplanUphold.jsp" onClick="return true;">课表分类维护</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavB">
-			<ul>
-				<li><a href="createWork.jsp" onClick="return true;">课堂练习创建</a></li>
-				<li><a href="workReply.jsp" onClick="return true;">课堂练习作答</a></li>
-				<li><a href="workCheck.jsp" onClick="return true;">训练结果考核</a></li>
-				<li><a href="workUphold.jsp" onClick="return true;">课堂练习维护</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavC">
-			<ul>
-				<li><a href="teachplanUphold.jsp" onClick="return true;">教案制作维护</a></li>
-				<li><a href="coursewareUp_Down.jsp" onClick="return true;">课件上传下载</a></li>
-				<li><a href="homeWork.jsp" onClick="return true;">课外作业管理</a></li>
-				<li><a href="teachSchedule.jsp" onClick="return true;">授课计划管理</a></li>
-			</ul>
-		</div>
-		<div class="subMainNavItem" id="subNavD">
-			<ul>
-				<li><a href="attendance.jsp" onClick="return true;">在线考勤管理</a></li>
-				<li><a href="projectReply.jsp" onClick="return true;">项目答辩考核</a></li>
-				<li><a href="compositeCheck.jsp" onClick="return true;">课程综合考核</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
+

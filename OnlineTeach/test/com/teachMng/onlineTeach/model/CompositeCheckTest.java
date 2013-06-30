@@ -45,6 +45,7 @@ public class CompositeCheckTest extends AbstractJUnit4SpringContextTests {
 		s1.getTransaction().commit();
 		s1.close();
 	}
+	@SuppressWarnings("rawtypes")
 	@Test
 	public void testGet() {	
 		CompositeCheck cpc = null;

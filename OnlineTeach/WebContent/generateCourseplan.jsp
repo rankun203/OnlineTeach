@@ -7,13 +7,20 @@
 <title>学期课表生成</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
-
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
 </head>
 
 <body>
 
 	<jsp:include page="include/header.jsp" />
-
+	<div class="container">
+		<div class="subMainNav">
+			<div class="currentLocation">
+				<a href="main.jsp">在线教学</a>> <a href="#">教学排课</a>> <a href="#">学期课表生成</a>
+			</div>
+			<jsp:include page="include/menu2.jsp"></jsp:include>
+		</div>
+	</div>
 	<div class="site">
 
 		<div class="container">
@@ -44,7 +51,7 @@
 	</div>
 	<jsp:include page="include/footer.jsp"></jsp:include>
 	<script type="text/javascript">
-		$("#generateCoursePlan").load("ap/generateCP", null, function(data){
+		$.post("ap/generateCP", null, function(data){
 			var obj = eval("(" + data + ")");
 			var oldInfo = "";
 			var cName = "";

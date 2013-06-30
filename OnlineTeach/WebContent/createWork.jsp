@@ -1,17 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.teachMng.onlineTeach.model.*" %>
+<%
+	String userRole = (String)(session.getAttribute("usertype"));
+	if(userRole!=null && userRole.equals("学生")) {
+		Object userObject = (session.getAttribute("user"));
+		if(userObject!=null)
+			out.println(((Student)userObject).getStuName());
+	}
+	else if(userRole!=null) {
+		Object userObject = (session.getAttribute("user"));
+		if (userObject != null)
+			out.println(((Teacher)userObject).getTeacName());
+	}
+	else out.println("未登录");
+%>
 
 <!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <title>课堂练习创建</title>
 <link rel="stylesheet" href="css/style.css" />
+<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()%>/' />
 </head>
 
 <body>
 
 <jsp:include page="include/header.jsp" />
-
+<div class="container">
+	<div class="subMainNav">
+		<div class="currentLocation">
+			<a href="main.jsp">在线教学</a>> <a href="#">教学排课</a>> <a href="#">学期课表生成</a>
+		</div>
+		<jsp:include page="include/menu2.jsp"></jsp:include>
+	</div>
+</div>
 <div class="site">
     <div class="container">
         <div class="courseTimeLabel">
@@ -43,6 +67,9 @@
 		    <div class="workLabelUp">
             	<div class="pullleft cacbDiv">
 	                <input type="checkbox" name="checkAllCheckbox" class="checkAllCheckbox" id="checkAllCheckbox" onMouseOver="pmt('checkAllCheckbox', '全选/取消全选');" onMouseOut="erasePmt();" onChange="slctChange();">
+                </div>
+                <div class="pullleft flatbtn wluBtn" id="returnToList" style="display:none;">
+                	<div class="returnToListImg" id="returnToListImg"></div>
                 </div>
                 <div class="pullleft flatbtn wluBtn" id="createCourseButton" onMouseOver="pmt('createCourseButton', '创建新的练习');" onMouseOut="erasePmt();" onClick="showCreateWork();">
                 	<div class="createCourseButtonImg" onClick="showCreateWork();"></div>
