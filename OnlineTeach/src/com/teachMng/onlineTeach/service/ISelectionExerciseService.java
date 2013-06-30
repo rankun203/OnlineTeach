@@ -10,4 +10,5 @@ public interface ISelectionExerciseService {
 	boolean insert(SelectionExercise ce);
 	String getCEString();	
 	String quickLook(int id);	
+	String getAnswerInfo(int id);	
 }

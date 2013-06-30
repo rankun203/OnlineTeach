@@ -4,6 +4,7 @@ var selted = "scbA";
 var judgeans = "false";
 var completionAnswer = "";
 var newExerciseSubmit = "";
+var show = true;
 $("document").ready(function(){	
 	//设置默认值，可以从服务器获取
 	$("#selectionExercise").addClass("selectedtab");
@@ -229,6 +230,25 @@ $.extend({
 		});
 		$("#quickLook_" + id).mouseout(function() {			
 			$(".quickLook.mainbox.pullleft").css("display", "none");
+		});
+		$("#answer_" + id).click(function() {
+			if(true == show) {
+				var o = id.split("_");
+				$.showAnswerInfo(o[0], o[1]);	
+				show = false;
+			} else {
+				$(".quickLook.mainbox.pullleft").css("display", "none");
+				show = true;
+			}
+		});		
+	},
+	showAnswerInfo:function(type, id) {
+		$.post("ce/showAnswerInfo", {
+			type:type,
+			id:id
+		}, function(data){
+			$(".quickLook.mainbox.pullleft").css("display", "block");
+			$(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));
 		});
 	},
 	quickLookInfo:function(type, id) {

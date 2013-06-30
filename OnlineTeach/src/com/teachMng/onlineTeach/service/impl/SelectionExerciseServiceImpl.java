@@ -71,4 +71,18 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 		json += "选择题：" + ce.getFullTopic().replaceAll("@newline@", "<br />") + "}";
 		return json;
 	}
+	@Transactional
+	public String getAnswerInfo(int id) {
+		SelectionExercise ce = findById(id);
+		String topic = ce.getFullTopic();
+		char ans = ce.getStdAnswer();
+		int begin = topic.indexOf(ans + ".");
+		int end;
+		if('D' == ans) end = topic.length();
+		else end = topic.indexOf((ans+1)) - 9;
+		String json="{";
+		json += topic.substring(begin, end);
+		json +="}";
+		return json;
+	}	
 }

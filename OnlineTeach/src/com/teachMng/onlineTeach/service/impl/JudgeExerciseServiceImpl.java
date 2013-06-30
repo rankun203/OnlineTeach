@@ -71,5 +71,17 @@ public class JudgeExerciseServiceImpl implements IJudgeExerciseService {
 		json += "判断题：" + ce.getFullTopic() + "}";
 		return json;
 	}
+	@Override
+	@Transactional
+	public String getAnswerInfo(int id) {
+		JudgeExercise ce = findById(id);
+		String json="{";
+		if(ce.isStdAnswerIsRight())
+			json += "正确";
+		else 
+			json += "错误";
+		json +="}";
+		return json;
+	}
 
 }

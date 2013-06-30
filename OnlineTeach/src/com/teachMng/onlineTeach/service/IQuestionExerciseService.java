@@ -11,4 +11,5 @@ public interface IQuestionExerciseService {
 	boolean insert(QuestionExercise qe);
 	String getCEString();	
 	String quickLook(int id);	
+	String getAnswerInfo(int id);	
 }
