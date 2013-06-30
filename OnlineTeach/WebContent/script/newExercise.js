@@ -155,7 +155,8 @@ $("document").ready(function(){
 				{
 					createExerciseType:createExerciseType,
 					stdGrade:stdGrade,
-					jgtopic:jgtopic
+					jgtopic:jgtopic,
+					judgeans:judgeans
 				}, function(){
 					msgok("OK, 题目保存成功！");
 				});

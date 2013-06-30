@@ -5,13 +5,13 @@
 	String userRole = (String)(session.getAttribute("usertype"));
 	if(userRole!=null && userRole.equals("学生")) {
 		Object userObject = (session.getAttribute("user"));
-		if(userObject!=null)
-			out.println(((Student)userObject).getStuName());
+// 		if(userObject!=null)
+// 			out.println(((Student)userObject).getStuName());
 	}
 	else if(userRole!=null) {
 		Object userObject = (session.getAttribute("user"));
-		if (userObject != null)
-			out.println(((Teacher)userObject).getTeacName());
+// 		if (userObject != null)
+// 			out.println(((Teacher)userObject).getTeacName());
 	}
 	else out.println("未登录");
 %>

@@ -1,13 +1,26 @@
 package com.teachMng.onlineTeach.action;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
+import com.teachMng.onlineTeach.service.ICompletionExerciseService;
+import com.teachMng.onlineTeach.service.IExerciseSetService;
+import com.teachMng.onlineTeach.service.IJudgeExerciseService;
+import com.teachMng.onlineTeach.service.IQuestionExerciseService;
+import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 
 @SuppressWarnings("serial")
 @Component("createExercise")
 public class CreateExercise extends ActionSupport {
-
+	
+	private ICompletionExerciseService ceService;
+	private IExerciseSetService esService;
+	private IJudgeExerciseService jeService;
+	private IQuestionExerciseService qeService;
+	private ISelectionExerciseService seService;
 	private String createExerciseType;
 	private String stdGrade;
 	private String selCtn;
@@ -57,12 +70,16 @@ public class CreateExercise extends ActionSupport {
 */			
 				
 			} else if (createExerciseType.equals("judgeExercise")) {
+				JudgeExercise je = new JudgeExercise();
+				je.setFullTopic(jgtopic);
+				je.setStdScore(Double.parseDouble(stdGrade));
+				je.setStdAnswerIsRight(Boolean.parseBoolean(judgeans));
+				jeService.insert(je);
 /*
 					createExerciseType:createExerciseType,
 					stdGrade:stdGrade,
 					jgtopic:jgtopic
-*/			
-				
+*/				
 			}
 		}
 		
@@ -120,6 +137,46 @@ public class CreateExercise extends ActionSupport {
 	}
 	public void setJudgeans(String judgeans) {
 		this.judgeans = judgeans;
+	}
+	
+	public ICompletionExerciseService getCeService() {
+		return ceService;
+	}
+	@Resource(name="completionExerciseService")
+	public void setCeService(ICompletionExerciseService ceService) {
+		this.ceService = ceService;
+	}
+
+	public IExerciseSetService getEsService() {
+		return esService;
+	}
+	@Resource(name="exerciseSetService")
+	public void setEsService(IExerciseSetService esService) {
+		this.esService = esService;
+	}
+
+	public IJudgeExerciseService getJeService() {
+		return jeService;
+	}
+	@Resource(name="judgeExerciseService")
+	public void setJeService(IJudgeExerciseService jeService) {
+		this.jeService = jeService;
+	}
+
+	public IQuestionExerciseService getQeService() {
+		return qeService;
+	}
+	@Resource(name="questionExerciseService")
+	public void setQeService(IQuestionExerciseService qeService) {
+		this.qeService = qeService;
+	}
+
+	public ISelectionExerciseService getSeService() {
+		return seService;
+	}
+	@Resource(name="selectionExerciseService")
+	public void setSeService(ISelectionExerciseService seService) {
+		this.seService = seService;
 	};
 
 }
