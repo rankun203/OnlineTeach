@@ -24,35 +24,30 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 	@Override
 	@Transactional
 	public List<ExerciseSet> allExerciseSet() {
-		// TODO Auto-generated method stub
 		return exerciseSetDao.allExerciseSet();
 	}
 
 	@Override
 	@Transactional
 	public ExerciseSet findById(int id) {
-		// TODO Auto-generated method stub
 		return exerciseSetDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public ExerciseSet findByTeacherId(int tid) {
-		// TODO Auto-generated method stub
 		return exerciseSetDao.findByTeacherId(tid);
 	}
 
 	@Override
 	@Transactional
 	public ExerciseSet findByStudentId(int sid) {
-		// TODO Auto-generated method stub
 		return exerciseSetDao.findByStudentId(sid);
 	}
 
 	@Override
 	@Transactional
 	public boolean insert(ExerciseSet es) {
-		// TODO Auto-generated method stub
 		return exerciseSetDao.insert(es);
 	}
 

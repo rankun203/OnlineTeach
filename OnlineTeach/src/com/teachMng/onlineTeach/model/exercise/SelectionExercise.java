@@ -3,6 +3,7 @@ package com.teachMng.onlineTeach.model.exercise;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -64,7 +65,7 @@ public class SelectionExercise {
 	private double stuScore;
 
 	
-	
+	@Column(length=4096)
 	public String getFullTopic() {
 		return fullTopic;
 	}

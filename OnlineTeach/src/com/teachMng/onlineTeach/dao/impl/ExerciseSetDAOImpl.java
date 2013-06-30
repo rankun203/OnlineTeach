@@ -23,32 +23,27 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 	}
 	@Override
 	public List<ExerciseSet> allExerciseSet() {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		return s.createQuery("from ExerciseSet").list();
 	}
 
 	@Override
 	public ExerciseSet findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ExerciseSet findByTeacherId(int tid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ExerciseSet findByStudentId(int sid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean insert(ExerciseSet es) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		int rows = (Integer) s.save(es);
 		if(rows > 0) return true;

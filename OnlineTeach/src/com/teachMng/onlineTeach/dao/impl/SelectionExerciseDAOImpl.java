@@ -23,20 +23,17 @@ public class SelectionExerciseDAOImpl implements ISelectionExerciseDAO {
 	}
 	@Override
 	public List<SelectionExercise> allExercise() {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		return s.createQuery("from SelectionExercise").list();
 	}
 
 	@Override
 	public SelectionExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean insert(SelectionExercise ce) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		int rows = (Integer) s.save(ce);
 		if(rows > 0) return true;

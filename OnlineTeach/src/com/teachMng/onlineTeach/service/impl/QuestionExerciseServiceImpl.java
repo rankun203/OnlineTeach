@@ -24,21 +24,18 @@ public class QuestionExerciseServiceImpl implements IQuestionExerciseService {
 	@Override
 	@Transactional
 	public List<QuestionExercise> allExercise() {
-		// TODO Auto-generated method stub
 		return questionExerciseDao.allExercise();
 	}
 
 	@Override
 	@Transactional
 	public QuestionExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return questionExerciseDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public boolean insert(QuestionExercise qe) {
-		// TODO Auto-generated method stub
 		return questionExerciseDao.insert(qe);
 	}
 

@@ -869,6 +869,10 @@ input[type="radio"] {
 	cursor:pointer;
 }
 
+/* index */
+.indexMainbox{
+	height: 300px;
+}
 /* courseWork */
 .courseTimeLabel{
 	border-bottom:1px dashed #d5d5d5;

@@ -24,20 +24,17 @@ public class CompletionExerciseDAOImpl implements ICompletionExerciseDAO {
 	}
 	@Override
 	public List<CompletionExercise> allExercise() {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		return s.createQuery("from CompletionExercise ").list();
 	}
 
 	@Override
 	public CompletionExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean insert(CompletionExercise ce) {
-		// TODO Auto-generated method stub
 		Session s = sf.getCurrentSession();
 		int rows = (Integer) s.save(ce);
 		if(rows > 0) return true;

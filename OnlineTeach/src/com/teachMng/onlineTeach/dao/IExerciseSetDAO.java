@@ -2,7 +2,6 @@ package com.teachMng.onlineTeach.dao;
 
 import java.util.List;
 
-import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
 
 public interface IExerciseSetDAO {

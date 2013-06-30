@@ -26,21 +26,18 @@ public class CompletionExerciseServiceImpl implements ICompletionExerciseService
 	@Override
 	@Transactional
 	public List<CompletionExercise> allExercise() {
-		// TODO Auto-generated method stub
 		return completionExerciseDao.allExercise();
 	}
 
 	@Override
 	@Transactional
 	public CompletionExercise findById(int id) {
-		// TODO Auto-generated method stub
 		return completionExerciseDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public boolean insert(CompletionExercise ce) {
-		// TODO Auto-generated method stub
 		return completionExerciseDao.insert(ce);
 	}
 

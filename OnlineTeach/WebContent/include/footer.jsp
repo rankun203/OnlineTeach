@@ -6,7 +6,7 @@
     <div class="downfoot">Copyright &copy; 2013 Studio325 All Rights Reserved</div>
 </div>
 <div id="tipCtn">
-	<div class="${requestScope.oktip}" id="oktip">${requestScope.tip}</div>
+	<div class="${requestScope.oktip}" id="oktip" style="display:none;">${requestScope.tip}</div>
 </div>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/script/jquery-1.9.1.js"></script>

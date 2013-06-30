@@ -60,7 +60,7 @@ public class QuestionExercise {
 
 	
 	
-	
+	@Column(length=4096)
 	public String getFullTopic() {
 		return fullTopic;
 	}
