@@ -539,7 +539,7 @@
 </div>
 
 <jsp:include page="include/footer.jsp" />
-<script src="script/createexercise.js"></script>
+<script src="script/newExercise.js"></script>
 </body>
 </html>
 

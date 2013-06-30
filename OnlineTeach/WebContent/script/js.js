@@ -360,6 +360,7 @@ $.extend({
 				.css("background-color", "#41C44B")
 				.text("已完成");
 				getAutoPlanMsg();
+				addInfoToConsole("<a href='courseplanCateSearch.jsp'>查看课表</a>");
 				return;
 			}
 			$("#pbprogress")

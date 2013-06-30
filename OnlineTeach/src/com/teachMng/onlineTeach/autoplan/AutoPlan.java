@@ -827,6 +827,7 @@ public class AutoPlan {
 					&& rid == cpi.getClassRoom().getCrID()) {
 //				System.out.println(cpi.getCpParagraph() + "  " +
 //				 cpi.getClassRoom().getCrID() + "_________");
+				System.out.print(p + " _ ");
 				return true;
 			}
 		}
@@ -840,7 +841,7 @@ public class AutoPlan {
 		while (_cpiIter.hasNext()) {
 			// System.out.println(_cpiIter.hasNext());
 			//System.out.println(coursePlan.size());
-//			System.out.println(paragraph);
+			System.out.print(paragraph + " _ ");
 			_cpi = _cpiIter.next();
 			if (_cpi.getSchoolClass().getScID() == scID
 					&& _cpi.getCpParagraph() == paragraph) {
