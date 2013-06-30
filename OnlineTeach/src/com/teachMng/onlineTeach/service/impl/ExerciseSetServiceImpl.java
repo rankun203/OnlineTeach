@@ -50,5 +50,10 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 	public boolean insert(ExerciseSet es) {
 		return exerciseSetDao.insert(es);
 	}
+	@Override
+	public void save(ExerciseSet es) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
