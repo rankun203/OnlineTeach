@@ -39,9 +39,30 @@ $("document").ready(function(){
 		$("#"+markOpt).addClass("sel-sb-opt-ed");
 	});
 	
-	
+	//获取自己的题目单（所有试卷）
+	var getExssUrl ="ei/getExss?sid="+$("#sid").text();
+	$.getJSON(getExssUrl, function(result){
+		$.each(result, function(i, field){
+			var exs = '<tr><td style="width:10%;">@NO@</td>' +
+					'<td style="width:30%;"><a href="#">@HOLD@</a></td>' +
+					'<td style="width:45%;">@TI@</td>' +
+					'<td style="width:15%;"><a href="#question_begin" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+			exs = exs.replace(/@HOLD@/,field.founder).replace(/@TI@/,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/,field.esId);
+console.log(exs);
+			$("#exList").append(exs);
+			$("#ba-"+field.esId).click(refreshStudentExerciseList($(this)));
+		});
+	});
+
 	
 });
+
+//刷新学生题目的方法
+function refreshStudentExerciseList(me){
+	var meid = me.attr("id");
+	var esId = meid.substring(3, meid.length);
+	//TODO 拿到ExerciseSet的ID了，从数据库抽出来显示在workReply.jsp上面。
+}
 
 //获取指定选择题(rpl_no为rpl_no)答案
 //get selection reply answer

@@ -1,5 +1,6 @@
 package com.teachMng.onlineTeach.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,7 +30,8 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 
 	@Override
 	public ExerciseSet findById(int id) {
-		return null;
+		Session s = sf.getCurrentSession();
+		return (ExerciseSet) s.createQuery("from ExerciseSet es where es.id=?").setInteger(0, id).uniqueResult();
 	}
 
 	@Override
@@ -38,8 +40,9 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 	}
 
 	@Override
-	public ExerciseSet findByStudentId(int sid) {
-		return null;
+	public List<ExerciseSet> findByStudentId(int sid) {
+		Session s = sf.getCurrentSession();
+		return s.createQuery("from ExerciseSet es where es.student=?").setInteger(0, sid).list();
 	}
 
 	@Override
@@ -52,6 +55,7 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 	@Override
 	public boolean save(ExerciseSet es) {
 		Session s = sf.getCurrentSession();
+		es.setCreateDate(new Date());
 		int generatedId = (Integer) s.save(es);
 		if(generatedId > 0)	return true;
 		return false;

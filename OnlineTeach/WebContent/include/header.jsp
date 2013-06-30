@@ -48,13 +48,17 @@
                 	<%
                 		if (userRole != null && userRole.equals("学生")) {
                 			Object userObject = (session.getAttribute("user"));
-                			if (userObject != null)
+                			if (userObject != null){
                 				out.print(((Student) userObject).getStuName());
+                				out.println("<div style=\"display:none;\" id=\"sid\">"+((Student) userObject).getStuID()+"</div>");
+                			}
                 			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
                 		} else if (userRole != null) {
                 			Object userObject = (session.getAttribute("user"));
-                			if (userObject != null)
+                			if (userObject != null){
                 				out.print(((Teacher) userObject).getTeacName());
+                				out.println("<div style=\"display:none;\" id=\"tid\">"+((Teacher) userObject).getTeacID()+"</div>");                				
+                			}
                 			else out.println("<script>setTimeout('msgerror(\"登录信息错误，建议重新登录！\");',1000);</script>");
                 		} else
                 			out.println("未登录");

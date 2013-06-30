@@ -261,7 +261,7 @@ $.extend({
 			if(i%2 == 0)
 				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Odd");
 			else
-				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Even");				
+				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Even");
 		}
 	}
 });

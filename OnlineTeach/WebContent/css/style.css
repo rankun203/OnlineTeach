@@ -575,12 +575,6 @@ body{
 }
 .tTitle {
 	margin-left:10px;
-	width:370px;
-	float:left;
-	//border:1px solid #000;
-}
-.beginAnswer {
-	margin-right:10px;
 }
 .topicNameList {
 	margin-top:10px;	
@@ -1829,9 +1823,20 @@ input[type="radio"] {
 	position:absolute;
 	display:none;
 }
-
-
-
+.exList{
+	color: #800000;
+	font-size: 13px;
+	width: 400px;
+}
+.tTeacher{
+	width: 118px;
+}
+.tCreateTime{
+	width: 190px;
+}
+.ttNo{
+	width: 66px;
+}
 
 
 

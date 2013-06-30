@@ -24,7 +24,8 @@
 	</package>
 	
 	<package name="exercising" extends="struts-default" namespace="/ei">
-		<action name="getExs" class="exsGoAction" method="getMyExercises" />
+		<action name="getExss" class="exsGoAction" method="getMyExerciseSets" />
+		<action name="getExs" class="exsGoAction" method="getExerciseSet" />
 		<action name="assignment" class="exsGoAction" method="assignment" />
 	</package>
 	

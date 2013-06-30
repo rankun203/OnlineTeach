@@ -1,10 +1,12 @@
 package com.teachMng.onlineTeach.model.exercise;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,6 +36,7 @@ public class ExerciseSet {
 	 * 但一个学生可能会有很多试题集
 	 */
 	private Student student;
+	private Date createDate;
 
 	private List<JudgeExercise> judgeExercise = new ArrayList<JudgeExercise>();
 	private List<CompletionExercise> completionExercise = new ArrayList<CompletionExercise>();
@@ -91,6 +94,12 @@ public class ExerciseSet {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

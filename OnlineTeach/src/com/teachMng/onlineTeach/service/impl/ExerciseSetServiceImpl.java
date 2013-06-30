@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.IExerciseSetDAO;
-import com.teachMng.onlineTeach.model.exerciseSetTest;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
 import com.teachMng.onlineTeach.service.IExerciseSetService;
 @Component("exerciseSetService")
@@ -42,7 +41,7 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 
 	@Override
 	@Transactional
-	public ExerciseSet findByStudentId(int sid) {
+	public List<ExerciseSet> findByStudentId(int sid) {
 		return exerciseSetDao.findByStudentId(sid);
 	}
 
@@ -54,6 +53,7 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 	@Override
 	@Transactional
 	public boolean save(ExerciseSet es) {
+		
 		return exerciseSetDao.save(es);
 	}
 
