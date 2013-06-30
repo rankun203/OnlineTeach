@@ -2,6 +2,7 @@ var createExerciseType = "selectionExercise";
 var stdGrade = "1";
 var selted = "scbA";
 var judgeans = "false";
+var completionAnswer = "";
 var newExerciseSubmit = "";
 $("document").ready(function(){	
 	//设置默认值，可以从服务器获取
@@ -31,7 +32,6 @@ $("document").ready(function(){
 			$("#pre4").css("display", "block");
 		}
 	});
-	
 	//获取判断题答案
 	$(".jgans-opt").click(function(){
 		var temp = $(this).attr("id");
@@ -93,10 +93,12 @@ $("document").ready(function(){
 		var vals = ctntemp.match(reg);
 		if(vals!=null){
 			$("#cpllist").empty();
+			completionAnswer = "";
 			for(var i=0; i<vals.length; i++){
 				var vart = vals[i];
 				vart = vart.substring(2,vart.length-1);
 				$("#cpllist").append("<li>"+vart+"</li>");
+				completionAnswer += vart + ",";
 			}
 		}
 	});
@@ -121,11 +123,13 @@ $("document").ready(function(){
 		} else if(createExerciseType=="completionExercise") {
 			var cplCtn = $("#cpltopic").val();
 			if($.trim(cplCtn)!=""){
+				console.log(completionAnswer);
 				$.post("ce/newOne",
 				{
 					createExerciseType:createExerciseType,
 					stdGrade:stdGrade,
-					cplCtn:cplCtn
+					cplCtn:cplCtn,
+					completionAnswer:completionAnswer
 				}, function(){
 					msgok("OK, 题目保存成功！");
 				});
@@ -182,6 +186,64 @@ $("document").ready(function(){
 		}
 	});
 	
+});
+$.extend({
+	getAllExercise:function() {
+		$.post("ce/getAllExercise", "", function(data){
+			$.showAllExercise(eval("(" + data + ")"));
+		});
+	},
+	appendExercise:function(topic, id, odd) {
+		var str = "	<li id=\"" + id + "\"> " +
+        "   <div class=\"wldcItem wldcItem" + odd + "\" onMouseOver=\"lightUpRow(this);\" onMouseOut=\"reBg(this, '" + odd + "');\"> " +
+        "    <div class=\"pullleft wldcCheckboxBox\"> " +
+        "        <input type=\"checkbox\" class=\"wldccb\"> " +
+        "    </div> " +
+        "    <div class=\"pullleft wldcAttr\"></div> " +
+        "   <div class=\"pullleft wldcContent\">" + topic + "</div> " +
+        "    <div class=\"pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd\"> " +
+        "        <div class=\"flatbtn wldcaacBtn\" id=\"answer_" + id + "\" onMouseOver=\"pmt('answer_" + id + "', '点击查看该题答案');\" onMouseOut=\"erasePmt();\"> " +
+        "            <div class=\"answerButtonImg\"></div> " +
+        "        </div> " +
+        "    </div> " +
+        "    <div class=\"pullright wldcAttr wldcAttrAfterCont\"> " +
+        "        <div class=\"flatbtn wldcaacBtn\" id=\"detail_" + id + "\" onMouseOver=\"pmt('detail_" + id + "', '查看该习题的完整信息');\" onMouseOut=\"erasePmt();\"> " +
+        "            <div class=\"detailButtonImg\"></div> " +
+        "        </div> " +
+        "    </div> " +
+        "    <div class=\"pullright widcAttr\"> " +
+        "       <div id=\"quickLook_" + id + "\" class=\"wldcQuickLookBtn flatbtn wldcAttrAfterCont\">快速预览</div> " +
+        "    </div> " +
+        "    <div class=\"clearboth\"></div> " +
+        "    </div> " +
+        "    </li>";
+		$("#wldcListBoxUl").append(str);
+		$("#quickLook_" + id).mouseover(function() {
+			var o = id.split("_");
+			$.quickLookInfo(o[0], o[1]);
+		});
+		$("#quickLook_" + id).mouseout(function() {			
+			$(".quickLook.mainbox.pullleft").css("display", "none");
+		});
+	},
+	quickLookInfo:function(type, id) {
+		
+		$.post("ce/quickLook", {
+			type:type,
+			id:id
+		}, function(data){
+			$(".quickLook.mainbox.pullleft").css("display", "block");
+			$(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));
+		});
+	},
+	showAllExercise:function(obj) {
+		for(var i = 0; i < obj.length; i++) {
+			if(i%2 == 0)
+				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Odd");
+			else
+				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Even");				
+		}
+	}
 });
 
 

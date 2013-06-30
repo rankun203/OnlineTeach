@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.IExerciseSetDAO;
+import com.teachMng.onlineTeach.model.exerciseSetTest;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
 import com.teachMng.onlineTeach.service.IExerciseSetService;
 @Component("exerciseSetService")
@@ -51,9 +52,9 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 		return exerciseSetDao.insert(es);
 	}
 	@Override
-	public void save(ExerciseSet es) {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	public boolean save(ExerciseSet es) {
+		return exerciseSetDao.save(es);
 	}
 
 }

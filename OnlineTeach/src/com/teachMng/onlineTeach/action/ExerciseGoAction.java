@@ -1,12 +1,16 @@
 package com.teachMng.onlineTeach.action;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.stereotype.Component;
+import org.springframework.test.web.client.ResponseActions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.teachMng.onlineTeach.model.Student;
@@ -24,10 +28,9 @@ import com.teachMng.onlineTeach.service.ISchoolClassService;
 import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 import com.teachMng.onlineTeach.service.IStudentService;
 import com.teachMng.onlineTeach.service.ITeacherService;
-import com.teachMng.onlineTeach.service.impl.SelectionExerciseServiceImpl;
 
 @Component("exsGoAction")
-public class ExerciseGoAction extends ActionSupport{
+public class ExerciseGoAction extends ActionSupport implements ServletResponseAware{
 	private IExerciseSetService ess;
 	private ITeacherService tService;
 	private ISchoolClassService sClassService;
@@ -36,6 +39,7 @@ public class ExerciseGoAction extends ActionSupport{
 	private ICompletionExerciseService cplService;
 	private IJudgeExerciseService jugService;
 	private IQuestionExerciseService qusService;
+	private HttpServletResponse response;
 	private String teacherId;
 	private String classId;
 	private String exs;
@@ -54,8 +58,9 @@ public class ExerciseGoAction extends ActionSupport{
 	 		teacherId	:	教师的编号
 			classId		:	班级编号,
 			exs			:	10:selection,14:completion,12:judge,15:answer
+	 * @throws IOException 打印消息的时候如果出错会抛出异常
 	 */
-	public void assignment(){
+	public void assignment() throws IOException{
 		if(teacherId!=null&&!teacherId.equals("") && classId!=null&&!classId.equals("") && exs!=null&&!exs.equals("")){
 			int teacherIdInt = Integer.parseInt(teacherId);
 			int classIdInt = Integer.parseInt(classId);
@@ -106,7 +111,10 @@ public class ExerciseGoAction extends ActionSupport{
 				es.setQuestionExercise(qusList);
 				es.setJudgeExercise(jugList);
 				es.setCompletionExercise(cplList);
-				ess.save(es);
+				boolean isOk = ess.save(es);
+System.out.println("save ExerciseSet is: " + isOk);
+				String sucFaild = isOk?"成功！":"失败！";
+				response.getWriter().print("oktip:"+isOk+",tip:试卷发布"+sucFaild);
 			}
 		}
 	}
@@ -184,5 +192,9 @@ public class ExerciseGoAction extends ActionSupport{
 	@Resource(name="questionExerciseService")
 	public void setQusService(IQuestionExerciseService qusService) {
 		this.qusService = qusService;
+	}
+	@Override
+	public void setServletResponse(HttpServletResponse arg0) {
+		this.response = arg0;
 	}
 }

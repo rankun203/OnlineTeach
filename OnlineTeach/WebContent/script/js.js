@@ -166,7 +166,7 @@ function lightUpRow(ele){
 	ele.style.backgroundColor = "#ddd";
 }
 function reBg(ele, oe){
-	if ( oe == "odd" ){
+	if ( oe == "Odd" ){
 		ele.style.backgroundColor = "#f5f5f5";
 	} else {
 		ele.style.backgroundColor = "#fff";

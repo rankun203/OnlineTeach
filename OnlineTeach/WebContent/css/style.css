@@ -1566,7 +1566,7 @@ input[type="radio"] {
 	width: 94px;
 }
 .etsb-row2-column-input{
-	height: 25px;
+	height: 21px;
 	width: 40px;
 }
 
@@ -1820,7 +1820,15 @@ input[type="radio"] {
 	vertical-align: middle;
 	font-size: 15px;
 }
-
+.quickLook{
+	font-size:14px;
+	margin-left:330px;
+	width:400px;
+	-webkit-animation: showAnimation 1s ease-in-out;
+	min-height:200px;
+	position:absolute;
+	display:none;
+}
 
 
 

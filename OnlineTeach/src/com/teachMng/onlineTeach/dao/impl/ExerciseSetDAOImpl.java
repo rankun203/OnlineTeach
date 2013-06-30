@@ -49,5 +49,12 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 		if(rows > 0) return true;
 		else return false;
 	}
+	@Override
+	public boolean save(ExerciseSet es) {
+		Session s = sf.getCurrentSession();
+		int generatedId = (Integer) s.save(es);
+		if(generatedId > 0)	return true;
+		return false;
+	}
 
 }

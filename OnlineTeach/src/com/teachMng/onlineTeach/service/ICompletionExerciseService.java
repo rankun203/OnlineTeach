@@ -8,4 +8,6 @@ public interface ICompletionExerciseService {
 	List<CompletionExercise> allExercise();
 	CompletionExercise findById(int id);
 	boolean insert(CompletionExercise ce);
+	String getCEString();
+	String quickLook(int id);
 }

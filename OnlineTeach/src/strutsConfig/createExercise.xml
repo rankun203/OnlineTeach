@@ -6,5 +6,7 @@
 <struts>
 	<package name="createExercise" extends="struts-default" namespace="/ce">
 		<action name="newOne" class="createExercise" method="newOne" />
+		<action name="getAllExercise" class="createExercise" method="getAllExercise" />		
+		<action name="quickLook" class="createExercise" method="quickLook" />		
     </package>
 </struts>

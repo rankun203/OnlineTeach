@@ -10,5 +10,5 @@ public interface IExerciseSetService {
 	ExerciseSet findByTeacherId(int tid);
 	ExerciseSet findByStudentId(int sid);
 	boolean insert(ExerciseSet es);
-	void save(ExerciseSet es);
+	boolean save(ExerciseSet es);
 }
