@@ -83,7 +83,7 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		if(createExerciseType!=null&&!createExerciseType.equals("")){
 			if(createExerciseType.equals("selectionExercise")){
 				SelectionExercise se = new SelectionExercise();
-				se.setFullTopic(selCtn.replaceAll("\\s", SelectionExercise.newLineHolder));
+				se.setFullTopic(selCtn.replaceAll("\\s", SelectionExercise.brHolder));
 				se.setStdAnswer(selted.charAt(selted.length() - 1));
 				se.setStdScore(Double.parseDouble(stdGrade));
 				seService.insert(se);		
