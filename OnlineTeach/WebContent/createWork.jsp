@@ -92,7 +92,7 @@
             </div>
 		  </div><!-- End of LRRight -->          
 		</div><!-- End of firstLR -->
-        <div class="dynamicAnswer" id="dynamicAnswer">
+        <div class="dynamicAnswer" id="dynamicAnswer" style="display:none;">
         	<div class="daTit tbHead" id="daTit">答题动态</div>
 			<div class="mainbox container dynamicAnswerItem">
                 <div class="daInfo divInfo">

@@ -45,6 +45,9 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 	private String sid;
 	private String esId;
 	
+	//TODO 教师的答题动态更新功能		
+
+	
 	/**
 	 * 获取题目集，组成Json数据组
 	 * return 

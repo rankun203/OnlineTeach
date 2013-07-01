@@ -1818,6 +1818,7 @@ input[type="radio"] {
 }
 .quickLook{
 	font-size:14px;
+	padding: 15px;
 	margin-left:-70px;
 	width:400px;
 	-webkit-animation: showAnimation 1s ease-in-out;

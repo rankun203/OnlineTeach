@@ -154,7 +154,6 @@ function setExercise(esId,founder,ctime){
 			$(".sel-opt-"+COUNTER).click(function(){
 				var markOpt = $(this).attr("id") + "-ed";
 				var rplno = $(this).attr("id").match(/[\d]+/);
-console.log(markOpt);
 				//先设定选择的结果
 				var clkVal = "";
 				if(markOpt.indexOf("a")>0)	clkVal = "a";
@@ -182,6 +181,9 @@ console.log(markOpt);
 			});
 		});
 		$("#daTit").css("display","block");
+		
+		//题目加载完成之后，给所有题目设置事件
+		//TODO 每次学生答完一题（填空题是填写最后一个空）之后，即将当前题目的数据发送到服务器
 	});
 	return true;
 }
@@ -210,5 +212,7 @@ function getCplRplAns(rpl_no){
 	ans += "]";
 	return ans;
 }
+
+
 
 
