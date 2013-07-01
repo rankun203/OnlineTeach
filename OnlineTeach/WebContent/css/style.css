@@ -865,7 +865,9 @@ input[type="radio"] {
 
 /* index */
 .indexMainbox{
-	height: 300px;
+	margin-top: 50px;;
+	height: 390px;
+	background: url("../imgs/blackboard.png");
 }
 /* courseWork */
 .courseTimeLabel{
