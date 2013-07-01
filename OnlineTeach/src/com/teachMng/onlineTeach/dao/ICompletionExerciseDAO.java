@@ -8,4 +8,5 @@ public interface ICompletionExerciseDAO {
 	List<CompletionExercise> allExercise();
 	CompletionExercise findById(int id);
 	boolean insert(CompletionExercise ce);
+	boolean deleteById(int id);
 }

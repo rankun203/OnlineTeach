@@ -6,7 +6,7 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
  	<constant name="struts.objectFactory" value="spring" />
  	<constant name="struts.i18n.encoding" value="UTF-8" />
     
@@ -21,6 +21,7 @@
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="getTeacherId" class="loginAction" method="getTeacherId" />		
 	</package>
 	
 	<package name="exercising" extends="struts-default" namespace="/ei">

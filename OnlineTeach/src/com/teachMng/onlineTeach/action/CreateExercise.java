@@ -131,6 +131,22 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		}
 		out().print(json);
 	}
+	public void deleteById() {
+		boolean flag = true;
+		if("completionExercise".equals(type)) {
+			flag = ceService.deleteById(Integer.parseInt(id));
+		} else if("judgeExercise".equals(type)) {
+			flag = jeService.deleteById(Integer.parseInt(id));
+		} else if("questionExercise".equals(type)) {
+			flag = qeService.deleteById(Integer.parseInt(id));
+		} else if("selectionExercise".equals(type)) {
+			flag = seService.deleteById(Integer.parseInt(id));
+		}
+		if(flag)
+			out().print("{info:\"成功删除\"}");
+		else 
+			out().print("{info:\"删除失败，请检查是否有外键关联\"}");
+	}
 	public void showAnswerInfo() {
 		String json = "";
 		if("completionExercise".equals(type)) {

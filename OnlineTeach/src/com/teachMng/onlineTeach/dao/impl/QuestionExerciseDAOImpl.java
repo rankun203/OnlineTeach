@@ -40,6 +40,13 @@ public class QuestionExerciseDAOImpl implements IQuestionExerciseDAO {
 		if(rows > 0) return true;
 		else return false;
 	}
+	@Override
+	public boolean deleteById(int id) {
+		Session s = sf.getCurrentSession();
+		int rows = s.createQuery("delete from QuestionExercise as ce where ce.id=?").setInteger(0, id).executeUpdate();
+		if(rows > 0) return true;
+		else return false;
+	}
 
 
 }

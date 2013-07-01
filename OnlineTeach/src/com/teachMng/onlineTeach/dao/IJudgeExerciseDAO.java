@@ -8,4 +8,5 @@ public interface IJudgeExerciseDAO {
 	List<JudgeExercise> allExercise();
 	JudgeExercise findById(int id);
 	boolean insert(JudgeExercise je);
+	boolean deleteById(int id);	
 }

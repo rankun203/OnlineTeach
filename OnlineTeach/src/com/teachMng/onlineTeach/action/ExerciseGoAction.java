@@ -106,6 +106,7 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 	 * @throws IOException 打印消息的时候如果出错会抛出异常
 	 */
 	public void assignment() throws IOException{
+		System.out.println( "teacherId:" + teacherId + "____classId:" + classId + "____exs:" + exs);
 		if(teacherId!=null&&!teacherId.equals("") && classId!=null&&!classId.equals("") && exs!=null&&!exs.equals("")){
 			int teacherIdInt = Integer.parseInt(teacherId);
 			int classIdInt = Integer.parseInt(classId);

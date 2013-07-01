@@ -11,4 +11,5 @@ public interface IJudgeExerciseService {
 	String getCEString();	
 	String quickLook(int id);
 	String getAnswerInfo(int id);	
+	boolean deleteById(int id);	
 }
