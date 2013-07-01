@@ -1,12 +1,16 @@
 package com.teachMng.onlineTeach.model.exercise;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -42,24 +46,18 @@ public class QuestionExercise {
 	 */
 	private String stdKeyword;
 	/**
-	 * 学生答题的答案<br>
-	 */
-	private String stuAnswer;
-	/**
-	 * 老师的意见
-	 */
-	private String teacherComment;
-	/**
 	 * 满分的分数
 	 */
 	private double stdScore;
-	/**
-	 * 学生的得分
-	 */
-	private double stuScore;
 
-	
-	
+	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
+	@ManyToMany(mappedBy="questionExercise", cascade=CascadeType.ALL)
+	public Set<ExerciseSet> getEs() {
+		return es;
+	}
+	public void setEs(Set<ExerciseSet> es) {
+		this.es = es;
+	}
 	@Column(length=4096)
 	public String getFullTopic() {
 		return fullTopic;
@@ -74,29 +72,11 @@ public class QuestionExercise {
 	public void setTopicAttachments(List<UpFile> topicAttachments) {
 		this.topicAttachments = topicAttachments;
 	}
-	public String getStuAnswer() {
-		return stuAnswer;
-	}
-	public void setStuAnswer(String stuAnswer) {
-		this.stuAnswer = stuAnswer;
-	}
-	public String getTeacherComment() {
-		return teacherComment;
-	}
-	public void setTeacherComment(String teacherComment) {
-		this.teacherComment = teacherComment;
-	}
 	public double getStdScore() {
 		return stdScore;
 	}
 	public void setStdScore(double stdScore) {
 		this.stdScore = stdScore;
-	}
-	public double getStuScore() {
-		return stuScore;
-	}
-	public void setStuScore(double stuScore) {
-		this.stuScore = stuScore;
 	}
 	@Column(length=4096)
 	public String getStdKeyword() {

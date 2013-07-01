@@ -32,7 +32,6 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	private HttpServletResponse resp;
 	public void getTeacherId() {
 		Teacher t = (Teacher)session.get("user");
-		System.out.println("teacher:" + t);
 		if(null == t) {
 			out().print("{\"tid:0\"}");
 		} else {

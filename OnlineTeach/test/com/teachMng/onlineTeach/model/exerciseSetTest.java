@@ -42,19 +42,15 @@ public class exerciseSetTest {
 		JudgeExercise j1 = new JudgeExercise();
 		j1.setFullTopic("海绵宝宝是泥巴做的？");
 		j1.setStdScore(2);
-		j1.setStuAnswerIsRight(false);
 		JudgeExercise j2 = new JudgeExercise();
 		j2.setFullTopic("派大星是男的？");
 		j2.setStdScore(2);
-		j2.setStuAnswerIsRight(true);
 		JudgeExercise j3 = new JudgeExercise();
 		j3.setFullTopic("你有1块钱吗？");
 		j3.setStdScore(2);
-		j3.setStuAnswerIsRight(true);
 		JudgeExercise j4 = new JudgeExercise();
 		j4.setFullTopic("你是未成年？");
 		j4.setStdScore(2);
-		j4.setStuAnswerIsRight(true);
 		
 
 		CompletionExercise c1 = new CompletionExercise();

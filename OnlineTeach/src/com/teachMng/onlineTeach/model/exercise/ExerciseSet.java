@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -60,6 +61,9 @@ public class ExerciseSet {
 		this.student = student;
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="t_exerciseSet_t_judgeexercise", 
+			joinColumns=@JoinColumn(name="jeID"), 
+			inverseJoinColumns=@JoinColumn(name="esID"))	
 	public List<JudgeExercise> getJudgeExercise() {
 		return judgeExercise;
 	}
@@ -67,6 +71,9 @@ public class ExerciseSet {
 		this.judgeExercise = judgeExercise;
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="t_exerciseSet_t_completionexercise", 
+			joinColumns=@JoinColumn(name="ceID"), 
+			inverseJoinColumns=@JoinColumn(name="esID"))	
 	public List<CompletionExercise> getCompletionExercise() {
 		return completionExercise;
 	}
@@ -74,6 +81,9 @@ public class ExerciseSet {
 		this.completionExercise = completionExercise;
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="t_exerciseSet_t_questionexercise", 
+			joinColumns=@JoinColumn(name="qeID"), 
+			inverseJoinColumns=@JoinColumn(name="esID"))	
 	public List<QuestionExercise> getQuestionExercise() {
 		return questionExercise;
 	}
@@ -81,6 +91,9 @@ public class ExerciseSet {
 		this.questionExercise = questionExercise;
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="t_exerciseSet_t_selectionexercise", 
+			joinColumns=@JoinColumn(name="seID"), 
+			inverseJoinColumns=@JoinColumn(name="esID"))	
 	public List<SelectionExercise> getSelectionExercise() {
 		return selectionExercise;
 	}

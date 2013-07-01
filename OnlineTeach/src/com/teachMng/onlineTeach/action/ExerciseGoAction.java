@@ -102,7 +102,7 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 			classId		:	班级编号,
 			exs			:	10:selection,14:completion,12:judge,15:answer
 			
-	 * eg http://localhost:8080/OnlineTeach/ei/assignment?teacherId=1&classId=1&exs=1:selection,2:selection,3:selection,4:selection,1:answer,2:answer,1:judge,2:judge,3:judge,4:judge,1:completion,2:completion,3:completion,4:completion#
+	 * eg http://localhost:8080/OnlineTeach/ei/assignment?teacherId=1&classId=1&exs=1:selectionExercise,2:selectionExercise,3:selectionExercise,4:selectionExercise,1:answerExercise,2:answerExercise,1:judgeExercise,2:judgeExercise,3:judgeExercise,4:judgeExercise,1:completionExercise,2:completionExercise,3:completionExercise,4:completionExercise#
 	 * @throws IOException 打印消息的时候如果出错会抛出异常
 	 */
 	public void assignment() throws IOException{
@@ -116,7 +116,6 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 			String[] exsTypeArray = new String[exsArray.length];
 			//试题ID数组
 			int[] exIds = new int[exsArray.length];
-
 			for(int i=0; i<exsArray.length; i++){
 				String[] temps = exsArray[i].split(":");
 				exIds[i] = Integer.parseInt(temps[0]);
@@ -133,16 +132,16 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 			List<QuestionExercise> qusList = new LinkedList<QuestionExercise>();
 			for(int i=0; i< exsTypeArray.length; i++){
 				if(exsTypeArray[i]!=null){
-					if(exsTypeArray[i].equals("selection")){
+					if(exsTypeArray[i].equals("selectionExercise")){
 						SelectionExercise se = selService.findById(exIds[i]);
 						seList.add(se);
-					} else if (exsTypeArray[i].equals("completion")){
+					} else if (exsTypeArray[i].equals("completionExercise")){
 						CompletionExercise cp = cplService.findById(exIds[i]);
 						cplList.add(cp);
-					} else if (exsTypeArray[i].equals("judge")){
+					} else if (exsTypeArray[i].equals("judgeExercise")){
 						JudgeExercise je = jugService.findById(exIds[i]);
 						jugList.add(je);
-					} else if (exsTypeArray[i].equals("answer")){
+					} else if (exsTypeArray[i].equals("answerExercise")){
 						QuestionExercise qe = qusService.findById(exIds[i]);
 						qusList.add(qe);
 					}
@@ -159,7 +158,7 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 				es.setJudgeExercise(jugList);
 				es.setCompletionExercise(cplList);
 				isOk = ess.save(es) && isOk;
-System.out.println(isOk+"|"+es.getFounder().getTeacName()+"|"+es.getJudgeExercise().size()+"|"+es.getQuestionExercise().size()+"|"+es.getSelectionExercise().size()+"|"+es.getCompletionExercise().size()+"|"+es.getStudent().getStuName());
+				System.out.println(isOk+"|"+es.getFounder().getTeacName()+"|"+es.getJudgeExercise().size()+"|"+es.getQuestionExercise().size()+"|"+es.getSelectionExercise().size()+"|"+es.getCompletionExercise().size()+"|"+es.getStudent().getStuName());
 			}
 			String sucFaild = isOk?"成功！":"失败！";
 			response.setCharacterEncoding("utf-8");

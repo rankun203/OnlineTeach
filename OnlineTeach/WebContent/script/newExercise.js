@@ -188,7 +188,6 @@ $("document").ready(function(){
 					var check = checks[i].value.split("_");
 					tp += check[1] + ":" + check[0] + ",";
 				} 
-			console.log(tp);
 			var ar = $("#selectClass").val().split("_");
 			$.post("ei/assignment", {			
 				teacherId:teacherId,

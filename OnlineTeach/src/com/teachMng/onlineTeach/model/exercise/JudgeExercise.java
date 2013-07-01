@@ -1,12 +1,16 @@
 package com.teachMng.onlineTeach.model.exercise;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,19 +44,14 @@ public class JudgeExercise {
 	 * 老师给出的答案，答案是“对”？？？
 	 */
 	private boolean stdAnswerIsRight;
-	/**
-	 * 学生答题的答案，答案是“对”？？？
-	 */
-	private boolean stuAnswerIsRight;
-	/**
-	 * 老师的意见
-	 */
-	private String teacherComment;
-	/**
-	 * 学生的得分
-	 */
-	private double stuScore;
-	
+	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
+	@ManyToMany(mappedBy="judgeExercise", cascade=CascadeType.ALL)
+	public Set<ExerciseSet> getEs() {
+		return es;
+	}
+	public void setEs(Set<ExerciseSet> es) {
+		this.es = es;
+	}
 	@Column(length=4096)
 	public String getFullTopic() {
 		return fullTopic;
@@ -78,24 +77,6 @@ public class JudgeExercise {
 	}
 	public void setStdAnswerIsRight(boolean stdAnswerIsRight) {
 		this.stdAnswerIsRight = stdAnswerIsRight;
-	}
-	public boolean isStuAnswerIsRight() {
-		return stuAnswerIsRight;
-	}
-	public void setStuAnswerIsRight(boolean stuAnswerIsRight) {
-		this.stuAnswerIsRight = stuAnswerIsRight;
-	}
-	public String getTeacherComment() {
-		return teacherComment;
-	}
-	public void setTeacherComment(String teacherComment) {
-		this.teacherComment = teacherComment;
-	}
-	public double getStuScore() {
-		return stuScore;
-	}
-	public void setStuScore(double stuScore) {
-		this.stuScore = stuScore;
 	}
 	@Id
 	@GeneratedValue
