@@ -64,7 +64,6 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 	@Transactional
 	public String getExerciseSet(int esID){
 		ExerciseSet es = findById(esID);
-
 		String str = "[";
 		List<SelectionExercise> seList = es.getSelectionExercise();
 		List<CompletionExercise> ceList = es.getCompletionExercise();
@@ -91,7 +90,7 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			if(str.indexOf("type") >0)	str += ",{";
 			else str += "{";
 			str += "\"type\":\"judge\",";
-			String jugCtn = ceList.get(i).getFullTopic();
+			String jugCtn = jeList.get(i).getFullTopic();
 			str += "\"jugCtn\":\""+jugCtn+"\"";
 			str += "}";
 		}
@@ -99,7 +98,7 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			if(str.indexOf("type") >0)	str += ",{";
 			else str += "{";
 			str += "\"type\":\"question\",";
-			String qesCtn = ceList.get(i).getFullTopic();
+			String qesCtn = qeList.get(i).getFullTopic();
 			str += "\"qesCtn\":\""+qesCtn+"\"";
 			str += "}";
 		}

@@ -33,7 +33,7 @@
     </div>   
 </div>
 <div class="draft" onClick="alert('此功能尚未开放！');">稿<br/>纸</div>
-<div class="mainbox container" style="border:1px solid #ccc; margin-top:10px;">
+<div class="mainbox container" style="border:1px solid #ccc; margin-top:20px;">
 	<div class="topicList">
     	<div class="topicTitle">
         	<div class="tTitle ttNo pullleft">试卷号</div>
@@ -86,8 +86,8 @@
 </div>
 
 <a name="question_begin" id="question_begin" ></a>
-<form method="post">
-	<div class="daTit tbHead container" id="daTit">题目列表</div>
+<form method="post" id="daTit" style="display:none;">
+	<div class="daTit tbHead container">题目列表<span class="exsetInfo pullright">试卷号：<span id="exNo"></span>	出题老师：<span id="exFounder"></span>	出题时间：<span id="exCTime"></span></span></div>
 </form>
 
 <jsp:include page="include/footer.jsp" />

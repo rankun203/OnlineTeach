@@ -24,8 +24,7 @@
 	</div>
 	<div class="site">
 		<div class="container">
-			<h3 class="autoplantitle">主页</h3>
-			<div class="indexMainbox mainbox"></div>
+			<div class="indexMainbox"></div>
 		</div>
 	</div>
 	<jsp:include page="include/footer.jsp"></jsp:include>

@@ -75,11 +75,7 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		System.out.println("jgtopic:" + jgtopic);
 		System.out.println("judgeans:" + judgeans);
 		//题目们的service & dao...存储之
-/*
-		TODO 遗留创建题目功能
-		TODO 学生答题功能
-		TODO 教师的答题动态更新功能		
-*/		
+
 		if(createExerciseType!=null&&!createExerciseType.equals("")){
 			if(createExerciseType.equals("selectionExercise")){
 				SelectionExercise se = new SelectionExercise();

@@ -4,7 +4,6 @@
 /*
  * 生成题目的工作流程
  * 每出现一道题，为其生成一个rpl_no，然后根据类型创建该题的div在网页上进行显示
- * 
  * */
  
 $("document").ready(function(){
@@ -46,20 +45,23 @@ $("document").ready(function(){
 			var exs = '<tr><td style="width:10%;">@NO@</td>' +
 					'<td style="width:30%;"><a href="#">@HOLD@</a></td>' +
 					'<td style="width:45%;">@TI@</td>' +
-					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise($(this));" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
-			exs = exs.replace(/@HOLD@/,field.founder).replace(/@TI@/,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/,field.esId);
+					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(@esId@,@HOLD@,@TI@);" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+			exs = exs.replace(/@HOLD@/g,field.founder).replace(/@TI@/g,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/g,field.esId);
 			$("#exList").append(exs);
+			if(i==0){
+				setExercise(field.esId,field.founder,field.cdate);
+			}
 		});
 	});
 	
-
-
+	
+	
 
 });
 
 var selectionTpl = ""+
 '    <div class="mainbox container replyItem" id="sel-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="single_question_answer">'+
 '            <div class="single_question" id="selQes-tpl">@ctn@</div>'+
 '        </div>'+
@@ -74,7 +76,7 @@ var selectionTpl = ""+
 '    </div>';
 var questionTpl = ""+
 '    <div class="mainbox container replyItem" id="ans-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="answer_question">'+
 '            <div class="a_question" id="ans-tpl">@ctn@</div>'+
 '            <div class="inputArea">'+
@@ -85,7 +87,7 @@ var questionTpl = ""+
 '    </div>';
 var judgeTpl = ""+
 '    <div class="mainbox container replyItem" id="jug-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="judge_question">'+
 '            <div class="j_question">@ctn@</div>'+
 '        </div>'+
@@ -98,7 +100,7 @@ var judgeTpl = ""+
 '    </div>';
 var completionTpl = ""+
 '    <div class="mainbox container replyItem" id="cpl-tpl" >'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="fill_vacant_question">'+
 '            <div class="fv_question" id="cpl-ctn-tpl">@ctn@</div>'+
 '        </div>'+
@@ -112,26 +114,76 @@ $.extend({TplPlus:function(){
 	}
 });
 
-//TODO 能在控制台显示了，将其显示到页面上去。未完成
-function setExercise(ele){
-	var idStr = ele.attr("id");
-	esId = idStr.substring(3,idStr.length);
+//加载题目
+function setExercise(esId,founder,ctime){
 	$.getJSON("ei/getExs?esId="+esId, function(result){
+		$("#exNo").text(esId);
+		$("#exFounder").text(founder);
+		$("#exCTime").text(ctime);
 		$.each(result, function(i, field){
 			var type = field.type;
 			if(type!=null&&type!=""&&type=="selection"){
-				var myDiv = selectionTpl;
-				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER+1).replace(/@ctn@/g,field.selCtn).replace(/@br@/g,"<br>");
 				$.TplPlus();
+				var myDiv = selectionTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER)
+					.replace(/@ctn@/g,field.selCtn).replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
 				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="judge"){
-				console.log("判断题："+field.jugCtn);
+				$.TplPlus();
+				var myDiv = judgeTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.jugCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
+				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="completion"){
-				console.log("填空题："+field.cplCtn);
+				$.TplPlus();
+				var myDiv = completionTpl;
+				var mySpace = completionSpaceTpl;
+				mySpace = mySpace.replace(/tpl/g,COUNTER);
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.cplCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>").replace(/@space@/g,mySpace);
+				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="question"){
-				console.log("问答题："+field.qesCtn);
-			}  else return false;
+				$.TplPlus();
+				var myDiv = questionTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.qesCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
+				$("#daTit").append(myDiv);
+			}
+			//学生答题部分
+			//选择题，单击设定选择的值
+			$(".sel-opt-"+COUNTER).click(function(){
+				var markOpt = $(this).attr("id") + "-ed";
+				var rplno = $(this).attr("id").match(/[\d]+/);
+				//先设定选择的结果
+				var clkVal = "";
+				if(markOpt.indexOf("a")>0)	clkVal = "a";
+				else if(markOpt.indexOf("b")>0)	clkVal="b";
+				else if(markOpt.indexOf("c")>0)	clkVal="c";
+				else if(markOpt.indexOf("d")>0)	clkVal="d";
+				else	msgerror("严重错误！系统无法获取你点击的选项！");
+				$("#sel-"+rplno+"-val").val(clkVal);
+				//再显示视觉效果
+				$(".sel-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
+				$("#"+markOpt).addClass("sel-sb-opt-ed");
+			});
+			
+			//判断题
+			$(".jug-"+COUNTER+"-opt").click(function(){
+				var rplno = $(this).attr("id").match(/[\d]+/);
+				var markOpt = $(this).attr("id") + "-ed";
+				var clkVal = "0";
+				if(markOpt.indexOf("a")>0)	clkVal = "1";
+				else if(markOpt.indexOf("b")>0)	clkVal="2";
+				else	msgerror("严重错误！系统无法获取你的判断结果！");
+				$("#jug-"+rplno+"-val").val(clkVal);
+				$(".jug-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
+				$("#"+markOpt).addClass("sel-sb-opt-ed");
+			});
 		});
+		$("#daTit").css("display","block");
+		
+		//题目加载完成之后，给所有题目设置事件
+		//TODO 每次学生答完一题（填空题是填写最后一个空）之后，即将当前题目的数据发送到服务器
 	});
 	return true;
 }
@@ -160,5 +212,7 @@ function getCplRplAns(rpl_no){
 	ans += "]";
 	return ans;
 }
+
+
 
 
