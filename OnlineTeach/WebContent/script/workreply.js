@@ -4,7 +4,6 @@
 /*
  * 生成题目的工作流程
  * 每出现一道题，为其生成一个rpl_no，然后根据类型创建该题的div在网页上进行显示
- * 
  * */
  
 $("document").ready(function(){
@@ -46,14 +45,17 @@ $("document").ready(function(){
 			var exs = '<tr><td style="width:10%;">@NO@</td>' +
 					'<td style="width:30%;"><a href="#">@HOLD@</a></td>' +
 					'<td style="width:45%;">@TI@</td>' +
-					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise($(this));" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
-			exs = exs.replace(/@HOLD@/,field.founder).replace(/@TI@/,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/,field.esId);
+					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(@esId@,@HOLD@,@TI@);" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+			exs = exs.replace(/@HOLD@/g,field.founder).replace(/@TI@/g,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/g,field.esId);
 			$("#exList").append(exs);
+			if(i==0){
+				setExercise(field.esId,field.founder,field.cdate);
+			}
 		});
 	});
 	
-
-
+	
+	
 
 });
 
@@ -112,10 +114,12 @@ $.extend({TplPlus:function(){
 	}
 });
 
-function setExercise(ele){
-	var idStr = ele.attr("id");
-	esId = idStr.substring(3,idStr.length);
+//加载题目
+function setExercise(esId,founder,ctime){
 	$.getJSON("ei/getExs?esId="+esId, function(result){
+		$("#exNo").text(esId);
+		$("#exFounder").text(founder);
+		$("#exCTime").text(ctime);
 		$.each(result, function(i, field){
 			var type = field.type;
 			if(type!=null&&type!=""&&type=="selection"){
@@ -176,8 +180,8 @@ console.log(markOpt);
 				$(".jug-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
 				$("#"+markOpt).addClass("sel-sb-opt-ed");
 			});
-
 		});
+		$("#daTit").css("display","block");
 	});
 	return true;
 }

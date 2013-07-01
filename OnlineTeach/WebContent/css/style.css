@@ -586,7 +586,7 @@ body{
 	margin-top:5px;
 	margin-bottom:5px;	
 	margin-left:470px;
-	//border:1px solid #000;
+	padding-bottom: 10px;
 	width:440px;
 }
 .select_time {
@@ -1846,7 +1846,9 @@ input[type="radio"] {
 	margin-left:15px;
 	margin-top:7px;
 }
-
+.exsetInfo{
+	margin-right: 20px;
+}
 
 
 
