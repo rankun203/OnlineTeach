@@ -8,4 +8,5 @@ public interface ISelectionExerciseDAO {
 	List<SelectionExercise> allExercise();
 	SelectionExercise findById(int id);
 	boolean insert(SelectionExercise ce);
+	boolean deleteById(int id);	
 }

@@ -8,4 +8,5 @@ public interface IQuestionExerciseDAO {
 	List<QuestionExercise> allExercise();
 	QuestionExercise findById(int id);
 	boolean insert(QuestionExercise qe);
+	boolean deleteById(int id);	
 }

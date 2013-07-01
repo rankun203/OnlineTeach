@@ -1,11 +1,15 @@
 package com.teachMng.onlineTeach.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +21,7 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 
 @SuppressWarnings("serial")
 @Component("loginAction")
-public class LoginAction extends ActionSupport implements SessionAware, ServletRequestAware{
+public class LoginAction extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware{
 	private String username;
 	private String password;
 	private String role;
@@ -25,7 +29,16 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	private ITeacherService teacherService;
 	private Map<String, Object> session;
 	private HttpServletRequest req;
-	
+	private HttpServletResponse resp;
+	public void getTeacherId() {
+		Teacher t = (Teacher)session.get("user");
+		System.out.println("teacher:" + t);
+		if(null == t) {
+			out().print("{\"tid:0\"}");
+		} else {
+			out().print("{tid:\"" + t.getTeacID() + "\"}");
+		}
+	}
 	public String login(){
 		if(role != null){
 			if(role.equals("student")){
@@ -101,5 +114,19 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		this.req = arg0;
+	}
+	public PrintWriter out() {
+		try {
+			resp.setCharacterEncoding("utf-8");
+			return resp.getWriter();
+		} catch (IOException e) {
+			System.err.println("系统错误，获取response对象失败！");
+			e.printStackTrace();
+		}
+		return null;	
+	}
+	@Override
+	public void setServletResponse(HttpServletResponse arg0) {
+		resp = arg0;
 	}
 }

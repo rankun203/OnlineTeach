@@ -33,6 +33,10 @@ $("document").ready(function(){
 			$("#pre4").css("display", "block");
 		}
 	});
+	$("#returnToListImg").click(function() {
+		$("#wldcListBoxUl").empty();
+		$.getAllExercise();
+	});
 	//获取判断题答案
 	$(".jgans-opt").click(function(){
 		var temp = $(this).attr("id");
@@ -169,7 +173,50 @@ $("document").ready(function(){
 			}
 		}
 	});
-	
+	$("#selectClass").change(function() {
+		var teacherId = 0;
+		$.post("login/getTeacherId", "", function(data){
+			teacherId = eval("(" + data + ")").tid;
+			if(teacherId == 0) {
+				msgerror("登陆超时！请重新登陆");
+				return;
+			}
+			var tp = "";
+			var checks = $("input.wldccb");
+			for(var i =0; i < checks.length; i++)
+				if(true == checks[i].checked) {
+					var check = checks[i].value.split("_");
+					tp += check[1] + ":" + check[0] + ",";
+				} 
+			console.log(tp);
+			var ar = $("#selectClass").val().split("_");
+			$.post("ei/assignment", {			
+				teacherId:teacherId,
+				classId:ar[1],
+				exs:tp
+			},function(data) {
+				msgok("分发成功");
+				$("#selectClassPos").css("display", "none");
+			});
+		});
+	});
+	$("#shareButton").click(function() {
+		if($.isSltCheckbox()) {
+			var url = "ap/selectName?typeName=sbClass";
+			$.post(url, "", function(data){
+				$("#selectClassPos").css("display", "block");
+				var obj = eval("(" + data + ")").list;
+				for(var i = 0; i < obj.length; i++) {
+					str = "<option value=\"sc_" + obj[i].id + "\">" + obj[i].name + "</div>";
+					$("#selectClass").html($("#selectClass").html() + str);
+				}
+			});
+		} 
+		else {
+			alert('请先选择题目！');
+			return;
+		}
+	});
 	//设置按钮事件
 	$("#delButton").click(function(){
 		var isCreateMode = $("#createWorkBox").css("display") == "block";
@@ -184,9 +231,27 @@ $("document").ready(function(){
 				$("#anskw").val("");
 			}
 			else if (createExerciseType=="judgeExercise") $("#jgtopic").val("");
+		} else {
+			if($.isSltCheckbox() == false) {
+				alert("请先选择要删除的题目");
+				return ;
+			}
+			var checks = $("input.wldccb");
+			for(var i =0; i < checks.length; i++) {
+				if(true == checks[i].checked) {
+					var ar = checks[i].value.split("_");
+					$.post("ce/deleteById", {
+						type:ar[0],
+						id:ar[1]
+					}, function(data){
+						msgok(eval("(" + data + ")").info);
+						$("#wldcListBoxUl").empty();
+						$.getAllExercise();						
+					});
+				} 
+			}						
 		}
 	});
-	
 });
 $.extend({
 	getAllExercise:function() {
@@ -194,11 +259,18 @@ $.extend({
 			$.showAllExercise(eval("(" + data + ")"));
 		});
 	},
+	isSltCheckbox:function() {
+		var checks = $("input.wldccb");
+		for(var i =0; i < checks.length; i++)
+			if(true == checks[i].checked) 
+				return true;
+		return false;
+	},
 	appendExercise:function(topic, id, odd) {
 		var str = "	<li id=\"" + id + "\"> " +
         "   <div class=\"wldcItem wldcItem" + odd + "\" onMouseOver=\"lightUpRow(this);\" onMouseOut=\"reBg(this, '" + odd + "');\"> " +
         "    <div class=\"pullleft wldcCheckboxBox\"> " +
-        "        <input type=\"checkbox\" class=\"wldccb\"> " +
+        "        <input type=\"checkbox\" class=\"wldccb\" value=\"" + id + "\" > " +
         "    </div> " +
         "    <div class=\"pullleft wldcAttr\"></div> " +
         "   <div class=\"pullleft wldcContent\">" + topic + "</div> " +
@@ -231,11 +303,15 @@ $.extend({
 				var o = id.split("_");
 				$.showAnswerInfo(o[0], o[1]);	
 				show = false;
+				setTimeout('$.hideQuickLook();', 3000);
 			} else {
-				$(".quickLook.mainbox.pullleft").css("display", "none");
-				show = true;
+				$.hideQuickLook();
 			}
 		});		
+	},
+	hideQuickLook:function() {
+		$(".quickLook.mainbox.pullleft").css("display", "none");
+		show = true;
 	},
 	showAnswerInfo:function(type, id) {
 		$.post("ce/showAnswerInfo", {

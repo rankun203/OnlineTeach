@@ -80,5 +80,10 @@ public class CompletionExerciseServiceImpl implements ICompletionExerciseService
 		json +="}";
 		return json;
 	}
+	@Override
+	@Transactional
+	public boolean deleteById(int id) {
+		return completionExerciseDao.deleteById(id);
+	}
 
 }

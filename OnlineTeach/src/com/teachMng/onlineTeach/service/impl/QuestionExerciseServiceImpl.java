@@ -71,8 +71,13 @@ public class QuestionExerciseServiceImpl implements IQuestionExerciseService {
 	public String getAnswerInfo(int id) {
 		QuestionExercise ce = findById(id);
 		String json="{";
-		json += "标准答案：" + ce.getStdKeyword().replaceAll("@newline@", "<br />") + "(仅供参考)";
+		json += "标准答案：<br />" + ce.getStdKeyword().replaceAll(QuestionExercise.brHolder, "<br />") + "(仅供参考)";
 		json +="}";
 		return json;
 	}
+	@Transactional
+	public boolean deleteById(int id) {
+		return questionExerciseDao.deleteById(id);
+	}
+	
 }

@@ -1837,6 +1837,13 @@ input[type="radio"] {
 .ttNo{
 	width: 66px;
 }
+#selectClassPos {
+	display:none;
+}
+#selectClass {
+	margin-left:15px;
+	margin-top:7px;
+}
 
 
 

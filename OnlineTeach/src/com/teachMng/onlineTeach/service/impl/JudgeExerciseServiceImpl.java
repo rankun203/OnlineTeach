@@ -80,5 +80,9 @@ public class JudgeExerciseServiceImpl implements IJudgeExerciseService {
 		json +="}";
 		return json;
 	}
+	@Transactional
+	public boolean deleteById(int id) {
+		return judgeExerciseDao.deleteById(id);
+	}
 
 }
