@@ -621,9 +621,9 @@ body{
 }
 .itemCount{
 	position: absolute;
-	width: 30px;
+	width: 80px;
 	height: 40px;
-	margin-left: -33px;
+	margin-left: -82px;
 	text-align: center;
 	line-height: 40px;
 }

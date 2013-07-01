@@ -47,6 +47,7 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 	
 	/**
 	 * 获取题目集，组成Json数据组
+	 * return 
 		[
 			{
 				"type":"selection",

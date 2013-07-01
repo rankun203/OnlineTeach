@@ -59,7 +59,7 @@ $("document").ready(function(){
 
 var selectionTpl = ""+
 '    <div class="mainbox container replyItem" id="sel-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="single_question_answer">'+
 '            <div class="single_question" id="selQes-tpl">@ctn@</div>'+
 '        </div>'+
@@ -74,7 +74,7 @@ var selectionTpl = ""+
 '    </div>';
 var questionTpl = ""+
 '    <div class="mainbox container replyItem" id="ans-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="answer_question">'+
 '            <div class="a_question" id="ans-tpl">@ctn@</div>'+
 '            <div class="inputArea">'+
@@ -85,7 +85,7 @@ var questionTpl = ""+
 '    </div>';
 var judgeTpl = ""+
 '    <div class="mainbox container replyItem" id="jug-tpl">'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="judge_question">'+
 '            <div class="j_question">@ctn@</div>'+
 '        </div>'+
@@ -98,7 +98,7 @@ var judgeTpl = ""+
 '    </div>';
 var completionTpl = ""+
 '    <div class="mainbox container replyItem" id="cpl-tpl" >'+
-'    	<h3 class="itemCount divInfo" id="itemCount-tpl">@idx@</h3>'+
+'    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'+
 '        <div class="fill_vacant_question">'+
 '            <div class="fv_question" id="cpl-ctn-tpl">@ctn@</div>'+
 '        </div>'+
@@ -112,7 +112,6 @@ $.extend({TplPlus:function(){
 	}
 });
 
-//TODO 能在控制台显示了，将其显示到页面上去。未完成
 function setExercise(ele){
 	var idStr = ele.attr("id");
 	esId = idStr.substring(3,idStr.length);
@@ -120,17 +119,64 @@ function setExercise(ele){
 		$.each(result, function(i, field){
 			var type = field.type;
 			if(type!=null&&type!=""&&type=="selection"){
-				var myDiv = selectionTpl;
-				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER+1).replace(/@ctn@/g,field.selCtn).replace(/@br@/g,"<br>");
 				$.TplPlus();
+				var myDiv = selectionTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER)
+					.replace(/@ctn@/g,field.selCtn).replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
 				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="judge"){
-				console.log("判断题："+field.jugCtn);
+				$.TplPlus();
+				var myDiv = judgeTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.jugCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
+				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="completion"){
-				console.log("填空题："+field.cplCtn);
+				$.TplPlus();
+				var myDiv = completionTpl;
+				var mySpace = completionSpaceTpl;
+				mySpace = mySpace.replace(/tpl/g,COUNTER);
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.cplCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>").replace(/@space@/g,mySpace);
+				$("#daTit").append(myDiv);
 			} else if(type!=null&&type!=""&&type=="question"){
-				console.log("问答题："+field.qesCtn);
-			}  else return false;
+				$.TplPlus();
+				var myDiv = questionTpl;
+				myDiv = myDiv.replace(/tpl/g,COUNTER).replace(/@idx@/,COUNTER).replace(/@ctn@/g,field.qesCtn)
+					.replace(/@br@/g,"<br>").replace(/@hr@/g,"<hr>");
+				$("#daTit").append(myDiv);
+			}
+			//学生答题部分
+			//选择题，单击设定选择的值
+			$(".sel-opt-"+COUNTER).click(function(){
+				var markOpt = $(this).attr("id") + "-ed";
+				var rplno = $(this).attr("id").match(/[\d]+/);
+console.log(markOpt);
+				//先设定选择的结果
+				var clkVal = "";
+				if(markOpt.indexOf("a")>0)	clkVal = "a";
+				else if(markOpt.indexOf("b")>0)	clkVal="b";
+				else if(markOpt.indexOf("c")>0)	clkVal="c";
+				else if(markOpt.indexOf("d")>0)	clkVal="d";
+				else	msgerror("严重错误！系统无法获取你点击的选项！");
+				$("#sel-"+rplno+"-val").val(clkVal);
+				//再显示视觉效果
+				$(".sel-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
+				$("#"+markOpt).addClass("sel-sb-opt-ed");
+			});
+			
+			//判断题
+			$(".jug-"+COUNTER+"-opt").click(function(){
+				var rplno = $(this).attr("id").match(/[\d]+/);
+				var markOpt = $(this).attr("id") + "-ed";
+				var clkVal = "0";
+				if(markOpt.indexOf("a")>0)	clkVal = "1";
+				else if(markOpt.indexOf("b")>0)	clkVal="2";
+				else	msgerror("严重错误！系统无法获取你的判断结果！");
+				$("#jug-"+rplno+"-val").val(clkVal);
+				$(".jug-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
+				$("#"+markOpt).addClass("sel-sb-opt-ed");
+			});
+
 		});
 	});
 	return true;
