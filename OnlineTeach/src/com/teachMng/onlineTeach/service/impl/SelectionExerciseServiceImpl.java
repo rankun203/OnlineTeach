@@ -51,7 +51,7 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 		while(ceIter.hasNext()) {
 			_ce = ceIter.next();
 			topic = _ce.getFullTopic();
-			topic = topic.replaceAll(SelectionExercise.brHolder, " ");
+			topic = topic.replaceAll(SelectionExercise.brHolder, " ").replaceAll(SelectionExercise.hrHolder, " ");
 			if(topic.length() > 31) {
 				topic = topic.substring(0, 31);
 				topic += "...";
@@ -65,7 +65,7 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 	public String quickLook(int id) {
 		SelectionExercise ce = findById(id);
 		String json="{";
-		json += "选择题：" + ce.getFullTopic().replaceAll(SelectionExercise.brHolder, "<br />") + "}";
+		json += "选择题：" + ce.getFullTopic().replaceAll(SelectionExercise.brHolder, "<br />").replaceAll(SelectionExercise.hrHolder, "<br />") + "}";
 		return json;
 	}
 	@Transactional

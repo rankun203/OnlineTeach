@@ -122,8 +122,8 @@ public class AutoPlan {
 	 */
 	public String getClassList() {
 		String json = "{list:[";
-		schoolClasses = new HashSet<SchoolClass>(schoolClassService.allSchoolClass());
-		Set<SchoolClass> scs = new HashSet<SchoolClass>(schoolClasses);
+		schoolClasses = new ArrayList<SchoolClass>(schoolClassService.allSchoolClass());
+		List<SchoolClass> scs = new ArrayList<SchoolClass>(schoolClasses);
 		Iterator<SchoolClass> _scIter = scs.iterator();
 		SchoolClass _sc;
 		while (_scIter.hasNext()) {
@@ -264,7 +264,7 @@ public class AutoPlan {
 	@SuppressWarnings("rawtypes")
 	public String getInfoTag() {
 		classRooms = classRoomService.allClassRoom();
-		schoolClasses = new HashSet<SchoolClass>(schoolClassService.allSchoolClass());
+		schoolClasses = new ArrayList<SchoolClass>(schoolClassService.allSchoolClass());
 		teachers = teacherService.allTeacher();
 		Set<InfoTagItem> infoTag = new HashSet<InfoTagItem>();
 		InfoTagItem _iti = null;
@@ -378,7 +378,7 @@ public class AutoPlan {
 		courses = courseService.allCourse();
 		majors = majorService.allMajor();
 		majorsCourse = majorsCourseService.allMajorsCourse();
-		schoolClasses = new HashSet<SchoolClass>(schoolClassService.allSchoolClass());
+		schoolClasses = new ArrayList<SchoolClass>(schoolClassService.allSchoolClass());
 		teachers = teacherService.allTeacher();
 
 		allCourseCount = getCourseCount();
@@ -628,17 +628,18 @@ public class AutoPlan {
 		boolean isNeedNew = false;
 		if (null != _cr) {
 		//	System.out.println(getRoomCountById(_cr.getCrID()) + "__---__-_-__---");
-			while(!isNeedNew && findClassRoomById(paragraph, _cr.getCrID())) {
-				if (paragraph < MAXPARAGRAPH) {
-					paragraph++;
-				}
-				else {
-					paragraph = 1;
-				}
-				while (isHaveCourse(scID)) {
-					paragraph++;
-				}
-			}
+//			while(!isNeedNew && findClassRoomById(paragraph, _cr.getCrID())) {
+//				if (paragraph < MAXPARAGRAPH) {
+//					paragraph++;
+//				}
+//				else {
+//					paragraph = 1;
+//				}
+//				while (isHaveCourse(scID)) {
+//					paragraph++;
+//					System.out.println("________" + paragraph);
+//				}
+//			}
 			if(!isNeedNew) {
 				return _cr;
 			}
@@ -827,7 +828,7 @@ public class AutoPlan {
 					&& rid == cpi.getClassRoom().getCrID()) {
 //				System.out.println(cpi.getCpParagraph() + "  " +
 //				 cpi.getClassRoom().getCrID() + "_________");
-				System.out.print(p + " _ ");
+				//System.out.print(p + " _ ");
 				return true;
 			}
 		}
@@ -841,7 +842,7 @@ public class AutoPlan {
 		while (_cpiIter.hasNext()) {
 			// System.out.println(_cpiIter.hasNext());
 			//System.out.println(coursePlan.size());
-			System.out.print(paragraph + " _ ");
+			//System.out.print(paragraph + " _ ");
 			_cpi = _cpiIter.next();
 			if (_cpi.getSchoolClass().getScID() == scID
 					&& _cpi.getCpParagraph() == paragraph) {
@@ -955,11 +956,11 @@ public class AutoPlan {
 		this.majorsCourse = majorsCourse;
 	}
 
-	public Set<SchoolClass> getSchoolClasses() {
+	public List<SchoolClass> getSchoolClasses() {
 		return schoolClasses;
 	}
 
-	public void setSchoolClasses(Set<SchoolClass> schoolClasses) {
+	public void setSchoolClasses(List<SchoolClass> schoolClasses) {
 		this.schoolClasses = schoolClasses;
 	}
 
@@ -1066,7 +1067,7 @@ public class AutoPlan {
 	/**
 	 * 最大节数
 	 */
-	public final int MAXPARAGRAPH = 30;
+	public final int MAXPARAGRAPH = 50;
 
 	private static int allCourseCount; // 所有班级的所有课程之和，用于获取排课进度时所需要的变量。
 
@@ -1084,7 +1085,7 @@ public class AutoPlan {
 	private List<Course> courses = null;
 	private List<Major> majors = null;
 	private List<MajorsCourse> majorsCourse = null;
-	private Set<SchoolClass> schoolClasses = null;
+	private List<SchoolClass> schoolClasses = null;
 	private List<Teacher> teachers = null;
 	private List<CoursePlanItem> coursePlan = null;
 	private List<ClassCoursePara> ccp = null;
