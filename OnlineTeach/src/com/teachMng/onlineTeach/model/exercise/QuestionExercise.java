@@ -19,10 +19,11 @@ import com.teachMng.onlineTeach.model.UpFile;
 
 /**
  * 问答题
+ * 
  * @author mindfine
  */
 @Entity
-@Table(name="t_questionexercise")
+@Table(name = "t_questionexercise")
 public class QuestionExercise {
 	@Transient
 	public static String brHolder = "@br@";
@@ -50,46 +51,66 @@ public class QuestionExercise {
 	 */
 	private double stdScore;
 
-	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
-	@ManyToMany(mappedBy="questionExercise", cascade=CascadeType.ALL)
-	public Set<ExerciseSet> getEs() {
-		return es;
+	// private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
+	// @ManyToMany(mappedBy="questionExercise", cascade=CascadeType.ALL)
+	// public Set<ExerciseSet> getEs() {
+	// return es;
+	// }
+	// public void setEs(Set<ExerciseSet> es) {
+	// this.es = es;
+	// }
+	private List<ExerciseSetQuestionExercise> esqe = new ArrayList<ExerciseSetQuestionExercise>();
+
+	@OneToMany(mappedBy = "es", cascade = CascadeType.ALL)
+	public List<ExerciseSetQuestionExercise> getEsqe() {
+		return esqe;
 	}
-	public void setEs(Set<ExerciseSet> es) {
-		this.es = es;
+
+	public void setEsqe(List<ExerciseSetQuestionExercise> esqe) {
+		this.esqe = esqe;
 	}
-	@Column(length=4096)
+
+	@Column(length = 4096)
 	public String getFullTopic() {
 		return fullTopic;
 	}
+
 	public void setFullTopic(String fullTopic) {
 		this.fullTopic = fullTopic;
 	}
+
 	@OneToMany
 	public List<UpFile> getTopicAttachments() {
 		return topicAttachments;
 	}
+
 	public void setTopicAttachments(List<UpFile> topicAttachments) {
 		this.topicAttachments = topicAttachments;
 	}
+
 	public double getStdScore() {
 		return stdScore;
 	}
+
 	public void setStdScore(double stdScore) {
 		this.stdScore = stdScore;
 	}
-	@Column(length=4096)
+
+	@Column(length = 4096)
 	public String getStdKeyword() {
 		return stdKeyword;
 	}
+
 	public void setStdKeyword(String stdKeyword) {
 		this.stdKeyword = stdKeyword;
 	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

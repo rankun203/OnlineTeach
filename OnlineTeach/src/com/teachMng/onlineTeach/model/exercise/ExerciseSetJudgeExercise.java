@@ -20,7 +20,7 @@ public class ExerciseSetJudgeExercise implements Serializable {
 	/**
 	 * 学生答题的答案，答案是“对”？？？
 	 */	
-	private boolean stuAnswerIsRight;
+	private Boolean stuAnswerIsRight;
 	/**
 	 * 老师的意见
 	 */
@@ -28,7 +28,7 @@ public class ExerciseSetJudgeExercise implements Serializable {
 	/**
 	 * 学生的得分
 	 */
-	private double stuScore;
+	private Double stuScore;
 	private ExerciseSet es;
 	private JudgeExercise je;
 	@Id
@@ -50,10 +50,10 @@ public class ExerciseSetJudgeExercise implements Serializable {
 		this.es = es;
 	}	
 	@Column(nullable=true)
-	public boolean isStuAnswerIsRight() {
+	public Boolean isStuAnswerIsRight() {
 		return stuAnswerIsRight;
 	}
-	public void setStuAnswerIsRight(boolean stuAnswerIsRight) {
+	public void setStuAnswerIsRight(Boolean stuAnswerIsRight) {
 		this.stuAnswerIsRight = stuAnswerIsRight;
 	}
 	@Column(nullable=true)
@@ -64,20 +64,18 @@ public class ExerciseSetJudgeExercise implements Serializable {
 		this.teacherComment = teacherComment;
 	}
 	@Column(nullable=true)
-	public double getStuScore() {
+	public Double getStuScore() {
 		return stuScore;
 	}
-	public void setStuScore(double stuScore) {
+	public void setStuScore(Double stuScore) {
 		this.stuScore = stuScore;
 	}
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		return super.equals(obj);
 	}
 }

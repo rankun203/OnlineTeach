@@ -1,6 +1,7 @@
 package com.teachMng.onlineTeach.dao.impl;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +11,12 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import com.teachMng.onlineTeach.dao.IExerciseSetDAO;
+import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
+import com.teachMng.onlineTeach.model.exercise.ExerciseSetSelectionExercise;
+import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
+import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
+import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
 @Component("exerciseSetDao")
 public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 	private SessionFactory sf;
@@ -60,5 +66,4 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 		if(generatedId > 0)	return true;
 		return false;
 	}
-
 }

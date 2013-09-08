@@ -183,68 +183,90 @@ insert  into `t_exerciseset`(`id`,`createDate`,`teacId`,`stuId`) values (1,'2013
 DROP TABLE IF EXISTS `t_exerciseset_t_completionexercise`;
 
 CREATE TABLE `t_exerciseset_t_completionexercise` (
+  `stuAnswer` varchar(255) DEFAULT NULL,
+  `stuScore` float DEFAULT NULL,
+  `teacherComment` varchar(255) DEFAULT NULL,
   `esID` int(11) NOT NULL,
   `ceID` int(11) NOT NULL,
-  KEY `FK7F9BC37F3564679E` (`esID`),
-  KEY `FK7F9BC37F6FA5DA86` (`ceID`),
-  CONSTRAINT `FK7F9BC37F6FA5DA86` FOREIGN KEY (`ceID`) REFERENCES `t_completionexercise` (`id`),
-  CONSTRAINT `FK7F9BC37F3564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`)
+  PRIMARY KEY (`esID`,`ceID`),
+  KEY `FKFFCD9F5F3564679E` (`esID`),
+  KEY `FKFFCD9F5F6FA5DA86` (`ceID`),
+  CONSTRAINT `FKFFCD9F5F6FA5DA86` FOREIGN KEY (`ceID`) REFERENCES `t_completionexercise` (`id`),
+  CONSTRAINT `FKFFCD9F5F3564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_completionexercise` */
 
-insert  into `t_exerciseset_t_completionexercise`(`esID`,`ceID`) values (1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(2,3),(3,1),(3,2),(3,5);
+insert  into `t_exerciseset_t_completionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`esID`,`ceID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,2),(NULL,NULL,NULL,1,3),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,2,3),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,3,5);
 
 /*Table structure for table `t_exerciseset_t_judgeexercise` */
 
 DROP TABLE IF EXISTS `t_exerciseset_t_judgeexercise`;
 
 CREATE TABLE `t_exerciseset_t_judgeexercise` (
-  `esID` int(11) NOT NULL,
+  `stuAnswerIsRight` tinyint(1) DEFAULT NULL,
+  `stuScore` float DEFAULT NULL,
+  `teacherComment` varchar(255) DEFAULT NULL,
   `jeID` int(11) NOT NULL,
-  KEY `FK937BBD443564679E` (`esID`),
-  KEY `FK937BBD44CFBAA4D0` (`jeID`),
-  CONSTRAINT `FK937BBD44CFBAA4D0` FOREIGN KEY (`jeID`) REFERENCES `t_judgeexercise` (`id`),
-  CONSTRAINT `FK937BBD443564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`)
+  `esID` int(11) NOT NULL,
+  PRIMARY KEY (`jeID`,`esID`),
+  KEY `FK48C7F564CFB89383` (`esID`),
+  KEY `FK48C7F5643564679E` (`esID`),
+  KEY `FK48C7F564CFBAA4D0` (`jeID`),
+  CONSTRAINT `FK48C7F564CFBAA4D0` FOREIGN KEY (`jeID`) REFERENCES `t_judgeexercise` (`id`),
+  CONSTRAINT `FK48C7F5643564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
+  CONSTRAINT `FK48C7F564CFB89383` FOREIGN KEY (`esID`) REFERENCES `t_judgeexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_judgeexercise` */
 
-insert  into `t_exerciseset_t_judgeexercise`(`esID`,`jeID`) values (1,1),(1,2),(1,3),(1,4),(2,2),(2,3),(2,4),(2,5);
+insert  into `t_exerciseset_t_judgeexercise`(`stuAnswerIsRight`,`stuScore`,`teacherComment`,`jeID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,4,1),(NULL,NULL,NULL,4,2),(NULL,NULL,NULL,5,2);
 
 /*Table structure for table `t_exerciseset_t_questionexercise` */
 
 DROP TABLE IF EXISTS `t_exerciseset_t_questionexercise`;
 
 CREATE TABLE `t_exerciseset_t_questionexercise` (
-  `esID` int(11) NOT NULL,
+  `stuAnswer` varchar(255) DEFAULT NULL,
+  `stuScore` float DEFAULT NULL,
+  `teacherComment` varchar(255) DEFAULT NULL,
   `qeID` int(11) NOT NULL,
-  KEY `FK780E68493564679E` (`esID`),
-  KEY `FK780E68495B544F02` (`qeID`),
-  CONSTRAINT `FK780E68495B544F02` FOREIGN KEY (`qeID`) REFERENCES `t_questionexercise` (`id`),
-  CONSTRAINT `FK780E68493564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`)
+  `esID` int(11) NOT NULL,
+  PRIMARY KEY (`qeID`,`esID`),
+  KEY `FK48C5BC295B4F0F1C` (`esID`),
+  KEY `FK48C5BC293564679E` (`esID`),
+  KEY `FK48C5BC295B544F02` (`qeID`),
+  CONSTRAINT `FK48C5BC295B544F02` FOREIGN KEY (`qeID`) REFERENCES `t_questionexercise` (`id`),
+  CONSTRAINT `FK48C5BC293564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
+  CONSTRAINT `FK48C5BC295B4F0F1C` FOREIGN KEY (`esID`) REFERENCES `t_questionexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_questionexercise` */
 
-insert  into `t_exerciseset_t_questionexercise`(`esID`,`qeID`) values (1,1),(1,2);
+insert  into `t_exerciseset_t_questionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`qeID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,2,1);
 
 /*Table structure for table `t_exerciseset_t_selectionexercise` */
 
 DROP TABLE IF EXISTS `t_exerciseset_t_selectionexercise`;
 
 CREATE TABLE `t_exerciseset_t_selectionexercise` (
-  `esID` int(11) NOT NULL,
+  `stuAnswer` varchar(1) DEFAULT NULL,
+  `stuScore` float DEFAULT NULL,
+  `teacherComment` varchar(255) DEFAULT NULL,
   `seID` int(11) NOT NULL,
-  KEY `FK7A18C8393564679E` (`esID`),
-  KEY `FK7A18C83985C5EC1C` (`seID`),
-  CONSTRAINT `FK7A18C83985C5EC1C` FOREIGN KEY (`seID`) REFERENCES `t_selectionexercise` (`id`),
-  CONSTRAINT `FK7A18C8393564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`)
+  `esID` int(11) NOT NULL,
+  PRIMARY KEY (`seID`,`esID`),
+  KEY `FKC04BF05985BFC378` (`esID`),
+  KEY `FKC04BF0593564679E` (`esID`),
+  KEY `FKC04BF05985C5EC1C` (`seID`),
+  CONSTRAINT `FKC04BF05985C5EC1C` FOREIGN KEY (`seID`) REFERENCES `t_selectionexercise` (`id`),
+  CONSTRAINT `FKC04BF0593564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
+  CONSTRAINT `FKC04BF05985BFC378` FOREIGN KEY (`esID`) REFERENCES `t_selectionexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_selectionexercise` */
 
-insert  into `t_exerciseset_t_selectionexercise`(`esID`,`seID`) values (1,1),(1,2),(1,3),(1,4),(4,1),(4,2);
+insert  into `t_exerciseset_t_selectionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`seID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,4),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,4,1);
 
 /*Table structure for table `t_file` */
 
@@ -314,9 +336,9 @@ insert  into `t_major`(`majorID`,`majorName`) values (1,'软件技术'),(2,'计�
 DROP TABLE IF EXISTS `t_majorscourse`;
 
 CREATE TABLE `t_majorscourse` (
+  `paragraph` int(11) DEFAULT NULL,
   `majorID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  `paragraph` int(11) DEFAULT NULL,
   PRIMARY KEY (`majorID`,`courseID`),
   KEY `FKB1745C606C76CD92` (`courseID`),
   KEY `FKB1745C601D8C6F2C` (`majorID`),
@@ -326,7 +348,7 @@ CREATE TABLE `t_majorscourse` (
 
 /*Data for the table `t_majorscourse` */
 
-insert  into `t_majorscourse`(`majorID`,`courseID`,`paragraph`) values (1,1,2),(1,2,4),(1,3,4),(1,5,2),(1,6,2),(1,9,2),(1,10,1),(2,1,2),(2,4,4),(2,5,2),(2,7,4),(2,9,2),(2,10,1),(3,7,2),(3,8,2),(3,9,2),(3,10,1),(3,11,2),(3,12,2),(3,13,4),(4,7,2),(4,10,1),(4,14,2),(4,15,4),(4,16,2),(4,17,2);
+insert  into `t_majorscourse`(`paragraph`,`majorID`,`courseID`) values (2,1,1),(4,1,2),(4,1,3),(2,1,5),(2,1,6),(2,1,9),(1,1,10),(2,2,1),(4,2,4),(2,2,5),(4,2,7),(2,2,9),(1,2,10),(2,3,7),(2,3,8),(2,3,9),(1,3,10),(2,3,11),(2,3,12),(4,3,13),(2,4,7),(1,4,10),(2,4,14),(4,4,15),(2,4,16),(2,4,17);
 
 /*Table structure for table `t_project` */
 

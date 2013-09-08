@@ -57,14 +57,13 @@ public class CompletionExercise {
 	 * 每个空之间用#!split!#隔开
 	 */
 	private String stdAnswer;
-	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
-	
-	@ManyToMany(mappedBy="completionExercise", cascade=CascadeType.ALL)
-	public Set<ExerciseSet> getEs() {
-		return es;
+	private List<ExerciseSetCompletionExercise> esce = new ArrayList<ExerciseSetCompletionExercise>();
+	@OneToMany(mappedBy="ce", cascade=CascadeType.ALL)
+	public List<ExerciseSetCompletionExercise> getEsce() {
+		return esce;
 	}
-	public void setEs(Set<ExerciseSet> es) {
-		this.es = es;
+	public void setEsce(List<ExerciseSetCompletionExercise> esce) {
+		this.esce = esce;
 	}
 	@Column(length=4096)
 	public String getFullTopic() {

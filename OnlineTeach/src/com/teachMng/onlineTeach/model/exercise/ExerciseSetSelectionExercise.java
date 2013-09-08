@@ -21,7 +21,7 @@ public class ExerciseSetSelectionExercise implements Serializable {
 	 * 学生答题的答案<br>
 	 * 字符：A、B、C、D
 	 */
-	private char stuAnswer;
+	private String stuAnswer;
 	/**
 	 * 老师的意见
 	 */
@@ -29,7 +29,7 @@ public class ExerciseSetSelectionExercise implements Serializable {
 	/**
 	 * 学生的得分
 	 */
-	private double stuScore;
+	private Double stuScore;
 	private ExerciseSet es;
 	private SelectionExercise se;
 	@Id
@@ -50,11 +50,11 @@ public class ExerciseSetSelectionExercise implements Serializable {
 	public void setEs(ExerciseSet es) {
 		this.es = es;
 	}	
-	@Column(nullable=true)
-	public char getStuAnswer() {
+	@Column(nullable=true, length=1)
+	public String getStuAnswer() {
 		return stuAnswer;
 	}
-	public void setStuAnswer(char stuAnswer) {
+	public void setStuAnswer(String stuAnswer) {
 		this.stuAnswer = stuAnswer;
 	}
 	@Column(nullable=true)
@@ -65,20 +65,18 @@ public class ExerciseSetSelectionExercise implements Serializable {
 		this.teacherComment = teacherComment;
 	}
 	@Column(nullable=true)
-	public double getStuScore() {
+	public Double getStuScore() {
 		return stuScore;
 	}
-	public void setStuScore(double stuScore) {
+	public void setStuScore(Double stuScore) {
 		this.stuScore = stuScore;
 	}
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		return super.equals(obj);
 	}
 }

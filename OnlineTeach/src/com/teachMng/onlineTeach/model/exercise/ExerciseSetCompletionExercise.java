@@ -29,7 +29,7 @@ public class ExerciseSetCompletionExercise implements Serializable{
 	/**
 	 * 学生的得分
 	 */
-	private double stuScore;
+	private Double stuScore;
 	private ExerciseSet es;
 	private CompletionExercise ce;
 	
@@ -41,12 +41,10 @@ public class ExerciseSetCompletionExercise implements Serializable{
 	}
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
 		return super.equals(obj);
 	}
 	public void setCe(CompletionExercise ce) {
@@ -76,10 +74,10 @@ public class ExerciseSetCompletionExercise implements Serializable{
 		this.teacherComment = teacherComment;
 	}
 	@Column(nullable=true)
-	public double getStuScore() {
+	public Double getStuScore() {
 		return stuScore;
 	}
-	public void setStuScore(double stuScore) {
+	public void setStuScore(Double stuScore) {
 		this.stuScore = stuScore;
 	}
 	

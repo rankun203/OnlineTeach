@@ -54,13 +54,21 @@ public class SelectionExercise {
 	 * 满分的分数
 	 */
 	private double stdScore;
-	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
-	@ManyToMany(mappedBy="selectionExercise", cascade=CascadeType.ALL)
-	public Set<ExerciseSet> getEs() {
-		return es;
+//	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
+//	@ManyToMany(mappedBy="selectionExercise", cascade=CascadeType.ALL)
+//	public Set<ExerciseSet> getEs() {
+//		return es;
+//	}
+//	public void setEs(Set<ExerciseSet> es) {
+//		this.es = es;
+//	}
+	private List<ExerciseSetSelectionExercise> esse = new ArrayList<ExerciseSetSelectionExercise>();
+	@OneToMany(mappedBy="es", cascade=CascadeType.ALL)
+	public List<ExerciseSetSelectionExercise> getEsse() {
+		return esse;
 	}
-	public void setEs(Set<ExerciseSet> es) {
-		this.es = es;
+	public void setEsse(List<ExerciseSetSelectionExercise> esse) {
+		this.esse = esse;
 	}
 	@Column(length=4096)
 	public String getFullTopic() {

@@ -44,13 +44,21 @@ public class JudgeExercise {
 	 * 老师给出的答案，答案是“对”？？？
 	 */
 	private boolean stdAnswerIsRight;
-	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
-	@ManyToMany(mappedBy="judgeExercise", cascade=CascadeType.ALL)
-	public Set<ExerciseSet> getEs() {
-		return es;
+//	private Set<ExerciseSet> es = new HashSet<ExerciseSet>();
+//	@ManyToMany(mappedBy="judgeExercise", cascade=CascadeType.ALL)
+//	public Set<ExerciseSet> getEs() {
+//		return es;
+//	}
+//	public void setEs(Set<ExerciseSet> es) {
+//		this.es = es;
+//	}
+	private List<ExerciseSetJudgeExercise> esje = new ArrayList<ExerciseSetJudgeExercise>();
+	@OneToMany(mappedBy="es", cascade=CascadeType.ALL)
+	public List<ExerciseSetJudgeExercise> getEsje() {
+		return esje;
 	}
-	public void setEs(Set<ExerciseSet> es) {
-		this.es = es;
+	public void setEsje(List<ExerciseSetJudgeExercise> esje) {
+		this.esje = esje;
 	}
 	@Column(length=4096)
 	public String getFullTopic() {

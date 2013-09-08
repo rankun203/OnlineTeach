@@ -50,10 +50,10 @@
  		<mapping class="com.teachMng.onlineTeach.model.exercise.CompletionExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.SelectionExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.QuestionExercise"/>
-<!--  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetQuestionExercise"/> -->
-<!--  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetJudgeExercise"/> -->
-<!--  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetSelectionExercise"/> -->
-<!--  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetCompletionExercise"/> -->
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetQuestionExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetJudgeExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetSelectionExercise"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSetCompletionExercise"/>
  
   	</session-factory>
 </hibernate-configuration>
