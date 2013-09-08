@@ -69,6 +69,8 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 		List<CompletionExercise> ceList = es.getCompletionExercise();
 		List<JudgeExercise> jeList = es.getJudgeExercise();
 		List<QuestionExercise> qeList = es.getQuestionExercise();
+
+		//System.out.println("selection size:" + seList.size() + " completion size:" + ceList.size());
 		
 		for(int i=0; i<seList.size(); i++){
 			if(i==0)	str += "{";

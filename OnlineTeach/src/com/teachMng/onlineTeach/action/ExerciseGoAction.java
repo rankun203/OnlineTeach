@@ -73,8 +73,10 @@ public class ExerciseGoAction extends ActionSupport implements ServletResponseAw
 	 */
 	public void getExerciseSet() throws IOException{
 		if(esId!=null&&!esId.equals("")){
+			System.out.println("esId=" + esId);
 			int esID = Integer.parseInt(esId);
 			String str = ess.getExerciseSet(esID);
+			System.out.println("value=" + str);
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().print(str);
 		}

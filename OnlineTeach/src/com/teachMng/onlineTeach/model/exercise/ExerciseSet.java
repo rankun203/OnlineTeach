@@ -62,8 +62,8 @@ public class ExerciseSet {
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable(name="t_exerciseSet_t_judgeexercise", 
-			joinColumns=@JoinColumn(name="jeID"), 
-			inverseJoinColumns=@JoinColumn(name="esID"))	
+			joinColumns=@JoinColumn(name="esID"), 
+			inverseJoinColumns=@JoinColumn(name="jeID"))	
 	public List<JudgeExercise> getJudgeExercise() {
 		return judgeExercise;
 	}
@@ -72,8 +72,8 @@ public class ExerciseSet {
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable(name="t_exerciseSet_t_completionexercise", 
-			joinColumns=@JoinColumn(name="ceID"), 
-			inverseJoinColumns=@JoinColumn(name="esID"))	
+			joinColumns=@JoinColumn(name="esID"), 
+			inverseJoinColumns=@JoinColumn(name="ceID"))	
 	public List<CompletionExercise> getCompletionExercise() {
 		return completionExercise;
 	}
@@ -82,8 +82,8 @@ public class ExerciseSet {
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable(name="t_exerciseSet_t_questionexercise", 
-			joinColumns=@JoinColumn(name="qeID"), 
-			inverseJoinColumns=@JoinColumn(name="esID"))	
+			joinColumns=@JoinColumn(name="esID"), 
+			inverseJoinColumns=@JoinColumn(name="qeID"))	
 	public List<QuestionExercise> getQuestionExercise() {
 		return questionExercise;
 	}
@@ -92,8 +92,8 @@ public class ExerciseSet {
 	}
 	@ManyToMany(cascade=CascadeType.MERGE)
 	@JoinTable(name="t_exerciseSet_t_selectionexercise", 
-			joinColumns=@JoinColumn(name="seID"), 
-			inverseJoinColumns=@JoinColumn(name="esID"))	
+			joinColumns=@JoinColumn(name="esID"), 
+			inverseJoinColumns=@JoinColumn(name="seID"))	
 	public List<SelectionExercise> getSelectionExercise() {
 		return selectionExercise;
 	}

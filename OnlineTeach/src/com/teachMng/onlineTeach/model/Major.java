@@ -10,9 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,17 +23,25 @@ public class Major implements Serializable {
 	private int majorID;
 	private String majorName;
 	private Set<SchoolClass> schoolClasses = new HashSet<SchoolClass>();
-	private Set<Course> courses = new HashSet<Course>();
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name="t_majorscourse",
-				joinColumns=@JoinColumn(name="majorID"), 
-				inverseJoinColumns=@JoinColumn(name="courseID"))
-	public Set<Course> getCourses() {
-		return courses;
+	private Set<MajorsCourse> majorsCourses = new HashSet<MajorsCourse>();
+	@OneToMany(mappedBy="major", cascade=CascadeType.ALL)
+	public Set<MajorsCourse> getMajorsCourses() {
+		return majorsCourses;
 	}
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
+	public void setMajorsCourses(Set<MajorsCourse> majorsCourses) {
+		this.majorsCourses = majorsCourses;
 	}
+//	private Set<Course> courses = new HashSet<Course>();
+//	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+//	@JoinTable(name="t_majorscourse",
+//				joinColumns=@JoinColumn(name="majorID"), 
+//				inverseJoinColumns=@JoinColumn(name="courseID"))
+//	public Set<Course> getCourses() {
+//		return courses;
+//	}
+//	public void setCourses(Set<Course> courses) {
+//		this.courses = courses;
+//	}
 	@OneToMany(mappedBy="major", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	public Set<SchoolClass> getSchoolClasses() {
 		return schoolClasses;

@@ -45,7 +45,7 @@ $("document").ready(function(){
 			var exs = '<tr><td style="width:10%;">@NO@</td>' +
 					'<td style="width:30%;"><a href="#">@HOLD@</a></td>' +
 					'<td style="width:45%;">@TI@</td>' +
-					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(@esId@,@HOLD@,@TI@);" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+					'<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(\'@esId@\',\'@HOLD@\',\'@TI@\');" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
 			exs = exs.replace(/@HOLD@/g,field.founder).replace(/@TI@/g,field.cdate).replace(/@NO@/,i+1).replace(/@esId@/g,field.esId);
 			$("#exList").append(exs);
 			if(i==0){
@@ -53,11 +53,16 @@ $("document").ready(function(){
 			}
 		});
 	});
-	
-	
-	
-
+	$(".fv_input").on("click", function() {
+		console.log($(this).attr("class") + "    ___");
+	});	
 });
+
+var titleBar = '<div class="daTit tbHead container">题目列表' + 
+'<span class="exsetInfo pullright">试卷号：<span id="exNo"></span>' + 
+'	出题老师：<span id="exFounder"></span>	出题时间：' + 
+'<span id="exCTime"></span></span></div>'
+;
 
 var selectionTpl = ""+
 '    <div class="mainbox container replyItem" id="sel-tpl">'+
@@ -116,7 +121,11 @@ $.extend({TplPlus:function(){
 
 //加载题目
 function setExercise(esId,founder,ctime){
+	COUNTER = 0;
+	//console.log("  esId:" + esId + "  founder:" + founder + "  time:" + ctime);
 	$.getJSON("ei/getExs?esId="+esId, function(result){
+		//console.log(result);
+		$("#daTit").html(titleBar);
 		$("#exNo").text(esId);
 		$("#exFounder").text(founder);
 		$("#exCTime").text(ctime);
@@ -151,7 +160,14 @@ function setExercise(esId,founder,ctime){
 			}
 			//学生答题部分
 			//选择题，单击设定选择的值
-			$(".sel-opt-"+COUNTER).click(function(){
+			var tmp = COUNTER;
+			$(".cpl-" + tmp + "-vals").blur(function() {
+				console.log(getCplRplAns(tmp));
+			});
+			$("#ans-" + tmp + "-val").blur(function() {
+				console.log(getAnsRplAns(tmp));
+			});
+			$(".sel-opt-"+tmp).click(function(){
 				var markOpt = $(this).attr("id") + "-ed";
 				var rplno = $(this).attr("id").match(/[\d]+/);
 				//先设定选择的结果
@@ -162,13 +178,14 @@ function setExercise(esId,founder,ctime){
 				else if(markOpt.indexOf("d")>0)	clkVal="d";
 				else	msgerror("严重错误！系统无法获取你点击的选项！");
 				$("#sel-"+rplno+"-val").val(clkVal);
+				console.log(getSelRplAns(tmp));
 				//再显示视觉效果
 				$(".sel-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
 				$("#"+markOpt).addClass("sel-sb-opt-ed");
 			});
 			
 			//判断题
-			$(".jug-"+COUNTER+"-opt").click(function(){
+			$(".jug-" + tmp + "-opt").click(function(){
 				var rplno = $(this).attr("id").match(/[\d]+/);
 				var markOpt = $(this).attr("id") + "-ed";
 				var clkVal = "0";
@@ -176,16 +193,17 @@ function setExercise(esId,founder,ctime){
 				else if(markOpt.indexOf("b")>0)	clkVal="2";
 				else	msgerror("严重错误！系统无法获取你的判断结果！");
 				$("#jug-"+rplno+"-val").val(clkVal);
+				console.log(getJugRplAns(tmp));
 				$(".jug-"+rplno+"-ed").removeClass("sel-sb-opt-ed");
 				$("#"+markOpt).addClass("sel-sb-opt-ed");
 			});
 		});
 		$("#daTit").css("display","block");
-		
 		//题目加载完成之后，给所有题目设置事件
 		//TODO 每次学生答完一题（填空题是填写最后一个空）之后，即将当前题目的数据发送到服务器
 	});
 	return true;
+	
 }
 
 
@@ -205,7 +223,7 @@ function getJugRplAns(rpl_no){
 //获取指定的填空题的答案们
 function getCplRplAns(rpl_no){
 	var ans = "[";
-	$(".cpl-tpl-vals").each(function(){
+	$(".cpl-" + rpl_no + "-vals").each(function(){
 		ans += '\"'+$(this).val() + '\",';
 	});
 	ans = ans.substring(0, ans.length-1);
