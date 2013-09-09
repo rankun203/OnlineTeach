@@ -8,10 +8,10 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     2.部署数据库（docs/dbbackup.sql）
     3.部署程序
 
-#####Environment：Tomcat 6.0+
-#####Compiler：JDK 6+
 
 ####Dependences
+#####Environment：`Tomcat 6.0+ `
+#####Compiler：`JDK 6+ `
 
     Struts2.3.8<br>
     Hibernate4.1.8<br>
