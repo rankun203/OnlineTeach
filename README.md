@@ -32,6 +32,8 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 
     mvn tomcat6:run
 #####4.使用浏览器打开[http://localhost:8080/OnlineTeach/][]
+
+    ！如果出现没有找到数据库或表的异常，请尝试重新运行 mvn install
 ####Dependences
 #####Environment：`Tomcat 6.0+ `
 #####Compiler：`JDK 6+ `
