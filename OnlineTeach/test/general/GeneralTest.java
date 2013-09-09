@@ -4,6 +4,10 @@ import org.junit.Test;
 
 
 
+/**
+ * @author mindfine
+ * 一些普通测试，测试一些小算法等等
+ */
 public class GeneralTest {
 	public static void main(String[] args) {
 		int spaceCounts = 0;

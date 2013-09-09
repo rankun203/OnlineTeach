@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.ISelectionExerciseDAO;
-import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
-import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
 import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 @Component("selectionExerciseService")
@@ -52,6 +50,7 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 			_ce = ceIter.next();
 			topic = _ce.getFullTopic();
 			topic = topic.replaceAll(SelectionExercise.brHolder, " ");
+			topic = topic.replaceAll(SelectionExercise.hrHolder, " ");
 			if(topic.length() > 31) {
 				topic = topic.substring(0, 31);
 				topic += "...";
@@ -65,7 +64,7 @@ public class SelectionExerciseServiceImpl implements ISelectionExerciseService {
 	public String quickLook(int id) {
 		SelectionExercise ce = findById(id);
 		String json="{";
-		json += "选择题：" + ce.getFullTopic().replaceAll(SelectionExercise.brHolder, "<br />") + "}";
+		json += "选择题：" + ce.getFullTopic().replaceAll(SelectionExercise.brHolder, "<br />").replaceAll(SelectionExercise.hrHolder, "<hr />") + "}";
 		return json;
 	}
 	@Transactional
