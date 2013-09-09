@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -18,7 +17,6 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 	@Resource(name="exerciseSetService")
 	IExerciseSetService ess;
 	@SuppressWarnings("unused")
-	@Test
 	public void testArrange() {
 //		ap.deleteAll();
 		long pre = System.currentTimeMillis();

@@ -21,6 +21,7 @@ public class QuestionExerciseDAOImpl implements IQuestionExerciseDAO {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<QuestionExercise> allExercise() {
 		Session s = sf.getCurrentSession();

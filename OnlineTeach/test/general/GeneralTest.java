@@ -1,30 +1,31 @@
 package general;
 
-
-
+import org.junit.Test;
 
 /**
- * @author mindfine
- * 一些普通测试，测试一些小算法等等
+ * @author mindfine 一些普通测试，测试一些小算法等等
  */
 public class GeneralTest {
-	public static void main(String[] args) {
+	@Test
+	public void test1() {
 		int spaceCounts = 0;
 
-		String topic = "你是我的" + "@space@" + "，你是我的" 
-				+ "@space@" + "，你是我的" + "@space@"
-				+ "，是我的" + "@space@";
+		String topic = "你是我的" + "@space@" + "，你是我的" + "@space@" + "，你是我的"
+				+ "@space@" + "，是我的" + "@space@";
 		int curTemp = 0;
-		while(curTemp != -1){
+		while (curTemp != -1) {
 			System.out.println(curTemp);
 			curTemp = topic.indexOf("@space@", curTemp + "@space@".length());
 			spaceCounts++;
 		}
 
-		System.out.println(spaceCounts);		
+		System.out.println(spaceCounts);
 	}
-	public void test() {
+
+	@Test
+	public void test2() {
 		String s = "下面名字中谁是猴子？@newline@A.孙悟空@newline@B.猪八戒@newline@C.沙悟净@newline@D.唐僧";
-		System.out.println(s.substring(s.indexOf("A" + "."), s.indexOf("B" + ".")));
+		System.out.println(s.substring(s.indexOf("A" + "."), s.indexOf("B"
+				+ ".")));
 	}
 }

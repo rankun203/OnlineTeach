@@ -22,6 +22,7 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<ExerciseSet> allExerciseSet() {
 		Session s = sf.getCurrentSession();
@@ -39,6 +40,7 @@ public class ExerciseSetDAOImpl implements IExerciseSetDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<ExerciseSet> findByStudentId(int sid) {
 		Session s = sf.getCurrentSession();
