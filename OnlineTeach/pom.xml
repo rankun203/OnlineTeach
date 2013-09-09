@@ -30,6 +30,10 @@
 		</developer>
 	</developers>
 
+	<properties>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>com.springsource.repository.bundles.release</id>
@@ -265,6 +269,13 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
@@ -280,6 +291,67 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.5</version>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.26</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<username>gitproject</username>
+					<password>gitproject</password>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost:3306/</url>
+				</configuration>
+				<executions>
+					<execution>
+						<id>drop-db-before-test-if-any</id>
+						<phase>install</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<!-- need another database to drop the targeted one -->
+							<url>jdbc:mysql://localhost:3306/test</url>
+							<autocommit>true</autocommit>
+							<sqlCommand>drop database onlineteach</sqlCommand>
+							<!-- ignore error when database is not avaiable -->
+							<onError>continue</onError>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-db</id>
+						<phase>install</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://localhost:3306/</url>
+							<!-- no transaction -->
+							<autocommit>true</autocommit>
+							<sqlCommand>create database onlineteach</sqlCommand>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-schema</id>
+						<phase>install</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>docs/dbbackup.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

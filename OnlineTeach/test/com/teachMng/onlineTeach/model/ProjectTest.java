@@ -19,17 +19,13 @@ public class ProjectTest extends AbstractJUnit4SpringContextTests {
 	public static void beforeC() {
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
 				.buildServiceRegistry();
-		sf = new Configuration().configure().buildSessionFactory(
+		sf = new Configuration().configure("lonely.hibernate.cfg.xml").buildSessionFactory(
 				serviceRegistry);
 	}
 
 	@AfterClass
 	public static void afterC() {
 		sf.close();
-	}
-
-	public static void main(String[] args) {
-		new SchemaExport(new Configuration().configure()).create(true, true);
 	}
 
 	@Test
