@@ -251,11 +251,11 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-		    <artifactId>servlet-api</artifactId>
-		    <version>2.5</version>
-		    <type>jar</type>
-		    <scope>provided</scope>
-		    <optional>false</optional>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<type>jar</type>
+			<scope>provided</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -337,11 +337,9 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<!-- need another database to drop the targeted one -->
 							<url>jdbc:mysql://localhost:3306/test</url>
 							<autocommit>true</autocommit>
-							<sqlCommand>drop database onlineteach</sqlCommand>
-							<!-- ignore error when database is not avaiable -->
+							<sqlCommand>drop database if exists onlineteach</sqlCommand>
 							<onError>continue</onError>
 						</configuration>
 					</execution>
@@ -353,7 +351,6 @@
 						</goals>
 						<configuration>
 							<url>jdbc:mysql://localhost:3306/</url>
-							<!-- no transaction -->
 							<autocommit>true</autocommit>
 							<sqlCommand>create database onlineteach</sqlCommand>
 						</configuration>
@@ -365,6 +362,7 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
+							<url>jdbc:mysql://localhost:3306/onlineteach</url>
 							<autocommit>true</autocommit>
 							<srcFiles>
 								<srcFile>docs/dbbackup.sql</srcFile>
