@@ -1,7 +1,7 @@
 OnlineTeach
 ===========
 
-软件技术专业教学综合管理平台 在线教学模块
+软件技术专业教学综合管理平台 在线教学模块[![Build Status](https://travis-ci.org/[rankun203]/[OnlineTeach].png)](https://travis-ci.org/[rankun203]/[OnlineTeach])
 
 ===========
 <h3>Installation</h3><br>
