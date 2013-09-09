@@ -3,11 +3,29 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 ####软件技术专业教学综合管理平台 在线教学模块
 
 ##Installation  
+#####Linux
+开始之前  
+0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，可以忽略本步）
 
-    1.编译整个项目
-    2.部署数据库（docs/dbbackup.sql）
-    3.部署程序
+    cd ~
+    mkdir git
+    cd git
+0.确认已经安装mysql,并且有用户名为gitproject, 密码为gitproject的用户。  
+  如果没有请参照[Installing MySQL on Linux][]  
+  如果您使用Ubuntu相关的系统，运行以下命令：
 
+    sudo apt-get install mysql-server mysql-client
+    #弹出的蓝底灰色界面中输入你自己想出来的root用户的密码，请牢记该密码
+    mysql -u root -p
+    #输入刚刚设置的root用户的密码
+    mysql> create user gitproject@localhost identified by 'gitproject';
+    mysql> create database onlineteach;
+    mysql> grant all on onlineteach.* to gitproject;
+    mysql> flush privileges;
+1.使用git克隆版本库(如果没有安装git,请访问 [setup git][] )
+
+    git clone git@github.com:rankun203/OnlineTeach.git
+2.
 
 ####Dependences
 #####Environment：`Tomcat 6.0+ `
@@ -65,3 +83,6 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     struts2-core-2.3.8.jar
     struts2-spring-plugin-2.3.8.jar
     xwork-core-2.3.8.jar
+
+[setup git]: https://help.github.com/articles/set-up-git
+[Installing MySQL on Linux]: http://dev.mysql.com/doc/refman/5.7/en/linux-installation.html
