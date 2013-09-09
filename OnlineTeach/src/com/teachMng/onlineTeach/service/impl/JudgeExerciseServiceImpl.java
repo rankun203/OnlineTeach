@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.IJudgeExerciseDAO;
-import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
 import com.teachMng.onlineTeach.service.IJudgeExerciseService;
 @Component("judgeExerciseService")

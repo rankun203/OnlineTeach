@@ -17,7 +17,6 @@ import org.junit.Test;
 
 import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
-import com.teachMng.onlineTeach.model.exercise.ExerciseSetQuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
 import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.SelectionExercise;

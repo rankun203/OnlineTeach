@@ -2,7 +2,7 @@
 SQLyog Ultimate v9.62 
 MySQL - 5.5.27 : Database - onlineteach
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
