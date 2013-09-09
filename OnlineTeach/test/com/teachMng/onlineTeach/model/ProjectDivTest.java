@@ -4,9 +4,6 @@ import java.util.Iterator;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -14,15 +11,12 @@ import com.teachMng.onlineTeach.util.HibernateUtil;
 @ContextConfiguration(locations="classpath:applicationContext.xml")
 public class ProjectDivTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
-	@BeforeClass
 	public static void beforeC() {
 		sf = HibernateUtil.getSessionFactory();
 	}
-	@AfterClass 
 	public static void afterC() {
 		sf.close();
 	}
-	@Test
 	public void testSave() {
 		Project project = null;
 		Student student = null;
@@ -44,9 +38,8 @@ public class ProjectDivTest extends AbstractJUnit4SpringContextTests {
 		se.save(projectDiv);
 		se.getTransaction().commit();
 	}
-	@Test
+	@SuppressWarnings("rawtypes")
 	public void testGet() {
-		ProjectDiv projectDiv = null;
 		String hql = "from ProjectDiv pd where pd.pdID = 0";
 		Session s = sf.getCurrentSession();
 		s.beginTransaction();

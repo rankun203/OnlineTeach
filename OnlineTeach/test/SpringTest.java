@@ -1,6 +1,5 @@
 import javax.annotation.Resource;
 
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -16,7 +15,6 @@ public class SpringTest extends AbstractJUnit4SpringContextTests {
 	/**
 	 * echo 11
 	 */
-	@Test
 	public void test() {
 		System.out.println(classRoomService.allClassRoom().size());
 	}

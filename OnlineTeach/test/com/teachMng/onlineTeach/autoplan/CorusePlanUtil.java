@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -17,7 +16,6 @@ import com.teachMng.onlineTeach.dto.TeacherCoursePlanPara;
 public class CorusePlanUtil extends AbstractJUnit4SpringContextTests {
 	@Resource(name="coursePlanUtil")
 	CoursePlanUtil cpu;
-	@Test
 	public void getClassCoursePlan() {          //获取班级课表
 		Set<ClassCoursePlanPara> cpps = cpu.getClassCoursePlanByClassId(1);
 		Iterator<ClassCoursePlanPara> cppIter = cpps.iterator();
@@ -28,7 +26,6 @@ public class CorusePlanUtil extends AbstractJUnit4SpringContextTests {
 			System.out.println(cpp.getCourseName() + "        " + cpp.getRoomName() + "        " + cpp.getTeacherName() + "        " + cpp.getParagraph());
 		}
 	}
-	@Test
 	public void getTeacherCoursePlan() {   //获取教师课表
 		Set<TeacherCoursePlanPara> cpps = cpu.getTeacherCoursePlanByTeacherId(1);
 		Iterator<TeacherCoursePlanPara> cppIter = cpps.iterator();
@@ -39,7 +36,6 @@ public class CorusePlanUtil extends AbstractJUnit4SpringContextTests {
 			System.out.println(cpp.getCourseName() + "        " + cpp.getRoomName() + "        " + cpp.getMajorName() + cpp.getClassName() + "        " + cpp.getParagraph());
 		}	
 	}
-	@Test
 	public void getRoomCoursePlan() {   //获取教室课表
 		Set<RoomCoursePlanPara> cpps = cpu.getRoomCoursePlanByRoomId(1);
 		Iterator<RoomCoursePlanPara> cppIter = cpps.iterator();

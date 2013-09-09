@@ -34,7 +34,6 @@ public class AutoPlanTest extends AbstractJUnit4SpringContextTests {
 		//ap.insToDB();
 
 	}
-	@Test
 	public void testExerciseSet() {
 		ess.getExerciseSet(2);
 	}

@@ -2,8 +2,6 @@ package com.teachMng.onlineTeach.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -11,11 +9,9 @@ import com.teachMng.onlineTeach.util.HibernateUtil;
 @ContextConfiguration(locations="classpath:applicationContext.xml")
 public class MajorCourseTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf ;
-	@BeforeClass
 	public static void before() {
 		sf = HibernateUtil.getSessionFactory();
 	}
-	@Test
 	public void test() {
 		Session s = sf.openSession();
 		s.beginTransaction();

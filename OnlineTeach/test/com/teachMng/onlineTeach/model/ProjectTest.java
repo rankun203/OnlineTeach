@@ -5,17 +5,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 @ContextConfiguration(locations="classpath:applicationContext.xml")
 public class ProjectTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 
-	@BeforeClass
 	public static void beforeC() {
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
 				.buildServiceRegistry();
@@ -23,12 +18,10 @@ public class ProjectTest extends AbstractJUnit4SpringContextTests {
 				serviceRegistry);
 	}
 
-	@AfterClass
 	public static void afterC() {
 		sf.close();
 	}
 
-	@Test
 	public void testProject_group_replySave() {
 		ProjectGroup pg1 = new ProjectGroup();
 		pg1.setPgName("神影1组");
@@ -44,7 +37,6 @@ public class ProjectTest extends AbstractJUnit4SpringContextTests {
 		s.getTransaction().commit();
 	}
 
-	@Test
 	public void testProject_group_replyGet() {
 		ProjectGroup pg1 = null;
 		Session s = sf.getCurrentSession();
