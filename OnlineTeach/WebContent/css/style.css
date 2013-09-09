@@ -1366,6 +1366,7 @@ input[type="radio"] {
 /* 课程表查询*/
 #searchType {
 	margin-top:5px;
+	height:25px;
 	margin-left:300px;	
 }
 .selectView_coursePlan { 

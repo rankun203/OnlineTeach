@@ -11,7 +11,8 @@
 	<ul>
 	
 <%if(role.equals("teacher")){%>		<li><a href="generateCourseplan.jsp" class="subMainNavItemActive">学期课表生成</a></li><%} %>
-				<li><a href="courseplanCateSearch.jsp">课表分类查询</a></li>
+<%if(role.equals("teacher")){%>		<li><a href="courseplanCateSearch.jsp">课表分类查询</a></li><%} %>
+<%if(role.equals("student")){%>		<li><a href="courseplanCateSearch.jsp">课表查询</a></li><%} %>
 <%if(role.equals("teacher")){%>		<li><a href="courseplanExport.jsp">课表分类导出</a></li><%} %>
 <%if(role.equals("teacher")){%>		<li><a href="courseplanUphold.jsp">课表分类维护</a></li><%} %>
 	</ul>
