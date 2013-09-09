@@ -92,6 +92,8 @@
 
 <jsp:include page="include/footer.jsp" />
 <script src="script/workreply.js"></script>
+<script type="text/javascript">
 
+</script>
 </body>
 </html>

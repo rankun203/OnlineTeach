@@ -3,6 +3,7 @@ package com.teachMng.onlineTeach.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -49,7 +50,7 @@ public class MajorsCourse implements Serializable{
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-
+	@Column(name="paragraph")
 	public int getParagraph() {
 		return paragraph;
 	}

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,7 +30,15 @@ public class Course implements Serializable {
 	private int priority;
 	private int roomType;
 	private Set<Teacher> teachers = new HashSet<Teacher>();
-
+	private Set<MajorsCourse> majorsCourses = new HashSet<MajorsCourse>();
+	
+	@OneToMany(mappedBy="course", cascade=CascadeType.ALL)
+	public Set<MajorsCourse> getMajorsCourses() {
+		return majorsCourses;
+	}
+	public void setMajorsCourses(Set<MajorsCourse> majorsCourses) {
+		this.majorsCourses = majorsCourses;
+	}
 	public int getRoomType() {
 		return roomType;
 	}
