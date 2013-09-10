@@ -335,7 +335,7 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<url>jdbc:mysql://localhost:3306/test</url>
+							<url>jdbc:mysql://localhost:3306/</url>
 							<autocommit>true</autocommit>
 							<sqlCommand>drop database if exists onlineteach</sqlCommand>
 							<onError>continue</onError>

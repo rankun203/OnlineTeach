@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * desc:项目组
  * */
 @Entity
-@Table(name="t_projectGroup")
+@Table(name="t_projectgroup")
 public class ProjectGroup implements Serializable {
 	/**
 	 * 
