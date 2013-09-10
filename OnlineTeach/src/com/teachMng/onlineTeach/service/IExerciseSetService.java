@@ -16,6 +16,8 @@ public interface IExerciseSetService {
 	boolean insert(ExerciseSet es);
 	boolean save(ExerciseSet es);
 	String getExerciseSet(int esID);
+	String getCwCoursing(int count);
+	boolean workReply(int esId, String type, int topicId, String answer);
 	
 	List<SelectionExercise> getSelectionExerciseById(int esId);
 	List<CompletionExercise> getCompletionExerciseById(int esId);

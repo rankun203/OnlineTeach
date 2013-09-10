@@ -253,7 +253,20 @@ $("document").ready(function(){
 	});
 });
 $.extend({
+	getCwCoursing:function() {
+		var url = "ce/getCwCoursing";
+		$.post(url, function(data){
+			var obj = eval("(" + data + ")");
+			for(var i = 0; i < obj.length; i++) {
+				var s = obj[i];
+				if(obj[i].length > 20)
+					s = obj[i].substring(1, 20) + ".....";
+				$("#cwCoursing").append("<li><a href='#'>" + s + "</a></li>");
+			}
+		});
+	},	
 	getAllExercise:function() {
+//		$.getCwCoursing();
 		$.post("ce/getAllExercise", "", function(data){
 			$.showAllExercise(eval("(" + data + ")"));
 		});

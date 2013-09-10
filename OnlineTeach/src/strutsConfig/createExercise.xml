@@ -10,5 +10,6 @@
 		<action name="quickLook" class="createExercise" method="quickLook" />		
 		<action name="showAnswerInfo" class="createExercise" method="showAnswerInfo" />		
 		<action name="deleteById" class="createExercise" method="deleteById" />		
+		<action name="getCwCoursing" class="createExercise" method="getCwCoursing" />
     </package>
 </struts>

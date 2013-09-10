@@ -105,6 +105,11 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 			}
 		}
 	}
+	public void getCwCoursing() {
+		String json = esService.getCwCoursing(10);
+		System.out.println(json);
+		out().print(json);
+	}
 	public void getAllExercise() {
 		String json = "[";
 		json += ceService.getCEString();
