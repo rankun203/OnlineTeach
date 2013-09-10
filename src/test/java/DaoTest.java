@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import org.junit.Ignore;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -30,6 +31,7 @@ import com.teachMng.onlineTeach.service.ITeacherService;
  * 自动排课测试
  */
 @ContextConfiguration(locations="classpath:applicationContext.xml")
+@Ignore
 public class DaoTest extends AbstractJUnit4SpringContextTests{
 	List<Student> students = null;
 	List<ClassRoom> classRooms = null;

@@ -1,11 +1,13 @@
 import javax.annotation.Resource;
 
+import org.junit.Ignore;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.teachMng.onlineTeach.service.IClassRoomService;
 
 @ContextConfiguration(locations="classpath:applicationContext.xml")
+@Ignore
 public class SpringTest extends AbstractJUnit4SpringContextTests {
 	/**
 	 * 先确认有数据

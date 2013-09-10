@@ -2,10 +2,12 @@ package com.teachMng.onlineTeach.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Ignore;
 
 import com.teachMng.onlineTeach.util.HibernateUtil;
 import com.teachMng.onlineTeach.util.SerilNumber;
 
+@Ignore
 public class CoursePlanItemTest {
 	static SessionFactory sf = null;
 	public static void beforeC() {

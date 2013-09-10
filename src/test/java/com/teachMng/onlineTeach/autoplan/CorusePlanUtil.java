@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.junit.Ignore;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -13,6 +14,7 @@ import com.teachMng.onlineTeach.dto.RoomCoursePlanPara;
 import com.teachMng.onlineTeach.dto.TeacherCoursePlanPara;
 
 @ContextConfiguration(locations="classpath:applicationContext.xml")
+@Ignore
 public class CorusePlanUtil extends AbstractJUnit4SpringContextTests {
 	@Resource(name="coursePlanUtil")
 	CoursePlanUtil cpu;

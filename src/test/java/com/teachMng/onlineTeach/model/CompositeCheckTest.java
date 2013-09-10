@@ -7,9 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.junit.Ignore;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 @ContextConfiguration(locations="classpath:applicationContext.xml")
+@Ignore
 public class CompositeCheckTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 	public static void beforeC() {

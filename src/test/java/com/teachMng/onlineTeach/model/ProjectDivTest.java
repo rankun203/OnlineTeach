@@ -4,11 +4,13 @@ import java.util.Iterator;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Ignore;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.teachMng.onlineTeach.util.HibernateUtil;
 @ContextConfiguration(locations="classpath:applicationContext.xml")
+@Ignore
 public class ProjectDivTest extends AbstractJUnit4SpringContextTests {
 	static SessionFactory sf = null;
 	public static void beforeC() {
