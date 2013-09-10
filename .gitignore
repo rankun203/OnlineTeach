@@ -1,11 +1,9 @@
+target/
+.settings/
+doc/
+
 *.class
 
-# Folders #
-/.settings
-
-# Spec Files #
-
-
-# Package Files #
-*.jar
+.project
+.classpath
 

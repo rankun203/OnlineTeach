@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.teachMng.onlineTeach</groupId>
-	<artifactId>OnlineTeach</artifactId>
-	<version>0.0.3</version>
-	<packaging>war</packaging>
-	<name>OnlineTeach</name>
+    <groupId>com.teachMng.onlineTeach</groupId>
+    <artifactId>OnlineTeach</artifactId>
+    <version>0.4</version>
+    <packaging>war</packaging>
+    <name>OnlineTeach</name>
 	<description>教学管理系统 - 在线教学模块</description>
 	<developers>
 		<developer>
@@ -30,17 +31,10 @@
 		</developer>
 	</developers>
 
-	<properties>
+    <properties>
+        <struts2.version>2.3.15.1</struts2.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-	</properties>
-
-	<repositories>
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>EBR Spring Release Repository</name>
-			<url>http:// repository.springsource.com/maven/bundles/release</url>
-		</repository>
-	</repositories>
+    </properties>
 
 	<dependencies>
 		<dependency>
@@ -250,36 +244,45 @@
 			<version>2.3.8</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
+			<scope>test</scope>
 		</dependency>
-	</dependencies>
 
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<testSourceDirectory>test</testSourceDirectory>
-		<resources>
-			<resource>
-				<directory>src</directory>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
+		<!-- Servlet & Jsp -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+	</dependencies>
+	    
+    <build>
+      <finalName>OnlineTeach</finalName>
+    	<plugins>
+    		<plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                   <source>1.6</source>
+                   <target>1.6</target>
+                </configuration>
+            </plugin>
+            			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.11</version>
@@ -287,30 +290,53 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<warName>OnlineTeach-${project.version}</warName>
-					<webappDirectory>${project.build.directory}/OnlineTeach</webappDirectory>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-				</configuration>
-			</plugin>
+
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat6-maven-plugin</artifactId>
 				<version>2.1</version>
-				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+						<version>1.7.5</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-			<plugin>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-			</plugin>
-			<plugin>
+
+    		<plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.7.v20120910</version>
+                <configuration>
+                    <stopKey>CTRL+C</stopKey>
+                    <stopPort>8999</stopPort>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>log4j.configuration</name>
+                            <value>file:${basedir}/src/main/resources/log4j.properties</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>slf4j</name>
+                            <value>false</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppSourceDirectory>${basedir}/src/main/webapp/</webAppSourceDirectory>
+                    <webAppConfig>
+                        <contextPath>OnlineTeach</contextPath>
+                        <descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+                    </webAppConfig>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                        <version>1.2.17</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>
 				<version>1.5</version>
@@ -369,6 +395,6 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	</build>
+    	</plugins>
+    </build>
 </project>

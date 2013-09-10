@@ -33,6 +33,7 @@ import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 import com.teachMng.onlineTeach.service.IStudentService;
 import com.teachMng.onlineTeach.service.ITeacherService;
 
+@SuppressWarnings("serial")
 @Component("exsGoAction")
 public class ExerciseGoAction extends ActionSupport implements
 		ServletResponseAware {
