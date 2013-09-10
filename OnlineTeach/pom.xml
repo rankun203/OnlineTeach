@@ -293,7 +293,7 @@
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<warName>OnlineTeach-${project.version}</warName>
-					<webappDirectory>${project.build.directory}/OnlineTeach-${project.version}</webappDirectory>
+					<webappDirectory>${project.build.directory}/OnlineTeach</webappDirectory>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
