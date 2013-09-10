@@ -253,9 +253,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
-			<type>jar</type>
 			<scope>provided</scope>
-			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
