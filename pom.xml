@@ -303,6 +303,14 @@
 						<version>1.7.5</version>
 					</dependency>
 				</dependencies>
+				<executions>
+					<execution>
+						<id>tomcat6-run</id>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -336,65 +344,6 @@
 						<version>1.2.17</version>
 					</dependency>
 				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<version>1.5</version>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.26</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<username>gitproject</username>
-					<password>gitproject</password>
-					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://localhost:3306/</url>
-				</configuration>
-				<executions>
-					<execution>
-						<id>drop-db-before-test-if-any</id>
-						<phase>install</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<url>jdbc:mysql://localhost:3306/</url>
-							<autocommit>true</autocommit>
-							<sqlCommand>drop database if exists onlineteach</sqlCommand>
-							<onError>continue</onError>
-						</configuration>
-					</execution>
-					<execution>
-						<id>create-db</id>
-						<phase>install</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<url>jdbc:mysql://localhost:3306/</url>
-							<autocommit>true</autocommit>
-							<sqlCommand>create database onlineteach</sqlCommand>
-						</configuration>
-					</execution>
-					<execution>
-						<id>create-schema</id>
-						<phase>install</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<url>jdbc:mysql://localhost:3306/onlineteach</url>
-							<autocommit>true</autocommit>
-							<srcFiles>
-								<srcFile>docs/dbbackup.sql</srcFile>
-							</srcFiles>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

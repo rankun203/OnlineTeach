@@ -15,6 +15,10 @@ MySQL - 5.5.27 : Database - onlineteach
 
 /*Table structure for table `t_checkattendance` */
 
+drop database if exists onlineteach;
+create database onlineteach;
+use onlineteach;
+
 DROP TABLE IF EXISTS `t_checkattendance`;
 
 CREATE TABLE `t_checkattendance` (

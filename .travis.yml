@@ -4,6 +4,5 @@ jdk:
 
 before_script:
   - echo "CREATE user gitproject@localhost identified by 'gitproject';\ncreate database onlineteach;\ngrant all on onlineteach.* to gitproject;\nflush privileges;\n" | mysql -u root
+  - mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 
-script:
-  - mvn install

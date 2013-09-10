@@ -19,7 +19,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     create database onlineteach;
     grant all on onlineteach.* to gitproject;
     flush privileges;
-    
+    exit;
 #####1.使用git克隆版本库(如果没有安装git,请访问 [setup git][]，如果是Ubuntu类系统，直接运行`sudo apt-get install git`)
 
     git clone git@github.com:rankun203/OnlineTeach.git
@@ -27,6 +27,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 
     cd OnlineTeach
     mvn install
+    mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 #####3.使用maven运行项目
 
     mvn tomcat6:run
@@ -53,7 +54,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     create database onlineteach;
     grant all on onlineteach.* to gitproject;
     flush privileges;
-    
+    exit;
 #####1.使用git克隆版本库(如果没有安装git,请访问 [setup git for windows][])
 
     git clone git@github.com:rankun203/OnlineTeach.git
@@ -61,6 +62,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 
     cd OnlineTeach
     mvn install
+    mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 #####3.使用maven运行项目
 
     mvn tomcat6:run
