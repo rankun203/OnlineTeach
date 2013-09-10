@@ -1,6 +1,9 @@
 language: java
 jdk:
   - oraclejdk7
+
 before_script:
-  - cd src
   - echo "CREATE user gitproject@localhost identified by 'gitproject';\ncreate database onlineteach;\ngrant all on onlineteach.* to gitproject;\nflush privileges;\n" | mysql -u root
+
+script:
+  - mvn install
