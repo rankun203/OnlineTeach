@@ -16,6 +16,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     mysql -u root -p
     #输入刚刚设置的root用户的密码，下面的命令都运行在mysql>中
     create user gitproject@localhost identified by 'gitproject';
+    flush privileges;
     create database onlineteach;
     grant all on onlineteach.* to gitproject;
     flush privileges;
@@ -48,9 +49,11 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     #依据你的系统，点击`Windows (x86, 32-bit), MSI Installer`或是`Windows (x86, 32-bit), MSI Installer`后的Download按钮
     #点击底部的`No thanks, just start my download.`
     #安装时注意设置root账户的密码，并且牢记该密码！
+    #现在启动MySQL命令行，可以进入开始菜单打开 `MySQL>MySQL Server x.x>MySQL 5.5 Command Line Client`
     mysql -u root -p
     #输入刚刚设置的root用户的密码，下面的命令都运行在mysql>中
     create user gitproject@localhost identified by 'gitproject';
+    flush privileges;
     create database onlineteach;
     grant all on onlineteach.* to gitproject;
     flush privileges;
