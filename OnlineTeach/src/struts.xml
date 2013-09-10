@@ -28,6 +28,7 @@
 		<action name="getExss" class="exsGoAction" method="getMyExerciseSets" />
 		<action name="getExs" class="exsGoAction" method="getExerciseSet" />
 		<action name="assignment" class="exsGoAction" method="assignment" />
+		<action name="commitAnswer" class="exsGoAction" method="workReply" />
 	</package>
 	
 </struts>

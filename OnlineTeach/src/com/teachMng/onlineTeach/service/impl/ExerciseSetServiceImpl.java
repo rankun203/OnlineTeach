@@ -1,8 +1,10 @@
 package com.teachMng.onlineTeach.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -68,7 +70,8 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 		List<CompletionExercise> ceList = getCompletionExerciseById(esID);
 		List<JudgeExercise> jeList = getJudgeExerciseById(esID);
 		List<QuestionExercise> qeList = getQuestionExerciseById(esID);
-
+		ExerciseSet es = findById(esID);
+		int esId = es.getId();
 		//System.out.println("selection size:" + seList.size() + " completion size:" + ceList.size());
 		
 		for(int i=0; i<seList.size(); i++){
@@ -76,7 +79,10 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			else str += ",{";
 			str += "\"type\":\"selection\",";
 			String selCtn = seList.get(i).getFullTopic();
-			str += "\"selCtn\":\""+selCtn+"\"";
+			int selId = seList.get(i).getId();
+			str += "\"selCtn\":\""+selCtn+"\",";
+			str += "\"esId\":\""+esId+"\",";
+			str += "\"selId\":\""+selId+"\"";
 			str += "}";
 		}
 		for(int i=0; i<ceList.size(); i++){
@@ -84,7 +90,10 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			else str += "{";
 			str += "\"type\":\"completion\",";
 			String cplCtn = ceList.get(i).getFullTopic();
-			str += "\"cplCtn\":\""+cplCtn+"\"";
+			int cplId = ceList.get(i).getId();
+			str += "\"cplCtn\":\""+cplCtn+"\",";
+			str += "\"esId\":\""+esId+"\",";
+			str += "\"cplId\":\""+cplId+"\"";
 			str += "}";
 		}
 		for(int i=0; i<jeList.size(); i++){
@@ -92,7 +101,10 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			else str += "{";
 			str += "\"type\":\"judge\",";
 			String jugCtn = jeList.get(i).getFullTopic();
-			str += "\"jugCtn\":\""+jugCtn+"\"";
+			int jugId = jeList.get(i).getId();
+			str += "\"jugCtn\":\""+jugCtn+"\",";
+			str += "\"esId\":\""+esId+"\",";
+			str += "\"jugId\":\""+jugId+"\"";
 			str += "}";
 		}
 		for(int i=0; i<qeList.size(); i++){
@@ -100,7 +112,10 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			else str += "{";
 			str += "\"type\":\"question\",";
 			String qesCtn = qeList.get(i).getFullTopic();
-			str += "\"qesCtn\":\""+qesCtn+"\"";
+			int qesId = qeList.get(i).getId();
+			str += "\"qesCtn\":\""+qesCtn+"\",";
+			str += "\"esId\":\""+esId+"\",";
+			str += "\"qesId\":\""+qesId+"\"";			
 			str += "}";
 		}
 		str += "]";
@@ -149,6 +164,82 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 			qeList.add(_esqe.getQe());
 		}
 		return qeList;
+	}
+	@Override
+	public boolean workReply(int esId, String type, int topicId, String answer) {
+		ExerciseSet es = findById(esId);
+		if("completion".equals(type)) {
+			Iterator<ExerciseSetCompletionExercise> esceIter = es.getEsce().iterator();
+			ExerciseSetCompletionExercise esce = null;
+			while(esceIter.hasNext()) {
+				esce = esceIter.next();
+				if(esce.getCe().getId() == topicId) {
+					esce.setStuAnswer(answer);
+				}
+			}
+		} else if("selection".equals(type)) {
+			Iterator<ExerciseSetSelectionExercise> esseIter = es.getEsse().iterator();
+			ExerciseSetSelectionExercise esse = null;
+			while(esseIter.hasNext()) {
+				esse = esseIter.next();
+				if(esse.getSe().getId() == topicId) {
+					esse.setStuAnswer(answer);
+				}
+			}
+		} else if("judge".equals(type)) {
+			Iterator<ExerciseSetJudgeExercise> esjeIter = es.getEsje().iterator();
+			ExerciseSetJudgeExercise esje = null;
+			while(esjeIter.hasNext()) {
+				esje = esjeIter.next();
+				if(esje.getJe().getId() == topicId) {
+					if("1".equals(answer))
+						esje.setStuAnswerIsRight(true);
+					else if("2".equals(answer)) 
+						esje.setStuAnswerIsRight(false);
+				}
+			}
+		} else if("question".equals(type)) {
+			Iterator<ExerciseSetQuestionExercise> esqeIter = es.getEsqe().iterator();
+			ExerciseSetQuestionExercise esqe = null;
+			while(esqeIter.hasNext()) {
+				esqe = esqeIter.next();
+				if(esqe.getQe().getId() == topicId) {
+					esqe.setStuAnswer(answer);
+				}
+			}
+		}
+		save(es);
+		return false;
+	}
+	@Override
+	public String getCwCoursing(int count) {
+		Set<String> courses = new HashSet<String>();
+		Iterator<ExerciseSet> esIter = allExerciseSet().iterator();
+		ExerciseSet es = null;
+		while(esIter.hasNext()) {
+			es = esIter.next();
+			for(ExerciseSetSelectionExercise esse : es.getEsse()) {
+				courses.add(esse.getSe().getFullTopic().split("@hr@")[0]);
+			}
+			for(ExerciseSetCompletionExercise esce : es.getEsce()) {
+				courses.add(esce.getCe().getFullTopic());
+			}
+			for(ExerciseSetQuestionExercise esqe : es.getEsqe()) {
+				courses.add(esqe.getQe().getFullTopic());
+			}
+			for(ExerciseSetJudgeExercise esje : es.getEsje()) {
+				courses.add(esje.getJe().getFullTopic().split("@hr@")[0]);
+			}
+		}
+		String s = "[";
+		Iterator<String> cIter = courses.iterator();
+		for(int i = 0; i < count && cIter.hasNext(); i++) {
+			String t = cIter.next();
+			if(0 != i)s += ", ";
+			s += "\"" + t + "\"";  
+		}
+		s += "]";
+		return s;
 	}
 
 }

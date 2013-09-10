@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/jsp; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.teachMng.onlineTeach.model.*"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String userRole = (String)(session.getAttribute("usertype"));
 	String role = "";
@@ -35,8 +36,8 @@
         <div class="siteTitle pullleft">在线教学</div>
         <div class="mainNav pullleft">
             <ul>
-                <li class="pullleft"><a class="aMainNavItem" id="mainNavA" href="#" onClick="return false;" onMouseOver="mainNavExchange('mainNavA', 'subNavA');">教学排课</a></li>
-                <li class="pullleft"><a class="aMainNavItem aMainNavItemActive" href="#" id="mainNavB" onClick="return false;" onMouseOver="mainNavExchange('mainNavB', 'subNavB');">课堂练习</a></li>
+                <li class="pullleft"><a class="aMainNavItem aMainNavItemActive" id="mainNavA" href="#" onClick="return false;" onMouseOver="mainNavExchange('mainNavA', 'subNavA');">教学排课</a></li>
+                <li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavB" onClick="return false;" onMouseOver="mainNavExchange('mainNavB', 'subNavB');">课堂练习</a></li>
                 <li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavC" onClick="return false;" onMouseOver="mainNavExchange('mainNavC', 'subNavC');">教学资料</a></li>
                 <li class="pullleft"><a class="aMainNavItem" href="#" id="mainNavD" onClick="return false;" onMouseOver="mainNavExchange('mainNavD', 'subNavD');">课堂考核</a></li>
             </ul>
@@ -67,8 +68,10 @@
                 <div class="userProfileItem"><%=userRole==null?"未登录":userRole%></div>
             </div>
             <div class="userProfileRight pullright">
-                <div class="userProfileItem">正在上课：计软113-2 Java</div>
+                <div class="userProfileItem"><s:property value="#session.user.schoolClass.major.majorName"/>&nbsp;&nbsp;<s:property value="#session.user.schoolClass.scName"/></div>
+                <s:if test="#session.user.schoolClass.major.majorName != null">
                 <div class="userProfileItem">2013年 4月 8日</div>
+                </s:if>
             </div>
         </div>
         <%if(role!=null&&role!=""&&!(role.equals(""))){%>

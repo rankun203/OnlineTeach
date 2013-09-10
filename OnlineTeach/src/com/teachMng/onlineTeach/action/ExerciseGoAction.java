@@ -50,9 +50,15 @@ public class ExerciseGoAction extends ActionSupport implements
 	private String exs;
 	private String sid;
 	private String esId;
-
+	private String topicId;
+	private String type;
+	private String answer;
 	// TODO 教师的答题动态更新功能
-
+	public String workReply() {
+		System.out.println("type:" + type + "  esId:" + esId + "   topicid:" + topicId + "   answer:" + answer);
+		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId), answer);
+		return null;
+	}
 	/**
 	 * 获取题目集，组成Json数据组 return [ { "type":"selection", "selCtn":"我是选择题的内容" }, {
 	 * "type":"completion", "cplCtn":"我是填空题的内容" }, { "type":"judge",
@@ -424,5 +430,27 @@ public class ExerciseGoAction extends ActionSupport implements
 
 	public void setEsId(String esId) {
 		this.esId = esId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getTopicId() {
+		return topicId;
+	}
+	public void setTopicId(String topicId) {
+		this.topicId = topicId;
 	}
 }
