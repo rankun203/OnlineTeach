@@ -54,10 +54,12 @@ public class SchoolClassDAOImpl implements ISchoolClassDAO {
 		//s.getTransaction().commit();
 		return true;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getStudents(int scId) {
 		Session s = sf.getCurrentSession();
-		List stuList = s.createQuery("from Student s where s.schoolClass=?").setInteger(0, scId).list();
-		return (List<Student>)stuList;
+		List<Student> stuList = (List<Student>)(s.createQuery("from Student s where s.schoolClass=?")
+				.setInteger(0, scId).list());
+		return stuList;
 	}
 }

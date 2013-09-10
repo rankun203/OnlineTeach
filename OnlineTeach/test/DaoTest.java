@@ -5,7 +5,6 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
-import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -336,7 +335,6 @@ public class DaoTest extends AbstractJUnit4SpringContextTests{
 		init();
 		autoPlan();
 	}
-	@Test
 	public void test() {
 		start();
 		Iterator<CoursePlanItem> cpiIter = coursePlan.iterator();

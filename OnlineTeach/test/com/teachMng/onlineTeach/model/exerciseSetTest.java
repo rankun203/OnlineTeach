@@ -11,13 +11,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
-import com.teachMng.onlineTeach.model.exercise.ExerciseSetQuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
 import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
@@ -27,7 +23,6 @@ public class exerciseSetTest {
 	ServiceRegistry serviceRegistry;
 	SessionFactory sf;
 
-	@Before
 	public void before(){
 		Configuration configuration = new Configuration();
 		configuration = configuration.configure("lonely.hibernate.cfg.xml");
@@ -36,7 +31,6 @@ public class exerciseSetTest {
 		serviceRegistry = srb.buildServiceRegistry();
 		sf = configuration.buildSessionFactory(serviceRegistry);
 	}
-	@Test
 	public void exerciseTest(){
 		Teacher t1 = new Teacher("老师1");
 
@@ -240,7 +234,6 @@ public class exerciseSetTest {
 		sf.getCurrentSession().close();
 	}
 	
-	@Test
 	public void replyTest(){
 		Student s1 = new Student("学生1");
 
@@ -254,13 +247,11 @@ public class exerciseSetTest {
 		sf.getCurrentSession().close();
 	}
 
-	@Test
 	public void setUp(){
 System.out.println("生成数据库结构");
 		new SchemaExport(new Configuration().configure("lonely.hibernate.cfg.xml")).create(true, true);
 System.out.println("数据库结构生成结束");
 	}
-	@After
 	public void after(){
 	}
 }

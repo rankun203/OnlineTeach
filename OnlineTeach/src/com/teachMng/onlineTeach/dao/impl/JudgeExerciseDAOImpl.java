@@ -21,6 +21,7 @@ public class JudgeExerciseDAOImpl implements IJudgeExerciseDAO {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<JudgeExercise> allExercise() {
 		Session s = sf.getCurrentSession();

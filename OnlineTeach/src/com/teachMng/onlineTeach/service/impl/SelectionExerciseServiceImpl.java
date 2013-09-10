@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.teachMng.onlineTeach.dao.ISelectionExerciseDAO;
-import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
-import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
 import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 @Component("selectionExerciseService")

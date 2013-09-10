@@ -2,24 +2,18 @@ package com.teachMng.onlineTeach.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import com.teachMng.onlineTeach.util.HibernateUtil;
 import com.teachMng.onlineTeach.util.SerilNumber;
 
 public class CoursePlanItemTest {
 	static SessionFactory sf = null;
-	@BeforeClass
 	public static void beforeC() {
 		sf = HibernateUtil.getSessionFactory();
 	}
-	@AfterClass 
 	public static void afterC() {
 		sf.close();
 	}
-	@Test
 	public void testSave() {
 		ClassRoom cr = new ClassRoom();
 		cr.setCrName("哈哈");
@@ -59,7 +53,6 @@ public class CoursePlanItemTest {
 		s.save(cpi);
 		s.getTransaction().commit();
 	}
-	@Test
 	public void testGet() {
 		CoursePlanItem cpi = null;
 		Session s = sf.getCurrentSession();

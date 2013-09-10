@@ -21,6 +21,7 @@ public class SelectionExerciseDAOImpl implements ISelectionExerciseDAO {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<SelectionExercise> allExercise() {
 		Session s = sf.getCurrentSession();
