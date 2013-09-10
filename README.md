@@ -23,7 +23,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     exit;
 #####1.使用git克隆版本库(如果没有安装git,请访问 [setup git][]，如果是Ubuntu类系统，直接运行`sudo apt-get install git`)
 
-    git clone git@github.com:rankun203/OnlineTeach.git
+    git clone https://github.com/rankun203/OnlineTeach.git
 #####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
 
     cd OnlineTeach
@@ -60,7 +60,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     exit;
 #####1.使用git克隆版本库(如果没有安装git,请访问 [setup git for windows][])
 
-    git clone git@github.com:rankun203/OnlineTeach.git
+    git clone https://github.com/rankun203/OnlineTeach.git
 #####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
 
     cd OnlineTeach
