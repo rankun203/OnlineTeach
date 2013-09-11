@@ -116,6 +116,7 @@ public class CreateExercise extends ActionSupport implements ServletResponseAwar
 		json += jeService.getCEString();
 		json += qeService.getCEString();
 		json += seService.getCEString();
+		json += esService.getCwCoursing(10);
 		json += "]";
 		out().print(json);
 	}

@@ -222,7 +222,7 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 				courses.add(esse.getSe().getFullTopic().split("@hr@")[0]);
 			}
 			for(ExerciseSetCompletionExercise esce : es.getEsce()) {
-				courses.add(esce.getCe().getFullTopic());
+				courses.add(esce.getCe().getFullTopic().replaceAll("@space@", "_____"));
 			}
 			for(ExerciseSetQuestionExercise esqe : es.getEsqe()) {
 				courses.add(esqe.getQe().getFullTopic());
@@ -235,8 +235,8 @@ public class ExerciseSetServiceImpl implements IExerciseSetService {
 		Iterator<String> cIter = courses.iterator();
 		for(int i = 0; i < count && cIter.hasNext(); i++) {
 			String t = cIter.next();
-			if(0 != i)s += ", ";
-			s += "\"" + t + "\"";  
+			if(0 != i)s += ",";
+			s += "{\"fullTopic\":\"" + t + "\"}";  
 		}
 		s += "]";
 		return s;
