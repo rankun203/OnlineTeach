@@ -54,10 +54,9 @@ public class ExerciseGoAction extends ActionSupport implements
 	private String type;
 	private String answer;
 	// TODO 教师的答题动态更新功能
-	public String workReply() {
+	public void workReply() {
 		System.out.println("type:" + type + "  esId:" + esId + "   topicid:" + topicId + "   answer:" + answer);
 		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId), answer);
-		return null;
 	}
 	/**
 	 * 获取题目集，组成Json数据组 return [ { "type":"selection", "selCtn":"我是选择题的内容" }, {
@@ -291,6 +290,7 @@ public class ExerciseGoAction extends ActionSupport implements
 			System.out.println("分发题目发生错误!");
 			return null;
 		}
+		//System.out.println("________________________");
 		List<ExerciseSetJudgeExercise> esseList = new ArrayList<ExerciseSetJudgeExercise>();
 		ExerciseSetJudgeExercise _esse = null;
 		Iterator<JudgeExercise> _se = jeList.iterator();

@@ -12,12 +12,11 @@ MySQL - 5.5.27 : Database - onlineteach
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`onlineteach` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `onlineteach`;
 
 /*Table structure for table `t_checkattendance` */
-
-drop database if exists onlineteach;
-create database onlineteach;
-use onlineteach;
 
 DROP TABLE IF EXISTS `t_checkattendance`;
 
@@ -173,11 +172,11 @@ CREATE TABLE `t_exerciseset` (
   KEY `FK1EF29C3F7CB97AF` (`teacId`),
   CONSTRAINT `FK1EF29C3F7CB97AF` FOREIGN KEY (`teacId`) REFERENCES `t_teacher` (`teacID`),
   CONSTRAINT `FK1EF29C3F287455A9` FOREIGN KEY (`stuId`) REFERENCES `t_student` (`stuID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset` */
 
-insert  into `t_exerciseset`(`id`,`createDate`,`teacId`,`stuId`) values (1,'2013-07-01 14:17:20',19,1),(2,'2013-07-01 16:17:28',1,1),(3,'2013-07-01 16:19:56',2,1),(4,'2013-09-07 12:51:53',1,1);
+insert  into `t_exerciseset`(`id`,`createDate`,`teacId`,`stuId`) values (1,'2013-07-01 14:17:20',19,1),(2,'2013-07-01 16:17:28',1,1),(3,'2013-07-01 16:19:56',2,1),(4,'2013-09-07 12:51:53',1,1),(5,'2013-09-11 11:46:23',1,1);
 
 /*Table structure for table `t_exerciseset_t_completionexercise` */
 
@@ -198,7 +197,7 @@ CREATE TABLE `t_exerciseset_t_completionexercise` (
 
 /*Data for the table `t_exerciseset_t_completionexercise` */
 
-insert  into `t_exerciseset_t_completionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`esID`,`ceID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,2),(NULL,NULL,NULL,1,3),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,2,3),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,3,5);
+insert  into `t_exerciseset_t_completionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`esID`,`ceID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,2),(NULL,NULL,NULL,1,3),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,2,3),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,3,5),(NULL,NULL,NULL,5,2),(NULL,NULL,NULL,5,3),(NULL,NULL,NULL,5,4);
 
 /*Table structure for table `t_exerciseset_t_judgeexercise` */
 
@@ -214,14 +213,13 @@ CREATE TABLE `t_exerciseset_t_judgeexercise` (
   KEY `FK48C7F564CFB89383` (`esID`),
   KEY `FK48C7F5643564679E` (`esID`),
   KEY `FK48C7F564CFBAA4D0` (`jeID`),
-  CONSTRAINT `FK48C7F564CFBAA4D0` FOREIGN KEY (`jeID`) REFERENCES `t_judgeexercise` (`id`),
   CONSTRAINT `FK48C7F5643564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
-  CONSTRAINT `FK48C7F564CFB89383` FOREIGN KEY (`esID`) REFERENCES `t_judgeexercise` (`id`)
+  CONSTRAINT `FK48C7F564CFBAA4D0` FOREIGN KEY (`jeID`) REFERENCES `t_judgeexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_judgeexercise` */
 
-insert  into `t_exerciseset_t_judgeexercise`(`stuAnswerIsRight`,`stuScore`,`teacherComment`,`jeID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,4,1),(NULL,NULL,NULL,4,2),(NULL,NULL,NULL,5,2);
+insert  into `t_exerciseset_t_judgeexercise`(`stuAnswerIsRight`,`stuScore`,`teacherComment`,`jeID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,5),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,4,1),(NULL,NULL,NULL,4,2),(NULL,NULL,NULL,5,2);
 
 /*Table structure for table `t_exerciseset_t_questionexercise` */
 
@@ -237,9 +235,8 @@ CREATE TABLE `t_exerciseset_t_questionexercise` (
   KEY `FK48C5BC295B4F0F1C` (`esID`),
   KEY `FK48C5BC293564679E` (`esID`),
   KEY `FK48C5BC295B544F02` (`qeID`),
-  CONSTRAINT `FK48C5BC295B544F02` FOREIGN KEY (`qeID`) REFERENCES `t_questionexercise` (`id`),
   CONSTRAINT `FK48C5BC293564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
-  CONSTRAINT `FK48C5BC295B4F0F1C` FOREIGN KEY (`esID`) REFERENCES `t_questionexercise` (`id`)
+  CONSTRAINT `FK48C5BC295B544F02` FOREIGN KEY (`qeID`) REFERENCES `t_questionexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_questionexercise` */
@@ -260,14 +257,13 @@ CREATE TABLE `t_exerciseset_t_selectionexercise` (
   KEY `FKC04BF05985BFC378` (`esID`),
   KEY `FKC04BF0593564679E` (`esID`),
   KEY `FKC04BF05985C5EC1C` (`seID`),
-  CONSTRAINT `FKC04BF05985C5EC1C` FOREIGN KEY (`seID`) REFERENCES `t_selectionexercise` (`id`),
   CONSTRAINT `FKC04BF0593564679E` FOREIGN KEY (`esID`) REFERENCES `t_exerciseset` (`id`),
-  CONSTRAINT `FKC04BF05985BFC378` FOREIGN KEY (`esID`) REFERENCES `t_selectionexercise` (`id`)
+  CONSTRAINT `FKC04BF05985C5EC1C` FOREIGN KEY (`seID`) REFERENCES `t_selectionexercise` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_exerciseset_t_selectionexercise` */
 
-insert  into `t_exerciseset_t_selectionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`seID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,4),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,4,1);
+insert  into `t_exerciseset_t_selectionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`seID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,1,5),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,4),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,4,1);
 
 /*Table structure for table `t_file` */
 
