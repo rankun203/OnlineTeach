@@ -253,21 +253,18 @@ $("document").ready(function(){
 	});
 });
 $.extend({
-	getCwCoursing:function() {
-		var url = "ce/getCwCoursing";
-		$.post(url, function(data){
-			var obj = eval("(" + data + ")");
-			for(var i = 0; i < obj.length; i++) {
-				var s = obj[i];
-				if(obj[i].length > 20)
-					s = obj[i].substring(1, 20) + ".....";
-				$("#cwCoursing").append("<li><a href='#'>" + s + "</a></li>");
-			}
-		});
+	showCwCoursing:function(coursing) {
+		//console.log(coursing.length);
+		for(var i = 0; i < coursing.length; i++) {
+			var s = coursing[i].fullTopic;
+			if(coursing[i].fullTopic.length > 20)
+				s = coursing[i].fullTopic.substring(0, 20) + ".....";
+			$("#cwCoursing").append("<li><a href='#'>" + s + "</a></li>");
+		}
 	},	
 	getAllExercise:function() {
-//		$.getCwCoursing();
 		$.post("ce/getAllExercise", "", function(data){
+//			console.log(data);
 			$.showAllExercise(eval("(" + data + ")"));
 		});
 	},
@@ -345,12 +342,13 @@ $.extend({
 		});
 	},
 	showAllExercise:function(obj) {
-		for(var i = 0; i < obj.length; i++) {
+		for(var i = 0; i < obj.length - 1; i++) {
 			if(i%2 == 0)
 				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Odd");
 			else
 				$.appendExercise(obj[i].topic, obj[i].type + "_" + obj[i].id, "Even");
 		}
+		$.showCwCoursing(obj[obj.length-1]);
 	}
 });
 

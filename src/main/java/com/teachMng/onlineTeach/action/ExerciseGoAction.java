@@ -33,7 +33,6 @@ import com.teachMng.onlineTeach.service.ISelectionExerciseService;
 import com.teachMng.onlineTeach.service.IStudentService;
 import com.teachMng.onlineTeach.service.ITeacherService;
 
-@SuppressWarnings("serial")
 @Component("exsGoAction")
 public class ExerciseGoAction extends ActionSupport implements
 		ServletResponseAware {
@@ -121,8 +120,8 @@ public class ExerciseGoAction extends ActionSupport implements
 	 *             打印消息的时候如果出错会抛出异常
 	 */
 	public void assignment() throws IOException {
-		System.out.println("teacherId:" + teacherId + "____classId:" + classId
-				+ "____exs:" + exs);
+//		System.out.println("teacherId:" + teacherId + "____classId:" + classId
+//				+ "____exs:" + exs);
 		if (teacherId != null && !teacherId.equals("") && classId != null
 				&& !classId.equals("") && exs != null && !exs.equals("")) {
 			int teacherIdInt = Integer.parseInt(teacherId);
@@ -147,6 +146,7 @@ public class ExerciseGoAction extends ActionSupport implements
 			List<CompletionExercise> cplList = new LinkedList<CompletionExercise>();
 			List<JudgeExercise> jugList = new LinkedList<JudgeExercise>();
 			List<QuestionExercise> qusList = new LinkedList<QuestionExercise>();
+//			System.out.println("********" + exsTypeArray.length);
 			for (int i = 0; i < exsTypeArray.length; i++) {
 				if (exsTypeArray[i] != null) {
 					if (exsTypeArray[i].equals("selectionExercise")) {
@@ -170,18 +170,25 @@ public class ExerciseGoAction extends ActionSupport implements
 				es = new ExerciseSet();
 				es.setFounder(t);
 				es.setStudent(stuItor.next());
-				es = setSelectionExercise(es, seList);
-				es = setQuestionExercise(es, qusList);
-				es = setJudgeExercise(es, jugList);
-				es = setCompletionExercise(es, cplList);
-				System.out.println("exercise set :" + es);
+				if(seList.size() >0 )
+					es = setSelectionExercise(es, seList);
+				if(qusList.size() > 0)
+					es = setQuestionExercise(es, qusList);
+				//System.out.println(jugList.get(0).getFullTopic() + "******");
+				if(jugList.size() > 0)
+					es = setJudgeExercise(es, jugList);
+				if(cplList.size() > 0)
+					es = setCompletionExercise(es, cplList);
+				//System.out.println("exercise set :" + es);
+				System.out.println("completion size:" + es.getEsce().size() + "  judge size:" + es.getEsje().size() +
+						"  question size:" + es.getEsqe().size() + "  selection size:" + es.getEsse().size());
 				isOk = ess.save(es) && isOk;
-				System.out.println(isOk + "|" + es.getFounder().getTeacName()
-						+ "|" + getJudgeExercise(es).size() + "|"
-						+ getQuestionExercise(es).size() + "|"
-						+ getSelectionExercise(es).size() + "|"
-						+ getCompletionExercise(es).size() + "|"
-						+ es.getStudent().getStuName());
+//				System.out.println(isOk + "|" + es.getFounder().getTeacName()
+//						+ "|" + getJudgeExercise(es).size() + "|"
+//						+ getQuestionExercise(es).size() + "|"
+//						+ getSelectionExercise(es).size() + "|"
+//						+ getCompletionExercise(es).size() + "|"
+//						+ es.getStudent().getStuName());
 			}
 			String sucFaild = isOk ? "成功！" : "失败！";
 			response.setCharacterEncoding("utf-8");
