@@ -14,6 +14,7 @@
 					+ request.getContextPath() + request.getServletPath()%>' />
 </head>
 
+
 <body>
 	<jsp:include page="include/header.jsp" />
 	<div class="container">
