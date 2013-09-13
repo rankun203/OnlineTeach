@@ -50,14 +50,6 @@ public class ExerciseGoAction extends ActionSupport implements
 	private String exs;
 	private String sid;
 	private String esId;
-	private String topicId;
-	private String type;
-	private String answer;
-	// TODO 教师的答题动态更新功能
-	public void workReply() {
-		System.out.println("type:" + type + "  esId:" + esId + "   topicid:" + topicId + "   answer:" + answer);
-		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId), answer);
-	}
 	/**
 	 * 获取题目集，组成Json数据组 return [ { "type":"selection", "selCtn":"我是选择题的内容" }, {
 	 * "type":"completion", "cplCtn":"我是填空题的内容" }, { "type":"judge",
@@ -195,55 +187,6 @@ public class ExerciseGoAction extends ActionSupport implements
 					"{\"oktip\":\"" + isOk + "\",\"tip\":\"试卷发布" + sucFaild
 							+ "\"}");
 		}
-	}
-	public List<JudgeExercise> getJudgeExercise(ExerciseSet es) {
-		if(null == es) {
-			System.out.println("数据有误");
-			return null;
-		}
-		List<JudgeExercise> jeList = new ArrayList<JudgeExercise>();
-		Iterator<ExerciseSetJudgeExercise> esjeIter = es.getEsje().iterator();
-		while(esjeIter.hasNext()) {
-			jeList.add(esjeIter.next().getJe());
-		}
-		return jeList;
-	}
-	public List<QuestionExercise> getQuestionExercise(ExerciseSet es) {
-		if(null == es) {
-			System.out.println("数据有误");
-			return null;
-		}
-		List<QuestionExercise> qeList = new ArrayList<QuestionExercise>();
-		Iterator<ExerciseSetQuestionExercise> esjeIter = es.getEsqe().iterator();
-		while(esjeIter.hasNext()) {
-			qeList.add(esjeIter.next().getQe());
-		}
-		return qeList;
-	}
-	public List<SelectionExercise> getSelectionExercise(ExerciseSet es) {
-		if(null == es) {
-			System.out.println("数据有误");
-			return null;
-		}
-		List<SelectionExercise> jeList = new ArrayList<SelectionExercise>();
-		Iterator<ExerciseSetSelectionExercise> esjeIter = es.getEsse().iterator();
-		while(esjeIter.hasNext()) {
-			jeList.add(esjeIter.next().getSe());
-		}
-		return jeList;
-	}
-
-	public List<CompletionExercise> getCompletionExercise(ExerciseSet es) {
-		if (null == es) {
-			System.out.println("数据有误");
-			return null;
-		}
-		List<CompletionExercise> jeList = new ArrayList<CompletionExercise>();
-		Iterator<ExerciseSetCompletionExercise> esjeIter = es.getEsce().iterator();
-		while (esjeIter.hasNext()) {
-			jeList.add(esjeIter.next().getCe());
-		}
-		return jeList;
 	}
 
 	private ExerciseSet setSelectionExercise(ExerciseSet es,
@@ -438,27 +381,5 @@ public class ExerciseGoAction extends ActionSupport implements
 
 	public void setEsId(String esId) {
 		this.esId = esId;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-	public String getTopicId() {
-		return topicId;
-	}
-	public void setTopicId(String topicId) {
-		this.topicId = topicId;
 	}
 }

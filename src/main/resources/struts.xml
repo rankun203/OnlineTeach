@@ -30,5 +30,10 @@
 		<action name="assignment" class="exsGoAction" method="assignment" />
 		<action name="commitAnswer" class="exsGoAction" method="workReply" />
 	</package>
-	
+
+	<package name="work" extends="struts-default" namespace="/work">
+	    	<action name="commitAnswer" class="workAction" method="workReply" />
+	    	<action name="getRepliedWork" class="workAction" method="getRepliedWork" />
+	</package>
+
 </struts>

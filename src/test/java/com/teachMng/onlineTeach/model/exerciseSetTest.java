@@ -12,13 +12,13 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSet;
 import com.teachMng.onlineTeach.model.exercise.JudgeExercise;
 import com.teachMng.onlineTeach.model.exercise.QuestionExercise;
 import com.teachMng.onlineTeach.model.exercise.SelectionExercise;
-
 @Ignore
 public class exerciseSetTest {
 
@@ -248,8 +248,8 @@ public class exerciseSetTest {
 		session.getTransaction().commit();
 		sf.getCurrentSession().close();
 	}
-
-	public void setUp(){
+	//@Test
+	public void test(){
 System.out.println("生成数据库结构");
 		new SchemaExport(new Configuration().configure("lonely.hibernate.cfg.xml")).create(true, true);
 System.out.println("数据库结构生成结束");

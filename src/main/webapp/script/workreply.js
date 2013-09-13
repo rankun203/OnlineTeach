@@ -181,7 +181,10 @@ function setExercise(esId, founder, ctime) {
 				myDiv = myDiv.replace(/tpl/g, COUNTER)
 						.replace(/@idx@/, COUNTER).replace(/@ctn@/g,
 								field.cplCtn).replace(/@br@/g, "<br>").replace(
-								/@hr@/g, "<hr>").replace(/@space@/g, mySpace);
+								/@hr@/g, "<hr>").replace(/@space@/g, mySpace);	
+				var s = "cpl-" + COUNTER + "-vals";
+				var c = myDiv.lastIndexOf(s);
+				myDiv = myDiv.substring(0, c) + myDiv.substring(c, myDiv.length).replace(s, s + "-end");
 				$("#daTit").append(myDiv);
 			} else if (type != null && type != "" && type == "question") {
 				$.TplPlus();
@@ -195,7 +198,7 @@ function setExercise(esId, founder, ctime) {
 			// 学生答题部分
 			// 选择题，单击设定选择的值
 			var tmp = COUNTER;
-			$(".cpl-" + tmp + "-vals").blur(function() {
+			$(".cpl-" + tmp + "-vals-end").blur(function() {
 				commitAnswer("completion", field.esId, field.cplId, tmp);
 			});
 			$("#ans-" + tmp + "-val").blur(function() {
@@ -259,7 +262,7 @@ function commitAnswer(tType, esId, tId, no) { // 题目类型、试卷id、题�
 		answer = getJugRplAns(no);		
 	}
 	if("" != answer) {		
-		$.post("ei/commitAnswer",
+		$.post("work/commitAnswer",
 				{
 			type:tType,
 			esId:esId,
@@ -292,7 +295,9 @@ function getCplRplAns(rpl_no) {
 		tmp += $(this).val();
 		ans += $(this).val() + ',';
 	});
+	tmp += $(".cpl-" + rpl_no + "-vals-end").val();
+	ans += $(".cpl-" + rpl_no + "-vals-end").val();
 	if("" == tmp) return tmp;
-	ans = ans.substring(0, ans.length - 1);
+	ans = ans.substring(0, ans.length);
 	return ans;
 }
