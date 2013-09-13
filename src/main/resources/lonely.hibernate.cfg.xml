@@ -46,6 +46,7 @@
  		<mapping class="com.teachMng.onlineTeach.model.UpFile"/>
 
  		<mapping class="com.teachMng.onlineTeach.model.exercise.ExerciseSet"/>
+ 		<mapping class="com.teachMng.onlineTeach.model.exercise.AnswerHistory"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.JudgeExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.CompletionExercise"/>
  		<mapping class="com.teachMng.onlineTeach.model.exercise.SelectionExercise"/>

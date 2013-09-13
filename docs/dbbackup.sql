@@ -2,7 +2,8 @@
 SQLyog Ultimate v9.62 
 MySQL - 5.5.27 : Database - onlineteach
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -12,12 +13,25 @@ MySQL - 5.5.27 : Database - onlineteach
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+drop database if EXISTS onlineteach;
+create database onlineteach;
+  use onlineteach;
+
+/*Table structure for table `t_answerhistory` */
+
+DROP TABLE IF EXISTS `t_answerhistory`;
+
+CREATE TABLE `t_answerhistory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `esId` int(11) NOT NULL,
+  `tId` int(11) NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_answerhistory` */
 
 /*Table structure for table `t_checkattendance` */
-
-drop database if exists onlineteach;
-create database onlineteach;
-use onlineteach;
 
 DROP TABLE IF EXISTS `t_checkattendance`;
 
@@ -185,7 +199,7 @@ DROP TABLE IF EXISTS `t_exerciseset_t_completionexercise`;
 
 CREATE TABLE `t_exerciseset_t_completionexercise` (
   `stuAnswer` varchar(255) DEFAULT NULL,
-  `stuScore` float DEFAULT NULL,
+  `stuScore` double DEFAULT NULL,
   `teacherComment` varchar(255) DEFAULT NULL,
   `esID` int(11) NOT NULL,
   `ceID` int(11) NOT NULL,
@@ -206,7 +220,7 @@ DROP TABLE IF EXISTS `t_exerciseset_t_judgeexercise`;
 
 CREATE TABLE `t_exerciseset_t_judgeexercise` (
   `stuAnswerIsRight` tinyint(1) DEFAULT NULL,
-  `stuScore` float DEFAULT NULL,
+  `stuScore` double DEFAULT NULL,
   `teacherComment` varchar(255) DEFAULT NULL,
   `jeID` int(11) NOT NULL,
   `esID` int(11) NOT NULL,
@@ -229,7 +243,7 @@ DROP TABLE IF EXISTS `t_exerciseset_t_questionexercise`;
 
 CREATE TABLE `t_exerciseset_t_questionexercise` (
   `stuAnswer` varchar(255) DEFAULT NULL,
-  `stuScore` float DEFAULT NULL,
+  `stuScore` double DEFAULT NULL,
   `teacherComment` varchar(255) DEFAULT NULL,
   `qeID` int(11) NOT NULL,
   `esID` int(11) NOT NULL,
@@ -252,7 +266,7 @@ DROP TABLE IF EXISTS `t_exerciseset_t_selectionexercise`;
 
 CREATE TABLE `t_exerciseset_t_selectionexercise` (
   `stuAnswer` varchar(1) DEFAULT NULL,
-  `stuScore` float DEFAULT NULL,
+  `stuScore` double DEFAULT NULL,
   `teacherComment` varchar(255) DEFAULT NULL,
   `seID` int(11) NOT NULL,
   `esID` int(11) NOT NULL,
