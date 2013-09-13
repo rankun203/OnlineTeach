@@ -26,7 +26,6 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     git clone https://github.com/rankun203/OnlineTeach.git
 #####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
 
-    cd OnlineTeach
     mvn install
     mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 #####3.使用maven运行项目
@@ -63,7 +62,6 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
     git clone https://github.com/rankun203/OnlineTeach.git
 #####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
 
-    cd OnlineTeach
     mvn install
     mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 #####3.使用maven运行项目
