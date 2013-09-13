@@ -115,6 +115,7 @@
 					<div class="sel-sb-opt sel-sb-d sel-opt-tpl pullleft" id="sel-d-tpl">D<div class="sel-tpl-ed" id="sel-d-tpl-ed"></div></div>
 					<div class="clearboth"></div>
 				</div>
+				
 			</div>
             <div class="mainbox container dynamicAnswerItem">
                 <div class="daInfo divInfo">
