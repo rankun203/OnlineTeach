@@ -4,93 +4,70 @@
  * 每出现一道题，为其生成一个rpl_no，然后根据类型创建该题的div在网页上进行显示
  * */
 
-$("document")
-		.ready(
-				function() {
-					// 学生答题部分
-					// 选择题，单击设定选择的值
-					var rpl_no = "tpl"; // rpl: reply
-					var rpl_type = "select";
-					$(".sel-opt-" + rpl_no).click(
-							function() {
-								var markOpt = $(this).attr("id") + "-ed";
-								// 先设定选择的结果
-								var clkVal = "";
-								if (markOpt.indexOf("a") > 0)
-									clkVal = "a";
-								else if (markOpt.indexOf("b") > 0)
-									clkVal = "b";
-								else if (markOpt.indexOf("c") > 0)
-									clkVal = "c";
-								else if (markOpt.indexOf("d") > 0)
-									clkVal = "d";
-								else
-									msgerror("严重错误！系统无法获取你点击的选项！");
-								$("#sel-" + rpl_no + "-val").val(clkVal);
-								// 再显示视觉效果
-								$(".sel-" + rpl_no + "-ed").removeClass(
-										"sel-sb-opt-ed");
-								$("#" + markOpt).addClass("sel-sb-opt-ed");
-							});
+$("document").ready( function() {
+	// 学生答题部分
+	// 选择题，单击设定选择的值
+	var rpl_no = "tpl"; // rpl: reply
+	var rpl_type = "select";
+	$(".sel-opt-" + rpl_no).click(function() {
+		var markOpt = $(this).attr("id") + "-ed";
+		// 先设定选择的结果
+		var clkVal = "";
+		if (markOpt.indexOf("a") > 0)
+			clkVal = "a";
+		else if (markOpt.indexOf("b") > 0)
+			clkVal = "b";
+		else if (markOpt.indexOf("c") > 0)
+			clkVal = "c";
+		else if (markOpt.indexOf("d") > 0)
+			clkVal = "d";
+		else
+			msgerror("严重错误！系统无法获取你点击的选项！");
+		$("#sel-" + rpl_no + "-val").val(clkVal);
+		// 再显示视觉效果
+		$(".sel-" + rpl_no + "-ed").removeClass(
+				"sel-sb-opt-ed");
+		$("#" + markOpt).addClass("sel-sb-opt-ed");
+	});
 
-					// 判断题
-					$(".jug-" + rpl_no + "-opt").click(
-							function() {
-								var markOpt = $(this).attr("id") + "-ed";
-								var clkVal = "0";
-								if (markOpt.indexOf("a") > 0)
-									clkVal = "1";
-								else if (markOpt.indexOf("b") > 0)
-									clkVal = "2";
-								else
-									msgerror("严重错误！系统无法获取你的判断结果！");
-								$("#jug-" + rpl_no + "-val").val(clkVal);
-								$(".jug-" + rpl_no + "-ed").removeClass(
-										"sel-sb-opt-ed");
-								$("#" + markOpt).addClass("sel-sb-opt-ed");
-							});
+	// 判断题
+	$(".jug-" + rpl_no + "-opt").click(function() {
+		var markOpt = $(this).attr("id") + "-ed";
+		var clkVal = "0";
+		if (markOpt.indexOf("a") > 0)
+			clkVal = "1";
+		else if (markOpt.indexOf("b") > 0)
+			clkVal = "2";
+		else
+			msgerror("严重错误！系统无法获取你的判断结果！");
+		$("#jug-" + rpl_no + "-val").val(clkVal);
+		$(".jug-" + rpl_no + "-ed").removeClass(
+				"sel-sb-opt-ed");
+		$("#" + markOpt).addClass("sel-sb-opt-ed");
+	});
 
-					// 获取自己的题目单（所有试卷）
-					var getExssUrl = "ei/getExss?sid=" + $("#sid").text();
-					$
-							.getJSON(
-									getExssUrl,
-									function(result) {
-										$
-												.each(
-														result,
-														function(i, field) {
-															var exs = '<tr><td style="width:10%;">@NO@</td>'
-																	+ '<td style="width:30%;"><a href="#">@HOLD@</a></td>'
-																	+ '<td style="width:45%;">@TI@</td>'
-																	+ '<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(\'@esId@\',\'@HOLD@\',\'@TI@\');" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
-															exs = exs
-																	.replace(
-																			/@HOLD@/g,
-																			field.founder)
-																	.replace(
-																			/@TI@/g,
-																			field.cdate)
-																	.replace(
-																			/@NO@/,
-																			i + 1)
-																	.replace(
-																			/@esId@/g,
-																			field.esId);
-															$("#exList")
-																	.append(exs);
-															if (i == 0) {
-																setExercise(
-																		field.esId,
-																		field.founder,
-																		field.cdate);
-															}
-														});
-									});
-					$(".fv_input").on("click", function() {
-						console.log($(this).attr("class") + "    ___");
-					});
-				});
+	// 获取自己的题目单（所有试卷）
+	var getExssUrl = "ei/getExss?sid=" + $("#sid").text();
+	$.getJSON(getExssUrl, function(result) {
+		$.each(result,function(i, field) {
+			var exs = '<tr><td style="width:10%;">@NO@</td>'
+					+ '<td style="width:30%;"><a href="#">@HOLD@</a></td>'
+					+ '<td style="width:45%;">@TI@</td>'
+					+ '<td style="width:15%;"><a href="#question_begin" onclick="return setExercise(\'@esId@\',\'@HOLD@\',\'@TI@\');" class="beginAnswer" id="ba-@esId@">开始答题</a></td></tr>';
+			exs = exs.replace(/@HOLD@/g, field.founder)
+					 .replace(/@TI@/g, field.cdate)
+					 .replace(/@NO@/, i + 1)
+					 .replace(/@esId@/g, field.esId);
+			$("#exList").append(exs);
+			if (i == 0) {
+				setExercise(field.esId, field.founder, field.cdate);
+			}
+		});
+});
+	$(".fv_input").on("click", function() {
+		console.log($(this).attr("class") + "    ___");
+	});
+});
 
 var titleBar = '<div class="daTit tbHead container">题目列表'
 		+ '<span class="exsetInfo pullright">试卷号：<span id="exNo"></span>'
@@ -269,7 +246,7 @@ function commitAnswer(tType, esId, tId, no) { // 题目类型、试卷id、题�
 			topicId:tId,
 			answer:answer
 				}, function() {
-					
+					msgok("答案已提交");
 				});
 	}
 }

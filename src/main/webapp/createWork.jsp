@@ -83,8 +83,11 @@
 		  </div><!-- End of LRRight -->          
 		</div><!-- End of firstLR -->
         <div class="dynamicAnswer" id="dynamicAnswer" style="display:block;">
-        	<div class="daTit tbHead" id="daTit">答题动态</div>
-			<div class="mainbox container dynamicAnswerItem">
+        	<div class="daTit tbHead" id="daTit">
+        		答题动态
+        		<a class="playPause pullright" onClick="myReady.toggleTimer();return false;" href="#" id="toggleUpdateAnswer">Loading...</a>
+        	</div>
+			<div class="mainbox container dynamicAnswerItem topans">
                 <div class="daInfo divInfo">
                   <div class="daInfoName">张丽莉</div>
                   <div class="daInfoTime">14:57</div>
@@ -174,6 +177,8 @@
 	$("#createWork").ready(function() {
 		$.getAllExercise();
 	});
+	myReady.autoAddAnswer();
+	myReady.initState();
 </script>
 </body>
 </html>
