@@ -57,7 +57,6 @@ public class AnswerHistoryDAOImpl implements IAnswerHistoryDAO  {
 
 	@Override
 	public boolean deleteByEsIdtId(int esId, int tId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

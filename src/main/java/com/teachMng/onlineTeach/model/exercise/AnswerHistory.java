@@ -17,7 +17,7 @@ public class AnswerHistory {
 	private int esId;
 	private int tId;
 	private String type;
-	private Date date = new Date();;
+	private Date date = new Date();
 	public Date getDate() {
 		return date;
 	}

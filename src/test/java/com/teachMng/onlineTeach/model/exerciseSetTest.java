@@ -248,7 +248,7 @@ public class exerciseSetTest {
 		session.getTransaction().commit();
 		sf.getCurrentSession().close();
 	}
-	//@Test
+	@Test
 	public void test(){
 System.out.println("生成数据库结构");
 		new SchemaExport(new Configuration().configure("lonely.hibernate.cfg.xml")).create(true, true);

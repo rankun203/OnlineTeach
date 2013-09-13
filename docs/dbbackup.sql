@@ -15,7 +15,7 @@ MySQL - 5.5.27 : Database - onlineteach
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 drop database if EXISTS onlineteach;
 create database onlineteach;
-  use onlineteach;
+use onlineteach;
 
 /*Table structure for table `t_answerhistory` */
 
