@@ -2,8 +2,7 @@
 SQLyog Ultimate v9.62 
 MySQL - 5.5.27 : Database - onlineteach
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -23,13 +22,16 @@ DROP TABLE IF EXISTS `t_answerhistory`;
 
 CREATE TABLE `t_answerhistory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
   `esId` int(11) NOT NULL,
   `tId` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_answerhistory` */
+
+insert  into `t_answerhistory`(`id`,`date`,`esId`,`tId`,`type`) values (2,'2013-09-13 18:59:26',1,1,'selection'),(3,'2013-09-13 19:42:39',1,1,'selection'),(4,'2013-09-13 19:45:32',1,1,'selection'),(5,'2013-09-13 19:51:03',1,1,'selection'),(6,'2013-09-13 19:54:32',1,1,'selection'),(7,'2013-09-13 19:54:33',1,2,'selection'),(8,'2013-09-13 19:54:39',1,1,'judge'),(9,'2013-09-13 19:54:39',1,3,'judge'),(10,'2013-09-13 19:58:14',1,1,'selection'),(11,'2013-09-13 19:58:15',1,2,'selection'),(12,'2013-09-13 20:03:04',1,1,'selection'),(13,'2013-09-13 20:03:15',1,2,'selection'),(14,'2013-09-13 20:03:20',1,1,'judge'),(15,'2013-09-13 20:03:21',1,2,'judge'),(16,'2013-09-13 20:03:22',1,3,'judge'),(17,'2013-09-13 20:03:23',1,4,'judge');
 
 /*Table structure for table `t_checkattendance` */
 
@@ -146,8 +148,6 @@ CREATE TABLE `t_courseandteacher` (
 
 /*Data for the table `t_courseandteacher` */
 
-insert  into `t_courseandteacher`(`courseID`,`teacID`) values (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9),(4,10),(4,11),(4,12),(5,1),(5,2),(5,13),(6,3),(6,4),(6,5),(7,6),(7,7),(7,8),(8,9),(8,10),(8,11),(9,1),(9,12),(9,13),(10,2),(10,3),(10,4),(11,5),(11,6),(11,7),(12,8),(12,9),(12,10),(13,11),(13,12),(13,13),(14,1),(14,2),(14,3),(15,4),(15,5),(15,6),(16,7),(16,8),(16,9),(17,10),(17,11),(17,12);
-
 /*Table structure for table `t_courseplanitem` */
 
 DROP TABLE IF EXISTS `t_courseplanitem`;
@@ -191,7 +191,7 @@ CREATE TABLE `t_exerciseset` (
 
 /*Data for the table `t_exerciseset` */
 
-insert  into `t_exerciseset`(`id`,`createDate`,`teacId`,`stuId`) values (1,'2013-07-01 14:17:20',19,1),(2,'2013-07-01 16:17:28',1,1),(3,'2013-07-01 16:19:56',2,1),(4,'2013-09-07 12:51:53',1,1);
+insert  into `t_exerciseset`(`id`,`createDate`,`teacId`,`stuId`) values (1,'2013-09-13 20:03:23',19,1),(2,'2013-07-01 16:17:28',1,1),(3,'2013-07-01 16:19:56',2,1),(4,'2013-09-07 12:51:53',1,1);
 
 /*Table structure for table `t_exerciseset_t_completionexercise` */
 
@@ -235,7 +235,7 @@ CREATE TABLE `t_exerciseset_t_judgeexercise` (
 
 /*Data for the table `t_exerciseset_t_judgeexercise` */
 
-insert  into `t_exerciseset_t_judgeexercise`(`stuAnswerIsRight`,`stuScore`,`teacherComment`,`jeID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(NULL,NULL,NULL,4,1),(NULL,NULL,NULL,4,2),(NULL,NULL,NULL,5,2);
+insert  into `t_exerciseset_t_judgeexercise`(`stuAnswerIsRight`,`stuScore`,`teacherComment`,`jeID`,`esID`) values (1,NULL,NULL,1,1),(0,NULL,NULL,2,1),(NULL,NULL,NULL,2,2),(0,NULL,NULL,3,1),(NULL,NULL,NULL,3,2),(1,NULL,NULL,4,1),(NULL,NULL,NULL,4,2),(NULL,NULL,NULL,5,2);
 
 /*Table structure for table `t_exerciseset_t_questionexercise` */
 
@@ -281,7 +281,7 @@ CREATE TABLE `t_exerciseset_t_selectionexercise` (
 
 /*Data for the table `t_exerciseset_t_selectionexercise` */
 
-insert  into `t_exerciseset_t_selectionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`seID`,`esID`) values (NULL,NULL,NULL,1,1),(NULL,NULL,NULL,1,4),(NULL,NULL,NULL,2,1),(NULL,NULL,NULL,2,4),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,4,1);
+insert  into `t_exerciseset_t_selectionexercise`(`stuAnswer`,`stuScore`,`teacherComment`,`seID`,`esID`) values ('a',NULL,NULL,1,1),(NULL,NULL,NULL,1,4),('c',NULL,NULL,2,1),(NULL,NULL,NULL,2,4),(NULL,NULL,NULL,3,1),(NULL,NULL,NULL,4,1);
 
 /*Table structure for table `t_file` */
 
