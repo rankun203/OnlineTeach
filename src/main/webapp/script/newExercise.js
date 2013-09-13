@@ -255,6 +255,7 @@ $("document").ready(function(){
 $.extend({
 	showCwCoursing:function(coursing) {
 		//console.log(coursing.length);
+        $("#cwCoursing").empty();
 		for(var i = 0; i < coursing.length; i++) {
 			var s = coursing[i].fullTopic;
 			if(coursing[i].fullTopic.length > 20)
