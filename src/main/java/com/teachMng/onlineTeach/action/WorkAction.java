@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.teachMng.onlineTeach.model.Student;
 import com.teachMng.onlineTeach.model.exercise.AnswerHistory;
 import com.teachMng.onlineTeach.model.exercise.CompletionExercise;
 import com.teachMng.onlineTeach.model.exercise.ExerciseSetCompletionExercise;
@@ -33,8 +35,7 @@ import com.teachMng.onlineTeach.service.IExerciseSetService;
 
 @Component("workAction")
 @Scope("singleton")
-public class WorkAction extends ActionSupport implements
-ServletResponseAware {
+public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private String esId;
 	private String topicId;
 	private String type;
@@ -62,13 +63,12 @@ ServletResponseAware {
 		ahs.insert(answerHistory);
 		System.out.println(ah.size() + "*************************");
 	}
-	
+
 	/**
-	 * 获取已经回答的题
-	 * 访问URL:http://localhost:8080/OnlineTeach/work/getRepliedWork
+	 * 获取已经回答的题 访问URL:http://localhost:8080/OnlineTeach/work/getRepliedWork
 	 */
 	public void getRepliedWork() {
-		if(ah.isEmpty()) {
+		if (ah.isEmpty()) {
 			return;
 		}
 		String json = "[";
@@ -77,8 +77,8 @@ ServletResponseAware {
 		CompletionExercise _ce = null;
 		JudgeExercise _je = null;
 		QuestionExercise _qe = null;
+		Student stu = null;
 		boolean flag = false;
-		DateFormat df = new SimpleDateFormat("yyyy MM dd hh:mm:ss E");
 		while (!ah.isEmpty()) {
 			ans = ah.poll();
 			if (flag)
@@ -89,49 +89,52 @@ ServletResponseAware {
 				ExerciseSetSelectionExercise _esse = null;
 				_esse = esseService.findByEsIdSeId(ans.getEsId(), ans.gettId());
 				_se = _esse.getSe();
-				json += "\"type\":\"selection";
-				json += "\",\"topic\":\"" + _se.getFullTopic();
-				json += "\",\"stuAnswer\":\"" + _esse.getStuAnswer();
-				json += "\",\"ansDate\":\"" + df.format(ans.getDate());
-				json += "\",\"topicId\":\"" + ans.gettId();
-				json += "\",\"esId\":\"" + ans.getEsId() + "\"";
+				stu = _esse.getEs().getStudent();
+				json += getJson("selection", _se.getFullTopic(), _esse.getStuAnswer(), ans.getDate(), 
+						stu.getStuName(), _se.getStdAnswer() + "", ans.gettId(), ans.getEsId());
 			} else if ("completion".equals(ans.getType())) {
 				ExerciseSetCompletionExercise _esce = null;
 				_esce = esceService.findByEsIdCeId(ans.getEsId(), ans.gettId());
 				_ce = _esce.getCe();
-				json += "\"type\":\"selection";
-				json += "\",\"topic\":\"" + _se.getFullTopic();
-				json += "\",\"stuAnswer\":\"" + _esce.getStuAnswer();
-				json += "\",\"ansDate\":\"" + df.format(ans.getDate());
-				json += "\",\"topicId\":\"" + ans.gettId();
-				json += "\",\"esId\":\"" + ans.getEsId() + "\"";
+				stu = _esce.getEs().getStudent();
+				json += getJson("completion", _ce.getFullTopic(), _esce.getStuAnswer(), ans.getDate(), stu.getStuName(), 
+						_ce.getStdAnswer(), ans.gettId(), ans.getEsId());
 			} else if ("question".equals(ans.getType())) {
 				ExerciseSetQuestionExercise _esqe = null;
 				_esqe = esqeService.findByEsIdQeId(ans.getEsId(), ans.gettId());
 				_qe = _esqe.getQe();
-				json += "\"type\":\"selection";
-				json += "\",\"topic\":\"" + _qe.getFullTopic();
-				json += "\",\"stuAnswer\":\"" + _esqe.getStuAnswer();
-				json += "\",\"ansDate\":\"" + df.format(ans.getDate());
-				json += "\",\"topicId\":\"" + ans.gettId();
-				json += "\",\"esId\":\"" + ans.getEsId() + "\"";
+				stu = _esqe.getEs().getStudent();
+				json += getJson("question", _qe.getFullTopic(), _esqe.getStuAnswer(), ans.getDate(), stu.getStuName(), 
+						_qe.getStdKeyword(), ans.gettId(), ans.getEsId());
 			} else if ("judge".equals(ans.getType())) {
 				ExerciseSetJudgeExercise _esje = null;
 				_esje = esjeService.findByEsIdJeId(ans.getEsId(), ans.gettId());
 				_je = _esje.getJe();
-				json += "\"type\":\"selection";
-				json += "\",\"topic\":\"" + _je.getFullTopic();
-				json += "\",\"stuAnswer\":\"" + _esje.isStuAnswerIsRight();
-				json += "\",\"ansDate\":\"" + df.format(ans.getDate());
-				json += "\",\"topicId\":\"" + ans.gettId();
-				json += "\",\"esId\":\"" + ans.getEsId() + "\"";			
-			}
+				stu = _esje.getEs().getStudent();
+				json += getJson("judge", _je.getFullTopic(), _esje.isStuAnswerIsRight() + "", ans.getDate(), 
+						stu.getStuName(), _je.isStdAnswerIsRight() + "", ans.gettId(), ans.getEsId());
+				}
 			json += "}";
 			flag = true;
 		}
 		json += "]";
 		out().print(json);
 		System.out.println(json);
+	}
+
+	private String getJson(String type, String topic, String stuAnswer,
+			Date date, String stuName, String stdAnswer, int topicId, int esId) {
+		String json = "";
+		DateFormat df = new SimpleDateFormat("yyyy MM dd hh:mm:ss E");
+		json += "\"type\":\"" + type;
+		json += "\",\"topic\":\"" + topic;
+		json += "\",\"stuAnswer\":\"" + stuAnswer;
+		json += "\",\"ansDate\":\"" + df.format(date);
+		json += "\",\"stuName\":\"" + stuName;
+		json += "\",\"stdAnswer\":\"" + stdAnswer;
+		json += "\",\"topicId\":\"" + topicId;
+		json += "\",\"esId\":\"" + esId + "\"";		
+		return json;
 	}
 
 	public IExerciseSetSelectionExerciseService getEsseService() {
@@ -219,6 +222,7 @@ ServletResponseAware {
 	public void setEss(IExerciseSetService ess) {
 		this.ess = ess;
 	}
+
 	public PrintWriter out() {
 		try {
 			response.setCharacterEncoding("utf-8");
@@ -229,6 +233,7 @@ ServletResponseAware {
 		}
 		return null;
 	}
+
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;

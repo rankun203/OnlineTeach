@@ -234,7 +234,7 @@ function commitAnswer(tType, esId, tId, no) { // 题目类型、试卷id、题�
 	} else if("completion" == tType) {
 		answer = getCplRplAns(no);
 	} else if("question" == tType) {
-		answer = geAnsRplAns(no);
+		answer = getAnsRplAns(no);
 	} else if("judge" == tType) {
 		answer = getJugRplAns(no);		
 	}
