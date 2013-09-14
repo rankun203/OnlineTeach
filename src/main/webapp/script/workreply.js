@@ -75,7 +75,7 @@ var titleBar = '<div class="daTit tbHead container">题目列表'
 		+ '<span id="exCTime"></span></span></div>';
 
 var selectionTpl = ""
-		+ '    <div class="mainbox container replyItem" id="sel-tpl">'
+		+ '    <div class="mainbox container replyItem stuReplyItem" id="sel-tpl">'
 		+ '    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'
 		+ '        <div class="single_question_answer">'
 		+ '            <div class="single_question" id="selQes-tpl">@ctn@</div>'
@@ -88,7 +88,7 @@ var selectionTpl = ""
 		+ '			<div class="sel-sb-opt sel-sb-d sel-opt-tpl pullleft" id="sel-d-tpl">D<div class="sel-tpl-ed" id="sel-d-tpl-ed"></div></div>'
 		+ '			<div class="clearboth"></div>' + '        </div>' + '    </div>';
 var questionTpl = ""
-		+ '    <div class="mainbox container replyItem" id="ans-tpl">'
+		+ '    <div class="mainbox container replyItem stuReplyItem" id="ans-tpl">'
 		+ '    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'
 		+ '        <div class="answer_question">'
 		+ '            <div class="a_question" id="ans-tpl">@ctn@</div>'
@@ -97,7 +97,7 @@ var questionTpl = ""
 		+ '                <textarea rows="10" cols="131" class="a_answer inputField sslote" name="answer1" id="ans-tpl-val" ></textarea>'
 		+ '            </div>' + '        </div>' + '    </div>';
 var judgeTpl = ""
-		+ '    <div class="mainbox container replyItem" id="jug-tpl">'
+		+ '    <div class="mainbox container replyItem stuReplyItem" id="jug-tpl">'
 		+ '    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'
 		+ '        <div class="judge_question">'
 		+ '            <div class="j_question">@ctn@</div>'
@@ -108,7 +108,7 @@ var judgeTpl = ""
 		+ '			<div class="j_false j_answer jug-tpl-opt pullleft" id="jug-tpl-opt-b">x<div class="jug-tpl-ed" id="jug-tpl-opt-b-ed"></div></div>'
 		+ '			<div class="clearboth"></div>' + '        </div>' + '    </div>';
 var completionTpl = ""
-		+ '    <div class="mainbox container replyItem" id="cpl-tpl" >'
+		+ '    <div class="mainbox container replyItem stuReplyItem" id="cpl-tpl" >'
 		+ '    	<h3 class="itemCount divInfo" id="itemCount-tpl">第@idx@题</h3>'
 		+ '        <div class="fill_vacant_question">'
 		+ '            <div class="fv_question" id="cpl-ctn-tpl">@ctn@</div>'
@@ -125,6 +125,7 @@ $.extend({
 // 加载题目
 function setExercise(esId, founder, ctime) {
 	COUNTER = 0;
+	$("#daTit").html("");
 	// console.log(" esId:" + esId + " founder:" + founder + " time:" + ctime);
 	$.getJSON("ei/getExs?esId=" + esId, function(result) {
 		//console.log(result);
@@ -132,6 +133,7 @@ function setExercise(esId, founder, ctime) {
 		$("#exNo").text(esId);
 		$("#exFounder").text(founder);
 		$("#exCTime").text(ctime);
+		$("#daTit").css("display", "block");
 		$.each(result, function(i, field) {
 			var type = field.type;
 			if (type != null && type != "" && type == "selection") {
@@ -220,7 +222,6 @@ function setExercise(esId, founder, ctime) {
 				$("#" + markOpt).addClass("sel-sb-opt-ed");
 			});
 		});
-		$("#daTit").css("display", "block");
 	});
 	return true;
 
