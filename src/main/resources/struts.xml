@@ -34,6 +34,7 @@
 	<package name="work" extends="struts-default" namespace="/work">
 	    	<action name="commitAnswer" class="workAction" method="workReply" />
 	    	<action name="getRepliedWork" class="workAction" method="getRepliedWork" />
+	    	<action name="workMark" class="workAction" method="workMark" />
 	</package>
 
 </struts>
