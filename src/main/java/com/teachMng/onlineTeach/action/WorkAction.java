@@ -38,6 +38,8 @@ import com.teachMng.onlineTeach.service.IExerciseSetService;
 public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private String esId;
 	private String topicId;
+	private double score;
+	private String teacComment;
 	private String type;
 	private String answer;
 	private IExerciseSetService ess;
@@ -51,8 +53,8 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private Queue<AnswerHistory> ah = new LinkedList<AnswerHistory>();
 
 	public void workReply() {
-		System.out.println("type:" + type + "  esId:" + esId + "   topicid:"
-				+ topicId + "   answer:" + answer);
+		// System.out.println("type:" + type + "  esId:" + esId + "   topicid:"
+		// + topicId + "   answer:" + answer);
 		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId),
 				answer);
 		AnswerHistory answerHistory = new AnswerHistory();
@@ -61,11 +63,47 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		answerHistory.setType(type);
 		ah.add(answerHistory);
 		ahs.insert(answerHistory);
-		System.out.println(ah.size() + "*************************");
+		// System.out.println(ah.size() + "*************************");
 	}
 
 	/**
-	 * 获取已经回答的题 访问URL:http://localhost:8080/OnlineTeach/work/getRepliedWork
+	 * 题目打分
+	 * http://localhost:8080/OnlineTeach/work/workMark?type=completion&esId=1&topicId=4&score=90.5&teacComment=hdslafjkldsaf
+	 */
+	public void workMark() {
+//		System.out.println("type:" + type + "topicId:" + topicId + "  esId:"
+//				+ esId + "  score:" + score + "  teacComment:" + teacComment);
+		if ("selection".equals(type)) {
+			ExerciseSetSelectionExercise esse = esseService.findByEsIdSeId(
+					Integer.parseInt(esId), Integer.parseInt(topicId));
+			esse.setStuScore(score);
+			esse.setTeacherComment(teacComment);
+			esseService.update(esse);
+		} else if ("completion".equals(type)) {
+			ExerciseSetCompletionExercise esce = esceService.findByEsIdCeId(
+					Integer.parseInt(esId), Integer.parseInt(topicId));
+			esce.setStuScore(score);
+			esce.setTeacherComment(teacComment);
+			esceService.update(esce);
+		} else if ("question".equals(type)) {
+			ExerciseSetQuestionExercise esqe = esqeService.findByEsIdQeId(
+					Integer.parseInt(esId), Integer.parseInt(topicId));
+			esqe.setStuScore(score);
+			esqe.setTeacherComment(teacComment);
+			esqeService.update(esqe);
+		} else if ("judge".equals(type)) {
+			ExerciseSetJudgeExercise esje = esjeService.findByEsIdJeId(
+					Integer.parseInt(esId), Integer.parseInt(topicId));
+			esje.setStuScore(score);
+			esje.setTeacherComment(teacComment);
+			esjeService.update(esje);
+		}
+	}
+
+	/**
+	 * 获取已经回答的题 访问URL:http://localhost:8080/OnlineTeach/work/getRepliedWork [{
+	 * type:题型, topic:标题, stuAnswer:学生回答, ansDate:回答日期, stuName:回答学生姓名,
+	 * stdAnswer:正确答案, topicId:题目编号, esId:试卷编号 }]
 	 */
 	public void getRepliedWork() {
 		if (ah.isEmpty()) {
@@ -90,30 +128,35 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 				_esse = esseService.findByEsIdSeId(ans.getEsId(), ans.gettId());
 				_se = _esse.getSe();
 				stu = _esse.getEs().getStudent();
-				json += getJson("selection", _se.getFullTopic(), _esse.getStuAnswer(), ans.getDate(), 
-						stu.getStuName(), _se.getStdAnswer() + "", ans.gettId(), ans.getEsId());
+				json += getJson("selection", _se.getFullTopic(),
+						_esse.getStuAnswer(), ans.getDate(), stu.getStuName(),
+						_se.getStdAnswer() + "", ans.gettId(), ans.getEsId());
 			} else if ("completion".equals(ans.getType())) {
 				ExerciseSetCompletionExercise _esce = null;
 				_esce = esceService.findByEsIdCeId(ans.getEsId(), ans.gettId());
 				_ce = _esce.getCe();
 				stu = _esce.getEs().getStudent();
-				json += getJson("completion", _ce.getFullTopic(), _esce.getStuAnswer(), ans.getDate(), stu.getStuName(), 
+				json += getJson("completion", _ce.getFullTopic(),
+						_esce.getStuAnswer(), ans.getDate(), stu.getStuName(),
 						_ce.getStdAnswer(), ans.gettId(), ans.getEsId());
 			} else if ("question".equals(ans.getType())) {
 				ExerciseSetQuestionExercise _esqe = null;
 				_esqe = esqeService.findByEsIdQeId(ans.getEsId(), ans.gettId());
 				_qe = _esqe.getQe();
 				stu = _esqe.getEs().getStudent();
-				json += getJson("question", _qe.getFullTopic(), _esqe.getStuAnswer(), ans.getDate(), stu.getStuName(), 
+				json += getJson("question", _qe.getFullTopic(),
+						_esqe.getStuAnswer(), ans.getDate(), stu.getStuName(),
 						_qe.getStdKeyword(), ans.gettId(), ans.getEsId());
 			} else if ("judge".equals(ans.getType())) {
 				ExerciseSetJudgeExercise _esje = null;
 				_esje = esjeService.findByEsIdJeId(ans.getEsId(), ans.gettId());
 				_je = _esje.getJe();
 				stu = _esje.getEs().getStudent();
-				json += getJson("judge", _je.getFullTopic(), _esje.isStuAnswerIsRight() + "", ans.getDate(), 
-						stu.getStuName(), _je.isStdAnswerIsRight() + "", ans.gettId(), ans.getEsId());
-				}
+				json += getJson("judge", _je.getFullTopic(),
+						_esje.isStuAnswerIsRight() + "", ans.getDate(),
+						stu.getStuName(), _je.isStdAnswerIsRight() + "",
+						ans.gettId(), ans.getEsId());
+			}
 			json += "}";
 			flag = true;
 		}
@@ -133,8 +176,24 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		json += "\",\"stuName\":\"" + stuName;
 		json += "\",\"stdAnswer\":\"" + stdAnswer;
 		json += "\",\"topicId\":\"" + topicId;
-		json += "\",\"esId\":\"" + esId + "\"";		
+		json += "\",\"esId\":\"" + esId + "\"";
 		return json;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+	public String getTeacComment() {
+		return teacComment;
+	}
+
+	public void setTeacComment(String teacComment) {
+		this.teacComment = teacComment;
 	}
 
 	public IExerciseSetSelectionExerciseService getEsseService() {
