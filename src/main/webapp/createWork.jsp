@@ -115,28 +115,32 @@
 					<div class="sel-sb-opt sel-sb-d sel-opt-tpl pullleft" id="sel-d-tpl">D<div class="sel-tpl-ed" id="sel-d-tpl-ed"></div></div>
 					<div class="clearboth"></div>
 				</div>
-				<div class="teacherRemark pullright sel-remark">
-					<div class="sel-ans">
-						<div class="ans-tit pullleft">参考答案：</div><div class="ans-body pullleft" id="ans-body-tpl">A</div>
-						<div class="clearboth"></div>
-					</div>
-					<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
-					<div class="mark">
-						<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
-						<div class="mark-input" id="sel-remark-tpl-x-box">
-							<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
-							<label for="sel-remark-tpl-x" class="pullleft">分</label>
+				<div class="teacherRemark pullright sel-remark spread">
+                	<div class="showtip"></div>
+                	<div class="anspane">
+						<div class="sel-ans">
+							<div class="ans-tit pullleft">参考答案：</div><div class="ans-body pullleft" id="ans-body-tpl">A</div>
+							<div class="clearboth"></div>
 						</div>
-						<div class="clearboth"></div>
-					</div>
-					<div class="comment">
-						<textarea class="commentbody inputField sslote" id="comment-tpl-body" placeholder="请在这里写下你对该题的批注(可为空)"></textarea>
-					</div>
-					<button class="submitBtn te remark-submit" id="remark-tpl-submit">保存</button>
+						<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
+						<div class="mark">
+							<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
+							<div class="mark-input" id="sel-remark-tpl-x-box">
+								<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
+								<label for="sel-remark-tpl-x" class="pullleft">分</label>
+							</div>
+							<div class="clearboth"></div>
+						</div>
+						<div class="comment">
+							<textarea class="commentbody inputField sslote" id="comment-tpl-body" placeholder="请在这里写下你对该题的批注(可为空)"></textarea>
+						</div>
+						<button class="submitBtn te remark-submit" id="remark-tpl-submit">保存</button>
+                	</div>
+                	<div class="switch-arrow"></div>
 				</div>
 			</div>
             <div class="mainbox container dynamicAnswerItem">
@@ -159,37 +163,42 @@
     文本节点 "DOM Tutorial"</textarea>
                     </div>
                 </div>
-   				<div class="teacherRemark pullright qus-remark">
-					<div class="qus-ans">
-						<!-- 点击查看按钮，即打开模态对话框，显示答案 -->
-						<div class="ans-tit pullleft">参考答案：</div><button class="ans-body pullleft flatbtn" id="ans-body-tpl">查看</button>
-						<div class="modalDialog">
-							<div class="mask"></div>
-							<div class="modalCtn">
-								<div class="controller">+</div>
-								<div class="tit">简答题答案</div>
-								<div class="txt">我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案。</div>
+   				<div class="teacherRemark pullright qus-remark spread">
+                	<div class="showtip pullleft">展开批注卡</div>
+                	<div class="anspane pullleft">
+						<div class="qus-ans">
+							<!-- 点击查看按钮，即打开模态对话框，显示答案 -->
+							<div class="ans-tit pullleft">参考答案：</div><button class="ans-body pullleft flatbtn" id="ans-body-tpl">查看</button>
+							<div class="modalDialog">
+								<div class="mask"></div>
+								<div class="modalCtn">
+									<div class="controller">+</div>
+									<div class="tit">简答题答案</div>
+									<div class="txt">我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案。</div>
+								</div>
 							</div>
+							<div class="clearboth"></div>
 						</div>
-						<div class="clearboth"></div>
-					</div>
-					<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
-					<div class="mark">
-						<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
-						<div class="mark-input" id="sel-remark-tpl-x-box">
-							<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
-							<label for="sel-remark-tpl-x" class="pullleft">分</label>
+						<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
+						<div class="mark">
+							<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
+							<div class="mark-input" id="sel-remark-tpl-x-box">
+								<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
+								<label for="sel-remark-tpl-x" class="pullleft">分</label>
+							</div>
+							<div class="clearboth"></div>
 						</div>
-						<div class="clearboth"></div>
-					</div>
-					<div class="comment">
-						<textarea class="commentbody inputField sslote" id="comment-tpl-body" placeholder="请在这里写下你对该题的批注(可为空)"></textarea>
-					</div>
-					<button class="submitBtn te remark-submit" id="remark-tpl-submit">保存</button>
+						<div class="comment">
+							<textarea class="commentbody inputField sslote" id="comment-tpl-body" placeholder="请在这里写下你对该题的批注(可为空)"></textarea>
+						</div>
+						<button class="submitBtn te remark-submit" id="remark-tpl-submit">保存</button>
+                	</div>
+                	<div class="switch-arrow pullleft"></div>
+                	<div class="clearboth"></div>
 				</div>
             </div>
             <div class="mainbox container dynamicAnswerItem">
@@ -210,28 +219,32 @@
 					<div class="clearboth"></div>
 				</div>
 
-                <div class="teacherRemark pullright judge-remark">
-					<div class="judge-ans">
-						<div class="ans-tit pullleft">参考答案：</div><div class="ans-body pullleft" id="ans-body-tpl">正确</div>
-						<div class="clearboth"></div>
-					</div>
-					<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
-					<div class="mark">
-						<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
-						<div class="mark-input" id="sel-remark-tpl-x-box">
-							<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
-							<label for="sel-remark-tpl-x" class="pullleft">分</label>
+                <div class="teacherRemark pullright judge-remark spread">
+                	<div class="showtip"></div>
+                	<div class="anspane">
+						<div class="judge-ans">
+							<div class="ans-tit pullleft">参考答案：</div><div class="ans-body pullleft" id="ans-body-tpl">正确</div>
+							<div class="clearboth"></div>
 						</div>
-						<div class="clearboth"></div>
-					</div>
-					<div class="comment">
-						<textarea class="commentbody inputField sslote pullleft" id="comment-tpl-body" placeholder="您对该题的批注(可为空)"></textarea>
-					</div>
-					<button class="submitBtn te judge-remark-submit pullleft" id="remark-tpl-submit">保存</button>
+						<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
+						<div class="mark">
+							<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
+							<div class="mark-input" id="sel-remark-tpl-x-box">
+								<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
+								<label for="sel-remark-tpl-x" class="pullleft">分</label>
+							</div>
+							<div class="clearboth"></div>
+						</div>
+						<div class="comment">
+							<textarea class="commentbody inputField sslote pullleft" id="comment-tpl-body" placeholder="您对该题的批注(可为空)"></textarea>
+						</div>
+						<button class="submitBtn te judge-remark-submit pullleft" id="remark-tpl-submit">保存</button>
+                	</div>
+                	<div class="switch-arrow"></div>
 				</div>
                 
             </div>
@@ -246,36 +259,40 @@
                         4、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI、在交互命令外壳里显示在交互命令外壳里显示 WMI 信息在<input type="text" name="fv_answer" class="fv_input" disabled="disabled" value="哈哈"/>交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息在交互命令外壳里显示 WMI 信息。
                     </div>
                 </div>
-                <div class="teacherRemark pullright cpl-remark">
-					<div class="cpl-ans">
-						<div class="ans-tit pullleft">参考答案：</div><button class="ans-body pullleft flatbtn" id="ans-body-tpl">查看</button>
-						<div class="clearboth"></div>
-						<div class="modalDialog">
-							<div class="mask"></div>
-							<div class="modalCtn">
-								<div class="controller">+</div>
-								<div class="tit">简答题答案</div>
-								<div class="txt">我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案。</div>
+                <div class="teacherRemark pullright cpl-remark spread">
+                	<div class="showtip"></div>
+                	<div class="anspane">
+						<div class="cpl-ans">
+							<div class="ans-tit pullleft">参考答案：</div><button class="ans-body pullleft flatbtn" id="ans-body-tpl">查看</button>
+							<div class="clearboth"></div>
+							<div class="modalDialog">
+								<div class="mask"></div>
+								<div class="modalCtn">
+									<div class="controller">+</div>
+									<div class="tit">简答题答案</div>
+									<div class="txt">我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案。</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
-					<div class="mark">
-						<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
-						<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
-						<div class="mark-input" id="sel-remark-tpl-x-box">
-							<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
-							<label for="sel-remark-tpl-x" class="pullleft">分</label>
+						<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->
+						<div class="mark">
+							<div class="mark-x selecttab pullleft" id="remark-tpl-0" data-ot-remark="0">0</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-1" data-ot-remark="1">1</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-2" data-ot-remark="2">2</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-5" data-ot-remark="5">5</div>
+							<div class="mark-x selecttab pullleft" id="remark-tpl-10" data-ot-remark="10">10</div>
+							<div class="mark-input" id="sel-remark-tpl-x-box">
+								<input type="text" class="ansInputField sslote pullleft" id="sel-remark-tpl-x" placeholder="？"/>
+								<label for="sel-remark-tpl-x" class="pullleft">分</label>
+							</div>
+							<div class="clearboth"></div>
 						</div>
-						<div class="clearboth"></div>
-					</div>
-					<div class="comment">
-						<textarea class="commentbody inputField sslote pullleft" id="comment-tpl-body" placeholder="您对该题的批注(可为空)"></textarea>
-					</div>
-					<button class="submitBtn te cpl-remark-submit pullleft" id="remark-tpl-submit">保存</button>
+						<div class="comment">
+							<textarea class="commentbody inputField sslote pullleft" id="comment-tpl-body" placeholder="您对该题的批注(可为空)"></textarea>
+						</div>
+						<button class="submitBtn te cpl-remark-submit pullleft" id="remark-tpl-submit">保存</button>
+                	</div>
+                	<div class="switch-arrow"></div>
 				</div>
              
             </div>        

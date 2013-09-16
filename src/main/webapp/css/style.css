@@ -1688,16 +1688,16 @@ input[type="radio"] {
 	box-shadow: inset 0 -7px 0 rgba(42, 134, 46, 0.9);
 }
 #scbA{
-	background-color: rgb(255, 173, 173);
+	background-color: #efe4b0;
 }
 #scbB{
-	background-color: rgb(173, 255, 173);
+	background-color: #b5e61d;
 }
 #scbC{
-	background-color: rgb(255, 255, 173);
+	background-color: #99d9ea;
 }
 #scbD{
-	background-color: rgb(173, 255, 255);
+	background-color: #c8bfe7;
 }
 
 /* newExercise提示框 */
@@ -1913,45 +1913,54 @@ input[type="radio"] {
 .dynamicAnswerItem > .teacherRemark {
 	position: absolute;
 	margin-left: 941px;
-	width: 150px;
 	background: linear-gradient(#fff, #f5f5f5);
 	box-shadow: 2px 2px 7px #ccc;
 	border-radius: 0 3px 3px 0;
 	border: 1px solid #ccc;
 	border-left: none;
 }
+.teacherRemark > .anspane {
+	border-right: solid 1px #ccc;
+	box-shadow: 1px 0 0 #fff;
+}
 .dynamicAnswerItem > .sel-remark {
 	margin-top: -245px;
 }
-.teacherRemark > .sel-ans{
+.teacherRemark > .anspane > .sel-ans{
 	padding: 5px;
 	font-size: 16px;
 }
-.teacherRemark > .sel-ans > .ans-tit {
+.teacherRemark > .anspane > .sel-ans > .ans-tit {
 	display: inline-block;
 }
-.teacherRemark > .sel-ans > .ans-body {
+.teacherRemark > .anspane > .sel-ans > .ans-body {
 	display: inline-block;
 }
-.teacherRemark > .mark {
+.teacherRemark > .anspane > .mark {
 	line-height: 30px;
 	padding-left: 5px;
 }
-.teacherRemark > .mark > .mark-x {
+.teacherRemark > .anspane > .mark > .mark-x {
 	padding: 0 5px;
 	border: 1px solid #eee;
 }
-.teacherRemark > .mark > .mark-input > input.ansInputField {
+.teacherRemark > .anspane > .mark > .mark-input > input.ansInputField {
 	height: 28px;
 	width: 20px;
 }
-.teacherRemark > .comment > .commentbody {
+.qus-remark > .anspane > .comment > .commentbody {
 	width: 130px;
 	height: 70px;
 	margin: 5px;
 	padding: 2px;
 }
-.teacherRemark > .remark-submit {
+.sel-remark > .anspane > .comment > .commentbody {
+	width: 130px;
+	height: 70px;
+	margin: 5px;
+	padding: 2px;
+}
+.teacherRemark > .anspane > .remark-submit {
 	width: 60px;
 	height: 25px;
 	line-height: 25px;
@@ -1962,19 +1971,19 @@ input[type="radio"] {
 .dynamicAnswerItem > .qus-remark {
 	margin-top: -281px;
 }
-.teacherRemark > .qus-ans {
+.teacherRemark > .anspane > .qus-ans {
 	padding: 5px;
 	font-size: 16px;
 }
-.teacherRemark > .qus-ans > .ans-tit {
+.teacherRemark > .anspane > .qus-ans > .ans-tit {
 	line-height: 25px;
 }
 
 /* 简答题答案模态对话框 */
-.teacherRemark > .qus-ans > .modalDialog {
+.teacherRemark > .anspane > .qus-ans > .modalDialog {
 	display: none;
 }
-.teacherRemark > .qus-ans > .modalDialog > .mask {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .mask {
 	position: fixed;
 	top:0;
 	left:0;
@@ -1984,7 +1993,7 @@ input[type="radio"] {
 	opacity: 0.5;
 	z-index: 99;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn {
 	position: fixed;
 	top: 40%;
 	left: 30%;
@@ -1996,7 +2005,7 @@ input[type="radio"] {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn > .controller {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn > .controller {
 	font-size: 30px;
 	color: red;
 	width: 26px;
@@ -2010,20 +2019,20 @@ input[type="radio"] {
 	background-color: #fff;
 	border: 2px solid #ddd;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn > .controller:hover {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn > .controller:hover {
 	background-color: #f33;
 	color: white;
 	box-shadow: inset 0 0 5px #fdd;
 	cursor: pointer;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn > .controller:active {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn > .controller:active {
 	box-shadow: inset 0 0 5px #555;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn > .tit {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn > .tit {
 	text-indent: 20px;
 	margin-bottom: 5px;
 }
-.teacherRemark > .qus-ans > .modalDialog > .modalCtn > .txt {
+.teacherRemark > .anspane > .qus-ans > .modalDialog > .modalCtn > .txt {
 	margin: 0 20px 20px 20px;
 	border-top: 1px dashed #f0f;
 	padding-top: 20px;
@@ -2031,14 +2040,14 @@ input[type="radio"] {
 /* 对话框结束 */
 
 /* 简答题 */
-.teacherRemark > .qus-ans > .ans-body {
+.teacherRemark > .anspane > .qus-ans > .ans-body {
 	padding: 2px 7px;
 }
 /* 判断题 */
 .dynamicAnswerItem > .judge-remark {
 	margin-top: -120px;
 }
-.judge-remark > .comment > textarea.inputField {
+.judge-remark > .anspane > .comment > textarea.inputField {
 	height: 30px;
 	width: 100px;
 }
@@ -2049,7 +2058,7 @@ input[type="radio"] {
 	margin-left: 5px;
 	margin-bottom: 5px;
 }
-.teacherRemark > .judge-ans{
+.teacherRemark > .anspane > .judge-ans{
 	padding: 5px;
 	font-size: 16px;
 }
@@ -2058,7 +2067,7 @@ input[type="radio"] {
 .dynamicAnswerItem > .cpl-remark {
 	margin-top: -81px;
 }
-.cpl-remark > .comment > textarea.inputField {
+.cpl-remark > .anspane > .comment > textarea.inputField {
 	height: 30px;
 	width: 100px;
 }
@@ -2069,21 +2078,21 @@ input[type="radio"] {
 	margin-left: 5px;
 	margin-bottom: 5px;
 }
-.teacherRemark > .cpl-ans {
+.teacherRemark > .anspane > .cpl-ans {
 	padding: 5px;
 	font-size: 16px;
 }
 /* 填空题答案模态对话框 */
-.teacherRemark > .cpl-ans > .ans-body {
+.teacherRemark > .anspane > .cpl-ans > .ans-body {
 	padding: 2px 7px;
 }
-.teacherRemark > .cpl-ans > .ans-tit {
+.teacherRemark > .anspane > .cpl-ans > .ans-tit {
 	line-height: 25px;
 }
-.teacherRemark > .cpl-ans > .modalDialog {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog {
 	display: none;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .mask {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .mask {
 	position: fixed;
 	top:0;
 	left:0;
@@ -2093,7 +2102,7 @@ input[type="radio"] {
 	opacity: 0.5;
 	z-index: 99;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn {
 	position: fixed;
 	top: 40%;
 	left: 30%;
@@ -2105,7 +2114,7 @@ input[type="radio"] {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn > .controller {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn > .controller {
 	font-size: 30px;
 	color: red;
 	width: 26px;
@@ -2119,22 +2128,63 @@ input[type="radio"] {
 	background-color: #fff;
 	border: 2px solid #ddd;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn > .controller:hover {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn > .controller:hover {
 	background-color: #f33;
 	color: white;
 	box-shadow: inset 0 0 5px #fdd;
 	cursor: pointer;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn > .controller:active {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn > .controller:active {
 	box-shadow: inset 0 0 5px #555;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn > .tit {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn > .tit {
 	text-indent: 20px;
 	margin-bottom: 5px;
 }
-.teacherRemark > .cpl-ans > .modalDialog > .modalCtn > .txt {
+.teacherRemark > .anspane > .cpl-ans > .modalDialog > .modalCtn > .txt {
 	margin: 0 20px 20px 20px;
 	border-top: 1px dashed #f0f;
 	padding-top: 20px;
 }
 /* 对话框结束 */
+
+/* 教师批注片收入弹出 */
+.teacherRemark > .showtip {
+	height: 190px;
+	width: 22px;
+	line-height:38px;
+	padding-left: 9px;
+	border-right: solid 1px #ccc;
+	box-shadow: 1px 0 0 #fff;
+	letter-spacing: 1px;
+}
+.teacherRemark > .anspane {
+}
+.teacherRemark > .switch-arrow {
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgdmVyc2lvbj0iMS4xIgogICB3aWR0aD0iMjUiCiAgIGhlaWdodD0iNzAiCiAgIGlkPSJzdmcyIj4KICA8ZGVmcwogICAgIGlkPSJkZWZzNCI+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDM4MDQiPgogICAgICA8c3RvcAogICAgICAgICBpZD0ic3RvcDM4MDYiCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDAwMDA7c3RvcC1vcGFjaXR5OjEiCiAgICAgICAgIG9mZnNldD0iMCIgLz4KICAgICAgPHN0b3AKICAgICAgICAgaWQ9InN0b3AzODA4IgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZjJmMmYyO3N0b3Atb3BhY2l0eTowIgogICAgICAgICBvZmZzZXQ9IjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQzNzk4Ij4KICAgICAgPHN0b3AKICAgICAgICAgaWQ9InN0b3AzODAwIgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eToxIgogICAgICAgICBvZmZzZXQ9IjAiIC8+CiAgICAgIDxzdG9wCiAgICAgICAgIGlkPSJzdG9wMzgwMiIKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MCIKICAgICAgICAgb2Zmc2V0PSIxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudAogICAgICAgeDE9Ii01Ny43MjM4NzMiCiAgICAgICB5MT0iMzYuNjQ0NDQ0IgogICAgICAgeDI9IjI5Ljg0NDkzMSIKICAgICAgIHkyPSIzNy4zNTE1NTEiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQzODEyIgogICAgICAgeGxpbms6aHJlZj0iI2xpbmVhckdyYWRpZW50MzgwNCIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPgogIDwvZGVmcz4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGE3Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZwogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTk4Mi4zNjIxOCkiCiAgICAgaWQ9ImxheWVyMSI+CiAgICA8cGF0aAogICAgICAgZD0iTSAxNy4yMzU3MjgsMzcuNjQ5ODY1IDEuMTEyNDM2OSw2NS4zMzA1ODMgOC4wMTAxOTQsNjUuMzM3NTExIDI0LjA0MTYzMSwzNy42NDk4NjUgOC4xOTM3NjgxLDQuNDIzNjU4NCAxLjE0OTA0ODYsNC40MTU4NDYgeiIKICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsOTgyLjM2MjE4KSIKICAgICAgIGlkPSJwYXRoMjk4NSIKICAgICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQzODEyKTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6I2NjY2NjYztzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiIC8+CiAgPC9nPgo8L3N2Zz4K) no-repeat;
+	height: 130px;
+	width: 25px;
+	margin-top: 60px;
+}
+.dynamicAnswerItem > .closed {
+	width: 57px;
+}
+.dynamicAnswerItem > .spread {
+	width: 180px;
+}
+.closed > .anspane{
+	display: none;
+}
+.closed > .showtip {
+	display: block;
+}
+.spread > .anspane {
+	display: block;
+	margin-right: 5px;
+}
+.spread > .showtip {
+	display: none;
+}
+.spread > .switch-arrow {
+	transform: rotateY(180deg);
+}
