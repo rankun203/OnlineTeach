@@ -36,6 +36,7 @@ import com.teachMng.onlineTeach.service.ITeacherService;
 @Component("exsGoAction")
 public class ExerciseGoAction extends ActionSupport implements
 		ServletResponseAware {
+	private static final long serialVersionUID = 1L;
 	private IExerciseSetService ess;
 	private ITeacherService tService;
 	private ISchoolClassService sClassService;

@@ -2164,7 +2164,7 @@ input[type="radio"] {
 	transition: -webkit-transform .5s ease-in 0;
 }
 .high-remark > .switch-arrow > .arrow {
-	height: 109px;
+	height: 116px;
 	margin-top: 45px;
 }
 .low-remark > .switch-arrow > .arrow {

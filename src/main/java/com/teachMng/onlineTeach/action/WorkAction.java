@@ -36,6 +36,7 @@ import com.teachMng.onlineTeach.service.IExerciseSetService;
 @Component("workAction")
 @Scope("singleton")
 public class WorkAction extends ActionSupport implements ServletResponseAware {
+	private static final long serialVersionUID = 1L;
 	private String esId;
 	private String topicId;
 	private double score;
@@ -174,7 +175,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		json += "\",\"stuAnswer\":\"" + stuAnswer;
 		json += "\",\"ansDate\":\"" + df.format(date);
 		json += "\",\"stuName\":\"" + stuName;
-		json += "\",\"stdAnswer\":\"" + stdAnswer;
+		json += "\",\"stdAnswer\":\"" + stdAnswer.replace("\"", "\\\"");
 		json += "\",\"topicId\":\"" + topicId;
 		json += "\",\"esId\":\"" + esId + "\"";
 		return json;
