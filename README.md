@@ -53,7 +53,7 @@ mvn tomcat6:run
 #按键盘上的`Win+R`，输入`CMD`，打开一个控制台窗口
 cd 刚刚复制的目录名
 ```
-#####0.确认已经安装mysql,并且有用户名为gitproject, 密码为gitproject的用户。如果已经满足条件，请跳到第`1`步；如果没有请参照[Installing MySQL on Linux][]；如果您使用Ubuntu相关的系统，运行以下命令：
+#####0.确认已经安装mysql,并且有用户名为gitproject, 密码为gitproject的用户。如果已经满足条件，请跳到第`1`步；如果没有请前往[MySQL Community Server][]下载；
 
 ```Bash
 #使用浏览器打开：http://dev.mysql.com/downloads/mysql/#downloads
@@ -107,3 +107,4 @@ mvn tomcat6:run
 [http://localhost:8080/OnlineTeach/]: http://localhost:8080/OnlineTeach/
 [setup git for windows]: http://www.xbc.me/install-git-on-windows/
 [setup maven for windows]: http://hzbook.group.iteye.com/group/wiki/2872-Maven-in-action#3338
+[MySQL Community Server]: http://dev.mysql.com/downloads/mysql/#downloads
