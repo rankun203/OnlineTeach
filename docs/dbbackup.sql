@@ -2,7 +2,8 @@
 SQLyog Ultimate v9.62 
 MySQL - 5.5.27 : Database - onlineteach
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -149,6 +150,7 @@ CREATE TABLE `t_courseandteacher` (
 /*Data for the table `t_courseandteacher` */
 
 /*Table structure for table `t_courseplanitem` */
+insert  into `t_courseandteacher`(`courseID`,`teacID`) values (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9),(4,10),(4,11),(4,12),(5,1),(5,2),(5,13),(6,3),(6,4),(6,5),(7,6),(7,7),(7,8),(8,9),(8,10),(8,11),(9,1),(9,12),(9,13),(10,2),(10,3),(10,4),(11,5),(11,6),(11,7),(12,8),(12,9),(12,10),(13,11),(13,12),(13,13),(14,1),(14,2),(14,3),(15,4),(15,5),(15,6),(16,7),(16,8),(16,9),(17,10),(17,11),(17,12);
 
 DROP TABLE IF EXISTS `t_courseplanitem`;
 
