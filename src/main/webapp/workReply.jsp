@@ -32,7 +32,7 @@
         </div>         
     </div>   
 </div>
-<div class="draft" onClick="alert('此功能尚未开放！');">稿<br/>纸</div>
+<!-- <div class="draft" onClick="alert('此功能尚未开放！');">稿<br/>纸</div> -->
 <div class="mainbox container" style="border:1px solid #ccc; margin-top:20px;">
 	<div class="topicList">
     	<div class="topicTitle">

@@ -1,6 +1,7 @@
 //答题动态对象
 var replyStatus = {
-	postRemark : function () {
+	postRemark : function (postCallback) {
+		postCallback();
 	},
 	updateStatus : function () {
 		$.getJSON("work/getRepliedWork", function (data) {
@@ -11,23 +12,24 @@ var replyStatus = {
 				var _ansDate = v.ansDate;
 				var _stuName = v.stuName;
 				var _stdAnswer = v.stdAnswer;
+				var _stdScore = v.stdScore;
 				var _topicId = v.topicId;
 				var _esId = v.esId;
 				if(_type == "") return;
 				if(_type == "selection") {
-					var tp = new Topic.selection(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _topicId, _esId);
+					var tp = new Topic.selection(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _stdScore, _topicId, _esId);
 					var iNode = myDom.parseDom(tp.getHTML())[0];
 					replyStatus.insertNode(iNode);
 				} else if (_type == "completion") {
-					var tp = new Topic.completion(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _topicId, _esId);
+					var tp = new Topic.completion(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _stdScore, _topicId, _esId);
 					var iNode = myDom.parseDom(tp.getHTML())[0];
 					replyStatus.insertNode(iNode);
 				} else if (_type == "judge") {
-					var tp = new Topic.judge(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _topicId, _esId);
+					var tp = new Topic.judge(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _stdScore, _topicId, _esId);
 					var iNode = myDom.parseDom(tp.getHTML())[0];
 					replyStatus.insertNode(iNode);
 				} else if (_type == "question") {
-					var tp = new Topic.qa(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _topicId, _esId);
+					var tp = new Topic.qa(_type, _topic, _stuAnswer, _ansDate, _stuName, _stdAnswer, _stdScore, _topicId, _esId);
 					var iNode = myDom.parseDom(tp.getHTML())[0];
 					replyStatus.insertNode(iNode);
 				}
@@ -44,21 +46,40 @@ var replyStatus = {
 	 * @param {} iNode 要添加的答案节点
 	 */
 	insertNode : function (iNode) {
-		if($("#ansHold").size() > 0) $("#ansHold").remove();
+		if(document.getElementById("ansHold")) $("#ansHold").remove();
 		var iNodeJq = $(iNode);
 		$(".topans").removeClass("topans");
 		iNodeJq.addClass("topans");
 		$("#daTit").after(iNode);
+		//添加开关批注卡的事件
 		$("#arrow-" + iNodeJq.data("myid")).click(function () {
 			var thisPane = $(this).parent();
 			if(thisPane.hasClass("closed")) {
 				thisPane.removeClass("closed");
 				thisPane.addClass("spread");
 			} else if (thisPane.hasClass("spread")) {
+				replyStatus.postRemark(function () {
+					//TODO 提交评论的动作
+				});
 				thisPane.removeClass("spread");
 				thisPane.addClass("closed");
 			}
 		});
+		
+		//添加长答案弹出窗口事件
+		var longAnsBtns = $("#view-long-ans-" + iNodeJq.data("myid"));
+		if(longAnsBtns.size() > 0) {
+			longAnsBtns.click(function() {
+				$("#long-ans-" + iNodeJq.data("myid")).css("display", "block");
+				var txtNode = $("#long-ans-txt-" + iNodeJq.data("myid"));
+			});
+		}
+		var closeLongAnsBtns = $("#close-long-ans-" + iNodeJq.data("myid"));
+		if(closeLongAnsBtns.size() > 0) {
+			closeLongAnsBtns.click(function () {
+				$("#long-ans-" + iNodeJq.data("myid")).css("display", "none");
+			});
+		}
 		//调节滚动以舒适展现动态
 		var scrollTop = $(document).scrollTop();
 		var scrollLimit = $("#daTit").offset().top + $("#daTit").height();
@@ -72,27 +93,14 @@ var replyStatus = {
 	 * 负责轮询，计时器
 	 */
 	myReady : {
-		timer : null, //setTimeout对象
+		timer : null, //setInterval对象
 		delay : 2000,
 		/**
-		 * 初始化，分别调用 初始化添加动态的计时器 和 初始化状态
+		 * 初始化，初始化添加动态的计时器 和 初始化按钮状态
 		 */
 		init : function() {
-			this.autoAddAnswer();
+			this.timer = setInterval("replyStatus.updateStatus()", this.delay);
 			this.initState();
-		},
-		/**
-		 * 自动开始更新动态<br>
-		 * 实则调用了设定更新计时器的方法
-		 */
-		autoAddAnswer : function() {
-			this.readyAdd();
-		},
-		/**
-		 * 设定计时器，准备下一次调用添加动态的方法
-		 */
-		readyAdd : function() {
-			this.timer = setTimeout("replyStatus.myReady.addAnswer()", this.delay);
 		},
 		/**
 		 * 添加动态
@@ -101,10 +109,6 @@ var replyStatus = {
 		 * <li>再次调用设定计时器的方法</li>
 		 * </ul>
 		 */
-		addAnswer : function() {
-			replyStatus.updateStatus();
-			this.readyAdd();
-		},
 		toggleTimer : function() {
 			if (this.timer == null) {
 				this.resumeTimer();
@@ -118,7 +122,7 @@ var replyStatus = {
 			$("#toggleUpdateAnswer").text("恢复更新");
 		},
 		resumeTimer : function() {
-			this.timer = setTimeout("replyStatus.myReady.addAnswer()", this.delay);
+			this.timer = setInterval("replyStatus.updateStatus()", this.delay);
 			$("#toggleUpdateAnswer").text("暂停更新");
 		},
 		initState : function() {
@@ -136,15 +140,16 @@ var replyStatus = {
  * @type 可以叫做：动态、题目……
  */
 var Topic = {
-	selection : function (s1, s2, s3, s4, s5, s6, s7, s8) {
+	selection : function (s1, s2, s3, s4, s5, s6, s7, s8, s9) {
 		this.type = s1;
 		this.topic = s2;
 		this.stuAnswer = s3;
 		this.ansDate = s4;
 		this.stuName = s5;
 		this.stdAnswer = s6;
-		this.topicId = s7;
-		this.esId = s8;
+		this.stdScore = s7;
+		this.topicId = s8;
+		this.esId = s9;
 		this.getTime = function () {
 			var date = this.ansDate.split(" ");
 			return date[1];
@@ -185,6 +190,17 @@ var Topic = {
 				return "";
 			}
 		};
+		this.getMarkClass = function (curScore) {
+			if(this.stuAnswer == "" || this.stdAnswer == "") {
+				return "";
+			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
+				return " selected";
+			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+				return " selected";
+			} else {
+				return "";
+			}
+		};
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn = "" +
@@ -212,7 +228,7 @@ var Topic = {
  "		<div class=\"sel-sb-opt sel-sb-c sel-opt-tpl pullleft\" id=\"sel-c-tpl\">C<div class=\"sel-tpl-ed"+this.checkedClass("c")+"\" id=\"sel-c-tpl-ed\"></div></div>\r\n" + 
  "		<div class=\"sel-sb-opt sel-sb-d sel-opt-tpl pullleft\" id=\"sel-d-tpl\">D<div class=\"sel-tpl-ed"+this.checkedClass("d")+"\" id=\"sel-d-tpl-ed\"></div></div>\r\n" + 
  "		<div class=\"clearboth\"></div>\r\n" + 
- "	</div>\r\n" + 
+ "	</div>\r\n" +
  "	<div class=\"teacherRemark pullright high-remark hsel closed\"><!-- .hsel：high-type-selection -->\r\n" + 
  "    	<div class=\"showtip pullleft\">展开批注卡</div>\r\n" + 
  "    	<div class=\"anspane pullleft\">\r\n" + 
@@ -222,13 +238,13 @@ var Topic = {
  "			</div>\r\n" + 
  "			<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->\r\n" + 
  "			<div class=\"mark\">\r\n" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>\r\n" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>\r\n" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>\r\n" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>\r\n" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>\r\n" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(0)+"\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>\r\n" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(1)+"\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>\r\n" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(2)+"\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>\r\n" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(5)+"\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>\r\n" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(10)+"\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>\r\n" + 
  "				<div class=\"mark-input\" id=\"sel-remark-tpl-x-box\">\r\n" + 
- "					<input type=\"text\" class=\"ansInputField sslote pullleft\" id=\"sel-remark-tpl-x\" placeholder=\"？\"/>\r\n" + 
+ "					<input type=\"text\" class=\"ansInputField sslote pullleft\" id=\"sel-remark-tpl-x\" placeholder=\"？\"/>\r\n" + //TODO 把自定义分数填入
  "					<label for=\"sel-remark-tpl-x\" class=\"pullleft\">分</label>\r\n" + 
  "				</div>\r\n" + 
  "				<div class=\"clearboth\"></div>\r\n" + 
@@ -271,6 +287,17 @@ var Topic = {
 				return this.stdAnswer.replace("@br@", "\r\n");				
 			}
 		};
+		this.getMarkClass = function (curScore) {
+			if(this.stuAnswer == "" || this.stdAnswer == "") {
+				return "";
+			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
+				return " selected";
+			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+				return " selected";
+			} else {
+				return "";
+			}
+		};
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn =
@@ -292,24 +319,24 @@ var Topic = {
  "    	<div class=\"anspane pullleft\">" + 
  "			<div class=\"qus-ans\">" + 
  "				<!-- 点击查看按钮，即打开模态对话框，显示答案 -->" + 
- "				<div class=\"ans-tit pullleft\">参考答案：</div><button class=\"ans-body pullleft flatbtn\" id=\"ans-body-tpl\">查看</button>" + 
- "				<div class=\"modalDialog\">" + 
+ "				<div class=\"ans-tit pullleft\">参考答案：</div><button class=\"ans-body pullleft flatbtn\" id=\"view-long-ans-tpl\">查看</button>" + 
+ "				<div class=\"modalDialog\" id=\"long-ans-tpl\">" + 
  "					<div class=\"mask\"></div>" + 
  "					<div class=\"modalCtn\">" + 
- "						<div class=\"controller\">+</div>" + 
+ "						<div class=\"controller\" id=\"close-long-ans-tpl\">+</div>" + 
  "						<div class=\"tit\">简答题答案</div>" + 
- "						<div class=\"txt\">"+this.getAnswer("std")+"</div>" + 
+ "						<div class=\"txt\" id=\"long-ans-txt-tpl\">"+this.getAnswer("std").replace(/@br@/g, "<br />")+"</div>" + 
  "					</div>" + 
  "				</div>" + 
  "				<div class=\"clearboth\"></div>" + 
  "			</div>" + 
  "			<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->" + 
  "			<div class=\"mark\">" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(0)+"\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(1)+"\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(2)+"\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(5)+"\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(10)+"\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
  "				<div class=\"mark-input\" id=\"sel-remark-tpl-x-box\">" + 
  "					<input type=\"text\" class=\"ansInputField sslote pullleft\" id=\"sel-remark-tpl-x\" placeholder=\"？\"/>" + 
  "					<label for=\"sel-remark-tpl-x\" class=\"pullleft\">分</label>" + 
@@ -360,6 +387,17 @@ var Topic = {
 				return "";
 			}
 		};
+		this.getMarkClass = function (curScore) {
+			if(this.stuAnswer == "" || this.stdAnswer == "") {
+				return "";
+			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
+				return " selected";
+			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+				return " selected";
+			} else {
+				return "";
+			}
+		};
 		this.getStdAnswer = function () {
 			var ans = this.stdAnswer;
 			if(ans == "true") {
@@ -398,11 +436,11 @@ var Topic = {
  "			</div>" + 
  "			<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->" + 
  "			<div class=\"mark\">" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(0)+"\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(1)+"\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(2)+"\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(5)+"\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(10)+"\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
  "				<div class=\"mark-input\" id=\"sel-remark-tpl-x-box\">" + 
  "					<input type=\"text\" class=\"ansInputField sslote pullleft\" id=\"sel-remark-tpl-x\" placeholder=\"？\"/>" + 
  "					<label for=\"sel-remark-tpl-x\" class=\"pullleft\">分</label>" + 
@@ -441,17 +479,23 @@ var Topic = {
 			return date[0];
 		};
 		this.getFilledTopic = function () {
-			var filledTopic = "";
 			var tp = this.topic;
-			for(var flag = 0; flag < tp.length; flag++) {
-				//TODO 解析填空题的所有空
-				var oldi = flag;
-				var i = tp.indexOf("@space@", flag);
-				filledTopic += tp.substring(oldi, i) + "--";
-				flag += i;
-
+			var stuAnswers = this.stuAnswer.split(",");
+			for(var i = 0; i < stuAnswers.length; i++) {
+				tp = tp.replace("@"+i+"@", "<code>" + stuAnswers[i] + "</code>");
 			}
 			return tp;
+		};
+		this.getMarkClass = function (curScore) {
+			if(this.stuAnswer == "" || this.stdAnswer == "") {
+				return "";
+			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
+				return " selected";
+			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+				return " selected";
+			} else {
+				return "";
+			}
 		};
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
@@ -469,24 +513,24 @@ var Topic = {
  "    	<div class=\"showtip pullleft\">展开批注卡</div>" + 
  "    	<div class=\"anspane pullleft\">" + 
  "			<div class=\"cpl-ans\">" + 
- "				<div class=\"ans-tit pullleft\">参考答案：</div><button class=\"ans-body pullleft flatbtn\" id=\"ans-body-tpl\">查看</button>" + 
+ "				<div class=\"ans-tit pullleft\">参考答案：</div><button class=\"ans-body pullleft flatbtn\" id=\"view-long-ans-tpl\">查看</button>" + 
  "				<div class=\"clearboth\"></div>" + 
- "				<div class=\"modalDialog\">" + 
+ "				<div class=\"modalDialog\" id=\"long-ans-tpl\">" + 
  "					<div class=\"mask\"></div>" + 
  "					<div class=\"modalCtn\">" + 
- "						<div class=\"controller\">+</div>" + 
+ "						<div class=\"controller\" id=\"close-long-ans-tpl\">+</div>" + 
  "						<div class=\"tit\">简答题答案</div>" + 
- "						<div class=\"txt\">我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案，我是答案，我是答案，我是答案答案答案答案答案答案答案答案答案答案答案答案。</div>" + 
+ "						<div class=\"txt\" id=\"long-ans-txt-tpl\">"+this.stuAnswer+"</div>" + 
  "					</div>" + 
  "				</div>" + 
  "			</div>" + 
  "			<!-- 每次添加动态后，设置评分按钮的事件，点击即提交信息 -->" + 
  "			<div class=\"mark\">" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
- "				<div class=\"mark-x selecttab pullleft\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(0)+"\" id=\"remark-tpl-0\" data-ot-remark=\"0\">0</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(1)+"\" id=\"remark-tpl-1\" data-ot-remark=\"1\">1</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(2)+"\" id=\"remark-tpl-2\" data-ot-remark=\"2\">2</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(5)+"\" id=\"remark-tpl-5\" data-ot-remark=\"5\">5</div>" + 
+ "				<div class=\"mark-x selecttab pullleft"+this.getMarkClass(10)+"\" id=\"remark-tpl-10\" data-ot-remark=\"10\">10</div>" + 
  "				<div class=\"mark-input\" id=\"sel-remark-tpl-x-box\">" + 
  "					<input type=\"text\" class=\"ansInputField sslote pullleft\" id=\"sel-remark-tpl-x\" placeholder=\"？\"/>" + 
  "					<label for=\"sel-remark-tpl-x\" class=\"pullleft\">分</label>" + 
