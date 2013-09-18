@@ -520,6 +520,7 @@ public class AutoPlan {
 	 * @return 返回一个教师
 	 */
 	private Teacher getTeacherByParagraph(Course c, SchoolClass sc) {
+		System.out.println(c.getCourseName() + c.getCourseID() + "    " + c.getTeachers().size());
 		List<Teacher> _teachers = new ArrayList<Teacher>(c.getTeachers());
 		Teacher t = null;
 		Boolean b = true;
@@ -530,6 +531,7 @@ public class AutoPlan {
 			return t;
 		}
 		if (0 == _list.size()) {
+			System.out.println(_teachers.size());
 			int index = new Random().nextInt(_teachers.size());
 			return _teachers.get(index);
 		}

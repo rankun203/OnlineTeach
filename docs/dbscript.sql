@@ -2,373 +2,373 @@
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     2013/6/5 15:26:26                            */
 /*==============================================================*/
-create database onlineteach;
-use onlineteach;
+CREATE DATABASE onlineteach;
+USE onlineteach;
 
-drop table if exists t_checkAttendance;
+DROP TABLE IF EXISTS t_checkAttendance;
 
-drop table if exists t_classRoom;
+DROP TABLE IF EXISTS t_classRoom;
 
-drop table if exists t_compositeCheck;
+DROP TABLE IF EXISTS t_compositeCheck;
 
-drop table if exists t_course;
+DROP TABLE IF EXISTS t_course;
 
-drop table if exists t_courseAndTeacher;
+DROP TABLE IF EXISTS t_courseAndTeacher;
 
-drop table if exists t_coursePlanItem;
+DROP TABLE IF EXISTS t_coursePlanItem;
 
-drop table if exists t_courseWare;
+DROP TABLE IF EXISTS t_courseWare;
 
-drop table if exists t_courseWork;
+DROP TABLE IF EXISTS t_courseWork;
 
-drop table if exists t_file;
+DROP TABLE IF EXISTS t_file;
 
-drop table if exists t_major;
+DROP TABLE IF EXISTS t_major;
 
-drop table if exists t_majorsCourse;
+DROP TABLE IF EXISTS t_majorsCourse;
 
-drop table if exists t_project;
+DROP TABLE IF EXISTS t_project;
 
-drop table if exists t_projectDiv;
+DROP TABLE IF EXISTS t_projectDiv;
 
-drop table if exists t_projectGroup;
+DROP TABLE IF EXISTS t_projectGroup;
 
-drop table if exists t_projectReply;
+DROP TABLE IF EXISTS t_projectReply;
 
-drop table if exists t_schoolclass;
+DROP TABLE IF EXISTS t_schoolclass;
 
-drop table if exists t_student;
+DROP TABLE IF EXISTS t_student;
 
-drop table if exists t_teachPlan;
+DROP TABLE IF EXISTS t_teachPlan;
 
-drop table if exists t_teacher;
+DROP TABLE IF EXISTS t_teacher;
 
-drop table if exists t_workstate;
+DROP TABLE IF EXISTS t_workstate;
 
 /*==============================================================*/
 /* Table: t_checkAttendance                                     */
 /*==============================================================*/
-create table t_checkAttendance
+CREATE TABLE t_checkAttendance
 (
-   cpID                 int not null,
-   tpCourseTime         datetime not null,
-   stuID                int not null,
-   caAttendance         int,
-   primary key (cpID, tpCourseTime, stuID)
+   cpID                 INT NOT NULL,
+   tpCourseTime         DATETIME NOT NULL,
+   stuID                INT NOT NULL,
+   caAttendance         INT,
+   PRIMARY KEY (cpID, tpCourseTime, stuID)
 );
 
 /*==============================================================*/
 /* Table: t_classRoom                                           */
 /*==============================================================*/
-create table t_classRoom
+CREATE TABLE t_classRoom
 (
-   crID                 int not null auto_increment,
-   crName               varchar(20),
-   crType               int,
-   primary key (crID)
+   crID                 INT NOT NULL AUTO_INCREMENT,
+   crName               VARCHAR(20),
+   crType               INT,
+   PRIMARY KEY (crID)
 );
 
 /*==============================================================*/
 /* Table: t_compositeCheck                                      */
 /*==============================================================*/
-create table t_compositeCheck
+CREATE TABLE t_compositeCheck
 (
-   stuID                int not null,
-   courseID             int not null,
-   ccID                 int,
-   ccGrade              float,
-   ccState              int comment '通没通过',
-   primary key (stuID, courseID)
+   stuID                INT NOT NULL,
+   courseID             INT NOT NULL,
+   ccID                 INT,
+   ccGrade              FLOAT,
+   ccState              INT COMMENT '通没通过',
+   PRIMARY KEY (stuID, courseID)
 );
 
 /*==============================================================*/
 /* Table: t_course                                              */
 /*==============================================================*/
-create table t_course
+CREATE TABLE t_course
 (
-   courseID             int not null auto_increment,
-   courseName           varchar(50),
-   courseDesc           varchar(200),
-   priority             int,
-   roomType             int,
-   primary key (courseID)
+   courseID             INT NOT NULL AUTO_INCREMENT,
+   courseName           VARCHAR(50),
+   courseDesc           VARCHAR(200),
+   priority             INT,
+   roomType             INT,
+   PRIMARY KEY (courseID)
 );
 
 /*==============================================================*/
 /* Table: t_courseAndTeacher                                    */
 /*==============================================================*/
-create table t_courseAndTeacher
+CREATE TABLE t_courseAndTeacher
 (
-   courseID             int not null,
-   teacID               int not null,
-   primary key (courseID, teacID)
+   courseID             INT NOT NULL,
+   teacID               INT NOT NULL,
+   PRIMARY KEY (courseID, teacID)
 );
-
+INSERT  INTO `t_courseandteacher`(`courseID`,`teacID`) VALUES (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9),(4,10),(4,11),(4,12),(5,1),(5,2),(5,13),(6,3),(6,4),(6,5),(7,6),(7,7),(7,8),(8,9),(8,10),(8,11),(9,1),(9,12),(9,13),(10,2),(10,3),(10,4),(11,5),(11,6),(11,7),(12,8),(12,9),(12,10),(13,11),(13,12),(13,13),(14,1),(14,2),(14,3),(15,4),(15,5),(15,6),(16,7),(16,8),(16,9),(17,10),(17,11),(17,12);
 /*==============================================================*/
 /* Table: t_coursePlanItem                                      */
 /*==============================================================*/
-create table t_coursePlanItem
+CREATE TABLE t_coursePlanItem
 (
-   cpID                 int not null auto_increment,
-   teacID               int not null,
-   scID                 int not null,
-   courseID             int not null,
-   crID                 int not null,
-   cpparagraph          int,
-   cpstate              int,
-   primary key (cpID)
+   cpID                 INT NOT NULL AUTO_INCREMENT,
+   teacID               INT NOT NULL,
+   scID                 INT NOT NULL,
+   courseID             INT NOT NULL,
+   crID                 INT NOT NULL,
+   cpparagraph          INT,
+   cpstate              INT,
+   PRIMARY KEY (cpID)
 );
 
-alter table t_coursePlanItem comment '课程表原子';
+ALTER TABLE t_coursePlanItem COMMENT '课程表原子';
 
 /*==============================================================*/
 /* Table: t_courseWare                                          */
 /*==============================================================*/
-create table t_courseWare
+CREATE TABLE t_courseWare
 (
-   cwareID              int not null auto_increment,
-   cpID                 int not null,
-   tpCourseTime         datetime not null,
-   cwareName            varchar(50),
-   cwareDesc            varchar(255),
-   primary key (cwareID)
+   cwareID              INT NOT NULL AUTO_INCREMENT,
+   cpID                 INT NOT NULL,
+   tpCourseTime         DATETIME NOT NULL,
+   cwareName            VARCHAR(50),
+   cwareDesc            VARCHAR(255),
+   PRIMARY KEY (cwareID)
 );
 
 /*==============================================================*/
 /* Table: t_courseWork                                          */
 /*==============================================================*/
-create table t_courseWork
+CREATE TABLE t_courseWork
 (
-   cworkID              int not null auto_increment,
-   cpID                 int not null,
-   tpCourseTime         datetime not null,
-   cworkTitle           varchar(100),
-   cworkDesc            varchar(500),
-   cworkType            int,
-   cworkState           varchar(8),
-   primary key (cworkID)
+   cworkID              INT NOT NULL AUTO_INCREMENT,
+   cpID                 INT NOT NULL,
+   tpCourseTime         DATETIME NOT NULL,
+   cworkTitle           VARCHAR(100),
+   cworkDesc            VARCHAR(500),
+   cworkType            INT,
+   cworkState           VARCHAR(8),
+   PRIMARY KEY (cworkID)
 );
 
 /*==============================================================*/
 /* Table: t_file                                                */
 /*==============================================================*/
-create table t_file
+CREATE TABLE t_file
 (
-   fileID               int not null auto_increment,
-   cwareID              int,
-   filePaths            text,
-   originalFileName     varchar(100),
-   generatedFileName    varchar(100),
-   uploadDateTime       datetime,
-   downloadCount        int,
-   primary key (fileID)
+   fileID               INT NOT NULL AUTO_INCREMENT,
+   cwareID              INT,
+   filePaths            TEXT,
+   originalFileName     VARCHAR(100),
+   generatedFileName    VARCHAR(100),
+   uploadDateTime       DATETIME,
+   downloadCount        INT,
+   PRIMARY KEY (fileID)
 );
 
 /*==============================================================*/
 /* Table: t_major                                               */
 /*==============================================================*/
-create table t_major
+CREATE TABLE t_major
 (
-   majorID              int not null auto_increment,
-   majorName            varchar(20),
-   primary key (majorID)
+   majorID              INT NOT NULL AUTO_INCREMENT,
+   majorName            VARCHAR(20),
+   PRIMARY KEY (majorID)
 );
 
 /*==============================================================*/
 /* Table: t_majorsCourse                                        */
 /*==============================================================*/
-create table t_majorsCourse
+CREATE TABLE t_majorsCourse
 (
-   majorID              int not null,
-   courseID             int not null,
-   paragraph            int,
-   primary key (majorID, courseID)
+   majorID              INT NOT NULL,
+   courseID             INT NOT NULL,
+   paragraph            INT,
+   PRIMARY KEY (majorID, courseID)
 );
 
 /*==============================================================*/
 /* Table: t_project                                             */
 /*==============================================================*/
-create table t_project
+CREATE TABLE t_project
 (
-   projID               int not null auto_increment,
-   projTitle            varchar(255),
-   projDesc             varchar(1024),
-   primary key (projID)
+   projID               INT NOT NULL AUTO_INCREMENT,
+   projTitle            VARCHAR(255),
+   projDesc             VARCHAR(1024),
+   PRIMARY KEY (projID)
 );
 
 /*==============================================================*/
 /* Table: t_projectDiv                                          */
 /*==============================================================*/
-create table t_projectDiv
+CREATE TABLE t_projectDiv
 (
-   stuID                int not null,
-   projID               int not null,
-   pdID                 int,
-   pdWorkDesc           varchar(255),
-   pdGrade              float,
-   primary key (stuID, projID)
+   stuID                INT NOT NULL,
+   projID               INT NOT NULL,
+   pdID                 INT,
+   pdWorkDesc           VARCHAR(255),
+   pdGrade              FLOAT,
+   PRIMARY KEY (stuID, projID)
 );
 
 /*==============================================================*/
 /* Table: t_projectGroup                                        */
 /*==============================================================*/
-create table t_projectGroup
+CREATE TABLE t_projectGroup
 (
-   pgID                 int not null auto_increment,
-   pgName               varchar(20),
-   pgSlogan             varchar(255),
-   primary key (pgID)
+   pgID                 INT NOT NULL AUTO_INCREMENT,
+   pgName               VARCHAR(20),
+   pgSlogan             VARCHAR(255),
+   PRIMARY KEY (pgID)
 );
 
 /*==============================================================*/
 /* Table: t_projectReply                                        */
 /*==============================================================*/
-create table t_projectReply
+CREATE TABLE t_projectReply
 (
-   pgID                 int not null,
-   projID               int not null,
-   prID                 int not null,
-   prGrade              float,
-   prState              int,
-   prDate               datetime,
-   primary key (pgID, projID)
+   pgID                 INT NOT NULL,
+   projID               INT NOT NULL,
+   prID                 INT NOT NULL,
+   prGrade              FLOAT,
+   prState              INT,
+   prDate               DATETIME,
+   PRIMARY KEY (pgID, projID)
 );
 
 /*==============================================================*/
 /* Table: t_schoolclass                                         */
 /*==============================================================*/
-create table t_schoolclass
+CREATE TABLE t_schoolclass
 (
-   scID                 int not null auto_increment,
-   majorID              int,
-   scName               varchar(20),
-   primary key (scID)
+   scID                 INT NOT NULL AUTO_INCREMENT,
+   majorID              INT,
+   scName               VARCHAR(20),
+   PRIMARY KEY (scID)
 );
 
 /*==============================================================*/
 /* Table: t_student                                             */
 /*==============================================================*/
-create table t_student
+CREATE TABLE t_student
 (
-   stuID                int not null auto_increment,
-   pgID                 int,
-   scID                 int,
-   stuName              varchar(20),
-   primary key (stuID)
+   stuID                INT NOT NULL AUTO_INCREMENT,
+   pgID                 INT,
+   scID                 INT,
+   stuName              VARCHAR(20),
+   PRIMARY KEY (stuID)
 );
 
 /*==============================================================*/
 /* Table: t_teachPlan                                           */
 /*==============================================================*/
-create table t_teachPlan
+CREATE TABLE t_teachPlan
 (
-   cpID                 int not null,
-   tpCourseTime         datetime not null,
-   tpTeachMethod        varchar(255),
-   tpTeachContent       text,
-   tpTeachGoal          varchar(1024),
-   primary key (cpID, tpCourseTime)
+   cpID                 INT NOT NULL,
+   tpCourseTime         DATETIME NOT NULL,
+   tpTeachMethod        VARCHAR(255),
+   tpTeachContent       TEXT,
+   tpTeachGoal          VARCHAR(1024),
+   PRIMARY KEY (cpID, tpCourseTime)
 );
 
 /*==============================================================*/
 /* Table: t_teacher                                             */
 /*==============================================================*/
-create table t_teacher
+CREATE TABLE t_teacher
 (
-   teacID               int not null auto_increment,
-   teacName             varchar(20),
-   primary key (teacID)
+   teacID               INT NOT NULL AUTO_INCREMENT,
+   teacName             VARCHAR(20),
+   PRIMARY KEY (teacID)
 );
 
 /*==============================================================*/
 /* Table: t_workstate                                           */
 /*==============================================================*/
-create table t_workstate
+CREATE TABLE t_workstate
 (
-   cworkID              int not null,
-   stuID                int not null,
-   fileID               int not null,
-   wsID                 int not null,
-   wsGrade              float,
-   wsTeacherComment     varchar(1024),
-   primary key (cworkID, stuID, fileID)
+   cworkID              INT NOT NULL,
+   stuID                INT NOT NULL,
+   fileID               INT NOT NULL,
+   wsID                 INT NOT NULL,
+   wsGrade              FLOAT,
+   wsTeacherComment     VARCHAR(1024),
+   PRIMARY KEY (cworkID, stuID, fileID)
 );
 
-alter table t_checkAttendance add constraint FK_attendanceIncludeStudent foreign key (stuID)
-      references t_student (stuID) on delete restrict on update restrict;
+ALTER TABLE t_checkAttendance ADD CONSTRAINT FK_attendanceIncludeStudent FOREIGN KEY (stuID)
+      REFERENCES t_student (stuID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_checkAttendance add constraint FK_teachPlanIncludeCheckAttendance foreign key (cpID, tpCourseTime)
-      references t_teachPlan (cpID, tpCourseTime) on delete restrict on update restrict;
+ALTER TABLE t_checkAttendance ADD CONSTRAINT FK_teachPlanIncludeCheckAttendance FOREIGN KEY (cpID, tpCourseTime)
+      REFERENCES t_teachPlan (cpID, tpCourseTime) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_compositeCheck add constraint FK_compositeCheckBelongtoStudent foreign key (stuID)
-      references t_student (stuID) on delete restrict on update restrict;
+ALTER TABLE t_compositeCheck ADD CONSTRAINT FK_compositeCheckBelongtoStudent FOREIGN KEY (stuID)
+      REFERENCES t_student (stuID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_compositeCheck add constraint FK_compositeCheckRelateCourseInfo foreign key (courseID)
-      references t_course (courseID) on delete restrict on update restrict;
+ALTER TABLE t_compositeCheck ADD CONSTRAINT FK_compositeCheckRelateCourseInfo FOREIGN KEY (courseID)
+      REFERENCES t_course (courseID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_courseAndTeacher add constraint FK_t_courseAndTeacher foreign key (courseID)
-      references t_course (courseID) on delete restrict on update restrict;
+ALTER TABLE t_courseAndTeacher ADD CONSTRAINT FK_t_courseAndTeacher FOREIGN KEY (courseID)
+      REFERENCES t_course (courseID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_courseAndTeacher add constraint FK_t_courseAndTeacher2 foreign key (teacID)
-      references t_teacher (teacID) on delete restrict on update restrict;
+ALTER TABLE t_courseAndTeacher ADD CONSTRAINT FK_t_courseAndTeacher2 FOREIGN KEY (teacID)
+      REFERENCES t_teacher (teacID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_coursePlanItem add constraint FK_CourseItemRelateCourseInfo foreign key (courseID)
-      references t_course (courseID) on delete restrict on update restrict;
+ALTER TABLE t_coursePlanItem ADD CONSTRAINT FK_CourseItemRelateCourseInfo FOREIGN KEY (courseID)
+      REFERENCES t_course (courseID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_coursePlanItem add constraint FK_courseBelongToClass foreign key (scID)
-      references t_schoolclass (scID) on delete restrict on update restrict;
+ALTER TABLE t_coursePlanItem ADD CONSTRAINT FK_courseBelongToClass FOREIGN KEY (scID)
+      REFERENCES t_schoolclass (scID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_coursePlanItem add constraint FK_coursePlanItemRelateTeacher foreign key (teacID)
-      references t_teacher (teacID) on delete restrict on update restrict;
+ALTER TABLE t_coursePlanItem ADD CONSTRAINT FK_coursePlanItemRelateTeacher FOREIGN KEY (teacID)
+      REFERENCES t_teacher (teacID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_coursePlanItem add constraint FK_courseRelateClassroom foreign key (crID)
-      references t_classRoom (crID) on delete restrict on update restrict;
+ALTER TABLE t_coursePlanItem ADD CONSTRAINT FK_courseRelateClassroom FOREIGN KEY (crID)
+      REFERENCES t_classRoom (crID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_courseWare add constraint FK_courseWareBelongtoTeachPlan foreign key (cpID, tpCourseTime)
-      references t_teachPlan (cpID, tpCourseTime) on delete restrict on update restrict;
+ALTER TABLE t_courseWare ADD CONSTRAINT FK_courseWareBelongtoTeachPlan FOREIGN KEY (cpID, tpCourseTime)
+      REFERENCES t_teachPlan (cpID, tpCourseTime) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_courseWork add constraint FK_teachPlanIncludeCourseWork foreign key (cpID, tpCourseTime)
-      references t_teachPlan (cpID, tpCourseTime) on delete restrict on update restrict;
+ALTER TABLE t_courseWork ADD CONSTRAINT FK_teachPlanIncludeCourseWork FOREIGN KEY (cpID, tpCourseTime)
+      REFERENCES t_teachPlan (cpID, tpCourseTime) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_file add constraint FK_courseWareIncludeFile foreign key (cwareID)
-      references t_courseWare (cwareID) on delete restrict on update restrict;
+ALTER TABLE t_file ADD CONSTRAINT FK_courseWareIncludeFile FOREIGN KEY (cwareID)
+      REFERENCES t_courseWare (cwareID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_majorsCourse add constraint FK_t_majorsCourse foreign key (majorID)
-      references t_major (majorID) on delete restrict on update restrict;
+ALTER TABLE t_majorsCourse ADD CONSTRAINT FK_t_majorsCourse FOREIGN KEY (majorID)
+      REFERENCES t_major (majorID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_majorsCourse add constraint FK_t_majorsCourse2 foreign key (courseID)
-      references t_course (courseID) on delete restrict on update restrict;
+ALTER TABLE t_majorsCourse ADD CONSTRAINT FK_t_majorsCourse2 FOREIGN KEY (courseID)
+      REFERENCES t_course (courseID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_projectDiv add constraint FK_projectDivRelateProject foreign key (projID)
-      references t_project (projID) on delete restrict on update restrict;
+ALTER TABLE t_projectDiv ADD CONSTRAINT FK_projectDivRelateProject FOREIGN KEY (projID)
+      REFERENCES t_project (projID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_projectDiv add constraint FK_studentRelateProjectDiv foreign key (stuID)
-      references t_student (stuID) on delete restrict on update restrict;
+ALTER TABLE t_projectDiv ADD CONSTRAINT FK_studentRelateProjectDiv FOREIGN KEY (stuID)
+      REFERENCES t_student (stuID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_projectReply add constraint FK_t_projectReply foreign key (pgID)
-      references t_projectGroup (pgID) on delete restrict on update restrict;
+ALTER TABLE t_projectReply ADD CONSTRAINT FK_t_projectReply FOREIGN KEY (pgID)
+      REFERENCES t_projectGroup (pgID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_projectReply add constraint FK_t_projectReply2 foreign key (projID)
-      references t_project (projID) on delete restrict on update restrict;
+ALTER TABLE t_projectReply ADD CONSTRAINT FK_t_projectReply2 FOREIGN KEY (projID)
+      REFERENCES t_project (projID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_schoolclass add constraint FK_classBelongToMajor foreign key (majorID)
-      references t_major (majorID) on delete restrict on update restrict;
+ALTER TABLE t_schoolclass ADD CONSTRAINT FK_classBelongToMajor FOREIGN KEY (majorID)
+      REFERENCES t_major (majorID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_student add constraint FK_projectGroupIncludeStudent foreign key (pgID)
-      references t_projectGroup (pgID) on delete restrict on update restrict;
+ALTER TABLE t_student ADD CONSTRAINT FK_projectGroupIncludeStudent FOREIGN KEY (pgID)
+      REFERENCES t_projectGroup (pgID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_student add constraint FK_studentBelongsToClass foreign key (scID)
-      references t_schoolclass (scID) on delete restrict on update restrict;
+ALTER TABLE t_student ADD CONSTRAINT FK_studentBelongsToClass FOREIGN KEY (scID)
+      REFERENCES t_schoolclass (scID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_teachPlan add constraint FK_coursePlanItemRelateTeachPlan foreign key (cpID)
-      references t_coursePlanItem (cpID) on delete restrict on update restrict;
+ALTER TABLE t_teachPlan ADD CONSTRAINT FK_coursePlanItemRelateTeachPlan FOREIGN KEY (cpID)
+      REFERENCES t_coursePlanItem (cpID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_workstate add constraint FK_t_workstate foreign key (cworkID)
-      references t_courseWork (cworkID) on delete restrict on update restrict;
+ALTER TABLE t_workstate ADD CONSTRAINT FK_t_workstate FOREIGN KEY (cworkID)
+      REFERENCES t_courseWork (cworkID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_workstate add constraint FK_t_workstate2 foreign key (stuID)
-      references t_student (stuID) on delete restrict on update restrict;
+ALTER TABLE t_workstate ADD CONSTRAINT FK_t_workstate2 FOREIGN KEY (stuID)
+      REFERENCES t_student (stuID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-alter table t_workstate add constraint FK_t_workstate3 foreign key (fileID)
-      references t_file (fileID) on delete restrict on update restrict;
+ALTER TABLE t_workstate ADD CONSTRAINT FK_t_workstate3 FOREIGN KEY (fileID)
+      REFERENCES t_file (fileID) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
