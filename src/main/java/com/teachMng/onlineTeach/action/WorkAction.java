@@ -137,7 +137,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 				_esce = esceService.findByEsIdCeId(ans.getEsId(), ans.gettId());
 				_ce = _esce.getCe();
 				stu = _esce.getEs().getStudent();
-				json += getJson("completion", _ce.getFullTopic(),
+				json += getJson("completion", replaceCompletion(_ce.getFullTopic()),
 						_esce.getStuAnswer(), ans.getDate(), stu.getStuName(),
 						_ce.getStdAnswer(), ans.gettId(), ans.getEsId());
 			} else if ("question".equals(ans.getType())) {
@@ -180,7 +180,19 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		json += "\",\"esId\":\"" + esId + "\"";
 		return json;
 	}
-
+	private String replaceCompletion(String topic) {
+		String tmp = topic;
+		if(-1 == tmp.indexOf("@space@")) return topic;
+		String s1, s2, s = "";
+		int index = -1, i = 0;
+		while(-1 != (index = tmp.indexOf("@space@"))) {
+			s1 = tmp.substring(0, index + 7);
+			s2 = tmp.substring(index + 7, tmp.length());
+			s += s1.replace("@space@", "@" + (i++) + "@");
+			tmp = s2;
+		}
+		return s;
+	}
 	public double getScore() {
 		return score;
 	}

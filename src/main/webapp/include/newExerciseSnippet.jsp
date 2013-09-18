@@ -37,7 +37,7 @@
 							<div class="clearboth"></div>
 							
 							<div class="seltab-ctn-texta pullleft">
-								<textarea name="fulltopic" id="seltab-fulltopic" class="inputField sslote"></textarea>
+								<textarea name="fulltopic" id="seltab-fulltopic" class="inputField sslote" placeholder="有天府之国一称的城市是：                                                                               A.成都                                                                               B.宜宾                                                                               C.泸州                                                                               D.广元"></textarea>
 							</div>
 							<div class="scb-rightbox pullleft">
 								<div class="clearboth"></div>
@@ -61,7 +61,7 @@
 							<div class="clearboth"></div>
 							
 							<div class="seltab-ctn-texta pullleft">
-								<textarea name="fulltopic" id="cpltopic" class="inputField sslote"></textarea>
+								<textarea name="fulltopic" id="cpltopic" class="inputField sslote" placeholder="钓鱼岛是[中国]的"></textarea>
 							</div>
 							<div class="scb-rightbox pullleft">
 								<div class="clearboth"></div>
@@ -81,14 +81,14 @@
 							<div class="pointerdown pullleft"></div>
 							<div class="clearboth"></div>							
 							<div class="ansta pullleft">
-								<textarea name="anstopic" id="anstopic" class="inputField sslote"></textarea>
+								<textarea name="anstopic" id="anstopic" class="inputField sslote" placeholder="中国大概有多少人口？"></textarea>
 							</div>
 							
 							<div class="seltab-ctn-tit pullleft">参考答案</div>
 							<div class="pointerdown pullleft"></div>
 							<div class="clearboth"></div>
 							<div class="ansta pullleft">
-								<textarea name="anskw" id="anskw" class="inputField sslote"></textarea>
+								<textarea name="anskw" id="anskw" class="inputField sslote" placeholder="14亿"></textarea>
 							</div>
 							<div class="clearboth"></div>
 						</div>
@@ -99,7 +99,7 @@
 							<div class="pointerdown pullleft"></div>
 							<div class="clearboth"></div>							
 							<div class="ansta pullleft">
-								<textarea name="jgtopic" id="jgtopic" class="inputField sslote"></textarea>
+								<textarea name="jgtopic" id="jgtopic" class="inputField sslote" placeholder="钓鱼岛是中国的?"></textarea>
 							</div>
 							
 							<div class="seltab-ctn-tit pullleft">参考答案</div>

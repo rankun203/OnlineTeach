@@ -12,16 +12,28 @@ public class GeneralTest {
 	public void test1() {
 		int spaceCounts = 0;
 
-		String topic = "你是我的" + "@space@" + "，你是我的" + "@space@" + "，你是我的"
-				+ "@space@" + "，是我的" + "@space@";
-		int curTemp = 0;
-		while (curTemp != -1) {
-			System.out.println(curTemp);
-			curTemp = topic.indexOf("@space@", curTemp + "@space@".length());
-			spaceCounts++;
+		String topic = "我是一只@space@，想要@space@呀@space@，却飞也飞不高～～";
+		String tmp = topic;
+		if(-1 == tmp.indexOf("@space@")) return;
+		String s1, s2, s = "";
+		int index = -1, i = 0;
+		while(-1 != (index = tmp.indexOf("@space@"))) {
+			System.out.println("_____" + tmp);
+			s1 = tmp.substring(0, index + 7);
+			s2 = tmp.substring(index + 7, tmp.length());
+			s += s1.replace("@space@", "@" + (i++) + "@");
+			System.out.println(s1 + '_' + s2 + "_" + s);
+			tmp = s2;
 		}
-
-		System.out.println(spaceCounts);
+		System.out.println(s);
+//		int curTemp = 0;
+//		while (curTemp != -1) {
+//			System.out.println(curTemp);
+//			curTemp = topic.indexOf("@space@", curTemp + "@space@".length());
+//			spaceCounts++;
+//		}
+//
+//		System.out.println(spaceCounts);
 	}
 
 	@Test

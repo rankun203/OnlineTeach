@@ -164,7 +164,8 @@ $("document").ready(function(){
 				{
 					createExerciseType:createExerciseType,
 					stdGrade:stdGrade,
-					jgtopic:jgtopic
+					jgtopic:jgtopic,
+					judgeans:judgeans
 				}, function(){
 					msgok("OK, 题目保存成功！");
 				});
@@ -280,7 +281,7 @@ $.extend({
 		var str = "	<li id=\"" + id + "\"> " +
         "   <div class=\"wldcItem wldcItem" + odd + "\" onMouseOver=\"lightUpRow(this);\" onMouseOut=\"reBg(this, '" + odd + "');\"> " +
         "    <div class=\"pullleft wldcCheckboxBox\"> " +
-        "        <input type=\"checkbox\" class=\"wldccb\" value=\"" + id + "\" > " +
+        "        <input type=\"checkbox\" class=\"wldccb\" value=\"" + id + "\" id=\"box_" + id + "\" /> " +
         "    </div> " +
         "    <div class=\"pullleft wldcAttr\"></div> " +
         "   <div class=\"pullleft wldcContent\">" + topic + "</div> " +
@@ -301,6 +302,7 @@ $.extend({
         "    </div> " +
         "    </li>";
 		$("#wldcListBoxUl").append(str);
+		
 		$("#quickLook_" + id).mouseover(function() {
 			var o = id.split("_");
 			$.quickLookInfo(o[0], o[1]);
@@ -317,7 +319,11 @@ $.extend({
 			} else {
 				$.hideQuickLook();
 			}
-		});		
+		});	
+		$("#answer_" + id).mouseout(function () {
+			$(".quickLook.mainbox.pullleft").css("display", "none");
+			show = true;
+		});
 	},
 	hideQuickLook:function() {
 		$(".quickLook.mainbox.pullleft").css("display", "none");
