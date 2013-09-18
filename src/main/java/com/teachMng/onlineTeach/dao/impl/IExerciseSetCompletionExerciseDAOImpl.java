@@ -81,7 +81,6 @@ public class IExerciseSetCompletionExerciseDAOImpl implements
 
 	@Override
 	public boolean deleteByEsIdCeId(int esId, int ceId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

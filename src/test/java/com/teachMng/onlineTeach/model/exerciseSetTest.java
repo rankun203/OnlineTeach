@@ -188,7 +188,6 @@ public class exerciseSetTest {
 		List<QuestionExercise> qeList = new LinkedList<QuestionExercise>();
 		qeList.add(q1);
 		qeList.add(q2);
-		// TODO 由于我修改model映射，这里会报错，所以先注释掉
 //		es1.setQuestionExercise(qeList);
 		List<SelectionExercise> seList = new LinkedList<SelectionExercise>();
 		seList.add(se1);

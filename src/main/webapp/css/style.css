@@ -1171,12 +1171,12 @@ input[type="radio"] {
 }
 .daInfoTime{
 	padding-left:15px;
-	font-size:23px;
+	font-size:18px;
 	line-height:30px;
 }
 .daInfoDate{
 	padding-left:15px;
-	font-size:15px;
+	font-size:14px;
 	line-height:20px;
 }
 .disabledIF{
@@ -2120,13 +2120,12 @@ input[type="radio"] {
 	margin-top: -245px;
 }
 .dynamicAnswerItem > .hqus {
-	margin-top: -282px;
 }
 .dynamicAnswerItem > .ljuj {
 	margin-top: -120px;
 }
 .dynamicAnswerItem > .lcpl {
-	margin-top: -81px;
+	/* margin-top: -81px; */
 }
 
 /* 教师批注片收入弹出 */
@@ -2168,8 +2167,8 @@ input[type="radio"] {
 	margin-top: 45px;
 }
 .low-remark > .switch-arrow > .arrow {
-	height: 90px;
-	margin-top: 30px;
+	height: 93px;
+	margin-top: 27px;
 }
 .dynamicAnswerItem > .closed {
 	width: 65px;
@@ -2193,4 +2192,12 @@ input[type="radio"] {
 }
 .spread > .switch-arrow > .arrow {
 	-webkit-transform: rotateY(180deg);
+}
+
+/*暂无学生答题*/
+.dynamicAnswerItem > .present {
+	line-height: 130px;
+	font-size: 30px;
+	width: 940px;
+	text-align: center;
 }

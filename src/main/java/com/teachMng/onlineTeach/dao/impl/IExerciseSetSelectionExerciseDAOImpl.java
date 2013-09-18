@@ -80,7 +80,6 @@ public class IExerciseSetSelectionExerciseDAOImpl implements IExerciseSetSelecti
 
 	@Override
 	public boolean deleteByEsIdSeId(int esId, int seId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

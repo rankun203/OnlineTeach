@@ -12,6 +12,13 @@
     
 	<include file="strutsConfig/autoPlan.xml"/>
 	<include file="strutsConfig/createExercise.xml"/>
+	
+	<package name="root" extends="struts-default" namespace="/">
+	    <default-action-ref name="index"></default-action-ref>
+	    <action name="index">
+	        <result>index.jsp</result>
+	    </action>
+	</package>
 
 	<package name="login" extends="struts-default" namespace="/login">
 		<action name="login" class="loginAction" method="login">

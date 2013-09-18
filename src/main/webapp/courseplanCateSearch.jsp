@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<html id="courseplanCateSearch">
+<html id="courseplanCateSearch"> 
 <head>
 <meta charset="utf-8">
 <title>课表分类查询</title>

@@ -80,7 +80,6 @@ public class IExerciseSetJudgeExerciseDAOImpl implements IExerciseSetJudgeExerci
 
 	@Override
 	public boolean deleteByEsIdJeId(int esId, int jeId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

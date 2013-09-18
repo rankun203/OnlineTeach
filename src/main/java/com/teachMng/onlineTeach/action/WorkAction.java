@@ -169,7 +169,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private String getJson(String type, String topic, String stuAnswer,
 			Date date, String stuName, String stdAnswer, int topicId, int esId) {
 		String json = "";
-		DateFormat df = new SimpleDateFormat("yyyy MM dd hh:mm:ss E");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss E");
 		json += "\"type\":\"" + type;
 		json += "\",\"topic\":\"" + topic;
 		json += "\",\"stuAnswer\":\"" + stuAnswer;

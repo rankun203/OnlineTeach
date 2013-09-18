@@ -370,7 +370,13 @@ $.extend({
 		});
 	}
 });
-
+var myDom = {
+	parseDom : function (arg) {
+		var objE = document.createElement("div");
+		objE.innerHTML = arg;
+		return objE.childNodes;
+	}
+};
 //-------
 
 function changeStatus(var1, var2) {

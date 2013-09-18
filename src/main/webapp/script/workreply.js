@@ -229,7 +229,7 @@ function setExercise(esId, founder, ctime) {
 // 提交
 function commitAnswer(tType, esId, tId, no) { // 题目类型、试卷id、题目id、题目在页面中编号
 	console.log("type:" + tType + "  set id:" + esId + "   tid:" + tId + "  no:" + no);
-	var answer;
+	var answer = "";
 	if("selection" == tType) {
 		answer = getSelRplAns(no);
 	} else if("completion" == tType) {
