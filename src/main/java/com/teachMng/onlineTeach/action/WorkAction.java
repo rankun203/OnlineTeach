@@ -131,15 +131,15 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 				stu = _esse.getEs().getStudent();
 				json += getJson("selection", _se.getFullTopic(),
 						_esse.getStuAnswer(), ans.getDate(), stu.getStuName(),
-						_se.getStdAnswer() + "", ans.gettId(), ans.getEsId());
+						_se.getStdAnswer() + "", _se.getStdScore(), ans.gettId(), ans.getEsId());
 			} else if ("completion".equals(ans.getType())) {
 				ExerciseSetCompletionExercise _esce = null;
 				_esce = esceService.findByEsIdCeId(ans.getEsId(), ans.gettId());
 				_ce = _esce.getCe();
 				stu = _esce.getEs().getStudent();
-				json += getJson("completion", _ce.getFullTopic(),
+				json += getJson("completion", replaceCompletion(_ce.getFullTopic()),
 						_esce.getStuAnswer(), ans.getDate(), stu.getStuName(),
-						_ce.getStdAnswer(), ans.gettId(), ans.getEsId());
+						_ce.getStdAnswer(), _ce.getStdScore(), ans.gettId(), ans.getEsId());
 			} else if ("question".equals(ans.getType())) {
 				ExerciseSetQuestionExercise _esqe = null;
 				_esqe = esqeService.findByEsIdQeId(ans.getEsId(), ans.gettId());
@@ -147,7 +147,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 				stu = _esqe.getEs().getStudent();
 				json += getJson("question", _qe.getFullTopic(),
 						_esqe.getStuAnswer(), ans.getDate(), stu.getStuName(),
-						_qe.getStdKeyword(), ans.gettId(), ans.getEsId());
+						_qe.getStdKeyword(), _qe.getStdScore(), ans.gettId(), ans.getEsId());
 			} else if ("judge".equals(ans.getType())) {
 				ExerciseSetJudgeExercise _esje = null;
 				_esje = esjeService.findByEsIdJeId(ans.getEsId(), ans.gettId());
@@ -155,7 +155,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 				stu = _esje.getEs().getStudent();
 				json += getJson("judge", _je.getFullTopic(),
 						_esje.isStuAnswerIsRight() + "", ans.getDate(),
-						stu.getStuName(), _je.isStdAnswerIsRight() + "",
+						stu.getStuName(), _je.isStdAnswerIsRight() + "", _je.getStdScore(),
 						ans.gettId(), ans.getEsId());
 			}
 			json += "}";
@@ -167,7 +167,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	}
 
 	private String getJson(String type, String topic, String stuAnswer,
-			Date date, String stuName, String stdAnswer, int topicId, int esId) {
+			Date date, String stuName, String stdAnswer, double stdScore, int topicId, int esId) {
 		String json = "";
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss E");
 		json += "\"type\":\"" + type;
@@ -176,11 +176,24 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		json += "\",\"ansDate\":\"" + df.format(date);
 		json += "\",\"stuName\":\"" + stuName;
 		json += "\",\"stdAnswer\":\"" + stdAnswer.replace("\"", "\\\"");
+		json += "\",\"stdScore\":\"" + stdScore;
 		json += "\",\"topicId\":\"" + topicId;
 		json += "\",\"esId\":\"" + esId + "\"";
 		return json;
 	}
-
+	private String replaceCompletion(String topic) {
+		String tmp = topic;
+		if(-1 == tmp.indexOf("@space@")) return topic;
+		String s1, s2, s = "";
+		int index = -1, i = 0;
+		while(-1 != (index = tmp.indexOf("@space@"))) {
+			s1 = tmp.substring(0, index + 7);
+			s2 = tmp.substring(index + 7, tmp.length());
+			s += s1.replace("@space@", "@" + (i++) + "@");
+			tmp = s2;
+		}
+		return s;
+	}
 	public double getScore() {
 		return score;
 	}
