@@ -58,7 +58,8 @@ cd 刚刚复制的目录名
 ```Bash
 #使用浏览器打开：http://dev.mysql.com/downloads/mysql/#downloads
 #点击大大的Windows Installer for Windows, 下载MySQL的Windows客户端
-#依据你的系统，点击`Windows (x86, 32-bit), MSI Installer`或是`Windows (x86, 32-bit), MSI Installer`后的Download按钮
+#依据你的系统，点击`Windows (x86, 32-bit), MSI Installer`
+#    或是`Windows (x86, 32-bit), MSI Installer`后的Download按钮
 #点击底部的`No thanks, just start my download.`
 #安装时注意设置root账户的密码，并且牢记该密码！
 #现在启动MySQL命令行，可以进入开始菜单打开 `MySQL>MySQL Server x.x>MySQL 5.5 Command Line Client`
