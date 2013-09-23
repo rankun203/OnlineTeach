@@ -90,6 +90,13 @@
 			<div class="mainbox container dynamicAnswerItem" id="ansHold">
 				<div class="present">暂无学生答题</div>
 			</div>
+<!-- 
+			<div class="long-ans-modal">
+				<h2>简答题答案：</h2>
+				<div class="ans-txt">Hey greedy,don’t fret
+What you see is what you get<br>You name it,I have it<br>What you see is what you get<br><br>左左 左左 偏左 就用左手<br>生活 就不用 想太多<br>怦怦 怦怦 心动 张开眼睛<br>就记得当下的 强烈<br><br><br>有时灵光一闪而过<br>牛顿也吃苹果<br>我的念头不太罗嗦<br><br>限时间能入座<br><br>请你 不要到处叩叩<br>潮流需要抠抠 不小心就没抠抠<br>用力到处扣扣 花掉所有抠抠<br>钱买不到绝活<br><br>你说 听说 听说 你听谁说<br>跟着 乱走 闹哄哄<br>通通 通通 普通 普通<br>如果不懂 不要 随便 拒绝<br><br>有时灵光一闪而过<br>牛顿也吃苹果<br>我的念头不太罗嗦<br>限时间能入座<br><br>请你 不要到处叩叩<br>潮流需要抠抠 不小心就没抠抠<br>用力到处扣扣 花掉所有抠抠<br>钱买不到绝活<br><br>Little chick having chips on my sofa<br>Bearbricxs take a shit on my sofa<br>Smudge babies lying on my sofa<br>Neighborhxxds and kiks singing “so-fa”<br><br>Little chick having chips on my sofa<br>Bearbricxs take a shit on my sofa<br>Smudge babies lying on my sofa<br><br>Hey greedy,don’t fret<br>What you see is what you get<br>You name it,I have it<br>What you see is what you get<br><br>请你 不要到处叩叩<br>潮流需要抠抠 不小心就没抠抠<br>用力到处扣扣 花掉所有抠抠<br>钱买不到绝活<br><br>Hey greedy,don’t fret(叩叩)<br>What you see is what you get(叩叩)<br>You name it,I have it(不要到处叩叩)<br>What you see is what you get<br><br>Hey greedy,don’t fret(不要到处叩叩)<br>What you see is what you get(叩叩)<br>You name it,I have it(叩叩)<br>What you see is what you get<br><br>叩叩... 叩叩 ...</div>
+			</div>
+ -->			
         </div>
     </div>
 </div>
