@@ -550,7 +550,7 @@ CREATE TABLE `t_teacher` (
 
 /*Data for the table `t_teacher` */
 
-insert  into `t_teacher`(`teacID`,`password`,`teacName`,`username`) values (1,'password','李灵黛','teachera'),(2,'password','冷文卿','teacherb'),(3,'password','韩千叶','teacherc'),(4,'password','苏普','teacherd'),(5,'password','袁冠南','teachere'),(6,'password','顾莫言','teacherf'),(7,'password','董依依','teacherg'),(8,'password','杨若涵','teacherh'),(9,'password','滕绍武','teacheri'),(10,'password','李芊墨',NULL),(11,'password','刘苏曼',NULL),(12,'password','张盼会',NULL),(13,'password','赵盼盼',NULL),(14,'password','老师1',NULL),(15,'password','老师1',NULL),(16,'password','老师1',NULL),(17,'password','老师1',NULL),(18,'',NULL,NULL),(19,NULL,'老师1',NULL);
+insert  into `t_teacher`(`teacID`,`password`,`teacName`,`username`) values (1,'password','李灵黛','teachera'),(2,'password','冷文卿','teacherb'),(3,'password','韩千叶','teacherc'),(4,'password','苏普','teacherd'),(5,'password','袁冠南','teachere'),(6,'password','顾莫言','teacherf'),(7,'password','董依依','teacherg'),(8,'password','杨若涵','teacherh'),(9,'password','滕绍武','teacheri'),(10,'password','李芊墨',NULL),(11,'password','刘苏曼',NULL),(12,'password','张盼会',NULL),(13,'password','赵盼盼',NULL),(14,'password','老师1',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
