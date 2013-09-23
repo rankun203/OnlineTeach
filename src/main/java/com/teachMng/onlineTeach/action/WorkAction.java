@@ -54,8 +54,6 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private Queue<AnswerHistory> ah = new LinkedList<AnswerHistory>();
 
 	public void workReply() {
-		// System.out.println("type:" + type + "  esId:" + esId + "   topicid:"
-		// + topicId + "   answer:" + answer);
 		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId),
 				answer);
 		AnswerHistory answerHistory = new AnswerHistory();
@@ -64,7 +62,6 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		answerHistory.setType(type);
 		ah.add(answerHistory);
 		ahs.insert(answerHistory);
-		// System.out.println(ah.size() + "*************************");
 	}
 
 	/**
@@ -72,8 +69,6 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	 * http://localhost:8080/OnlineTeach/work/workMark?type=completion&esId=1&topicId=4&score=90.5&teacComment=hdslafjkldsaf
 	 */
 	public void workMark() {
-//		System.out.println("type:" + type + "topicId:" + topicId + "  esId:"
-//				+ esId + "  score:" + score + "  teacComment:" + teacComment);
 		if ("selection".equals(type)) {
 			ExerciseSetSelectionExercise esse = esseService.findByEsIdSeId(
 					Integer.parseInt(esId), Integer.parseInt(topicId));

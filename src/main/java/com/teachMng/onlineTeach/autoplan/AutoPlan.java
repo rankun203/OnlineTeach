@@ -77,16 +77,6 @@ public class AutoPlan {
 		int _count = 0;
 		while (_cpiIter.hasNext()) {
 			_cpi = _cpiIter.next(); //
-			// System.out.println(cpi.getSchoolClass().getMajor() + ""
-			// + cpi.getSchoolClass() + "  " + // cpi.getCourse() + "  " +
-			// cpi.getClassRoom() + "  " + // cpi.getTeacher() + "  " +
-			// cpi.getCpParagraph());
-			// System.out.println(cpi.getSchoolClass().getMajor().getMajorName()
-			// + cpi.getSchoolClass().getScName() + "  "
-			// + cpi.getCourse().getCourseName() + "  "
-			// + cpi.getClassRoom().getCrName() + "  "
-			// + cpi.getTeacher().getTeacName() + "           "
-			// + cpi.getCpParagraph());
 			try {
 				coursePlanItemService.insCoursePlanItem(_cpi);
 			} catch (Exception e) { // 插入时出错
@@ -258,7 +248,8 @@ public class AutoPlan {
 	 */
 	public void deleteAll() {
 		coursePlanItemService.deleteAll();
-		System.out.println(getCurTime() + " 已成功清除所有数据！");
+		System.out.println(getCurTime() + "数据初始化...");
+		msgQueue.add(getCurTime() + "数据初始化...");
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -363,8 +354,9 @@ public class AutoPlan {
 	 * 初始化数据
 	 */
 	private void init() {
-		System.out.println(getCurTime() + " 数据初始化成功，系统准备排课中...");
-		msgQueue.add(getCurTime() + " 数据初始化成功，系统准备排课中...");
+		deleteAll();
+		System.out.println(getCurTime() + " 系统准备排课中...");
+		msgQueue.add(getCurTime() + " 系统准备排课中...");
 		classRooms = null;
 		courses = null;
 		majors = null;
@@ -893,8 +885,6 @@ public class AutoPlan {
 						return;
 					cr = getAvailableClassRoom(course.getCourseID(),
 							sc.getScID(), course.getRoomType());
-					// System.out.println(findClassRoomById(paragraph,
-					// cr.getCrID(), course.getCourseID()));
 					if (null == cr)
 						return;
 					cpi = new CoursePlanItem();
