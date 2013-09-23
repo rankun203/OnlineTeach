@@ -2,7 +2,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 ===========
 ####软件技术专业教学综合管理平台 在线教学模块
 
-##Installation  
+##Installation
 ####Linux
 #####0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，请跳到下一步）
 
@@ -88,7 +88,7 @@ mvn tomcat6:run
 ```
 #####4.使用浏览器打开[http://localhost:8080/OnlineTeach/][]
 
-####Dependences
+##Dependences
 #####Environment：`Tomcat 6.0+ `
 #####Compiler：`JDK 6+ `
 
