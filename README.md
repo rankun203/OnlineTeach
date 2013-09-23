@@ -30,7 +30,7 @@ exit;
 ```Bash
 git clone https://github.com/rankun203/OnlineTeach.git
 ```
-#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
+#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），`mysql`命令用来初始化数据库。
 
 ```Bash
 mvn install
@@ -76,7 +76,7 @@ exit;
 ```Bash
 git clone https://github.com/rankun203/OnlineTeach.git
 ```
-#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
+#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），`mysql`命令用来初始化数据库。
 
 ```Bash
 mvn install
