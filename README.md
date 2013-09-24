@@ -2,7 +2,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 ===========
 ####软件技术专业教学综合管理平台 在线教学模块
 
-##Installation  
+##Installation
 ####Linux
 #####0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，请跳到下一步）
 
@@ -30,7 +30,7 @@ exit;
 ```Bash
 git clone https://github.com/rankun203/OnlineTeach.git
 ```
-#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
+#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven][]，如果是Ubuntu类系统，直接运行`sudo apt-get install maven`），`mysql`命令用来初始化数据库。
 
 ```Bash
 mvn install
@@ -42,8 +42,6 @@ mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 mvn tomcat6:run
 ```
 #####4.使用浏览器打开[http://localhost:8080/OnlineTeach/][]
-
-    ！如果出现没有找到数据库或表的异常，请尝试重新运行 mvn install
 ####Windows
 #####0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，请跳到下一步）
 
@@ -58,7 +56,8 @@ cd 刚刚复制的目录名
 ```Bash
 #使用浏览器打开：http://dev.mysql.com/downloads/mysql/#downloads
 #点击大大的Windows Installer for Windows, 下载MySQL的Windows客户端
-#依据你的系统，点击`Windows (x86, 32-bit), MSI Installer`或是`Windows (x86, 32-bit), MSI Installer`后的Download按钮
+#依据你的系统，点击`Windows (x86, 32-bit), MSI Installer`
+#    或是`Windows (x86, 32-bit), MSI Installer`后的Download按钮
 #点击底部的`No thanks, just start my download.`
 #安装时注意设置root账户的密码，并且牢记该密码！
 #现在启动MySQL命令行，可以进入开始菜单打开 `MySQL>MySQL Server x.x>MySQL 5.5 Command Line Client`
@@ -76,7 +75,7 @@ exit;
 ```Bash
 git clone https://github.com/rankun203/OnlineTeach.git
 ```
-#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），这里使用了mvn install周期，因为创建数据库的代码将在install周期之间运行。
+#####2.使用maven来编译程序（如果没有安装maven，请访问[setup maven for windows][]），`mysql`命令用来初始化数据库。
 
 ```Bash
 mvn install
@@ -89,10 +88,7 @@ mvn tomcat6:run
 ```
 #####4.使用浏览器打开[http://localhost:8080/OnlineTeach/][]
 
-    ！如果出现没有找到数据库或表的异常，请尝试重新运行 mvn install
-
-
-####Dependences
+##Dependences
 #####Environment：`Tomcat 6.0+ `
 #####Compiler：`JDK 6+ `
 
