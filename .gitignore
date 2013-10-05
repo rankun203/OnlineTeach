@@ -1,8 +1,10 @@
 target/
 .settings/
+.idea/
 doc/
 
 *.class
+*.iml
 
 .project
 .classpath
