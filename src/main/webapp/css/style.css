@@ -2028,6 +2028,8 @@ input[type="radio"] {
 	margin: 0 20px 20px 20px;
 	border-top: 1px dashed #c5c5c5;
 	padding-top: 20px;
+	height: 110px;
+	overflow-y: scroll;
 }
 /* 对话框结束 */
 

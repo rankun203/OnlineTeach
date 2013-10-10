@@ -34,7 +34,7 @@
             </div>
             <form id="login-form" class="login-form" method="post" action="login/login">
             	<input type="hidden" name="role" value="student" id="loginRole"/>
-            	<div class="login-student-box pullleft login-img gray" id="sturole"></div>
+            	<div class="login-student-box pullleft login-img gray" id="sturole" title="学生"></div>
             	<div class="model-body pullleft">
                 	<fieldset class="fieldStyle">
                     	<div class="form-field-group">
@@ -51,7 +51,7 @@
                         </div>
                     </fieldset>
                 </div>
-            	<div class="login-teacher-box pullleft login-img gray" id="tchrole"></div>
+            	<div class="login-teacher-box pullleft login-img gray" id="tchrole" title="教师"></div>
             	<div class="clearboth"></div>
                 <div class="model-footer">
                 	<a href="help.jsp" class="btn te pullleft">使用帮助</a>
