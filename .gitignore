@@ -2,6 +2,7 @@ target/
 .settings/
 .idea/
 doc/
+~/
 
 *.class
 *.iml
