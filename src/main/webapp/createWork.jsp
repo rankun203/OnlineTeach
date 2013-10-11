@@ -16,21 +16,13 @@
 <body>
 
 <jsp:include page="include/header.jsp" />
-<div class="container">
-	<div class="subMainNav">
-		<div class="currentLocation">
-			<a href="main.jsp">在线教学</a>&gt; <a href="#">教学排课</a>&gt; <a href="#">学期课表生成</a>
-		</div>
-		<jsp:include page="include/menu2.jsp"></jsp:include>
-	</div>
-</div>
 <div class="site">
     <div class="container">
-        <div class="courseTimeLabel">
+        <!-- <div class="courseTimeLabel">
             <div class="courseTimeLabelItem pullleft courseTimeLabelItemOne">上一次课：2013-4-12 星期三 上午 3-4节</div>
             <h4 class="courseTimeLabelItem pullleft courseTimeLabelItemTwo">毛泽东思想</h4>
             <div class="courseTimeLabelItem pullright courseTimeLabelItemThree">下一次课：2013-4-14 星期五 下午 7-8节</div>
-        </div>
+        </div> -->
          <div class="quickLook mainbox pullleft">  
 		  </div>
 		<div class="firstLR">

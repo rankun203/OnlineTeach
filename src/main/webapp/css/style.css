@@ -489,7 +489,7 @@ code{
 	border-top:3px solid #3065b0;
 }
 .userProfile{
-	width:257px;
+	width:200px;
 }
 .userProfileLeft, .userProfileRight{
 	height:40px;
@@ -551,6 +551,11 @@ code{
 	height: 25px;
 	margin-top: 7px;
 	line-height: 25px;
+}
+.no_login {
+	font-size: 16px;
+	margin-right: -122px;
+	margin-top: 9px;
 }
 /* 次级导航栏样式 */
 .subMainNavItemActive{
@@ -2028,6 +2033,8 @@ input[type="radio"] {
 	margin: 0 20px 20px 20px;
 	border-top: 1px dashed #c5c5c5;
 	padding-top: 20px;
+	height: 110px;
+	overflow-y: scroll;
 }
 /* 对话框结束 */
 

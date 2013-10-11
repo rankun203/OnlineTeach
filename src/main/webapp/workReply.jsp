@@ -15,23 +15,15 @@
 
 <jsp:include page="include/header.jsp" />
 
-<div class="site">
+<!-- <div class="site">
     <div class="container">
-		<div class="subMainNav">
-        	<div class="currentLocation">
-            	<a href="main.html">在线教学</a>&gt;
-                <a href="#">课堂练习</a>&gt;
-                <a href="#">课堂练习创建</a>
-            </div>
- 			<jsp:include page="include/menu2.jsp"></jsp:include>
-		</div>
       <div class="courseTimeLabel">
         <div class="courseTimeLabelItem pullleft courseTimeLabelItemOne">上一次课：2013-4-12 星期三 上午 3-4节</div>
         <h4 class="courseTimeLabelItem pullleft courseTimeLabelItemTwo">毛泽东思想</h4>
         <div class="courseTimeLabelItem pullright courseTimeLabelItemThree">下一次课：2013-4-14 星期五 下午 7-8节</div>
         </div>         
     </div>   
-</div>
+</div> -->
 <!-- <div class="draft" onClick="alert('此功能尚未开放！');">稿<br/>纸</div> -->
 <div class="mainbox container" style="border:1px solid #ccc; margin-top:20px;">
 	<div class="topicList">

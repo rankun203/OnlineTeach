@@ -193,9 +193,7 @@ var Topic = {
 		this.getMarkClass = function (curScore) {
 			if(this.stuAnswer == "" || this.stdAnswer == "") {
 				return "";
-			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
-				return " selected";
-			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+			} else if (this.stdScore - curScore == 0) {
 				return " selected";
 			} else {
 				return "";
@@ -263,15 +261,16 @@ var Topic = {
  			return rtn;
 		};
 	},
-	qa : function (s1, s2, s3, s4, s5, s6, s7, s8) {
+	qa : function (s1, s2, s3, s4, s5, s6, s7, s8, s9) {
 		this.type = s1;
 		this.topic = s2;
 		this.stuAnswer = s3;
 		this.ansDate = s4;
 		this.stuName = s5;
 		this.stdAnswer = s6;
-		this.topicId = s7;
-		this.esId = s8;
+		this.stdScore = s7;
+		this.topicId = s8;
+		this.esId = s9;
 		this.getTime = function () {
 			var date = this.ansDate.split(" ");
 			return date[1];
@@ -290,11 +289,9 @@ var Topic = {
 		this.getMarkClass = function (curScore) {
 			if(this.stuAnswer == "" || this.stdAnswer == "") {
 				return "";
-			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
+			} else if (this.stdScore - curScore == 0) {
 				return " selected";
-			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
-				return " selected";
-			} else {
+			}else {
 				return "";
 			}
 		};
@@ -358,15 +355,16 @@ var Topic = {
  			return rtn;
 		};
 	},
-	judge : function (s1, s2, s3, s4, s5, s6, s7, s8) {
+	judge : function (s1, s2, s3, s4, s5, s6, s7, s8, s9) {
 		this.type = s1;
 		this.topic = s2;
 		this.stuAnswer = s3;
 		this.ansDate = s4;
 		this.stuName = s5;
 		this.stdAnswer = s6;
-		this.topicId = s7;
-		this.esId = s8;
+		this.stdScore = s7;
+		this.topicId = s8;
+		this.esId = s9;
 		this.getTime = function () {
 			var date = this.ansDate.split(" ");
 			return date[1];
@@ -390,9 +388,7 @@ var Topic = {
 		this.getMarkClass = function (curScore) {
 			if(this.stuAnswer == "" || this.stdAnswer == "") {
 				return "";
-			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
-				return " selected";
-			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+			} else if (this.stdScore - curScore == 0) {
 				return " selected";
 			} else {
 				return "";
@@ -461,15 +457,16 @@ var Topic = {
  			return rtn;
 		};
 	},
-	completion : function (s1, s2, s3, s4, s5, s6, s7, s8) {
+	completion : function (s1, s2, s3, s4, s5, s6, s7, s8, s9) {
 		this.type = s1;
 		this.topic = s2;
 		this.stuAnswer = s3;
 		this.ansDate = s4;
 		this.stuName = s5;
 		this.stdAnswer = s6;
-		this.topicId = s7;
-		this.esId = s8;
+		this.stdScore = s7;
+		this.topicId = s8;
+		this.esId = s9;
 		this.getTime = function () {
 			var date = this.ansDate.split(" ");
 			return date[1];
@@ -489,9 +486,7 @@ var Topic = {
 		this.getMarkClass = function (curScore) {
 			if(this.stuAnswer == "" || this.stdAnswer == "") {
 				return "";
-			} else if (this.stuAnswer.toLowerCase() == this.stdAnswer.toLowerCase() && this.stdScore - curScore == 0) {
-				return " selected";
-			} else if(this.stuAnswer.toLowerCase() != this.stdAnswer.toLowerCase() && curScore == 0) {
+			} else if (this.stdScore - curScore == 0) {
 				return " selected";
 			} else {
 				return "";
