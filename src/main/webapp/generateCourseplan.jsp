@@ -14,16 +14,7 @@
 <body>
 
 	<jsp:include page="include/header.jsp" />
-	<div class="container">
-		<div class="subMainNav">
-			<div class="currentLocation">
-				<a href="main.jsp">在线教学</a>> <a href="#">教学排课</a>> <a href="#">学期课表生成</a>
-			</div>
-			<jsp:include page="include/menu2.jsp"></jsp:include>
-		</div>
-	</div>
 	<div class="site">
-
 		<div class="container">
 			<h3 class="autoplantitle">课程编排</h3>
 			<div class="pb mainbox">

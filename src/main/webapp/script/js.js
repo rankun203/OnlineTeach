@@ -1,20 +1,15 @@
  // JavaScript Document
 var flag = true;
 var selectName = -1;
-function mainNavExchange(mainNav, activePane) {
-	
-    var allSubNavItem = document.getElementsByClassName("subMainNavItem");
-    for (var i = 0; i < allSubNavItem.length; i++) {
-        allSubNavItem.item(i).style.display = "none";
-    }
-    document.getElementById(activePane).style.display = "block";
-
+function mainNavExchange(mainNav) {
+    mainNavOut();
+    document.getElementById(mainNav).className = "aMainNavItem aMainNavItemActive";
+}
+function mainNavOut() {
     var allAMainNavItem = document.getElementsByClassName("aMainNavItem");
     for (var i = 0; i < allAMainNavItem.length; i++) {
         allAMainNavItem.item(i).className = "aMainNavItem";
-    }
-    document.getElementById(mainNav).className = "aMainNavItem aMainNavItemActive";
-
+    }	
 }
 
 /* 通知代码 */
