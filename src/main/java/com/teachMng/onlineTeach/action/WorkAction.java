@@ -53,7 +53,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	private IAnswerHistoryService ahs;
 	private Queue<AnswerHistory> ah = new LinkedList<AnswerHistory>();
 
-	public void workReply() {
+	public String workReply() {
 		ess.workReply(Integer.parseInt(esId), type, Integer.parseInt(topicId),
 				answer);
 		AnswerHistory answerHistory = new AnswerHistory();
@@ -62,13 +62,14 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		answerHistory.setType(type);
 		ah.add(answerHistory);
 		ahs.insert(answerHistory);
+        return null;
 	}
 
 	/**
 	 * 题目打分
 	 * http://localhost:8080/OnlineTeach/work/workMark?type=completion&esId=1&topicId=4&score=90.5&teacComment=hdslafjkldsaf
 	 */
-	public void workMark() {
+	public String workMark() {
 		if ("selection".equals(type)) {
 			ExerciseSetSelectionExercise esse = esseService.findByEsIdSeId(
 					Integer.parseInt(esId), Integer.parseInt(topicId));
@@ -94,6 +95,7 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 			esje.setTeacherComment(teacComment);
 			esjeService.update(esje);
 		}
+        return null;
 	}
 
 	/**
@@ -101,9 +103,9 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 	 * type:题型, topic:标题, stuAnswer:学生回答, ansDate:回答日期, stuName:回答学生姓名,
 	 * stdAnswer:正确答案, topicId:题目编号, esId:试卷编号 }]
 	 */
-	public void getRepliedWork() {
+	public String getRepliedWork() {
 		if (ah.isEmpty()) {
-			return;
+			return null;
 		}
 		String json = "[";
 		AnswerHistory ans = null;
@@ -159,7 +161,8 @@ public class WorkAction extends ActionSupport implements ServletResponseAware {
 		json += "]";
 		out().print(json);
 		System.out.println(json);
-	}
+        return null;
+    }
 
 	private String getJson(String type, String topic, String stuAnswer,
 			Date date, String stuName, String stdAnswer, double stdScore, int topicId, int esId) {

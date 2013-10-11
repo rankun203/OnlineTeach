@@ -6,7 +6,7 @@
 	<groupId>com.teachMng.onlineTeach</groupId>
 	<artifactId>OnlineTeach</artifactId>
 	<version>0.4</version>
-	<packaging>war</packaging>
+    <packaging>war</packaging>
 	<name>OnlineTeach</name>
 	<description>教学管理系统 - 在线教学模块</description>
 	<developers>
@@ -14,7 +14,7 @@
 			<id>rankun203</id>
 			<name>Kun Ran</name>
 			<email>rankun203@gmail.com</email>
-			<url>http://mindfine.com</url>
+			<url>http://rankun.org</url>
 			<roles>
 				<role>developer</role>
 			</roles>

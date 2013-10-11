@@ -12,6 +12,7 @@
     
 	<include file="strutsConfig/autoPlan.xml"/>
 	<include file="strutsConfig/createExercise.xml"/>
+    <include file="strutsConfig/android.xml" />
 	
 	<package name="root" extends="struts-default" namespace="/">
 	    <default-action-ref name="index"></default-action-ref>
@@ -28,14 +29,14 @@
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success">/index.jsp</result>
 		</action>
-		<action name="getTeacherId" class="loginAction" method="getTeacherId" />		
+		<action name="getTeacherId" class="loginAction" method="getTeacherId" />
 	</package>
 	
 	<package name="exercising" extends="struts-default" namespace="/ei">
 		<action name="getExss" class="exsGoAction" method="getMyExerciseSets" />
 		<action name="getExs" class="exsGoAction" method="getExerciseSet" />
 		<action name="assignment" class="exsGoAction" method="assignment" />
-		<action name="commitAnswer" class="exsGoAction" method="workReply" />
+		<!--<action name="commitAnswer" class="exsGoAction" method="workReply" />-->
 	</package>
 
 	<package name="work" extends="struts-default" namespace="/work">

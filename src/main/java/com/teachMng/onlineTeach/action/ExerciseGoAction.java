@@ -59,7 +59,7 @@ public class ExerciseGoAction extends ActionSupport implements
 	 * @throws IOException
 	 *             打印消息的时候如果出错会抛出异常
 	 */
-	public void getExerciseSet() throws IOException {
+	public String getExerciseSet() throws IOException {
 		if (esId != null && !esId.equals("")) {
 			System.out.println("esId=" + esId);
 			int esID = Integer.parseInt(esId);
@@ -68,6 +68,7 @@ public class ExerciseGoAction extends ActionSupport implements
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().print(str);
 		}
+        return null;
 	}
 
 	/**
@@ -76,7 +77,7 @@ public class ExerciseGoAction extends ActionSupport implements
 	 * @throws IOException
 	 *             打印消息的时候如果出错会抛出异常
 	 */
-	public void getMyExerciseSets() throws IOException {
+	public String getMyExerciseSets() throws IOException {
 		if (sid != null && !sid.equals("")) {
 			int sidInt = Integer.parseInt(sid);
 			List<ExerciseSet> es = ess.findByStudentId(sidInt);
@@ -94,6 +95,7 @@ public class ExerciseGoAction extends ActionSupport implements
 			response.setCharacterEncoding("utf-8");
 			response.getWriter().print(esInfo);
 		}
+        return null;
 	}
 
 	/**
@@ -111,7 +113,7 @@ public class ExerciseGoAction extends ActionSupport implements
 	 * @throws IOException
 	 *             打印消息的时候如果出错会抛出异常
 	 */
-	public void assignment() throws IOException {
+	public String assignment() throws IOException {
 //		System.out.println("teacherId:" + teacherId + "____classId:" + classId
 //				+ "____exs:" + exs);
 		if (teacherId != null && !teacherId.equals("") && classId != null
@@ -188,6 +190,7 @@ public class ExerciseGoAction extends ActionSupport implements
 					"{\"oktip\":\"" + isOk + "\",\"tip\":\"试卷发布" + sucFaild
 							+ "\"}");
 		}
+        return null;
 	}
 
 	private ExerciseSet setSelectionExercise(ExerciseSet es,
