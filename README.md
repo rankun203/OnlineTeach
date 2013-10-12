@@ -87,6 +87,18 @@ mysql -u gitproject -pgitproject < ./docs/dbbackup.sql
 mvn tomcat6:run
 ```
 #####4.使用浏览器打开[http://localhost:8080/OnlineTeach/][]
+##Trouble Shooting
+#####Q.页面提交的信息乱码
+######A.请检查MySQL服务器配置文件（即MySQL安装目录下的my.ini，如果没有就复制my-small.ini并改名为my.ini）
+是否已经正确设置编码为utf-8,
+
+    [client]
+    ...
+    default-character-set=utf8
+    ...
+    [mysqld]
+    ...
+    character-set-server=utf8
 
 ##Dependences
 #####Environment：`Tomcat 6.0+ `
