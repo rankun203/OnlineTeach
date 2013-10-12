@@ -3,7 +3,7 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 ####软件技术专业教学综合管理平台 在线教学模块
 
 ##Preview
-请转到[https://github.com/rankun203/OnlineTeach/wiki/%E5%9F%BA%E6%9C%AC%E7%95%8C%E9%9D%A2%E5%8F%8A%E4%BA%A4%E4%BA%92%E4%BB%8B%E7%BB%8D](Wiki Pages页面)预览界面
+请转到[Wiki Pages - 基本界面及交互介绍][WikiPagesPreview]预览界面
 ##Installation
 ####Linux
 #####0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，请跳到下一步）
@@ -118,3 +118,5 @@ mvn tomcat6:run
 [setup git for windows]: http://www.xbc.me/install-git-on-windows/
 [setup maven for windows]: http://hzbook.group.iteye.com/group/wiki/2872-Maven-in-action#3338
 [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/#downloads
+
+[WikiPagesPreview]: https://github.com/rankun203/OnlineTeach/wiki/%E5%9F%BA%E6%9C%AC%E7%95%8C%E9%9D%A2%E5%8F%8A%E4%BA%A4%E4%BA%92%E4%BB%8B%E7%BB%8D
