@@ -6,6 +6,8 @@ doc/
 
 *.class
 *.iml
+*.tmp
+*.log
 
 .project
 .classpath
