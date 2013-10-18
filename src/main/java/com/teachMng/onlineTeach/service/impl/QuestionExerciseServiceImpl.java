@@ -50,10 +50,6 @@ public class QuestionExerciseServiceImpl implements IQuestionExerciseService {
 			_ce = ceIter.next();
 			topic = _ce.getFullTopic();
 			topic = topic.replaceAll("@space@", "_______");
-			if(topic.length() > 31) {
-				topic = topic.substring(0, 31);
-				topic += "...";
-			}
 			json += "{id:\"" + _ce.getId() + "\",topic:\"" + topic + "\",type:\"questionExercise\"},";
 		}
 		return json;

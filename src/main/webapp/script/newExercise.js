@@ -278,13 +278,17 @@ $.extend({
 		return false;
 	},
 	appendExercise:function(topic, id, odd) {
+        var tp = topic;
+        if(topic.length > 31) {
+            tp = topic.substring(0, 31) + "...";
+        }
 		var str = "	<li id=\"" + id + "\"> " +
         "   <div class=\"wldcItem wldcItem" + odd + "\" onMouseOver=\"lightUpRow(this);\" onMouseOut=\"reBg(this, '" + odd + "');\"> " +
         "    <div class=\"pullleft wldcCheckboxBox\"> " +
         "        <input type=\"checkbox\" class=\"wldccb\" value=\"" + id + "\" id=\"box_" + id + "\" /> " +
         "    </div> " +
         "    <div class=\"pullleft wldcAttr\"></div> " +
-        "   <div class=\"pullleft wldcContent\">" + topic + "</div> " +
+        "   <div class=\"pullleft wldcContent\">" + tp + "</div> " +
         "    <div class=\"pullright wldcAttr wldcAttrAfterCont wldcAttrAfterContEnd\"> " +
         "        <div class=\"flatbtn wldcaacBtn\" id=\"answer_" + id + "\" onMouseOver=\"pmt('answer_" + id + "', '点击查看该题答案');\" onMouseOut=\"erasePmt();\"> " +
         "            <div class=\"answerButtonImg\"></div> " +
@@ -296,20 +300,28 @@ $.extend({
         "        </div> " +
         "    </div> " +
         "    <div class=\"pullright widcAttr\"> " +
-        "       <div id=\"quickLook_" + id + "\" class=\"wldcQuickLookBtn flatbtn wldcAttrAfterCont\">快速预览</div> " +
+        "       <div id=\"quickLook_" + id + "\" class=\"wldcQuickLookBtn flatbtn wldcAttrAfterCont\" onMouseOver=\"pmt('quickLook_" +
+            id + "', '" + topic + "');\" onMouseOut=\"erasePmt();\">快速预览</div> " +
         "    </div> " +
         "    <div class=\"clearboth\"></div> " +
         "    </div> " +
         "    </li>";
 		$("#wldcListBoxUl").append(str);
 		
-		$("#quickLook_" + id).mouseover(function() {
-			var o = id.split("_");
-			$.quickLookInfo(o[0], o[1]);
-		});
-		$("#quickLook_" + id).mouseout(function() {			
-			$(".quickLook.mainbox.pullleft").css("display", "none");
-		});
+//		$("#quickLook_" + id).mouseover(function() {
+//			var o = id.split("_");
+//            $.post("ce/quickLook", {
+//                type:o[0],
+//                id:0[1]
+//            }, function(data){
+//                /*			$(".quickLook.mainbox.pullleft").css("display", "block");
+//                 $(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));*/
+//                pmt(o, data.substring(1, data.length-1));
+//            });
+//		});
+//		$("#quickLook_" + id).mouseout(function() {
+//			erasePmt();
+//		});
 		$("#answer_" + id).click(function() {
 			if(true == show) {
 				var o = id.split("_");
@@ -338,14 +350,16 @@ $.extend({
 			$(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));
 		});
 	},
-	quickLookInfo:function(type, id) {
-		
+	quickLookInfo:function(o) {
+		var v = o.split("_");
 		$.post("ce/quickLook", {
-			type:type,
-			id:id
+			type:v[0],
+			id:v[1]
 		}, function(data){
-			$(".quickLook.mainbox.pullleft").css("display", "block");
-			$(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));
+/*			$(".quickLook.mainbox.pullleft").css("display", "block");
+			$(".quickLook.mainbox.pullleft").html(data.substring(1, data.length-1));*/
+            //pmt(o, data.substring(1, data.length-1));
+            return data.substring(1, data.length-1);
 		});
 	},
 	showAllExercise:function(obj) {
