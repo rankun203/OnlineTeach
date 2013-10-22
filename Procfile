@@ -1,0 +1,1 @@
+web:  mvn clean install tomcat6:run

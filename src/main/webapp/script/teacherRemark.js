@@ -202,7 +202,7 @@ var Topic = {
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn = "" +
- "<div class=\"mainbox container dynamicAnswerItem topans\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">\r\n" + 
+ "<div class=\"mainbox qesAutoResize dynamicAnswerItem topans\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">\r\n" +
  "    <div class=\"daInfo divInfo\">\r\n" + 
  "      <div class=\"daInfoName\">"+this.stuName+"</div>\r\n" + 
  "      <div class=\"daInfoTime\">"+this.getTime()+"</div>\r\n" + 
@@ -298,7 +298,7 @@ var Topic = {
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn =
- "<div class=\"mainbox container dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" + 
+ "<div class=\"mainbox qesAutoResize dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" +
  "    <div class=\"daInfo divInfo\">" + 
  "      <div class=\"daInfoName\">"+this.stuName+"</div>\r\n" + 
  "      <div class=\"daInfoTime\">"+this.getTime()+"</div>\r\n" + 
@@ -407,7 +407,7 @@ var Topic = {
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn = 
- "<div class=\"mainbox container dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" + 
+ "<div class=\"mainbox qesAutoResize dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" +
  "    <div class=\"daInfo divInfo\">" + 
  "      <div class=\"daInfoName\">"+this.stuName+"</div>\r\n" + 
  "      <div class=\"daInfoTime\">"+this.getTime()+"</div>\r\n" + 
@@ -495,7 +495,7 @@ var Topic = {
 		this.getHTML = function () {
 			Topic.COUNT = Topic.COUNT + 1;
 			var rtn = 
- "<div class=\"mainbox container dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" + 
+ "<div class=\"mainbox qesAutoResize dynamicAnswerItem\" data-myid=\"tpl\" data-esId=\""+this.esId+"\" data-topicId=\""+this.topicId+"\" id=\"item-tpl\">" +
  "    <div class=\"daInfo divInfo\">" + 
  "      <div class=\"daInfoName\">"+this.stuName+"</div>\r\n" + 
  "      <div class=\"daInfoTime\">"+this.getTime()+"</div>\r\n" + 

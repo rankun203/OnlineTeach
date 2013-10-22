@@ -1886,10 +1886,11 @@ input[type="radio"] {
 	font-size: 15px;
 }
 .quickLook{
+    top: 10%;
+    left: 30%;
 	font-size:14px;
 	padding: 15px;
-	margin-left:-70px;
-	width:400px;
+	width:40%;px;
 	-webkit-animation: showAnimation 1s ease-in-out;
 	min-height:200px;
 	position:absolute;
@@ -2264,4 +2265,29 @@ input[type="radio"] {
 	margin-top: 0;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+//自动更改宽度
+@media all and (min-width:1003px) {
+    .qesAutoResize {
+        width: 598px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .daTitAutoResize {
+        width: 590px;
+        margin-top: 15px;
+        padding-left: 8px;
+    }
+}
+@media all and (min-width:1346px) {
+    .qesAutoResize {
+        width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .daTitAutoResize {
+        width: 932px;
+        margin-top: 15px;
+        padding-left: 8px;
+    }
 }
