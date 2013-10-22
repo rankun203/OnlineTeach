@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
+<base href='http://<%=request.getServerName()+request.getContextPath()+request.getServletPath()%>' />
 <meta charset="utf-8">
 <title>登录界面</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
