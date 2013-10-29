@@ -4,6 +4,8 @@ OnlineTeach[![Build Status](https://travis-ci.org/rankun203/OnlineTeach.png)](ht
 
 ##Preview
 请转到[Wiki Pages - 基本界面及交互介绍][WikiPagesPreview]预览界面
+
+下载最新已编译war包，请转至：[Drone.io](https://drone.io/github.com/rankun203/OnlineTeach/files)
 ##Installation
 ####Linux
 #####0.创建相关目录（稍后将在该目录中执行所有操作，如果已经进入到相关目录，请跳到下一步）
