@@ -1435,7 +1435,7 @@ input[type="radio"] {
 #searchType {
 	margin-top:5px;
 	height:25px;
-	margin-left:300px;	
+	margin-left:22%;
 }
 .selectView_coursePlan { 
 	display:block;
@@ -1450,8 +1450,7 @@ input[type="radio"] {
 }
 
 #coursePlanView {
-	margin-top:10px;
-	margin-left:300px;	
+	margin:10px auto 0px auto;
 	width:750px;
 	height:550px;
 	display:block;
