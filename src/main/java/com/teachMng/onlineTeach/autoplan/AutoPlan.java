@@ -117,6 +117,7 @@ public class AutoPlan {
         SchoolClass _sc;
         while (_scIter.hasNext()) {
             _sc = _scIter.next();
+            if (0 >= coursePlanItemService.allCoursePlanByClassId(_sc.getScID()).size()) continue;
             json += "{id:\"" + _sc.getScID() + "\", name:\""
                     + _sc.getMajor().getMajorName() + " " + _sc.getScName()
                     + "\"}, ";
@@ -155,6 +156,7 @@ public class AutoPlan {
         Teacher _t;
         while (_tIter.hasNext()) {
             _t = _tIter.next();
+            if (0 >= coursePlanItemService.allCoursePlanByTeacherId(_t.getTeacID()).size()) continue;
             json += "{id:\"" + _t.getTeacID() + "\", name:\""
                     + _t.getTeacName() + "\"}, ";
         }
@@ -194,6 +196,7 @@ public class AutoPlan {
         ClassRoom _cr;
         while (_crIter.hasNext()) {
             _cr = _crIter.next();
+            if (0 >= coursePlanItemService.allCoursePlanByRoomId(_cr.getCrID()).size()) continue;
             json += "{id:\"" + _cr.getCrID() + "\", name:\"" + _cr.getCrName()
                     + "\"}, ";
         }
@@ -485,8 +488,8 @@ public class AutoPlan {
     /**
      * 检测此节课的老师是否有冲突
      *
-     * @param c         课程
-     * @param sc        班级
+     * @param c  课程
+     * @param sc 班级
      * @return 返回一个教师
      */
     private Teacher getTeacherByParagraph(Course c, SchoolClass sc) {
@@ -577,9 +580,9 @@ public class AutoPlan {
     /**
      * 根据教室类型和上课时间获取一个可用的教室
      *
-     * @param courseID  课程编号
-     * @param scID      班级编号
-     * @param roomType  教室类型
+     * @param courseID 课程编号
+     * @param scID     班级编号
+     * @param roomType 教室类型
      * @return 返回一个这个时间段可以使用的教室
      */
     private ClassRoom getAvailableClassRoom(int courseID, int scID, int roomType) {
@@ -987,7 +990,7 @@ public class AutoPlan {
     }
 
 	/*
-	 * 这坨setter和getter终于结束了
+     * 这坨setter和getter终于结束了
 	 */
     /**
      * 最大节数
