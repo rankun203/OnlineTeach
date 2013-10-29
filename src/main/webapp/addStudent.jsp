@@ -9,7 +9,7 @@
 	href="<%=request.getContextPath()%>/css/style.css" />
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	<base href='http://<%=request.getServerName()+":"+request.getLocalPort()+request.getContextPath()+request.getServletPath()%>' />
+    <base href='${pageContext.request.requestURL}' />
 </head>
 
 <body>
