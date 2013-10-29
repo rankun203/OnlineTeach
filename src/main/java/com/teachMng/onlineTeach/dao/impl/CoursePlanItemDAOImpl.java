@@ -23,7 +23,8 @@ public class CoursePlanItemDAOImpl implements ICoursePlanItemDAO {
 	public void deleteAll() {
 		Session s = sf.getCurrentSession();
 		//s.beginTransaction();
-		s.createQuery("delete from CoursePlanItem").executeUpdate();
+		//s.createQuery("delete from CoursePlanItem").executeUpdate();
+        s.createSQLQuery("DELETE FROM t_courseplanitem").executeUpdate();
 		//s.getTransaction().commit();
 	}
 	@Override
