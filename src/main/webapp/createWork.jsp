@@ -87,5 +87,29 @@
 <script type="text/javascript">
 	$.getAllExercise();
 </script>
+
+<%--Compat for 1024 resolution--%>
+<%--<link rel="stylesheet" href="css/compat.css" id="compatCSS"/>--%>
+<script type="text/javascript">
+    $(window).resize(function () {
+        customScript.checkResolution();
+    });
+    var customScript = {
+        checkResolution : function () {
+            var compatCss = $("#compatCSS");
+            if($(window).width() < 1158) {
+                if(compatCss.length == 0) {
+                    $("body").after('<link rel="stylesheet" href="css/compat.css" id="compatCSS"/>');
+                }
+            } else {
+                if(compatCss.length != 0) {
+                    compatCss.remove();
+                }
+            }
+        }
+    }
+    customScript.checkResolution();
+</script>
+<%--Compat end--%>
 </body>
 </html>

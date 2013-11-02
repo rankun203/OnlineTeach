@@ -1,0 +1,35 @@
+#daTit{
+    width: 629px;
+    margin-left: 136px;
+}
+.dynamicAnswerItem{
+    width: 639px;
+    margin-left: 135px;
+}
+.single_question_answer {
+    width: 400px;
+}
+.sel-select-box {
+    margin-left: 400px;
+}
+.teacherRemark {
+    margin-left: 640px;
+}
+.a_answer {
+    width: 590px;
+}
+.answer_question {
+    width: 639px;
+}
+.dynamicAnswerItem > .teacherRemark {
+    margin-left: 640px;
+}
+.dynamicAnswerItem > .present{
+    width: 639px;
+}
+.judge_question {
+    width: 400px;
+}
+.j_answer_box {
+    margin-left: 400px;
+}
