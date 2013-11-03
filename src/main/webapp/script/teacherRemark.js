@@ -59,7 +59,7 @@ var replyStatus = {
 				thisPane.addClass("spread");
 			} else if (thisPane.hasClass("spread")) {
 				replyStatus.postRemark(function () {
-					//TODO 提交评论的动作
+					msgok("批示已保存");
 				});
 				thisPane.removeClass("spread");
 				thisPane.addClass("closed");
@@ -135,10 +135,6 @@ var replyStatus = {
 	}
 };
 
-/**
- * 
- * @type 可以叫做：动态、题目……
- */
 var Topic = {
 	selection : function (s1, s2, s3, s4, s5, s6, s7, s8, s9) {
 		this.type = s1;
