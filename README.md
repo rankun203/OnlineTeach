@@ -122,3 +122,7 @@ mvn tomcat6:run
 [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/#downloads
 
 [WikiPagesPreview]: https://github.com/rankun203/OnlineTeach/wiki/%E5%9F%BA%E6%9C%AC%E7%95%8C%E9%9D%A2%E5%8F%8A%E4%BA%A4%E4%BA%92%E4%BB%8B%E7%BB%8D
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rankun203/onlineteach/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
